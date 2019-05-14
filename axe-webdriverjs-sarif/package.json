@@ -1,0 +1,22 @@
+{
+    "name": "axe-webdriverjs-sarif",
+    "version": "0.0.0",
+    "description": "A sample using webdriverjs",
+    "private": true,
+    "dependencies": {
+        "axe-webdriverjs": "^2.2.0",
+        "selenium-webdriver": "^4.0.0-alpha.1"
+    },
+    "devDependencies": {
+        "@types/jest": "^24.0.12",
+        "@types/node": "^12.0.0",
+        "jest": "^24.8.0",
+        "jest-circus": "^24.8.0",
+        "jest-junit": "^6.4.0",
+        "ts-jest": "^24.0.2",
+        "typescript": "^3.4.5"
+    },
+    "scripts": {
+        "test": "jest"
+    }
+}

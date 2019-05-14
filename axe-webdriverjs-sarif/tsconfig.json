@@ -1,0 +1,7 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "rootDir": "./",
+        "typeRoots": ["node_modules/@types"],
+    },
+}
