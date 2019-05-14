@@ -21,7 +21,7 @@ jobs:
             task: PublishTestResults@2
             inputs:
                 testResultsFiles: $(System.DefaultWorkingDirectory)/test-results/junit.xml
-                testRunTitle: axe-webdriverjs-sarif
+                testRunTitle: typescript-selenium-webdriver
             condition: always()
             displayName: publish test results
 

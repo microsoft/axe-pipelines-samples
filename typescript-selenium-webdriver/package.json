@@ -1,7 +1,7 @@
 {
-    "name": "axe-webdriverjs-sarif",
+    "name": "typescript-selenium-webdriver",
     "version": "0.0.0",
-    "description": "A sample using webdriverjs",
+    "description": "A typescript sample using webdriverjs with selenium",
     "private": true,
     "dependencies": {
         "axe-webdriverjs": "^2.2.0",
