@@ -10,14 +10,16 @@ steps:
       displayName: use node 10.15.3
 
     - script: yarn install --frozen-lockfile
+      workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
       displayName: yarn install
 
-    - script: yarn test -- --ci
+    - script: yarn test --ci
+      workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
       displayName: yarn test
 
     - task: PublishTestResults@2
       inputs:
-          testResultsFiles: $(System.DefaultWorkingDirectory)/test-results/junit.xml
+          testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results/junit.xml
           testRunTitle: typescript-selenium-webdriver
       condition: always()
       displayName: publish test results
@@ -25,6 +27,6 @@ steps:
     - task: PublishCodeCoverageResults@1
       inputs:
           codeCoverageTool: Cobertura
-          summaryFileLocation: $(System.DefaultWorkingDirectory)/test-results/coverage/cobertura-coverage.xml
+          summaryFileLocation: $(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results/coverage/cobertura-coverage.xml
           failIfCoverageEmpty: true
       displayName: publish code coverage
