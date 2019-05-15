@@ -1,22 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-const rootDir = './';
-const currentDir = '<rootDir>/';
-
 module.exports = {
-    testRunner: 'jest-circus/runner',
-    transform: {
-        '^.+\\.(ts)$': 'ts-jest',
-    },
-    verbose: false,
-    coverageDirectory: './test-results/coverage',
-    displayName: 'unit tests',
-    moduleFileExtensions: ['ts', 'js'],
-    rootDir: rootDir,
+    preset:'ts-jest',
+    testEnvironment: 'node',
     collectCoverage: true,
     collectCoverageFrom: ['./**/*.ts', '!./**/*.test.ts'],
+    coverageDirectory: './test-results/coverage',
     coverageReporters: ['json', 'lcov', 'text', 'cobertura'],
-    testMatch: [`${currentDir}/**/*.test.(ts|js)`],
     reporters: [
         'default',
         [
