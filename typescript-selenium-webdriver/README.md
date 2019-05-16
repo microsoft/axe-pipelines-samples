@@ -3,7 +3,7 @@
 [![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/typescript-selenium-webdriver%20CI?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=25&branchName=master)
 [![Code coverage](https://img.shields.io/azure-devops/coverage/accessibility-insights/axe-pipelines-samples/25.svg)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=25&branchName=master)
 
-This sample demonstrates how you might set up a CI build for a simple html page to perform end to end browser accessibility tests, including how to suppress known failures using a baseline a known set of failures.
+This sample demonstrates how you might set up a CI build for a simple html page to perform end to end browser accessibility tests, including how to suppress known failures using a baseline file.
 
 The main technologies this sample uses are:
 
