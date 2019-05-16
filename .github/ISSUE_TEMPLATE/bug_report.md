@@ -15,31 +15,18 @@ A clear and concise description of what the bug is.
 Steps to reproduce the behavior:
 
 1. Go to '...'
-2. Click on '...'
-3. Scroll down to '...'
-4. See error
-
-## CodePen repro example
-
-Please provide a reproduction of the bug in a codepen, if possible. Here’s how
-
-* Goto https://codepen.io/ for a starting codepen
-* Create a simple example of the page that you have issues with and Export that codepen or give us a link to that codepen.
+2. Run '...'
+3. See error
 
 ## Expected behavior
 
 A clear and concise description of what you expected to happen.
 
-## Screenshots
-
-If applicable, add screenshots to help explain your problem.
-
 ## Extension (please complete the following information)
 
-- OS: [e.g. Windows/Mac]
-- Version [e.g. 1.140.1]
-- Browser Version [e.g Chrome 71.0]
-- Target Page [e.g www.bing.com]
+- OS [e.g. Windows/Mac]: 
+- OS Version [e.g. 1.140.1]: 
+- Node Version [e.g. 10.15.3]: 
 
 ## Are you willing to submit a PR?
 
