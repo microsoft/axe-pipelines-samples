@@ -4,6 +4,6 @@
 
 #### Pull request checklist
 
-- [ ] Addresses an existing issue: Fixes #0000
-- [ ] Added relevant unit test for your changes. (`yarn test`)
-- [ ] Verified code coverage for the changes made.
+- [ ] If this PR addresses an existing issue, it is linked: Fixes #0000
+- [ ] `yarn test` passes in all affected samples
+- [ ] Added any applicable tests
