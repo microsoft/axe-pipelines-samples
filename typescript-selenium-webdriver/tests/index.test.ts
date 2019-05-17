@@ -50,10 +50,11 @@ describe('index.html', () => {
         const header = await driver.wait(until.elementLocated(By.css('h1')));
         await driver.wait(until.elementIsVisible(header));
         const headerText = await header.getText();
+
         expect(headerText).toEqual('This is a static sample page with some accessibility issues');
     });
 
-    it('passes accessibility checks', async () => {
+    it('only contains known accessibility violations', async () => {
         const header = await driver.wait(until.elementLocated(By.css('h1')));
         await driver.wait(until.elementIsVisible(header));
 
