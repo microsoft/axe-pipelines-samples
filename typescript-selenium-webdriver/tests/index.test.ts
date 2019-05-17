@@ -11,10 +11,13 @@ describe('index.html', () => {
     beforeAll(async () => {
         jest.setTimeout(30000);
 
-        // This will use the CHROMEDRIVER env var if it exists (eg, for use with Azure Pipelines hosted agents),
-        // and fall back to looking for chromedriver.exe on your PATH (eg, for local development)
-        const chromeService = new chrome.ServiceBuilder(process.env.CHROMEDRIVER).build();
-        chrome.setDefaultService(chromeService);
+        // This is for the benefit of the Azure Pipelines Hosted Windows agents, which come with
+        // webdrivers preinstalled but not on the PATH where Selenium looks for them by default
+        if (process.env.CHROMEDRIVER) {
+            const hostedAgentChromedriverPath = path.join(process.env.CHROMEDRIVER, 'chromedriver.exe');
+            const chromeService = new chrome.ServiceBuilder(hostedAgentChromedriverPath).build();
+            chrome.setDefaultService(chromeService);
+        }
 
         driver = new Builder()
             .forBrowser('chrome')
