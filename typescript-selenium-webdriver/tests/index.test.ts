@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
 import { Builder, By, until, ThenableWebDriver } from 'selenium-webdriver';
-import { Options } from 'selenium-webdriver/chrome';
+import * as chrome from 'selenium-webdriver/chrome';
 import * as path from 'path';
 
 describe('index.html', () => {
@@ -11,9 +11,14 @@ describe('index.html', () => {
     beforeAll(async () => {
         jest.setTimeout(30000);
 
+        // This will use the CHROMEDRIVER env var if it exists (eg, for use with Azure Pipelines hosted agents),
+        // and fall back to looking for chromedriver.exe on your PATH (eg, for local development)
+        const chromeService = new chrome.ServiceBuilder(process.env.CHROMEDRIVER).build();
+        chrome.setDefaultService(chromeService);
+
         driver = new Builder()
             .forBrowser('chrome')
-            .setChromeOptions(new Options().addArguments('--headless'))
+            .setChromeOptions(new chrome.Options().headless())
             .build();
     });
 
