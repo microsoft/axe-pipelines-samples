@@ -4,10 +4,14 @@ module.exports = {
     preset:'ts-jest',
     testEnvironment: 'node',
 
-    // Outputting in JUnit format is for the benefit of Azure Pipelines' test results view.
-    // We publish the JUnit results for it to see from the "publish test results" step in azure-pipelines.yml.
+
     reporters: [
-        'default',
+        // This is for console output. Using jest-standard-reporter instead of 'default'
+        // works around https://github.com/facebook/jest/issues/5064
+        'jest-standard-reporter',
+
+        // This is to populate the Tests tab on the Build Results page in Azure Pipelines.
+        // See the "publish test results" step in ./azure-pipelines.yml.
         [
             'jest-junit',
             {
