@@ -3,6 +3,7 @@
 import { Builder, By, until, ThenableWebDriver } from 'selenium-webdriver';
 import * as chrome from 'selenium-webdriver/chrome';
 import * as path from 'path';
+import * as AxeBuilder from 'axe-webdriverjs';
 
 describe('index.html', () => {
     let driver: ThenableWebDriver;
@@ -49,6 +50,16 @@ describe('index.html', () => {
         const header = await driver.wait(until.elementLocated(By.css('h1')));
         await driver.wait(until.elementIsVisible(header));
         const headerText = await header.getText();
+
         expect(headerText).toEqual('This is a static sample page with some accessibility issues');
+    });
+
+    it('only contains known accessibility violations', async () => {
+        const header = await driver.wait(until.elementLocated(By.css('h1')));
+        await driver.wait(until.elementIsVisible(header));
+
+        const axeResults = await AxeBuilder(driver).analyze();
+
+        expect(axeResults.violations.length).toBe(5);
     });
 });

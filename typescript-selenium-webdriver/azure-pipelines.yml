@@ -16,7 +16,8 @@ steps:
       workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
       displayName: yarn install
 
-    - script: yarn test --ci
+    # The 2>&1 is a workaround for facebook/jest#5064 
+    - script: yarn test --ci 2>&1
       workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
       displayName: yarn test
 
