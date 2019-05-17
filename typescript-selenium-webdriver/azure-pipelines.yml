@@ -13,6 +13,7 @@ steps:
       displayName: use node 10.15.3
 
     - script: yarn install --frozen-lockfile
+      # workingDirectory should match where your package.json file is located. It defaults to the root of the repository.
       workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
       displayName: yarn install
 
