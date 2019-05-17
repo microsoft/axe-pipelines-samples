@@ -30,12 +30,12 @@ steps:
       displayName: publish test results
 
     # This task is how the "Scans" tab in our Azure Pipelines build results page gets its data
-    - task: PublishPipelineArtifact@0
+    - task: PublishBuildArtifacts@1
       inputs:
           # The exact name "CodeAnalysisLogs" is required for the Sarif Results Viewer Extension for Azure Pipelines
           # to find the .sarif files our accessibility test produces.
           artifactName: 'CodeAnalysisLogs'
           # "test-results" is not a required convention; it just happens to be where our tests write .sarif files to.
-          targetPath: '$(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results'
+          pathtoPublish: '$(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results'
       condition: always()
       displayName: publish sarif results
