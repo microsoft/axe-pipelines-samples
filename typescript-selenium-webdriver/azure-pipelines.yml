@@ -26,10 +26,3 @@ steps:
           testRunTitle: typescript-selenium-webdriver
       condition: always()
       displayName: publish test results
-
-    - task: PublishCodeCoverageResults@1
-      inputs:
-          codeCoverageTool: Cobertura
-          summaryFileLocation: $(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results/coverage/cobertura-coverage.xml
-          failIfCoverageEmpty: true
-      displayName: publish code coverage
