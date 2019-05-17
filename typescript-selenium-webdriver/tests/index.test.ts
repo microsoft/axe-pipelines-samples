@@ -14,8 +14,8 @@ describe('index.html', () => {
         // This is for the benefit of the Azure Pipelines Hosted Windows agents, which come with
         // webdrivers preinstalled but not on the PATH where Selenium looks for them by default.
         // See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium#decide-how-you-will-deploy-and-test-your-app
-        if (process.env.CHROMEDRIVER) {
-            const hostedAgentChromedriverPath = path.join(process.env.CHROMEDRIVER, 'chromedriver.exe');
+        if (process.env.ChromeWebDriver) {
+            const hostedAgentChromedriverPath = path.join(process.env.ChromeWebDriver, 'chromedriver.exe');
             const chromeService = new chrome.ServiceBuilder(hostedAgentChromedriverPath).build();
             chrome.setDefaultService(chromeService);
         }
