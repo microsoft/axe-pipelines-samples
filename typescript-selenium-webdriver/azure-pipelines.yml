@@ -1,7 +1,10 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
 pool:
-    vmImage: 'ubuntu-16.04'
+    # The 'windows-2019' and 'vs20xx-windows' vmImages come pre-installed with selenium drivers for common browsers.
+    # To use most other vmImages, you'll need to add a step to install these before running yarn test.
+    # See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium
+    vmImage: 'windows-2019'
 
 steps:
     - task: NodeTool@0
@@ -23,10 +26,3 @@ steps:
           testRunTitle: typescript-selenium-webdriver
       condition: always()
       displayName: publish test results
-
-    - task: PublishCodeCoverageResults@1
-      inputs:
-          codeCoverageTool: Cobertura
-          summaryFileLocation: $(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results/coverage/cobertura-coverage.xml
-          failIfCoverageEmpty: true
-      displayName: publish code coverage

@@ -5,6 +5,8 @@
 
 This sample demonstrates how you might set up a CI build for a simple html page to perform end to end browser accessibility tests, including how to suppress known failures using a baseline file.
 
+This tests in the sample rely on having a [Selenium](https://www.seleniumhq.org/) WebDriver binary available on your PATH. These binaries are [available by default in many Azure Pipelines hosted agents](https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium), but you may need to install them yourself ([ChromeDriver](http://chromedriver.chromium.org/downloads), [geckodriver](https://github.com/mozilla/geckodriver)) to run the tests on your local machine or in a custom build agent.
+
 The main technologies this sample uses are:
 
 * [http-server](https://www.npmjs.com/package/http-server) to run a localhost web server hosting a static html page

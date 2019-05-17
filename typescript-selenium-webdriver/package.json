@@ -6,15 +6,19 @@
     "dependencies": {},
     "devDependencies": {
         "@types/jest": "^24.0.12",
-        "@types/node": "^12.0.0",
+        "@types/node": "^12.0.2",
+        "@types/selenium-webdriver": "^4.0.0",
         "axe-webdriverjs": "^2.2.0",
+        "http-server": "^0.11.1",
         "jest": "^24.8.0",
         "jest-junit": "^6.4.0",
+        "jest-standard-reporter": "^1.0.0",
         "selenium-webdriver": "^4.0.0-alpha.1",
         "ts-jest": "^24.0.2",
         "typescript": "^3.4.5"
     },
     "scripts": {
+        "serve": "http-server ./src",
         "test": "jest"
     }
 }
