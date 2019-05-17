@@ -27,3 +27,10 @@ steps:
           testRunTitle: typescript-selenium-webdriver
       condition: always()
       displayName: publish test results
+
+    - task: PublishBuildArtifacts@1
+      inputs:
+          pathtoPublish: '$(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results/*.sarif'
+          artifactName: 'CodeAnalysisLogs'
+      condition: always()
+      displayName: publish sarif results
