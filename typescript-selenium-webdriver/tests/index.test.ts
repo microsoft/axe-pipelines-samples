@@ -1,9 +1,12 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-import { Builder, By, until, ThenableWebDriver } from 'selenium-webdriver';
-import * as chrome from 'selenium-webdriver/chrome';
-import * as path from 'path';
+import { convertAxeToSarif } from 'axe-sarif-converter';
 import * as AxeBuilder from 'axe-webdriverjs';
+import * as fs from 'fs';
+import * as path from 'path';
+import { Builder, By, ThenableWebDriver, until } from 'selenium-webdriver';
+import * as chrome from 'selenium-webdriver/chrome';
+import { promisify } from 'util';
 
 describe('index.html', () => {
     let driver: ThenableWebDriver;
@@ -55,11 +58,26 @@ describe('index.html', () => {
     });
 
     it('only contains known accessibility violations', async () => {
+        // Ensure that the page is loaded and rendered
         const header = await driver.wait(until.elementLocated(By.css('h1')));
         await driver.wait(until.elementIsVisible(header));
 
+        // Run an accessibility scan using axe-webdriverjs
         const axeResults = await AxeBuilder(driver).analyze();
 
+        // Write a test expectation that accounts for "known" issues we want to baseline
         expect(axeResults.violations.length).toBe(5);
+
+        // Write the axe results to a .sarif file, so we can use the SARIF Multitool to
+        // apply a baseline file and show the results in the Scans tab in Azure Pipelines
+        const sarifResults = convertAxeToSarif(axeResults);
+        const testResultsDirectory = path.join(__dirname, '..', 'test-results');
+        await promisify(fs.mkdir)(testResultsDirectory, { recursive: true });
+        await promisify(fs.writeFile)(
+            path.join(testResultsDirectory, 'index.html.axe-core.sarif'),
+            // We'll be checking in the resulting .sarif file for baselining purposes, so
+            // it's a good idea to use a spacing argument (here, "2") to pretty-print the
+            // JSON. This makes it much more pleasant to diff when it changes. 
+            JSON.stringify(sarifResults, null, 2));
     });
 });
