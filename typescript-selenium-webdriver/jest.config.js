@@ -3,8 +3,6 @@
 module.exports = {
     preset:'ts-jest',
     testEnvironment: 'node',
-
-
     reporters: [
         // This is for console output. Using jest-standard-reporter instead of 'default'
         // works around https://github.com/facebook/jest/issues/5064
