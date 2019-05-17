@@ -5,10 +5,12 @@ import * as chrome from 'selenium-webdriver/chrome';
 import * as path from 'path';
 
 describe('index.html', () => {
-    const indexUri = 'file://' + path.join(__dirname, '..', 'src', 'index.html');
     let driver: ThenableWebDriver;
 
+    // Starting a browser instance is time-consuming, so we share one browser instance between
+    // all tests in the file (by initializing it in beforeAll rather than beforeEach)
     beforeAll(async () => {
+        // The default timeout (5 seconds) is not always enough to start/quit a browser instance
         jest.setTimeout(30000);
 
         // This is for the benefit of the Azure Pipelines Hosted Windows agents, which come with
@@ -20,6 +22,8 @@ describe('index.html', () => {
             chrome.setDefaultService(chromeService);
         }
 
+        // Selenium supports many browsers, not just Chrome.
+        // See https://www.npmjs.com/package/selenium-webdriver for examples.
         driver = new Builder()
             .forBrowser('chrome')
             .setChromeOptions(new chrome.Options().headless())
@@ -31,7 +35,14 @@ describe('index.html', () => {
     });
 
     beforeEach(async () => {
-        await driver.get(indexUri);
+        // For simplicity, we're pointing our test browser directly to a static html file on disk.
+        //
+        // In a real project, you would probably use a localhost http server (Express.js, for example)
+        // and point selenium-webdriver to a http://localhost link.
+        //
+        // See https://jestjs.io/docs/en/testing-frameworks for examples.
+        const pageUnderTest = 'file://' + path.join(__dirname, '..', 'src', 'index.html');
+        await driver.get(pageUnderTest);
     });
 
     it('renders the expected header text', async () => {
