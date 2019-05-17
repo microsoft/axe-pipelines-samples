@@ -21,6 +21,7 @@ steps:
       workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
       displayName: yarn test
 
+    # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
     - task: PublishTestResults@2
       inputs:
           testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results/junit.xml
@@ -28,9 +29,12 @@ steps:
       condition: always()
       displayName: publish test results
 
+    # This task is how the "Scans" tab in our Azure Pipelines build results page gets its data
     - task: PublishBuildArtifacts@1
       inputs:
           pathtoPublish: '$(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results/*.sarif'
+          # The exact name "CodeAnalysisLogs" is required for the Sarif Results Viewer Extension for Azure Pipelines
+          # to find the .sarif files our accessibility test produces.
           artifactName: 'CodeAnalysisLogs'
       condition: always()
       displayName: publish sarif results
