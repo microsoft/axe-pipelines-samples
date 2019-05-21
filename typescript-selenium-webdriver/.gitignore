@@ -6,6 +6,7 @@ yarn-error.log*
 
 # Dependency directories
 node_modules/
+dotnet_tools/
 
 # Yarn Integrity file
 .yarn-integrity

@@ -7,6 +7,8 @@ import * as path from 'path';
 import { Builder, By, ThenableWebDriver, until } from 'selenium-webdriver';
 import * as chrome from 'selenium-webdriver/chrome';
 import { promisify } from 'util';
+import { exec, execFile } from 'child_process';
+import * as jsonpath from 'jsonpath';
 
 describe('index.html', () => {
     let driver: ThenableWebDriver;
@@ -57,6 +59,23 @@ describe('index.html', () => {
         expect(headerText).toEqual('This is a static sample page with some accessibility issues');
     });
 
+    it('exec local sarif --version', async() => {
+        await promisify(exec)(`${__dirname}/../dotnet_tools/sarif --version`);
+    });
+    it('exec local sarif.exe --version', async() => {
+        await promisify(exec)(`${__dirname}/../dotnet_tools/sarif.exe --version`);
+    });
+    it('execFile local sarif --version', async() => {
+        await promisify(execFile)(`${__dirname}/../dotnet_tools/sarif`, ['--version']);
+    });
+    it('execFile local sarif.exe --version', async() => {
+        await promisify(execFile)(`${__dirname}/../dotnet_tools/sarif.exe`, ['--version']);
+    });
+    it('runs local+cwd sarif --version', async() => {
+        await promisify(exec)(`sarif --version`,
+        { cwd: `${__dirname}/../dotnet_tools` });
+    });
+
     it('only contains known accessibility violations', async () => {
         // Ensure that the page is loaded and rendered
         const header = await driver.wait(until.elementLocated(By.css('h1')));
@@ -71,13 +90,29 @@ describe('index.html', () => {
         // Write the axe results to a .sarif file, so we can use the SARIF Multitool to
         // apply a baseline file and show the results in the Scans tab in Azure Pipelines
         const sarifResults = convertAxeToSarif(axeResults);
+
         const testResultsDirectory = path.join(__dirname, '..', 'test-results');
         await promisify(fs.mkdir)(testResultsDirectory, { recursive: true });
+
+        const baselineSarifFile = path.join(__dirname, 'index.html_baseline.sarif');
+        const currentSarifFile = path.join(testResultsDirectory, 'index.html_current.sarif');
+        const mergedSarifFile = path.join(testResultsDirectory, 'index.html_merged.sarif');
+
         await promisify(fs.writeFile)(
-            path.join(testResultsDirectory, 'index.html.axe-core.sarif'),
+            currentSarifFile,
             // We'll be checking in the resulting .sarif file for baselining purposes, so
             // it's a good idea to use a spacing argument (here, "2") to pretty-print the
             // JSON. This makes it much more pleasant to diff when it changes. 
             JSON.stringify(sarifResults, null, 2));
+
+        await promisify(execFile)(
+            path.join(__dirname, '..', 'dotnet_tools', 'sarif'),
+            ['match-results-forward', '-p', baselineSarifFile, '-o', mergedSarifFile, currentSarifFile]);
+
+        const mergedSarifResults = JSON.parse(
+            (await promisify(fs.readFile)(mergedSarifFile)).toString());
+
+        const resultsSinceBaseline = jsonpath.query(mergedSarifResults, '$.runs[*].results[@baselineState="new"]');
+        expect(resultsSinceBaseline).toBe([]);
     });
 });

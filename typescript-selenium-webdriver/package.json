@@ -13,11 +13,17 @@
         "http-server": "^0.11.1",
         "jest": "^24.8.0",
         "jest-junit": "^6.4.0",
+        "jsonpath": "^1.0.1",
+        "rimraf": "^2.6.3",
         "selenium-webdriver": "^4.0.0-alpha.1",
         "ts-jest": "^24.0.2",
         "typescript": "^3.4.5"
     },
     "scripts": {
+        "check-dotnet-installed": "dotnet --version || >&2 echo 'This project requires the .NET Core SDK to be installed. See https://dotnet.microsoft.com/download/dotnet-core' && exit 1",
+        "clean-dotnet-tools": "rimraf ./dotnet_tools",
+        "preinstall": "yarn check-dotnet-installed && yarn clean-dotnet-tools",
+        "install": "dotnet tool install --tool-path ./dotnet_tools Sarif.Multitool --version 2.1.1",
         "serve": "http-server ./src",
         "test": "jest"
     }
