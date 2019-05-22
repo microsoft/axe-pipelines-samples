@@ -59,7 +59,7 @@ describe('index.html', () => {
         const axeResults = await AxeBuilder(driver).analyze();
 
         // Write a test expectation that accounts for "known" issues we want to baseline
-        expect(axeResults.violations.length).toBe(5);
+        expect(axeResults.violations.length).toBe(3);
 
         // Write the axe results to a .sarif file, so we can use the SARIF Multitool to
         // apply a baseline file and show the results in the Scans tab in Azure Pipelines
