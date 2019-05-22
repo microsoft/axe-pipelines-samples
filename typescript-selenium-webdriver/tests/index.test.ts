@@ -47,14 +47,11 @@ describe('index.html', () => {
         // See https://jestjs.io/docs/en/testing-frameworks for examples.
         const pageUnderTest = 'file://' + path.join(__dirname, '..', 'src', 'index.html');
         await driver.get(pageUnderTest);
-    });
 
-    it('renders the expected header text', async () => {
-        const header = await driver.wait(until.elementLocated(By.css('h1')));
-        await driver.wait(until.elementIsVisible(header));
-        const headerText = await header.getText();
-
-        expect(headerText).toEqual('This is a static sample page with some accessibility issues');
+        // Checking for a known element on the page in beforeEach serves two purposes:
+        // * It acts as a sanity check that our browser automation setup basically works
+        // * It ensures that the page is loaded before we run our accessibility scans
+        await driver.wait(until.elementLocated(By.css('main')));
     });
 
     it('only contains known accessibility violations', async () => {
