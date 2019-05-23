@@ -57,43 +57,54 @@ describe('index.html', () => {
         await driver.wait(until.elementLocated(By.css('h1')));
     });
 
-    it('exec local sarif --version', async() => {
-        await promisify(exec)(`${__dirname}/../dotnet_tools/sarif --version`);
-    });
-    it('exec local sarif.exe --version', async() => {
-        await promisify(exec)(`${__dirname}/../dotnet_tools/sarif.exe --version`);
-    });
-    it('execFile local sarif --version', async() => {
-        await promisify(execFile)(`${__dirname}/../dotnet_tools/sarif`, ['--version']);
-    });
-    it('execFile local sarif.exe --version', async() => {
-        await promisify(execFile)(`${__dirname}/../dotnet_tools/sarif.exe`, ['--version']);
-    });
-    it('runs local+cwd sarif --version', async() => {
-        await promisify(exec)(`sarif --version`,
-        { cwd: `${__dirname}/../dotnet_tools` });
-    });
-
     // This test case shows how to baseline known failures using the SARIF SDK.
     //
-    // It baselines the same set of failures as the above example using Jest Snapshots, but uses result
-    // fingerprinting to correlate results from the baseline file to results from a fresh scan. It is more
-    // complex to write, but less likely to fail due to unrelated code changes. For example, adding an
-    // unrelated attribute to a failing element will not cause a this test to start failing.
+    // It baselines the same set of failures as the Jest Snapshot examples, but uses SARIF result
+    // fingerprinting to correlate results from the baseline file to results from a fresh scan. This
+    // offers the resiliency to unrelated changes of the snapshot fingerprinting approach with the
+    // full test log output of the full-result-snapshotting approach, and also enables the baseline
+    // visualization functionality of the SARIF Results Explorer Tab extension in Azure Pipelines.
+    //
+    // Today, this requires boilerplate helper functions here and some boilerplate scripts entries
+    // in your package.json to ensure the .NET Core SDK and SARIF Multitool NuGet package are installed.
     it('has only those accessibility violations present in SARIF baseline file', async () => {
         const accessibilityScanResults = await AxeBuilder(driver).analyze();
 
-        const sarifBaselineFile = path.join(__dirname, 'index.html_baseline.sarif');
         const sarifResultsFile = path.join(testResultsDirectory, 'index.html.sarif');
-
         await exportAsSarifFile(sarifResultsFile, accessibilityScanResults);
-        await mergeSarifFileWithBaseline(sarifResultsFile, sarifBaselineFile);
-        const errorsChangedSinceBaseline = await querySarifFileForErrorsChangedSinceBaseline(sarifResultsFile);
 
-        expect(errorsChangedSinceBaseline).toStrictEqual([]);
+        // The baseline file should be checked in to source control next to your tests.
+        const sarifBaselineFile = path.join(__dirname, 'index.html_baseline.sarif');
+        await verifyAgainstSarifBaselineFile(sarifResultsFile, sarifBaselineFile);
     });
 
     const testResultsDirectory = path.join(__dirname, '..', 'test-results');
+
+    async function exportAsSarifFile(sarifFilePath: string, axeResults: Axe.AxeResults): Promise<void> {
+        await ensureDirectoryExists(path.dirname(sarifFilePath));
+
+        const sarifResults = convertAxeToSarif(axeResults);
+
+        await promisify(fs.writeFile)(
+            sarifFilePath,
+            JSON.stringify(sarifResults, null, 2));
+    }
+
+    async function verifyAgainstSarifBaselineFile(sarifResultsFile: string, sarifBaselineFile: string): Promise<void> {
+        await mergeSarifFileWithBaseline(sarifResultsFile, sarifBaselineFile);
+
+        const errorsChangedSinceBaseline = await querySarifFileForErrorsChangedSinceBaseline(sarifResultsFile);
+
+        try {
+            expect(errorsChangedSinceBaseline).toStrictEqual([]);
+        } catch(e) {
+            console.error(
+                'Accessibility errors have changed since the baseline file was created. To update the baseline, run:\n' +
+                    `\tcopy ${sarifResultsFile} ${sarifBaselineFile}\n`);
+
+            throw e;
+        }
+    }
 
     async function ensureDirectoryExists(directory: string): Promise<void> {
         await promisify(fs.mkdir)(directory, { recursive: true });
@@ -121,24 +132,4 @@ describe('index.html', () => {
 
         return jsonpath.query(sarifContents, '$.runs[*].results[?(@.baselineState!="unchanged" && (@.kind=="error" || !@.kind))]');
     }
-
-    async function exportAsSarifFile(sarifFilePath: string, axeResults: Axe.AxeResults): Promise<void> {
-        await ensureDirectoryExists(path.dirname(sarifFilePath));
-
-        const sarifResults = convertAxeToSarif(axeResults);
-
-        await promisify(fs.writeFile)(
-            sarifFilePath,
-            JSON.stringify(sarifResults, null, 2));
-    }
-
-    it('only contains known accessibility violations', async () => {
-        // Run an accessibility scan using axe-webdriverjs
-        const axeResults = await AxeBuilder(driver).analyze();
-
-        // Write a test expectation that accounts for "known" issues we want to baseline
-        expect(axeResults.violations.length).toBe(3);
-
-        await exportAsSarifFile(path.join(testResultsDirectory, 'index.html.sarif'), axeResults);
-    });
 });
