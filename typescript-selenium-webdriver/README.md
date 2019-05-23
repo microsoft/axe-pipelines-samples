@@ -37,20 +37,20 @@ Detailed accessibliity scan information also appears in the Scans tab, courtesy 
 1. Install [Chrome](https://www.google.com/chrome/) and [ChromeDriver](http://chromedriver.chromium.org/getting-started), and make sure ChromeDriver is on your PATH.
 1. Clone this sample repository
 
-   ```shell
+   ```sh
    git clone https://github.com/microsoft/axe-pipelines-samples
    ```
 
 1. Install the dependencies
 
-   ```shell
-   cd ./typescript-selenium-webdriver
-   npm install
+   ```sh
+   cd ./axe-pipelines-samples/typescript-selenium-webdriver
+   yarn install # or npm install, whichever your project prefers
    ```
 
 1. Run the tests!
 
-   ```shell
+   ```sh
    jest
    ```
 
