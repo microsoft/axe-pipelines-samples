@@ -12,7 +12,7 @@ This sample demonstrates how you might set up a CI build for a simple, static ht
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
 * [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the baselined results in Azure Pipelines
 
-## See it in action In Azure Pipelines
+## See it in action in Azure Pipelines
 
 [![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/typescript-selenium-webdriver%20CI?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=25&branchName=master)
 
