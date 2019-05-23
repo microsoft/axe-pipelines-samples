@@ -102,10 +102,10 @@ describe('index.html', () => {
         // and snapshot that instead. The Jest Snapshot log output will only include the information from your
         // fingerprint, but you can still use the exported .sarif files to see complete failure information
         // in a SARIF viewer (https://sarifweb.azurewebsites.net/#Viewers) or a text editor.
-        const getViolationFingerprint = (violation: Axe.Result) => {
-            rule: violation.id;
-            targets: violation.nodes.map(node => node.target);
-        };
+        const getViolationFingerprint = (violation: Axe.Result) => ({
+            rule: violation.id,
+            targets: violation.nodes.map(node => node.target),
+        });
         expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
 
