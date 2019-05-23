@@ -8,15 +8,15 @@ import { Builder, By, ThenableWebDriver, until } from 'selenium-webdriver';
 import * as chrome from 'selenium-webdriver/chrome';
 import { promisify } from 'util';
 
+// The default timeout for tests/fixtures (5 seconds) is not always enough to start/quit/navigate a browser instance.
+const TEST_TIMEOUT_MS = 30000;
+
 describe('index.html', () => {
     let driver: ThenableWebDriver;
 
     // Starting a browser instance is time-consuming, so we share one browser instance between
     // all tests in the file (by initializing it in beforeAll rather than beforeEach)
     beforeAll(async () => {
-        // The default timeout (5 seconds) is not always enough to start/quit a browser instance
-        jest.setTimeout(30000);
-
         // This is for the benefit of the Azure Pipelines Hosted Windows agents, which come with
         // webdrivers preinstalled but not on the PATH where Selenium looks for them by default.
         // See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium#decide-how-you-will-deploy-and-test-your-app
@@ -32,11 +32,11 @@ describe('index.html', () => {
             .forBrowser('chrome')
             .setChromeOptions(new chrome.Options().headless())
             .build();
-    });
+    }, TEST_TIMEOUT_MS);
 
     afterAll(async () => {
         await driver.quit();
-    });
+    }, TEST_TIMEOUT_MS);
 
     beforeEach(async () => {
         // For simplicity, we're pointing our test browser directly to a static html file on disk.
@@ -52,7 +52,7 @@ describe('index.html', () => {
         // * It acts as a sanity check that our browser automation setup basically works
         // * It ensures that the page is loaded before we run our accessibility scans
         await driver.wait(until.elementLocated(By.css('h1')));
-    });
+    }, TEST_TIMEOUT_MS);
 
     it('only contains known accessibility violations', async () => {
         // Run an accessibility scan using axe-webdriverjs
@@ -72,5 +72,5 @@ describe('index.html', () => {
             // it's a good idea to use a spacing argument (here, "2") to pretty-print the
             // JSON. This makes it much more pleasant to diff when it changes. 
             JSON.stringify(sarifResults, null, 2));
-    });
+    }, TEST_TIMEOUT_MS);
 });
