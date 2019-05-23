@@ -7,8 +7,8 @@ import * as path from 'path';
 import { Builder, By, ThenableWebDriver, until } from 'selenium-webdriver';
 import * as chrome from 'selenium-webdriver/chrome';
 import { promisify } from 'util';
-import * as Axe from 'axe-core';
 
+// The default timeout for tests/fixtures (5 seconds) is not always enough to start/quit/navigate a browser instance.
 const TEST_TIMEOUT_MS = 30000;
 
 describe('index.html', () => {
@@ -17,9 +17,6 @@ describe('index.html', () => {
     // Starting a browser instance is time-consuming, so we share one browser instance between
     // all tests in the file (by initializing it in beforeAll rather than beforeEach)
     beforeAll(async () => {
-        // The default timeout (5 seconds) is not always enough to start/quit a browser instance
-        jest.setTimeout(30000);
-
         // This is for the benefit of the Azure Pipelines Hosted Windows agents, which come with
         // webdrivers preinstalled but not on the PATH where Selenium looks for them by default.
         // See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium#decide-how-you-will-deploy-and-test-your-app
