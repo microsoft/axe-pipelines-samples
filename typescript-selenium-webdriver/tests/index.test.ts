@@ -50,7 +50,7 @@ describe('index.html', () => {
         // See https://jestjs.io/docs/en/testing-frameworks for examples.
         const pageUnderTest = 'file://' + path.join(__dirname, '..', 'src', 'index.html');
         await driver.get(pageUnderTest);
-        
+
         // Checking for a known element on the page in beforeEach serves two purposes:
         // * It acts as a sanity check that our browser automation setup basically works
         // * It ensures that the page is loaded before we run our accessibility scans
