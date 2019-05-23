@@ -2,7 +2,7 @@
 // Licensed under the MIT License.
 import * as Axe from 'axe-core';
 import { convertAxeToSarif } from 'axe-sarif-converter';
-import * as AxeBuilder from 'axe-webdriverjs';
+import * as AxeWebdriverjs from 'axe-webdriverjs';
 import * as fs from 'fs';
 import * as path from 'path';
 import { Builder, By, ThenableWebDriver, until } from 'selenium-webdriver';
@@ -58,7 +58,7 @@ describe('index.html', () => {
     // This test case shows the most basic example: run a scan, fail the test if there are any failures.
     // This is the way to go if you have no known/pre-existing violations you need to temporarily baseline.
     it('has no accessibility violations in the h1 element', async () => {
-        const accessibilityScanResults = await AxeBuilder(driver)
+        const accessibilityScanResults = await AxeWebdriverjs(driver)
             .include('h1')
             .analyze();
 
@@ -71,7 +71,7 @@ describe('index.html', () => {
     // component you don't control fixing yourself), you can exclude it specifically and still scan the rest
     // of the page.
     it('has no accessibility violations outside of the known example violations', async () => {
-        const accessibilityScanResults = await AxeBuilder(driver)
+        const accessibilityScanResults = await AxeWebdriverjs(driver)
             .exclude('#example-accessibility-violations')
             .analyze();
 
@@ -83,7 +83,7 @@ describe('index.html', () => {
     // If you want to more precisely baseline a particular set of known issues, one option is to use Jest
     // Snapshot Testing (https://jestjs.io/docs/snapshot-testing) with the scan results object.
     it('has only those accessibility violations present in snapshot', async () => {
-        const accessibilityScanResults = await AxeBuilder(driver).analyze();
+        const accessibilityScanResults = await AxeWebdriverjs(driver).analyze();
 
         await exportAxeAsSarifTestResult('index-page.sarif', accessibilityScanResults);
 
