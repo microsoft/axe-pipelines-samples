@@ -35,11 +35,11 @@ describe('index.html', () => {
             .forBrowser('chrome')
             .setChromeOptions(new chrome.Options().headless())
             .build();
-    });
+    }, TEST_TIMEOUT_MS);
 
     afterAll(async () => {
         await driver.quit();
-    });
+    }, TEST_TIMEOUT_MS);
 
     beforeEach(async () => {
         // For simplicity, we're pointing our test browser directly to a static html file on disk.
@@ -50,10 +50,12 @@ describe('index.html', () => {
         // See https://jestjs.io/docs/en/testing-frameworks for examples.
         const pageUnderTest = 'file://' + path.join(__dirname, '..', 'src', 'index.html');
         await driver.get(pageUnderTest);
-
-        // Ensure that the page is loaded and rendered
-        await driver.wait(until.elementLocated(By.css('main')));
-    }, 15000);
+        
+        // Checking for a known element on the page in beforeEach serves two purposes:
+        // * It acts as a sanity check that our browser automation setup basically works
+        // * It ensures that the page is loaded before we run our accessibility scans
+        await driver.wait(until.elementLocated(By.css('h1')));
+    }, TEST_TIMEOUT_MS);
 
     // This test case shows the most basic example: run a scan, fail the test if there are any failures.
     // This is the way to go if you have no known/pre-existing violations you need to temporarily baseline.
@@ -107,10 +109,14 @@ describe('index.html', () => {
         expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
 
+    // SARIF is a general-purpose log format for code analysis tools.
+    //
     // Exporting axe results as .sarif files lets our Azure Pipelines build results page show a nice visualization
     // of any accessibility failures we find using the Sarif Results Viewer Tab extension
     // (https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab)
     async function exportAxeAsSarifTestResult(sarifFileName: string, axeResults: Axe.AxeResults): Promise<void> {
+        // We use the axe-sarif-converter package for the conversion step, then write the results
+        // to a file that we'll be publishing from a CI build step in azure-pipelines.yml
         const sarifResults = convertAxeToSarif(axeResults);
 
         // This directory should be .gitignore'd and should be published as a build artifact in azure-pipelines.yml
