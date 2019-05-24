@@ -2,6 +2,16 @@
 
 This sample demonstrates how you might set up a CI build for a simple, static html page to perform end to end accessibility tests in a browser, including how to suppress pre-existing or third-party failures using [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing).
 
+## Getting Started
+
+The individual files in the sample contain comments that explain the important parts of each file in context.
+
+Some good places to start reading are:
+
+* [tests/index.test.ts](./tests/index.test.ts): The example tests in here demonstrate opening [src/index.html](./src/index.html) in a browser with Selenium and run accessibility scans with axe-webdriverjs
+* [azure-pipelines.yml](./azure-pipelines.yml): Azure Pipelines config file that sets up our Continuous Integration and Pull Request builds
+* [jest.config.js](./jest.config.js): Jest configuration file that enables Typescript (using ts-jest) and test result reporting in Azure Pipelines (using jest-junit)
+
 ## Tools and libraries used
 
 * [Typescript](https://www.typescriptlang.org/) to author our test code
