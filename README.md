@@ -7,7 +7,7 @@ Automated accessibility tests can detect some common accessibility problems such
 
 ## Available samples
 
-* **[typescript-selenium-webdriver](./typescript-selenium-webdriver/README.md)**: Uses [TypeScript](https://typescriptlang.org), [Jest](https://jestjs.io/), [Selenium](https://www.seleniumhq.org), and [axe-webdriverjs](https://www.npmjs.com/package/axe-webdriverjs) to test a web page for accessibility issues. Shows how to baseline existing failures with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) and how to visualize failures in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) using [SARIF](https://sarifweb.azurewebsites.net/).
+* [typescript-selenium-webdriver](./typescript-selenium-webdriver/README.md): Uses [TypeScript](https://typescriptlang.org), [Jest](https://jestjs.io/), [Selenium](https://www.seleniumhq.org), and [axe-webdriverjs](https://www.npmjs.com/package/axe-webdriverjs) to test a web page for accessibility issues. Shows how to baseline existing failures with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) and how to visualize failures in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) using [SARIF](https://sarifweb.azurewebsites.net/).
 
 *Are we missing a sample you'd like to see? [File a sample request](https://github.com/microsoft/axe-pipelines-samples/issues/new?assignees=&labels=sample_request&template=feature_request.md&title=Sample+Request%3A+%3Csample+name+here%3E) or [submit a pull request](./CONTRIBUTING.md)!*
 
