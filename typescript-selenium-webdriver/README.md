@@ -10,12 +10,12 @@ Some good places to start reading are:
 
 * [tests/index.test.ts](./tests/index.test.ts): Jest test file that opens [src/index.html](./src/index.html) in a browser with Selenium and runs accessibility scans against it with axe-webdriverjs
 * [azure-pipelines.yml](./azure-pipelines.yml): Azure Pipelines config file that sets up our Continuous Integration and Pull Request builds
-* [jest.config.js](./jest.config.js): Jest configuration file that enables Typescript (using ts-jest) and test result reporting in Azure Pipelines (using jest-junit)
+* [jest.config.js](./jest.config.js): Jest configuration file that enables TypeScript (using ts-jest) and test result reporting in Azure Pipelines (using jest-junit)
 
 ## Tools and libraries used
 
-* [Typescript](https://www.typescriptlang.org/) to author our test code
-* [Jest](https://jestjs.io/) as our test framework, with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) for baselining and [ts-jest](https://www.npmjs.com/package/ts-jest) for Typescript support
+* [TypeScript](https://www.typescriptlang.org/) to author our test code
+* [Jest](https://jestjs.io/) as our test framework, with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) for baselining and [ts-jest](https://www.npmjs.com/package/ts-jest) for TypeScript support
 * [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) to automate browsing to the page from the tests
 * [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs) to run an axe accessibility scan on the page from the Selenium browser
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
