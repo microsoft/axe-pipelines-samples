@@ -8,7 +8,7 @@ The individual files in the sample contain comments that explain the important p
 
 Some good places to start reading are:
 
-* [tests/index.test.ts](./tests/index.test.ts): The example tests in here demonstrate opening [src/index.html](./src/index.html) in a browser with Selenium and run accessibility scans with axe-webdriverjs
+* [tests/index.test.ts](./tests/index.test.ts): Jest test file that opens [src/index.html](./src/index.html) in a browser with Selenium and runs accessibility scans against it with axe-webdriverjs
 * [azure-pipelines.yml](./azure-pipelines.yml): Azure Pipelines config file that sets up our Continuous Integration and Pull Request builds
 * [jest.config.js](./jest.config.js): Jest configuration file that enables Typescript (using ts-jest) and test result reporting in Azure Pipelines (using jest-junit)
 
