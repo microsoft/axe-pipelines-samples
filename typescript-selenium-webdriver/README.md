@@ -4,8 +4,8 @@ This sample demonstrates how you might set up a CI build for a simple, static ht
 
 ## Tools and libraries used
 
-* [typescript](https://www.typescriptlang.org/) to author our test code
-* [Jest](https://jestjs.io/) as our test framework, with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) for baselining
+* [Typescript](https://www.typescriptlang.org/) to author our test code
+* [Jest](https://jestjs.io/) as our test framework, with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) for baselining and [ts-jest](https://www.npmjs.com/package/ts-jest) for Typescript support
 * [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) to automate browsing to the page from the tests
 * [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs) to run an axe accessibility scan on the page from the Selenium browser
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
