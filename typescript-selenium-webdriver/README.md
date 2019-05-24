@@ -2,15 +2,24 @@
 
 This sample demonstrates how you might set up a CI build for a simple, static html page to perform end to end accessibility tests in a browser, including how to suppress pre-existing or third-party failures using [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing).
 
+## Getting Started
+
+The individual files in the sample contain comments that explain the important parts of each file in context.
+
+Some good places to start reading are:
+
+* [tests/index.test.ts](./tests/index.test.ts): Jest test file that opens [src/index.html](./src/index.html) in a browser with Selenium and runs accessibility scans against it with axe-webdriverjs
+* [azure-pipelines.yml](./azure-pipelines.yml): Azure Pipelines config file that sets up our Continuous Integration and Pull Request builds
+* [jest.config.js](./jest.config.js): Jest configuration file that enables TypeScript (using ts-jest) and test result reporting in Azure Pipelines (using jest-junit)
+
 ## Tools and libraries used
 
-* [typescript](https://www.typescriptlang.org/) to author our test code
-* [Jest](https://jestjs.io/) as our test framework, with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) for baselining
+* [TypeScript](https://www.typescriptlang.org/) to author our test code
+* [Jest](https://jestjs.io/) as our test framework, with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) for baselining and [ts-jest](https://www.npmjs.com/package/ts-jest) for TypeScript support
 * [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) to automate browsing to the page from the tests
 * [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs) to run an axe accessibility scan on the page from the Selenium browser
-* [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) and [Sarif.Multitool](https://www.nuget.org/packages/Sarif.Multitool) to compare the scan results to a checked-in baseline
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
-* [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the baselined results in Azure Pipelines
+* [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) and [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the results in Azure Pipelines
 
 ## See it in action in Azure Pipelines
 
