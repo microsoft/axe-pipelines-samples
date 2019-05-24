@@ -8,9 +8,8 @@ This sample demonstrates how you might set up a CI build for a simple, static ht
 * [Jest](https://jestjs.io/) as our test framework, with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) for baselining
 * [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) to automate browsing to the page from the tests
 * [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs) to run an axe accessibility scan on the page from the Selenium browser
-* [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) and [Sarif.Multitool](https://www.nuget.org/packages/Sarif.Multitool) to compare the scan results to a checked-in baseline
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
-* [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the baselined results in Azure Pipelines
+* [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) and [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the results in Azure Pipelines
 
 ## See it in action in Azure Pipelines
 
