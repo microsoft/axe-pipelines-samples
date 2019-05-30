@@ -1,7 +1,19 @@
 
-# Contributing
+# Axe + Azure Pipelines: Automate accessibility testing in your CI builds
 
-This project welcomes contributions and suggestions.  Most contributions require you to agree to a
+Samples demonstrating how to use [axe](https://www.deque.com/axe/) for automated accessibility testing of websites in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) builds.
+
+Automated accessibility tests can detect some common accessibility problems such as missing or invalid properties. But most accessibility problems can only be discovered through manual testing. We recommend [Accessibility Insights](https://accessibilityinsights.io/docs/en/web/overview), a free and open source dev tool that walks you though assessing a website for 100% [WCAG 2.0 AA](https://www.w3.org/WAI/WCAG21/quickref/?currentsidebar=%23col_overview&versions=2.0&levels=aaa) coverage.
+
+## Available samples
+
+* [typescript-selenium-webdriver](./typescript-selenium-webdriver/README.md): Uses [TypeScript](https://typescriptlang.org), [Jest](https://jestjs.io/), [Selenium](https://www.seleniumhq.org), and [axe-webdriverjs](https://www.npmjs.com/package/axe-webdriverjs) to test a web page for accessibility issues. Shows how to baseline existing failures with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) and how to visualize failures in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) using [SARIF](https://sarifweb.azurewebsites.net/).
+
+*Are we missing a sample you'd like to see? [File a sample request](https://github.com/microsoft/axe-pipelines-samples/issues/new?assignees=&labels=sample_request&template=feature_request.md&title=Sample+Request%3A+%3Csample+name+here%3E) or [submit a pull request](./CONTRIBUTING.md)!*
+
+## Contributing
+
+This project welcomes contributions and suggestions. Most contributions require you to agree to a
 Contributor License Agreement (CLA) declaring that you have the right to, and actually do, grant us
 the rights to use your contribution. For details, visit https://cla.microsoft.com.
 
