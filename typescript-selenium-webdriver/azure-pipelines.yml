@@ -1,8 +1,10 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
 
-# This file defines an Azure Pipelines Continuous Integration (CI) build.
-# It defines which build steps should run for a "build" of your project.
+# This file defines an Azure Pipelines build, which you can configure on https://dev.azure.com
+# to run automatically with each Pull Request update and/or each commit to your repository.
+# In this example, we do not change the default "trigger" behavior, so this build gets run
+# for all commits/PRs to all branches of the axe-pipelines-samples repository.
 #
 # If you already have an Azure Pipelines build for your project, we recommend integrating
 # your new accessibility tests into it, rather than creating a separate pipeline. Pipelines
@@ -13,12 +15,12 @@
 # instead of a checked in YAML file, you can add the same tasks listed below from the GUI. However, we
 # strongly recommend switching to using a checked in YAML file.
 #
-# Most Typescript projects with an Azure Pipelines build will already have most of the steps
+# Most TypeScript projects with an Azure Pipelines build will already have most of the steps
 # shown below, with the exception of the final "PublishBuildArtifact" task; you'll probably
 # have to add that.
 #
 # If you *don't* already have an Azure Pipelines build, we recommend following Azure Pipelines'
-# getting documentation at https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline
+# documentation at https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline
 # (using this sample as your starter code).
 #
 # For more information, see:
