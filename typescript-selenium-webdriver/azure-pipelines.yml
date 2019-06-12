@@ -50,7 +50,8 @@ steps:
     #
     # **IMPORTANT**: The versions of Chromium and ChromeDriver must match! The beginning of the version number here
     # should match the version number of the chromedriver package in package.json's devDependencies section.
-    - script: sudo apt-get install chromium-browser=74.0.3729.169-0ubuntu0.16.04.1
+    # =74.0.3729.169-0ubuntu0.16.04.1
+    - script: sudo apt-get install chromium-browser
       displayName: install browser packages
 
     # This task installs dependencies specified in your package.json file.
