@@ -28,10 +28,11 @@
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/customize-pipeline
 
 pool:
-    # The 'windows-2019' and 'vs20xx-windows' vmImages come pre-installed with selenium drivers for common browsers.
+    # TODO: add new comment explaining options/tradeoffs here
+    # WAS: The 'windows-2019' and 'vs20xx-windows' vmImages come pre-installed with selenium drivers for common browsers.
     # To use most other vmImages, you'll need to add a step to install these before running yarn test.
     # See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium
-    vmImage: 'windows-2019'
+    vmImage: 'ubuntu-16.04'
 
 steps:
     # This task makes sure Node.js is installed on the build agent.
@@ -42,6 +43,15 @@ steps:
       inputs:
           versionSpec: '10.15.3'
       displayName: install node 10.15.3
+
+    # This task installs a specific, known version of Chromium.
+    #
+    # This command is specific to Ubuntu.
+    #
+    # **IMPORTANT**: The versions of Chromium and ChromeDriver must match! The beginning of the version number here
+    # should match the version number of the chromedriver package in package.json's devDependencies section.
+    - script: apt-get install chromium-browser=74.0.3729.169-0ubuntu0.16.04.1
+      displayName: install browser packages
 
     # This task installs dependencies specified in your package.json file.
     #
