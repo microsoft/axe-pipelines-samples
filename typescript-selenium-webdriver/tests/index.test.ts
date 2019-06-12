@@ -27,6 +27,9 @@ describe('index.html', () => {
             .forBrowser('chrome')
             .setChromeOptions(new chrome.Options().headless())
             .build();
+
+        const userAgent = await driver.executeScript('return window.navigator.userAgent;');
+        console.log(`Initialized browser instance with userAgent ${userAgent}`);
     }, TEST_TIMEOUT_MS);
 
     afterAll(async () => {
