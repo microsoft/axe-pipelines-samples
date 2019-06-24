@@ -27,7 +27,8 @@ describe('index.html', () => {
             chrome.setDefaultService(chromeService);
         }
 
-        // Selenium supports many browsers, not just Chrome.
+        // Selenium is a framework for automating web browsers and is typically used to test many browsers,
+        // not just Chrome. This documentation uses just one browser (Chrome) for demonstration purposes.
         // See https://www.npmjs.com/package/selenium-webdriver for examples.
         driver = new Builder()
             .forBrowser('chrome')
