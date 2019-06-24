@@ -25,6 +25,11 @@ describe('index.html', () => {
             const hostedAgentChromedriverPath = path.join(process.env.ChromeWebDriver, 'chromedriver.exe');
             const chromeService = new chrome.ServiceBuilder(hostedAgentChromedriverPath).build();
             chrome.setDefaultService(chromeService);
+            console.log('process env chromewebdriver');
+        } else {
+            const temp = require('chromedriver');
+            console.log(temp);
+            console.log('require chromedriver');
         }
 
         // Selenium is a framework for automating web browsers and is typically used to test many browsers,
