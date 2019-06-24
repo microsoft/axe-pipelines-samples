@@ -1,5 +1,32 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
+
+# This file defines an Azure Pipelines build, which you can configure on https://dev.azure.com
+# to run automatically with each Pull Request update and/or each commit to your repository.
+# In this example, we do not change the default "trigger" behavior, so this build gets run
+# for all commits/PRs to all branches of the axe-pipelines-samples repository.
+#
+# If you already have an Azure Pipelines build for your project, we recommend integrating
+# your new accessibility tests into it, rather than creating a separate pipeline. Pipelines
+# builds are usually defined in files like this one named "azure-pipelines.yml" or "build.yaml",
+# but some projects use different file names.
+#
+# If you are using an Azure Pipelines build with tasks configured using the GUI on https://dev.azure.com,
+# instead of a checked in YAML file, you can add the same tasks listed below from the GUI. However, we
+# strongly recommend switching to using a checked in YAML file.
+#
+# Most TypeScript projects with an Azure Pipelines build will already have most of the steps
+# shown below, with the exception of the final "PublishBuildArtifact" task; you'll probably
+# have to add that.
+#
+# If you *don't* already have an Azure Pipelines build, we recommend following Azure Pipelines'
+# documentation at https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline
+# (using this sample as your starter code).
+#
+# For more information, see:
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/customize-pipeline
+
 pool:
     # The 'windows-2019' and 'vs20xx-windows' vmImages come pre-installed with selenium drivers for common browsers.
     # To use most other vmImages, you'll need to add a step to install these before running yarn test.
@@ -7,20 +34,32 @@ pool:
     vmImage: 'windows-2019'
 
 steps:
+    # This task makes sure Node.js is installed on the build agent.
+    #
+    # It is a good idea to test against a specific, known version of Node; this makes it easier for other users
+    # to reproduce your build results.
     - task: NodeTool@0
       inputs:
           versionSpec: '10.15.3'
-      displayName: use node 10.15.3
+      displayName: install node 10.15.3
 
-    - script: yarn install --frozen-lockfile
+    # This task installs dependencies specified in your package.json file.
+    #
+    # Our sample uses Yarn for this, but if your project uses NPM instead, that's also fine.
+    - script: yarn install --frozen-lockfile # or "npm install --ci"
       # workingDirectory should match where your package.json file is located. It defaults to the root of the repository.
       workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
-      displayName: yarn install
+      displayName: install dependencies
 
-    # The 2>&1 is a workaround for facebook/jest#5064 
-    - script: yarn test --ci 2>&1
+    # This tasks runs the tests specified by jest.config.js, including our example accessibility tests.
+    #
+    # If your project already uses npm instead of yarn, or if your project already runs "jest" directly here,
+    # those are both fine.
+    #
+    # The 2>&1 is a workaround for facebook/jest#5064
+    - script: yarn test --ci 2>&1 # or "npm run test -- --ci 2>&1", or "jest --ci 2>&1"
       workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
-      displayName: yarn test
+      displayName: run tests
 
     # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
     - task: PublishTestResults@2
@@ -30,6 +69,9 @@ steps:
       condition: always()
       displayName: publish test results
 
+    # If you are adding tests to an existing project that already uses Azure Pipelines, this is probably the only
+    # new task you'll need to add.
+    #
     # This task is how the "Scans" tab in our Azure Pipelines build results page gets its data
     - task: PublishBuildArtifacts@1
       inputs:
