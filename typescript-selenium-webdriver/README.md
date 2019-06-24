@@ -17,7 +17,7 @@ Some good places to start reading are:
 * [TypeScript](https://www.typescriptlang.org/) to author our test code
 * [Jest](https://jestjs.io/) as our test framework, with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) for baselining and [ts-jest](https://www.npmjs.com/package/ts-jest) for TypeScript support
 * [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) to automate browsing to the page from the tests
-* [ChromeDriver](http://chromedriver.chromium.org/getting-started) to be used with selenium-webdriver, if using Chrome browser for testing. ChromeDriver is used in this project, but you may use a different browser driver.
+* [ChromeDriver](http://chromedriver.chromium.org/getting-started) enables selenium-webdriver to automate testing on Chrome browser. ChromeDriver is used in this project, but you may use a different browser driver.
 * [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs) to run an axe accessibility scan on the page from the Selenium browser
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
 * [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) and [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the results in Azure Pipelines
