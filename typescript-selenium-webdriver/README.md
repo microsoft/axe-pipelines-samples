@@ -60,7 +60,7 @@ Detailed accessibliity scan information also appears in the Scans tab, courtesy 
 1. Run the tests!
 
    ```sh
-   jest
+   yarn test # or npm test
    ```
 
    ![Screenshot of jest command showing all tests passing](./assets/screenshot-jest-success.png)
