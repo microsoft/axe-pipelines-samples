@@ -46,7 +46,7 @@ steps:
     # This task installs dependencies specified in your package.json file.
     #
     # Our sample uses Yarn for this, but if your project uses NPM instead, that's also fine.
-    - script: yarn install --frozen-lockfile # or "npm install --ci"
+    - script: yarn install --frozen-lockfile --chromedriver_filepath=$(ChromeWebDriver) # or "npm install --ci"
       # workingDirectory should match where your package.json file is located. It defaults to the root of the repository.
       workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
       displayName: install dependencies
