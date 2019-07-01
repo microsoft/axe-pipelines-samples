@@ -20,7 +20,7 @@ Some good places to start reading are:
 * [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs) to run an axe accessibility scan on the page from the Selenium browser
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
 * [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) to convert axe results to SARIF format
-* Install [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) azure devops extension, to visualize the results in Azure Pipelines
+* [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the results in Azure Pipelines
 
 ## See it in action in Azure Pipelines
 
@@ -45,20 +45,20 @@ Detailed accessibliity scan information also appears in the Scans tab, courtesy 
 ## See it in action on your local machine
 
 1. Install [Chrome](https://www.google.com/chrome/) and [ChromeDriver](http://chromedriver.chromium.org/getting-started), and make sure ChromeDriver is on your PATH.
-1. Clone this sample repository
+2. Clone this sample repository
 
    ```sh
    git clone https://github.com/microsoft/axe-pipelines-samples
    ```
 
-1. Install the dependencies
+3. Install the dependencies
 
    ```sh
    cd ./axe-pipelines-samples/typescript-selenium-webdriver
    yarn install # or npm install, whichever your project prefers
    ```
 
-1. Run the tests!
+4. Run the tests!
 
    ```sh
    yarn test # or npm test
