@@ -107,6 +107,18 @@ describe('index.html', () => {
         expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
 
+    // If you want to run a scan of a page but need your axe scans to include only failures corresponding to WCAG 2.0 A and AA rules,
+    // you can include those tags specifically and axe will only use those tags as rules specifications.
+    it('has only accessibility issues stored in our snapshot corresponding to only wcag2a and wcag2aa rules', async () => {
+        const accessibilityScanResults = await AxeWebdriverjs(driver)
+            .withTags(['wcag2a', 'wcag2aa'])
+            .analyze();
+
+        await exportAxeAsSarifTestResult('index-with-specific-tags.sarif', accessibilityScanResults);
+
+        expect(accessibilityScanResults.violations).toMatchSnapshot();
+    }, TEST_TIMEOUT_MS);
+
     // SARIF is a general-purpose log format for code analysis tools.
     //
     // Exporting axe results as .sarif files lets our Azure Pipelines build results page show a nice visualization
