@@ -1,19 +1,20 @@
 
 # Axe + Azure Pipelines: Automate accessibility testing in your CI builds
 
-This project contains sample projects (see next section [Available samples](#available-samples)) demonstrating how to implement automated accessibility testing with [axe-core](https://github.com/dequelabs/axe-core), the same accessibility scanning engine used in [Accessibility Insights for Web](https://github.com/microsoft/accessibility-insights-web), in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) builds.
-
-Automated accessibility tests can detect some common accessibility problems such as missing or invalid properties. But most accessibility problems can only be discovered through manual testing. We recommend [Accessibility Insights](https://accessibilityinsights.io/docs/en/web/overview), a free and open source dev tool that walks you though assessing a website for 100% [WCAG 2.0 AA](https://www.w3.org/WAI/WCAG21/quickref/?currentsidebar=%23col_overview&versions=2.0&levels=aaa) coverage.
+This project contains sample projects (see next section [Available samples](#available-samples)) demonstrating how to implement automated accessibility testing in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) builds using [axe-core](https://github.com/dequelabs/axe-core), the same accessibility scanning engine used in [Accessibility Insights for Web](https://github.com/microsoft/accessibility-insights-web).
 
 ## Available samples
 
 The following sample projects specify the main technologies used. A team that uses comparable tools and frameworks should be able to refer to the sample and update their existing test to incorporate automated accessibility checks.
 
-* **[Sample 1](./typescript-selenium-webdriver/README.md)**: 
-  * Uses [TypeScript](https://typescriptlang.org), [Jest](https://jestjs.io/), [Selenium](https://www.seleniumhq.org), and [axe-webdriverjs](https://www.npmjs.com/package/axe-webdriverjs). 
-  * Shows how to test a web page for accessibility issues and how to baseline existing failures with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) and how to visualize failures in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) using [SARIF](https://sarifweb.azurewebsites.net/).
-  
+* **[Sample 1: typescript-selenium-webdriver-sample](./typescript-selenium-webdriver/README.md)**: 
+  * Useful for teams using technologies similar to TypeScript, Jest, Selenium, and axe-webdriverjs. 
+
 *Are we missing a sample you'd like to see? [File a sample request](https://github.com/microsoft/axe-pipelines-samples/issues/new?assignees=&labels=sample_request&template=feature_request.md&title=Sample+Request%3A+%3Csample+name+here%3E) or [submit a pull request](./CONTRIBUTING.md)!*
+
+## Disclaimer
+
+Automated accessibility tests can detect some common accessibility problems such as missing or invalid properties. But most accessibility problems can only be discovered through manual testing. We recommend [Accessibility Insights](https://accessibilityinsights.io/docs/en/web/overview), a free and open source dev tool that walks you though assessing a website for 100% [WCAG 2.0 AA](https://www.w3.org/WAI/WCAG21/quickref/?currentsidebar=%23col_overview&versions=2.0&levels=aaa) coverage.
 
 ## Contributing
 
