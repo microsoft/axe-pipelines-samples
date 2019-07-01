@@ -1,7 +1,7 @@
 
 # Axe + Azure Pipelines: Automate accessibility testing in your CI builds
 
-This project contains samples (see [Available samples](#availale-samples)) demonstrating how to implement automated accessibility testing with [axe-core](https://github.com/dequelabs/axe-core), an accessibility scanning engine, in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) builds.
+This project contains samples (see next section - **Available samples**) demonstrating how to implement automated accessibility testing with [axe-core](https://github.com/dequelabs/axe-core), an accessibility scanning engine, in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) builds.
 
 Automated accessibility tests can detect some common accessibility problems such as missing or invalid properties. But most accessibility problems can only be discovered through manual testing. We recommend [Accessibility Insights](https://accessibilityinsights.io/docs/en/web/overview), a free and open source dev tool that walks you though assessing a website for 100% [WCAG 2.0 AA](https://www.w3.org/WAI/WCAG21/quickref/?currentsidebar=%23col_overview&versions=2.0&levels=aaa) coverage.
 
