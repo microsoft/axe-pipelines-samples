@@ -40,10 +40,11 @@ describe('index.html', () => {
     beforeEach(async () => {
         // For simplicity, we're pointing our test browser directly to a static html file on disk.
         //
-        // In a real project, you would probably use a localhost http server (Express.js, for example)
-        // and point selenium-webdriver to a http://localhost link.
+        // In a project with more complex hosting needs, you might instead start up a localhost http server
+        // from your test's beforeAll block, and point your test cases to a http://localhost link.
         //
-        // See https://jestjs.io/docs/en/testing-frameworks for examples.
+        // Some common node.js libraries for hosting this sort of localhost http server include Express.js,
+        // http-server, and Koa. See https://jestjs.io/docs/en/testing-frameworks for more examples.
         const pageUnderTest = 'file://' + path.join(__dirname, '..', 'src', 'index.html');
         await driver.get(pageUnderTest);
 
