@@ -1,14 +1,14 @@
 
 # Axe + Azure Pipelines: Automate accessibility testing in your CI builds
 
-This project contains sample projects (see next section [Available samples](#available-samples)) demonstrating how to implement automated accessibility testing in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) builds using [axe-core](https://github.com/dequelabs/axe-core), the same accessibility scanning engine used in [Accessibility Insights for Web](https://github.com/microsoft/accessibility-insights-web).
+This repository contains sample projects (see next section [Available samples](#available-samples)) demonstrating how to implement automated accessibility testing in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) builds using [axe-core](https://github.com/dequelabs/axe-core), the same accessibility scanning engine used in [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview).
 
 ## Available samples
 
-The following sample projects specify the main technologies used. A team that uses comparable tools and frameworks should be able to refer to the sample and update their existing test to incorporate automated accessibility checks.
+The following sample projects specify the main technologies used. A team that uses comparable tools and frameworks should be able to refer to the sample and update their existing tests to incorporate automated accessibility checks.
 
-* **[Sample 1: typescript-selenium-webdriver-sample](./typescript-selenium-webdriver/README.md)**: 
-  * Useful for teams using technologies similar to TypeScript, Jest, Selenium, and axe-webdriverjs. 
+* **[Sample 1: typescript-selenium-webdriver-sample](./typescript-selenium-webdriver)**: 
+  * Useful for teams using technologies similar to TypeScript and Selenium. 
 
 *Are we missing a sample you'd like to see? [File a sample request](https://github.com/microsoft/axe-pipelines-samples/issues/new?assignees=&labels=sample_request&template=feature_request.md&title=Sample+Request%3A+%3Csample+name+here%3E) or [submit a pull request](./CONTRIBUTING.md)!*
 
