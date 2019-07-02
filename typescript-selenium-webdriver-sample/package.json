@@ -1,5 +1,5 @@
 {
-    "name": "typescript-selenium-webdriver",
+    "name": "typescript-selenium-webdriver-sample",
     "version": "0.0.0",
     "description": "Sample project that demonstrates accessibility testing with TypeScript, Jest, Selenium, axe-webdriver, SARIF, and Azure Pipelines.",
     "private": true,

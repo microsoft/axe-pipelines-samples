@@ -1,4 +1,4 @@
-# typescript-selenium-webdriver sample
+# typescript-selenium-webdriver-sample
 
 This sample demonstrates how you might set up a CI build for a simple, static html page to perform end to end accessibility tests in a browser, including how to suppress pre-existing or third-party failures using [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing).
 
@@ -54,7 +54,7 @@ Detailed accessibliity scan information also appears in the Scans tab, courtesy 
 1. Install the dependencies
 
    ```sh
-   cd ./axe-pipelines-samples/typescript-selenium-webdriver
+   cd ./axe-pipelines-samples/typescript-selenium-webdriver-sample
    yarn install # or npm install, whichever your project prefers
    ```
 

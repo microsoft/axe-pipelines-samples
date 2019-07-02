@@ -48,7 +48,7 @@ steps:
     # Our sample uses Yarn for this, but if your project uses NPM instead, that's also fine.
     - script: yarn install --frozen-lockfile # or "npm install --ci"
       # workingDirectory should match where your package.json file is located. It defaults to the root of the repository.
-      workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
+      workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
       displayName: install dependencies
 
     # This tasks runs the tests specified by jest.config.js, including our example accessibility tests.
@@ -58,14 +58,14 @@ steps:
     #
     # The 2>&1 is a workaround for facebook/jest#5064
     - script: yarn test --ci 2>&1 # or "npm run test -- --ci 2>&1", or "jest --ci 2>&1"
-      workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
+      workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
       displayName: run tests
 
     # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
     - task: PublishTestResults@2
       inputs:
-          testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results/junit.xml
-          testRunTitle: typescript-selenium-webdriver
+          testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results/junit.xml
+          testRunTitle: typescript-selenium-webdriver-sample
       condition: always()
       displayName: publish test results
 
@@ -79,6 +79,6 @@ steps:
           # to find the .sarif files our accessibility test produces.
           artifactName: 'CodeAnalysisLogs'
           # "test-results" is not a required convention; it just happens to be where our tests write .sarif files to.
-          pathtoPublish: '$(Build.SourcesDirectory)/typescript-selenium-webdriver/test-results'
+          pathtoPublish: '$(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results'
       condition: always()
       displayName: publish sarif results
