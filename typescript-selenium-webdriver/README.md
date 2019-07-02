@@ -17,9 +17,11 @@ Some good places to start reading are:
 * [TypeScript](https://www.typescriptlang.org/) to author our test code
 * [Jest](https://jestjs.io/) as our test framework, with [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing) for baselining and [ts-jest](https://www.npmjs.com/package/ts-jest) for TypeScript support
 * [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver) to automate browsing to the page from the tests
+* [node-chromedriver](https://github.com/giggio/node-chromedriver) to enable Selenium to drive Chrome
 * [axe-webdriverjs](https://github.com/dequelabs/axe-webdriverjs) to run an axe accessibility scan on the page from the Selenium browser
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
-* [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) and [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the results in Azure Pipelines
+* [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) to convert axe results to SARIF format
+* [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the results in Azure Pipelines
 
 ## See it in action in Azure Pipelines
 
@@ -43,7 +45,7 @@ Detailed accessibliity scan information also appears in the Scans tab, courtesy 
 
 ## See it in action on your local machine
 
-1. Install [Chrome](https://www.google.com/chrome/) and [ChromeDriver](http://chromedriver.chromium.org/getting-started), and make sure ChromeDriver is on your PATH.
+1. Install the stable version of [Chrome](https://www.google.com/chrome/)
 1. Clone this sample repository
 
    ```sh

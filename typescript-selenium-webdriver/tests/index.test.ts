@@ -9,6 +9,13 @@ import { Builder, By, ThenableWebDriver, until } from 'selenium-webdriver';
 import * as chrome from 'selenium-webdriver/chrome';
 import { promisify } from 'util';
 
+// This "require" statement performs some global configuration of selenium-webdriver to tell it to use
+// the version of chromedriver that the npm "chromedriver" package downloaded during "yarn install".
+//
+// If you are applying this sample to a project that already uses some other mechanism for installing
+// webdrivers, (eg, Protractor's "webdriver-manager update" command), you can omit this.
+require('chromedriver');
+
 // The default timeout for tests/fixtures (5 seconds) is not always enough to start/quit/navigate a browser instance.
 const TEST_TIMEOUT_MS = 30000;
 
@@ -18,15 +25,6 @@ describe('index.html', () => {
     // Starting a browser instance is time-consuming, so we share one browser instance between
     // all tests in the file (by initializing it in beforeAll rather than beforeEach)
     beforeAll(async () => {
-        // This is for the benefit of the Azure Pipelines Hosted Windows agents, which come with
-        // webdrivers preinstalled but not on the PATH where Selenium looks for them by default.
-        // See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium#decide-how-you-will-deploy-and-test-your-app
-        if (process.env.ChromeWebDriver) {
-            const hostedAgentChromedriverPath = path.join(process.env.ChromeWebDriver, 'chromedriver.exe');
-            const chromeService = new chrome.ServiceBuilder(hostedAgentChromedriverPath).build();
-            chrome.setDefaultService(chromeService);
-        }
-
         // Selenium supports many browsers, not just Chrome.
         // See https://www.npmjs.com/package/selenium-webdriver for examples.
         driver = new Builder()
@@ -42,10 +40,11 @@ describe('index.html', () => {
     beforeEach(async () => {
         // For simplicity, we're pointing our test browser directly to a static html file on disk.
         //
-        // In a real project, you would probably use a localhost http server (Express.js, for example)
-        // and point selenium-webdriver to a http://localhost link.
+        // In a project with more complex hosting needs, you might instead start up a localhost http server
+        // from your test's beforeAll block, and point your test cases to a http://localhost link.
         //
-        // See https://jestjs.io/docs/en/testing-frameworks for examples.
+        // Some common node.js libraries for hosting this sort of localhost http server include Express.js,
+        // http-server, and Koa. See https://jestjs.io/docs/en/testing-frameworks for more examples.
         const pageUnderTest = 'file://' + path.join(__dirname, '..', 'src', 'index.html');
         await driver.get(pageUnderTest);
 
@@ -105,6 +104,18 @@ describe('index.html', () => {
             targets: violation.nodes.map(node => node.target),
         });
         expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
+    }, TEST_TIMEOUT_MS);
+
+    // If you want to run a scan of a page but need your axe scans to include only failures corresponding to WCAG 2.0 A and AA rules,
+    // you can include those tags specifically and axe will only use those tags as rules specifications.
+    it('has only accessibility issues stored in our snapshot corresponding to only wcag2a and wcag2aa rules', async () => {
+        const accessibilityScanResults = await AxeWebdriverjs(driver)
+            .withTags(['wcag2a', 'wcag2aa'])
+            .analyze();
+
+        await exportAxeAsSarifTestResult('index-with-specific-tags.sarif', accessibilityScanResults);
+
+        expect(accessibilityScanResults.violations).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
 
     // SARIF is a general-purpose log format for code analysis tools.
