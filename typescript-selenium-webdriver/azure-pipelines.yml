@@ -46,6 +46,13 @@ steps:
     # This task installs dependencies specified in your package.json file.
     #
     # Our sample uses Yarn for this, but if your project uses NPM instead, that's also fine.
+    #
+    # Note that we add a specific command line option here to tell the "chromedriver" package to
+    # use the preinstalled version of the Chrome webdriver that matches the preinstalled version of
+    # Chrome on the hosted Microsoft build agent. The build agent comes with a "ChromeWebDriver"
+    # environment variable pre-set to the location of the preinstalled chromedriver.exe. You would
+    # typically omit this argument when running "yarn install" locally, since most users won't have
+    # chromedriver preinstalled like the build agent will.
     - script: yarn install --frozen-lockfile --chromedriver_filepath=$(ChromeWebDriver) # or "npm install --ci"
       # workingDirectory should match where your package.json file is located. It defaults to the root of the repository.
       workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver
