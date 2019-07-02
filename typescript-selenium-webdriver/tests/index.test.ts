@@ -9,6 +9,11 @@ import { Builder, By, ThenableWebDriver, until } from 'selenium-webdriver';
 import * as chrome from 'selenium-webdriver/chrome';
 import { promisify } from 'util';
 
+// This "require" statement performs some global configuration of selenium-webdriver to tell it to use
+// the version of chromedriver that the npm "chromedriver" package downloaded during "yarn install".
+//
+// If you are applying this sample to a project that already uses some other mechanism for installing
+// webdrivers, (eg, Protractor's "webdriver-manager update" command), you can omit this.
 require('chromedriver');
 
 // The default timeout for tests/fixtures (5 seconds) is not always enough to start/quit/navigate a browser instance.
