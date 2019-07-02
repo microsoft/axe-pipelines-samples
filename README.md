@@ -8,7 +8,7 @@ This repository contains sample projects (see next section [Available samples](#
 The following sample projects specify the main technologies used. A team that uses comparable tools and frameworks should be able to refer to the sample and update their existing tests to incorporate automated accessibility checks.
 
 * **[Sample 1: typescript-selenium-webdriver-sample](./typescript-selenium-webdriver)**: 
-  * Useful for teams using technologies similar to TypeScript and Selenium. 
+  * Useful for teams using Selenium and TypeScript/JavaScript. 
 
 *Are we missing a sample you'd like to see? [File a sample request](https://github.com/microsoft/axe-pipelines-samples/issues/new?assignees=&labels=sample_request&template=feature_request.md&title=Sample+Request%3A+%3Csample+name+here%3E) or [submit a pull request](./CONTRIBUTING.md)!*
 
