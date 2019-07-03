@@ -34,7 +34,7 @@ describe('index.html', () => {
     }, TEST_TIMEOUT_MS);
 
     afterAll(async () => {
-        await driver.quit();
+        driver && await driver.quit();
     }, TEST_TIMEOUT_MS);
 
     beforeEach(async () => {
