@@ -13,11 +13,6 @@ steps:
   inputs:
     version: '2.2.401'
 
-- task: NodeTool@0
-  inputs:
-    versionSpec: '10.16.2'
-  displayName: use node 10.16.2
-
 - script: dotnet test --logger:trx
   displayName: dotnet test
   workingDirectory: $(projectDirectory)
