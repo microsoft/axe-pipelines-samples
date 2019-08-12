@@ -5,26 +5,24 @@ using OpenQA.Selenium;
 
 namespace CSharpSeleniumWebdriverSample
 {
-    public class WebdriverFactory
+    public class WebDriverFactory
     {
-        public static IWebDriver GetWebdriver(BrowserType browser)
+        public static IWebDriver GetWebDriver(BrowserType browser)
         {
-            IWebdriver webdriver = null;
+            IWebDriverCreator webDriverCreator = null;
 
             switch (browser)
             {
-                //In case using Chrome Web Driver
                 case BrowserType.Chrome:
-                    webdriver = new ChromeWebdriver();
+                    webDriverCreator = new ChromeWebDriverCreator();
                     break;
 
-                // Incase Using Firefox
                 case BrowserType.Firefox:
-                    webdriver = new FirefoxWebdriver();
+                    webDriverCreator = new FirefoxWebDriverCreator();
                     break;
             }
 
-            return webdriver.CreateWebdriver();
+            return webDriverCreator.CreateWebDriver();
         }
     }
 }

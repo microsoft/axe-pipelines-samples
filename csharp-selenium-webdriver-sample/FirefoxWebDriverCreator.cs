@@ -7,9 +7,9 @@ using System;
 
 namespace CSharpSeleniumWebdriverSample
 {
-    public class FirefoxWebdriver : IWebdriver
+    public class FirefoxWebDriverCreator : IWebDriverCreator
     {
-        public IWebDriver CreateWebdriver()
+        public IWebDriver CreateWebDriver()
         {
             // Check if Gecko web driver eniroment varibale already defined so that Firefox version and the webdriver are the same, other wise use Selenium.WebDriver.GeckoDriver to indtall it
             var geckoDriverDirectory = Environment.GetEnvironmentVariable("GeckoWebDriver") ?? Environment.CurrentDirectory;

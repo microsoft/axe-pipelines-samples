@@ -3,7 +3,6 @@
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
 using System;
 using System.IO;
 using Selenium.Axe;
@@ -17,7 +16,6 @@ namespace CSharpSeleniumWebdriverSample.Test
     public class SampleTest
     {
         private IWebDriver _webDriver;
-        private WebDriverWait _wait;
 
         [TestCleanup]
         public virtual void TearDown()
@@ -34,13 +32,13 @@ namespace CSharpSeleniumWebdriverSample.Test
             this.InitDriver(browser);
             LoadTestPage();
 
-            AxeResult results1 = RunScanOnGivenElementBySelector("ul");
-            Assert.AreEqual(3, results1.Violations.Length);
+            AxeResult results = RunScanOnGivenElementBySelector("ul");
+            Assert.AreEqual(3, results.Violations.Length);
         }
 
         private AxeResult RunScanOnGivenElementBySelector(string elementSelector)
         {
-            var selectedElement = _wait.Until(drv => drv.FindElement(By.TagName(elementSelector)));
+            var selectedElement = _webDriver.FindElement(By.TagName(elementSelector));
 
             return _webDriver.Analyze(selectedElement);
         }
@@ -52,13 +50,12 @@ namespace CSharpSeleniumWebdriverSample.Test
             string integrationTestTargetUrl = new Uri(integrationTestTargetFile).AbsoluteUri;
 
             _webDriver.Navigate().GoToUrl(integrationTestTargetUrl);
-            _wait.Until(drv => drv.FindElement(By.TagName("main")));
         }
 
         private void InitDriver(BrowserType browser)
         {
-            _webDriver = WebdriverFactory.GetWebdriver(browser);
-            _wait = new WebDriverWait(_webDriver, TimeSpan.FromSeconds(20));
+            _webDriver = WebDriverFactory.GetWebDriver(browser);
+            _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
             _webDriver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(20);
         }
     }

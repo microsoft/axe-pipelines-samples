@@ -5,8 +5,8 @@ using OpenQA.Selenium;
 
 namespace CSharpSeleniumWebdriverSample
 {
-    public interface IWebdriver
+    public interface IWebDriverCreator
     {
-        IWebDriver CreateWebdriver();
+        IWebDriver CreateWebDriver();
     }
 }

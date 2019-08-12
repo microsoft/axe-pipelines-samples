@@ -5,8 +5,7 @@ pool:
     vmImage: windows-2019
 
 variables:
-  buildConfiguration: 'Release'
-  projectDirectory: '$(System.DefaultWorkingDirectory)/c#-selenium-webdriver-sample'
+  projectDirectory: '$(System.DefaultWorkingDirectory)/csharp-selenium-webdriver-sample'
 
 steps:
 - task: DotNetCoreInstaller@1

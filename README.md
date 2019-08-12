@@ -10,7 +10,7 @@ The following sample projects specify the main technologies used. A team that us
 * **[Sample 1: typescript-selenium-webdriver-sample](./typescript-selenium-webdriver-sample)**: 
   * Useful for teams using Selenium and TypeScript/JavaScript. 
   
-* **[Sample 2: CSharpSeleniumWebdriverSample](./c%23-selenium-webdriver-sample)**: 
+* **[Sample 2: CSharpSeleniumWebdriverSample](./csharp-selenium-webdriver-sample)**: 
   * Useful for teams using Selenium and C#. 
 
 *Are we missing a sample you'd like to see? [File a sample request](https://github.com/microsoft/axe-pipelines-samples/issues/new?assignees=&labels=sample_request&template=feature_request.md&title=Sample+Request%3A+%3Csample+name+here%3E) or [submit a pull request](./CONTRIBUTING.md)!*

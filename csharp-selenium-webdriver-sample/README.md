@@ -23,7 +23,7 @@ Some good places to start reading are:
 
 ## See it in action in Azure Pipelines
 
-[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/c%23-selenium-webdriver-sample%20CI?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=30&branchName=master)
+[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/csharp-selenium-webdriver-sample%20CI?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=30&branchName=master)
 
 <!--
   Note to maintainers: The below example images/links come from a specific build instead of the most recent build so we can link to specific tabs.
@@ -47,10 +47,10 @@ The test pass/fail results display in the Tests tab of the build logs:
    git clone https://github.com/microsoft/axe-pipelines-samples
    ```
 
-1. Build the Test Project
+1. Run the tests
 
    ```sh
-   cd ./axe-pipelines-samples/c#-selenium-webdriver-sample
+   cd ./axe-pipelines-samples/csharp-selenium-webdriver-sample
    dotnet test
    ```
 

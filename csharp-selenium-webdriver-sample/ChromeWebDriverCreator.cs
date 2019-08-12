@@ -7,9 +7,9 @@ using System;
 
 namespace CSharpSeleniumWebdriverSample
 {
-    public class ChromeWebdriver : IWebdriver
+    public class ChromeWebDriverCreator : IWebDriverCreator
     {
-        public IWebDriver CreateWebdriver()
+        public IWebDriver CreateWebDriver()
         {
             // Check if Chrome web driver eniroment varibale already defined so that Chrome version and the webdriver are the same, other wise use Selenium.WebDriver.ChromeDriver to indtall it
             var chromeDriverDirectory = Environment.GetEnvironmentVariable("ChromeWebDriver") ?? Environment.CurrentDirectory;
