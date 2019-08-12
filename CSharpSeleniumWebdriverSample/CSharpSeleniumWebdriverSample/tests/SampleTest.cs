@@ -44,16 +44,26 @@ namespace CSharpSeleniumWebdriverSample.Test
             string samplePageURL = @"src\samplePage.html";
             string integrationTestTargetFile = Path.GetFullPath(samplePageURL);
             string integrationTestTargetUrl = new Uri(integrationTestTargetFile).AbsoluteUri;
-            string elementSelector = "ul";
-            int ExpectedNumberOfViolation = 3;
-
+            
             this.InitDriver(browser);
             LoadTestPage(integrationTestTargetUrl);
 
-            var mainElement = _wait.Until(drv => drv.FindElement(By.TagName(elementSelector)));
+            string elementSelector1 = "ul";
+            int expectedNumberOfViolation1 = 2;
+            AxeResult results1 = RunScanOnGivenElementBySelector(elementSelector1);
+            results1.Violations.Should().HaveCount(expectedNumberOfViolation1);
 
-            AxeResult results = _webDriver.Analyze(mainElement);
-            results.Violations.Should().HaveCount(ExpectedNumberOfViolation);
+            string elementSelector2 = "ol";
+            int expectedNumberOfViolation2 = 1;
+            AxeResult results2 = RunScanOnGivenElementBySelector(elementSelector2);
+            results2.Violations.Should().HaveCount(expectedNumberOfViolation2);
+        }
+
+        private AxeResult RunScanOnGivenElementBySelector(string elementSelector)
+        {
+            var selectedElement = _wait.Until(drv => drv.FindElement(By.TagName(elementSelector)));
+
+            return _webDriver.Analyze(selectedElement);
         }
 
 
