@@ -17,6 +17,7 @@ Some good places to start reading are:
 * [Microsoft.NETCore.App](https://dotnet.microsoft.com) a set of .NET API's that are included in the default .NET Core application model.
 * [MSTest.TestAdapter and MSTest.TestFramework](https://github.com/microsoft/testfx) MSTest V2 adapter to discover and execute MSTest Framework based tests.
 * [Selenium.Axe](https://github.com/TroyWalshProf/SeleniumAxeDotnet) to run an axe accessibility scan on the page from the Selenium browser.
+* [Selenium.WebDriver](https://www.seleniumhq.org) to supporting browser automation.
 * [Selenium.WebDriver.ChromeDriver](https://github.com/jsakamoto/nupkg-selenium-webdriver-chromedriver/) to enable Selenium to drive Chrome.
 * [Selenium.WebDriver.GeckoDriver](https://github.com/jsakamoto/nupkg-selenium-webdriver-geckodriver/) to enable Selenium to drive Firefox.
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request.
@@ -31,11 +32,11 @@ Some good places to start reading are:
 -->
 The accessibility tests run as part of the `dotnet test` build step:
 
-[![Screenshot of "dotnet test" build logs in sample build](./Resources/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2332&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9)
+[![Screenshot of "dotnet test" build logs in sample build](./Resources/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2338&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9)
 
 The test pass/fail results display in the Tests tab of the build logs:
 
-[![Screenshot of Tests tab in sample build](./Resources/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2332&view=ms.vss-test-web.build-test-results-tab&runId=6504&resultId=100000&paneView=debug)
+[![Screenshot of Tests tab in sample build](./Resources/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2338&view=ms.vss-test-web.build-test-results-tab&runId=6512&resultId=100000&paneView=debug)
 
 ## See it in action on your local machine
 
