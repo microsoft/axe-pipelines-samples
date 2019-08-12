@@ -72,4 +72,4 @@ Detailed accessibliity scan information also appears in the Scans tab, courtesy 
    yarn test # or npm test
    ```
 
-   ![Screenshot of jest command showing all tests passing](./assets/screenshot-jest-success.png)
+   ![Screenshot of yarn test command showing all tests passing](./assets/screenshot-yarn-test-success.png)
