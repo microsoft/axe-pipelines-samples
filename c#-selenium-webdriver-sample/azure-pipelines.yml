@@ -6,8 +6,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  solutionDirectory: '$(System.DefaultWorkingDirectory)/c#-selenium-webdriver-sample'
-  outputDirectory: '$(solutionDirectory)/c#-selenium-webdriver-sample/bin/$(buildConfiguration)'
+  projectDirectory: '$(System.DefaultWorkingDirectory)/c#-selenium-webdriver-sample'
 
 steps:
 - task: DotNetCoreInstaller@1
@@ -21,17 +20,13 @@ steps:
 
 - script: dotnet test --logger:trx
   displayName: dotnet test
-  workingDirectory: $(solutionDirectory)
+  workingDirectory: $(projectDirectory)
 
 - task: PublishTestResults@2
   displayName: publish test results
   inputs:
       testResultsFiles: '**/TestResults/*.trx'
       testResultsFormat: VSTest
-      searchFolder: $(solutionDirectory)
+      searchFolder: $(projectDirectory)
       testRunTitle: dotnet test
   condition: succeededOrFailed()
-
-- publish: $(outputDirectory)
-  displayName: publish drop
-  name: drop

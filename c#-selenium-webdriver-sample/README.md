@@ -8,7 +8,7 @@ The individual files in the sample contain comments that explain the important p
 
 Some good places to start reading are:
 
-* [tests/SampleTest.cs](./tests/SampleTest.cs): C# test file that opens [src/samplePage.html](./src/samplePage.html) in a browser with Selenium and runs accessibility scans against it with Selenium.WebDriver.ChromeDriver and Selenium.WebDriver.GeckoDriver
+* [tests/SampleTest.cs](./tests/SampleTest.cs): C# test file that opens [src/samplePage.html](./SamplePage.html) in a browser with Selenium and runs accessibility scans against it with Selenium.WebDriver.ChromeDriver and Selenium.WebDriver.GeckoDriver
 * [azure-pipelines.yml](./azure-pipelines.yml): Azure Pipelines config file that sets up our Continuous Integration and Pull Request builds
 
 ## Tools and libraries used
