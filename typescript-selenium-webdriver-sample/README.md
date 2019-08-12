@@ -1,7 +1,13 @@
 # typescript-selenium-webdriver-sample
 
-This sample demonstrates how you might set up a CI build for a simple, static html page to perform end to end accessibility tests in a browser, including how to suppress pre-existing or third-party failures using [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing). The following example uses Selenium. Any other browser automation testing framework can also be used with its corresponding axe integration library (puppeteer has axe-puppeteer, webdriverio has axe-webdriverio, cypress has cypress-axe).
-Most of the concepts from the Selenium sample would be the same.
+This sample demonstrates how you might set up a CI build for a simple, static html page to perform end to end accessibility tests in a browser, including how to suppress pre-existing or third-party failures using [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing). 
+
+This sample uses Selenium WebDriver for browser automation and uses the corresponding axe-webdriverjs library to integrate Axe and Selenium. But you don't have to use Selenium to use Axe! If you prefer a different browser automation tool, you can still follow the same concepts from this sample by using the integration library appropriate for your framework:
+
+* For **Puppeteer**, use [axe-puppeteer](https://www.npmjs.com/package/axe-puppeteer)
+* For **Cypress**, use [cypress-axe](https://www.npmjs.com/package/cypress-axe)
+* For **WebdriverIO**, use [axe-webdriverio](https://www.npmjs.com/package/axe-webdriverio)
+* For **Protractor**, keep using axe-webdriverjs like the sample shows, but instead of creating your own Webdriver object, pass [`browser.webdriver`](https://www.protractortest.org/#/api?view=ProtractorBrowser) to axe-webdriverjs.
 
 ## Getting Started
 
