@@ -7,12 +7,9 @@
     <Product>Selenium.Axe.Test</Product>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="src\samplePage.html">
+    <Content Include="SamplePage.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="tests\SampleTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
@@ -21,8 +18,5 @@
     <PackageReference Include="Selenium.Axe" Version="1.1.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="76.0.3809.68" />
     <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.24.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="assets\" />
   </ItemGroup>
 </Project>

@@ -31,16 +31,16 @@ Some good places to start reading are:
 -->
 The accessibility tests run as part of the `dotnet test` build step:
 
-[![Screenshot of "dotnet test" build logs in sample build](./assets/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2312&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9)
+[![Screenshot of "dotnet test" build logs in sample build](./Resources/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2312&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9)
 
 The test pass/fail results display in the Tests tab of the build logs:
 
-[![Screenshot of Tests tab in sample build](./assets/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2312&view=ms.vss-test-web.build-test-results-tab&runId=6462&resultId=100000&paneView=debug)
+[![Screenshot of Tests tab in sample build](./Resources/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2312&view=ms.vss-test-web.build-test-results-tab&runId=6462&resultId=100000&paneView=debug)
 
 ## See it in action on your local machine
 
 1. Install the stable version of [Chrome](https://www.google.com/chrome/)
-1. Install the stable version of [Firefox] (https://www.mozilla.org/en-US/firefox/)
+1. Install the stable version of [Firefox](https://www.mozilla.org/en-US/firefox/)
 1. Clone this sample repository
 
    ```sh
@@ -50,14 +50,8 @@ The test pass/fail results display in the Tests tab of the build logs:
 1. Build the Test Project
 
    ```sh
-   cd ./axe-pipelines-samples/CSharpSeleniumWebdriverSample
-   dotnet build --no-restore -c $(buildConfiguration) -p:Version=$(version)
+   cd ./axe-pipelines-samples/c#-selenium-webdriver-sample
+   dotnet test
    ```
 
-1. Run the tests!
-
-   ```sh
-   dotnet test --no-restore
-   ```
-
-   ![Screenshot of jest command showing all tests passing](./assets/screenshot-dotnet-tes-success.png)
+   ![Screenshot of 'dotnet test' command showing all tests passing](./Resources/screenshot-dotnet-test-success.png)
