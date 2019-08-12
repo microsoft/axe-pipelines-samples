@@ -1,6 +1,7 @@
 # typescript-selenium-webdriver-sample
 
-This sample demonstrates how you might set up a CI build for a simple, static html page to perform end to end accessibility tests in a browser, including how to suppress pre-existing or third-party failures using [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing).
+This sample demonstrates how you might set up a CI build for a simple, static html page to perform end to end accessibility tests in a browser, including how to suppress pre-existing or third-party failures using [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing). The following example uses Selenium. Any other browser automation testing framework can also be used with its corresponding axe integration library (puppeteer has axe-puppeteer, webdriverio has axe-webdriverio, cypress has cypress-axe).
+Most of the concepts from the Selenium sample would be the same.
 
 ## Getting Started
 
