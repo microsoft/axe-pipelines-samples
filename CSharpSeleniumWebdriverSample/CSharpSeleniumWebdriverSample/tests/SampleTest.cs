@@ -1,17 +1,13 @@
 ﻿// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
-using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.IO;
-using System.Linq;
-using System.Collections.Generic;
 using Selenium.Axe;
 
 namespace CSharpSeleniumWebdriverSample.Test
@@ -20,7 +16,7 @@ namespace CSharpSeleniumWebdriverSample.Test
     [DeploymentItem("samplePage.html")]
     [DeploymentItem("chromedriver.exe")]
     [DeploymentItem("geckodriver.exe")]
-    [TestCategory("Integration")]
+    [TestCategory("SamplePipelineTest")]
     public class SampleTest
     {
         private IWebDriver _webDriver;
@@ -51,12 +47,12 @@ namespace CSharpSeleniumWebdriverSample.Test
             string elementSelector1 = "ul";
             int expectedNumberOfViolation1 = 2;
             AxeResult results1 = RunScanOnGivenElementBySelector(elementSelector1);
-            results1.Violations.Should().HaveCount(expectedNumberOfViolation1);
+            Assert.AreEqual(expectedNumberOfViolation1, results1.Violations.Length);
 
             string elementSelector2 = "ol";
             int expectedNumberOfViolation2 = 1;
             AxeResult results2 = RunScanOnGivenElementBySelector(elementSelector2);
-            results2.Violations.Should().HaveCount(expectedNumberOfViolation2);
+            Assert.AreEqual(expectedNumberOfViolation2, results2.Violations.Length);
         }
 
         private AxeResult RunScanOnGivenElementBySelector(string elementSelector)
