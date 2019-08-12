@@ -31,11 +31,11 @@ Some good places to start reading are:
 -->
 The accessibility tests run as part of the `dotnet test` build step:
 
-[![Screenshot of "dotnet test" build logs in sample build](./Resources/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2324&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9)
+[![Screenshot of "dotnet test" build logs in sample build](./Resources/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2332&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9)
 
 The test pass/fail results display in the Tests tab of the build logs:
 
-[![Screenshot of Tests tab in sample build](./Resources/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2324&view=ms.vss-test-web.build-test-results-tab&runId=6486&resultId=100000&paneView=debug)
+[![Screenshot of Tests tab in sample build](./Resources/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2332&view=ms.vss-test-web.build-test-results-tab&runId=6504&resultId=100000&paneView=debug)
 
 ## See it in action on your local machine
 
