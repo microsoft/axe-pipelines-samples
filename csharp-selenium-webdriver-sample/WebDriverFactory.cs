@@ -8,6 +8,7 @@ using System;
 
 namespace CSharpSeleniumWebdriverSample
 {
+    // Enum for the browser types
     public enum BrowserType
     {
         Chrome,
@@ -21,13 +22,15 @@ namespace CSharpSeleniumWebdriverSample
             switch (browser)
             {
                 case BrowserType.Chrome:
-                    // Check if Chrome web driver environment variable already defined so that Chrome version and the webdriver are the same, otherwise use Selenium.WebDriver.ChromeDriver to install it                    
+                    //  Check if Chrome web driver environment variable already defined so that Chrome version and the webdriver are the same, otherwise use Selenium.WebDriver.ChromeDriver to install it                    
                     var chromeDriverDirectory = Environment.GetEnvironmentVariable("ChromeWebDriver") ?? Environment.CurrentDirectory;
+                    //  Initializes a new ChromeDriver using the specified path to the directory containing ChromeDriver.exe.
                     return new ChromeDriver(chromeDriverDirectory);
 
                 case BrowserType.Firefox:
-                    // Check if Gecko web driver environment variable already defined so that Firefox version and the webdriver are the same, otherwise use Selenium.WebDriver.GeckoDriver to install it                    
+                    //  Check if Gecko web driver environment variable already defined so that Firefox version and the webdriver are the same, otherwise use Selenium.WebDriver.GeckoDriver to install it                    
                     var geckoDriverDirectory = Environment.GetEnvironmentVariable("GeckoWebDriver") ?? Environment.CurrentDirectory;
+                    //  Initializes a new FirefoxDriver using the specified path to the directory containing GeckoDriver.exe
                     return new FirefoxDriver(geckoDriverDirectory);
 
                 default:
