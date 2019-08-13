@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <ProjectGuid>{31793188-E135-4460-BF71-9B2B39C86AAE}</ProjectGuid>
+    <TargetFrameworks>netcoreapp2.2</TargetFrameworks>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <AssemblyTitle>Selenium.Axe.Test</AssemblyTitle>
+    <Product>Selenium.Axe.Test</Product>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="SamplePage.html">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.0.1" />
+    <PackageReference Include="MSTest.TestAdapter" Version="1.4.0" />
+    <PackageReference Include="MSTest.TestFramework" Version="1.4.0" />
+    <PackageReference Include="Selenium.Axe" Version="1.1.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="76.0.3809.68" />
+    <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.24.0" />
+  </ItemGroup>
+</Project>

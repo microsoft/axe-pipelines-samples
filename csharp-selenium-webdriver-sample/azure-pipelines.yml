@@ -1,0 +1,26 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+
+pool:
+    vmImage: windows-2019
+
+variables:
+  projectDirectory: '$(System.DefaultWorkingDirectory)/csharp-selenium-webdriver-sample'
+
+steps:
+- task: DotNetCoreInstaller@1
+  inputs:
+    version: '2.2.401'
+
+- script: dotnet test --logger:trx
+  displayName: dotnet test
+  workingDirectory: $(projectDirectory)
+
+- task: PublishTestResults@2
+  displayName: publish test results
+  inputs:
+      testResultsFiles: '**/TestResults/*.trx'
+      testResultsFormat: VSTest
+      searchFolder: $(projectDirectory)
+      testRunTitle: dotnet test
+  condition: succeededOrFailed()
