@@ -2,25 +2,26 @@
 # Licensed under the MIT License.
 
 pool:
-    vmImage: windows-2019
+  vmImage: windows-2019
 
 variables:
   projectDirectory: '$(System.DefaultWorkingDirectory)/csharp-selenium-webdriver-sample'
 
 steps:
-- task: DotNetCoreInstaller@1
-  inputs:
-    version: '2.2.401'
+  - task: DotNetCoreInstaller@1
+    displayName: install .NET Core SDK 2.2.401
+    inputs:
+      version: '2.2.401'
 
-- script: dotnet test --logger:trx
-  displayName: dotnet test
-  workingDirectory: $(projectDirectory)
+  - script: dotnet test --logger:trx
+    displayName: dotnet test
+    workingDirectory: $(projectDirectory)
 
-- task: PublishTestResults@2
-  displayName: publish test results
-  inputs:
+  - task: PublishTestResults@2
+    displayName: publish test results
+    inputs:
       testResultsFiles: '**/TestResults/*.trx'
       testResultsFormat: VSTest
       searchFolder: $(projectDirectory)
       testRunTitle: dotnet test
-  condition: succeededOrFailed()
+    condition: succeededOrFailed()
