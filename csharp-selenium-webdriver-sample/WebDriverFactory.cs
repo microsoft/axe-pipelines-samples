@@ -21,17 +21,18 @@ namespace CSharpSeleniumWebdriverSample
             switch (browser)
             {
                 case BrowserType.Chrome:
-                    // Check if Chrome web driver eniroment varibale already defined so that Chrome version and the webdriver are the same, other wise use Selenium.WebDriver.ChromeDriver to indtall it
+                    // Check if Chrome web driver environment variable already defined so that Chrome version and the webdriver are the same, otherwise use Selenium.WebDriver.ChromeDriver to install it                    
                     var chromeDriverDirectory = Environment.GetEnvironmentVariable("ChromeWebDriver") ?? Environment.CurrentDirectory;
                     return new ChromeDriver(chromeDriverDirectory);
 
                 case BrowserType.Firefox:
-                    // Check if Gecko web driver eniroment varibale already defined so that Firefox version and the webdriver are the same, other wise use Selenium.WebDriver.GeckoDriver to indtall it
+                    // Check if Gecko web driver environment variable already defined so that Firefox version and the webdriver are the same, otherwise use Selenium.WebDriver.GeckoDriver to install it                    
                     var geckoDriverDirectory = Environment.GetEnvironmentVariable("GeckoWebDriver") ?? Environment.CurrentDirectory;
                     return new FirefoxDriver(geckoDriverDirectory);
-            }
 
-            return null;
+                default:
+                    throw new ArgumentException($"Unknown browser type {browser}", nameof(browser));
+            }
         }
     }
 }
