@@ -6,6 +6,7 @@ using OpenQA.Selenium;
 using System;
 using System.IO;
 using Selenium.Axe;
+using OpenQA.Selenium.Chrome;
 
 namespace CSharpSeleniumWebdriverSample.Test
 {
