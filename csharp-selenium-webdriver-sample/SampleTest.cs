@@ -10,7 +10,6 @@ using Selenium.Axe;
 namespace CSharpSeleniumWebdriverSample.Test
 {
     [TestClass]
-   
     public class SampleTest
     {
         // Instance to control the browser.
@@ -28,7 +27,7 @@ namespace CSharpSeleniumWebdriverSample.Test
         [TestMethod]
         // First DataRow Attribute will create a new instance of the test method and pass Chrome as a parameter, so it'll test on ChromeDriver
         // Second DataRow Attribute will create a new instance of the test method and pass Firefox as a parameter, so it'll test on FirefoxDriver
-        // Instead of unseeing DataRow Attribute, you can create a helper function that takes the browser type as a parameter
+        // Instead of using DataRow Attribute, you can create a helper function that takes the browser type as a parameter
         // Then call it twice with 2 different test methods for each browser type
         [DataRow(BrowserType.Chrome)]
         [DataRow(BrowserType.Firefox)]
