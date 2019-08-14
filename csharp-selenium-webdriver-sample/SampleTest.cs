@@ -26,10 +26,10 @@ namespace CSharpSeleniumWebdriverSample.Test
 
 
         [TestMethod]
-        // First DataRow Attribute will create a new instance of the test method and pass Chrome as a paramter, so it'll test on ChromDriver
-        // Second DataRow Attribute will create a new instance of the test method and pass Firefox as a paramter, so it'll test on FirefoxDriver
-        // Instead of useing DataRow Attribute, you can create a helper fucntion that takes the the broswer type as a paremter
-        // Then call it twice with 2 differrent test methods for each browser type
+        // First DataRow Attribute will create a new instance of the test method and pass Chrome as a parameter, so it'll test on ChromeDriver
+        // Second DataRow Attribute will create a new instance of the test method and pass Firefox as a parameter, so it'll test on FirefoxDriver
+        // Instead of unseeing DataRow Attribute, you can create a helper function that takes the browser type as a parameter
+        // Then call it twice with 2 different test methods for each browser type
         [DataRow(BrowserType.Chrome)]
         [DataRow(BrowserType.Firefox)]
         // This test case shows a basic example: run a scan on an element, return the result, make sure it's as expected.
@@ -63,13 +63,13 @@ namespace CSharpSeleniumWebdriverSample.Test
             string integrationTestTargetFile = Path.GetFullPath(@"SamplePage.html");
             string integrationTestTargetUrl = new Uri(integrationTestTargetFile).AbsoluteUri;
 
-            // Instructs the driver to navigate the browser to the target URL, this should start the brower and open the page in a new window tab
+            // Instructs the driver to navigate the browser to the target URL, this should start the browser and open the page in a new window tab
             _webDriver.Navigate().GoToUrl(integrationTestTargetUrl);
         }
 
         private void InitDriver(BrowserType browser)
         {
-            // Create a web driver based on the bowser type which is ehither Chrome of Firefox
+            // Create a web driver based on the bowser type which is either Chrome of Firefox
             _webDriver = WebDriverFactory.GetWebDriver(browser);
             // Wait for 20 seconds when the driver is looking for an element eg: _webDriver.FindElement(By.TagName(elementSelector)); 
             _webDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(20);
