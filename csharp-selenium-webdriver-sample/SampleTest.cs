@@ -48,8 +48,6 @@ namespace CSharpSeleniumWebdriverSample.Test
         private AxeResult RunScanOnGivenElementByTagName(string tagName)
         {
             // Find the first element matching the element tag name parameter
-            // * It acts as a sanity check that our browser automation setup basically works
-            // * It ensures that the page is loaded before we run our accessibility scans
             var selectedElement = _webDriver.FindElement(By.TagName(tagName));
 
             //  Instruct the driver to analyze the current element, and return the result as AxeResult object
