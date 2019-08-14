@@ -40,17 +40,17 @@ namespace CSharpSeleniumWebdriverSample.Test
             LoadTestPage();
 
             // Analyze the a known element in the page, and get the results
-            AxeResult results = RunScanOnGivenElementBySelector("ul");
+            AxeResult results = RunScanOnGivenElementByTagName("ul");
             // Assert that the number of violations that were found is that what you expect
             Assert.AreEqual(3, results.Violations.Length);
         }
 
-        private AxeResult RunScanOnGivenElementBySelector(string elementSelector)
+        private AxeResult RunScanOnGivenElementByTagName(string tagName)
         {
-            // Find the first element matching the element selector parameter
+            // Find the first element matching the element tag name parameter
             // * It acts as a sanity check that our browser automation setup basically works
             // * It ensures that the page is loaded before we run our accessibility scans
-            var selectedElement = _webDriver.FindElement(By.TagName(elementSelector));
+            var selectedElement = _webDriver.FindElement(By.TagName(tagName));
 
             //  Instruct the driver to analyze the current element, and return the result as AxeResult object
             return _webDriver.Analyze(selectedElement);
