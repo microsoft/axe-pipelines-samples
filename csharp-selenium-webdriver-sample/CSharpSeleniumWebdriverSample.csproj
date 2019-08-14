@@ -1,10 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <ProjectGuid>{31793188-E135-4460-BF71-9B2B39C86AAE}</ProjectGuid>
+    <ProjectGuid>{E6205F43-94B0-462C-AA5B-AE816794E95A}</ProjectGuid>
     <TargetFrameworks>netcoreapp2.2</TargetFrameworks>
-    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <AssemblyTitle>Selenium.Axe.Test</AssemblyTitle>
-    <Product>Selenium.Axe.Test</Product>
+    <AssemblyTitle>CSharpSeleniumWebdriverSample</AssemblyTitle>
+    <Product>CSharpSeleniumWebdriverSample</Product>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="SamplePage.html">

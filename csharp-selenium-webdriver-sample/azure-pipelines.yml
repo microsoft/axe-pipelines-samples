@@ -1,22 +1,56 @@
 # Copyright (c) Microsoft Corporation. All rights reserved.
 # Licensed under the MIT License.
 
+# This file defines an Azure Pipelines build, which you can configure on https://dev.azure.com
+# to run automatically with each Pull Request update and/or each commit to your repository.
+# In this example, we do not change the default "trigger" behavior, so this build gets run
+# for all commits/PRs to all branches of the axe-pipelines-samples repository.
+#
+# If you already have an Azure Pipelines build for your project, we recommend integrating
+# your new accessibility tests into it, rather than creating a separate pipeline. Pipelines
+# builds are usually defined in files like this one named "azure-pipelines.yml" or "build.yaml",
+# but some projects use different file names.
+#
+# If you are using an Azure Pipelines build with tasks configured using the GUI on https://dev.azure.com,
+# instead of a checked in YAML file, you can add the same tasks listed below from the GUI. However, we
+# strongly recommend switching to using a checked in YAML file.
+#
+# Most C# projects with an Azure Pipelines build will already have most of the steps shown below
+#
+# If you *don't* already have an Azure Pipelines build, we recommend following Azure Pipelines'
+# documentation at https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline
+# (using this sample as your starter code).
+#
+# For more information, see:
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/customize-pipeline
+
 pool:
+  # The 'windows-2019' and 'vs20xx-windows' vmImages come pre-installed with selenium drivers for common browsers.
+  # To use most other vmImages, you'll need to add a step to install these before running yarn test.
+  # See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium
+  # See https://github.com/Microsoft/azure-pipelines-image-generation/blob/master/images/win/Vs2019-Server2019-Readme.md
   vmImage: windows-2019
 
 variables:
   projectDirectory: '$(System.DefaultWorkingDirectory)/csharp-selenium-webdriver-sample'
 
 steps:
+  # This task makes sure .NET Core SDK is installed on the build agent.
+  #
+  # It is a good idea to test against a specific, known version of .NET Core SDK; this makes it easier for other users
+  # to reproduce your build results.
   - task: DotNetCoreInstaller@1
     displayName: install .NET Core SDK 2.2.401
     inputs:
       version: '2.2.401'
-
+  
+  # This task run the tests in the project in the current working directory and generate a test results file in the trx format
   - script: dotnet test --logger:trx
     displayName: dotnet test
     workingDirectory: $(projectDirectory)
 
+  # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
   - task: PublishTestResults@2
     displayName: publish test results
     inputs:
