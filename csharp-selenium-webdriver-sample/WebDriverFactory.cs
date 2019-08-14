@@ -23,6 +23,9 @@ namespace CSharpSeleniumWebdriverSample
                 case BrowserType.Chrome:
                     // So now we need to specify the ChromeDriver directory path
                     // We check first if the enivronemnt variable was set, if so we use the path value
+                    // Usually if you test your project on an azure pipleine, the selenium Chrome driver is pre-installed
+                    // The paths to the folder containing it can be obtained from the environment variables named ChromeWebDriver (Google Chrome).
+                    // So  it'd be compatible with the Chrome browser versions installed on the same agent.
                     // if it's not set, we use Selenium.WebDriver.ChromeDriver nuget to install it in the current directory
                     // chromedriver.exe does not appear in Solution Explorer, but it is copied to bin folder from package folder when the build process.
                     var chromeDriverDirectory = Environment.GetEnvironmentVariable("ChromeWebDriver") ?? Environment.CurrentDirectory;
@@ -33,6 +36,9 @@ namespace CSharpSeleniumWebdriverSample
                 case BrowserType.Firefox:
                     // So now we need to specify the FirefoxDriver directory path
                     // We check first if the enivronemnt variable was set, if so we use the path value
+                    // Usually if you test your project on an azure pipleine, the selenium Chrome driver is pre-installed
+                    // The paths to the folder containing it can be obtained from the environment variables named GeckoWebDriver (Firefox).
+                    // So  it'd be compatible with the Firefox browser versions installed on the same agent.
                     // if it's not set, we use Selenium.WebDriver.GeckoDriver nuget to install it in the current directory
                     // geckodriver.exe does not appear in Solution Explorer, but it is copied to bin folder from package folder when the build process.           
                     var geckoDriverDirectory = Environment.GetEnvironmentVariable("GeckoWebDriver") ?? Environment.CurrentDirectory;
