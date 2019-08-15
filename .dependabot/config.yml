@@ -8,3 +8,4 @@ update_configs:
   - package_manager: "javascript"
     directory: "/typescript-selenium-webdriver-sample"
     update_schedule: live
+    version_requirement_updates: increase_versions
