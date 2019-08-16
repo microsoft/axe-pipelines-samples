@@ -28,9 +28,12 @@
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/customize-pipeline
 
 pool:
-  # The 'windows-2019' and 'vs20xx-windows' vmImages come pre-installed with selenium drivers for common browsers.
-  # To use most other vmImages, you'll need to add a step to install these before running yarn test.
-  # See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium
+  # The 'windows-2019' and 'vs20xx-windows' vmImages come pre-installed with common browsers and corresponding
+  # selenium webdrivers. See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium
+  #
+  # We use these pre-installed versions in ./tests/webdriver-factory.ts. If you'd prefer to use other vmImages,
+  # you would want to add steps to this file that separately install the browsers you want to test with. This might
+  # involve "apt-get" in an Ubuntu image or "choco install" in a Windows image.
   vmImage: 'windows-2019'
 
 steps:
@@ -46,37 +49,41 @@ steps:
   # This task installs dependencies specified in your package.json file.
   #
   # Our sample uses Yarn for this, but if your project uses NPM instead, that's also fine.
-  #
-  # Note that we add a specific command line option here to tell the "chromedriver" package to
-  # use the preinstalled version of the Chrome webdriver that matches the preinstalled version of
-  # Chrome on the hosted Microsoft build agent. The build agent comes with a "ChromeWebDriver"
-  # environment variable pre-set to the location of the preinstalled chromedriver.exe. You would
-  # typically omit this argument when running "yarn install" locally, since most users won't have
-  # chromedriver preinstalled like the build agent will.
-  - script: yarn install --frozen-lockfile --chromedriver_filepath=$(ChromeWebDriver) # or "npm install --ci"
+  - script: yarn install --frozen-lockfile # or "npm install --ci"
     displayName: yarn install
     # workingDirectory should match where your package.json file is located. It defaults to the root of the repository.
     workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
 
-  # This tasks runs the tests specified by jest.config.js, including our example accessibility tests.
+  # This task runs the tests specified by jest.config.js, including our example accessibility tests.
   #
   # If your project already uses npm instead of yarn, or if your project already runs "jest" directly here,
   # those are both fine.
   #
   # The 2>&1 is a workaround for facebook/jest#5064
-  - script: yarn test --ci 2>&1 # or "npm run test -- --ci 2>&1", or "jest --ci 2>&1"
-    displayName: yarn test
+  - script: yarn test:chrome --ci 2>&1 # or "npm run test -- --ci 2>&1", or "jest --ci 2>&1"
+    displayName: yarn test:chrome
     workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
-    
 
-  # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
+    # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
   - task: PublishTestResults@2
-    displayName: publish test results
+    displayName: publish test results (chrome)
     inputs:
       testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results/junit.xml
-      testRunTitle: typescript-selenium-webdriver-sample
+      testRunTitle: typescript-selenium-webdriver-sample (chrome)
     condition: succeededOrFailed()
 
+  # Same concept as the "yarn test:chrome" task above
+  - script: yarn test:firefox --ci 2>&1 # or "npm run test -- --ci 2>&1", or "jest --ci 2>&1"
+    displayName: yarn test:firefox
+    workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
+
+  # Same concept as the "publish test results (chrome)" task above
+  - task: PublishTestResults@2
+    displayName: publish test results (firefox)
+    inputs:
+      testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results/junit.xml
+      testRunTitle: typescript-selenium-webdriver-sample (firefox)
+    condition: succeededOrFailed()
 
   # If you are adding tests to an existing project that already uses Azure Pipelines, this is probably the only
   # new task you'll need to add.

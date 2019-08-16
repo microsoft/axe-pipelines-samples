@@ -5,16 +5,9 @@ import { convertAxeToSarif } from 'axe-sarif-converter';
 import * as AxeWebdriverjs from 'axe-webdriverjs';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Builder, By, ThenableWebDriver, until } from 'selenium-webdriver';
-import * as chrome from 'selenium-webdriver/chrome';
+import { By, ThenableWebDriver, until } from 'selenium-webdriver';
 import { promisify } from 'util';
-
-// This "require" statement performs some global configuration of selenium-webdriver to tell it to use
-// the version of chromedriver that the npm "chromedriver" package downloaded during "yarn install".
-//
-// If you are applying this sample to a project that already uses some other mechanism for installing
-// webdrivers, (eg, Protractor's "webdriver-manager update" command), you can omit this.
-require('chromedriver');
+import { createWebdriverFromEnvironmentVariableSettings } from './webdriver-factory';
 
 // The default timeout for tests/fixtures (5 seconds) is not always enough to start/quit/navigate a browser instance.
 const TEST_TIMEOUT_MS = 30000;
@@ -25,12 +18,13 @@ describe('index.html', () => {
     // Starting a browser instance is time-consuming, so we share one browser instance between
     // all tests in the file (by initializing it in beforeAll rather than beforeEach)
     beforeAll(async () => {
-        // Selenium supports many browsers, not just Chrome.
-        // See https://www.npmjs.com/package/selenium-webdriver for examples.
-        driver = new Builder()
-            .forBrowser('chrome')
-            .setChromeOptions(new chrome.Options().headless())
-            .build();
+        // The helper method we're using here is just an example; if you already have a test suite with
+        // logic for initializing a Selenium WebDriver, you can keep using that. For example, if you are
+        // using Protractor, you would want to use the webdriver instance that Protractor maintains in its
+        // global "browser" variable, like this:
+        //
+        //     driver = browser.webdriver;
+        driver = createWebdriverFromEnvironmentVariableSettings();
     }, TEST_TIMEOUT_MS);
 
     afterAll(async () => {
