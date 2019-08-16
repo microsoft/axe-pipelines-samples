@@ -64,7 +64,7 @@ steps:
     displayName: yarn test:chrome
     workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
 
-    # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
+  # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
   - task: PublishTestResults@2
     displayName: publish test results (chrome)
     inputs:
