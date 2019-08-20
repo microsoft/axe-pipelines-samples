@@ -394,10 +394,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.2.tgz#c4e63af5e8823ce9cc3f0b34f7b998c2171f0c44"
   integrity sha512-dyYO+f6ihZEtNPDcWNR1fkoTDf3zAK3lAABDze3mz6POyIercH0lEUawUFXlG8xaQZmm1yEBON/4TsYv/laDYg==
 
-"@types/sarif@2.1.1":
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/@types/sarif/-/sarif-2.1.1.tgz#d398d201eade0a88958dffdd13ca88f7a37546df"
-  integrity sha512-OI9w+yqOhvT3Z9tF/4d+YVFbdYojotHMRfuKrVtAzeKu3L0kBiK6CnHADkNrfSeVOgkIMeg8OqIQFfcsm7HgCg==
+"@types/sarif@>=2.1.1 <=2.1.2":
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/@types/sarif/-/sarif-2.1.2.tgz#91d9f9e793fadbba36239f03ec996987b2e25635"
+  integrity sha512-TELZl5h48KaB6SFZqTuaMEw1hrGuusbBcH+yfMaaHdS2pwDr3RTH4CVN0LyY1kqSiDm9PPvAMx8FJ0LUZreOCQ==
 
 "@types/selenium-webdriver@^4.0.1":
   version "4.0.1"
@@ -601,12 +601,12 @@ axe-core@^3.1.2, axe-core@^3.2.2:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.2.2.tgz#b06d6e9ae4636d706068843272bfaeed3fe97362"
   integrity sha512-gAy4kMSPpuRJV3mwictJqlg5LhE84Vw2CydKdC4tvrLhR6+G3KW51zbL/vYujcLA2jvWOq3HMHrVeNuw+mrLVA==
 
-axe-sarif-converter@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.0.2.tgz#abcf967b8f61286404206475ec690aea683b6679"
-  integrity sha512-KbzYLt2JHAuiKNE3F9Bqt0eERmb8GtBLFmgoEf//HGQ0g3QKdkxuR+3Jde6dMO9xUTtHtEmYxVu75DTqtDr4iQ==
+axe-sarif-converter@^2.0.3:
+  version "2.0.3"
+  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.0.3.tgz#9453cbdff0efcd5e8c57b3a4a6b7f3dd263f8450"
+  integrity sha512-8up3o/Z3ltDrhk76V9iuSFeCo6DwNNaQmWqNdfkeqs8r6Mxs9DvYDLTsE2y6UnB6aLp6x3EI7LM/yJiVwZFVDw==
   dependencies:
-    "@types/sarif" "2.1.1"
+    "@types/sarif" ">=2.1.1 <=2.1.2"
     axe-core "^3.2.2"
 
 axe-webdriverjs@^2.2.0:
