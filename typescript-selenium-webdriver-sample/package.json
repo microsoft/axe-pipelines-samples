@@ -8,7 +8,7 @@
         "@types/node": "^12.7.2",
         "@types/selenium-webdriver": "^4.0.1",
         "axe-sarif-converter": "^2.0.3",
-        "axe-webdriverjs": "^2.2.0",
+        "axe-webdriverjs": "^2.3.0",
         "chromedriver": "^75.0.1",
         "jest": "^24.9.0",
         "jest-circus": "^24.9.0",
