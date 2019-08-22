@@ -25,20 +25,22 @@
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/customize-pipeline
 
+# The browser automation tool we're using, Selenium, works with many different browsers. Here, we show
+# an example of using the same test code with different combinations of browsers and OSes.
 strategy:
   matrix:
+    # "win-chrome" will become the name of the job on the build results page. 
     win-chrome:
+      # This "imageName" variable is used to set the "vmImage" property of the build jobs further down in this file.
       imageName: windows-2019
+      # This "browser" variable will be set as an environment variable that our test code will be able to see.
+      # We'll use this environment variable in WebDriverFactory.cs to determine which browser the tests will use.
       browser: chrome
     linux-firefox:
       imageName: ubuntu-16.04
       browser: firefox
 
 pool:
-  # The 'windows-2019' and 'vs20xx-windows' vmImages come pre-installed with selenium drivers for common browsers.
-  # To use most other vmImages, you'll need to add a step to install these before running yarn test.
-  # See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium
-  # See https://github.com/Microsoft/azure-pipelines-image-generation/blob/master/images/win/Vs2019-Server2019-Readme.md
   vmImage: $(imageName)
 
 steps:
@@ -50,12 +52,14 @@ steps:
     displayName: install .NET Core SDK 2.2.401
     inputs:
       version: '2.2.401'
-  
+
   - task: DotNetCoreCLI@2
     displayName: dotnet restore
     inputs:
       command: restore
 
+  # Using DotNetCoreCLI rather than a "script" step that runs "dotnet test" makes it easier to publish the test results
+  # to see along with the rest of the build details in the Azure Pipelines web UI.
   - task: DotNetCoreCLI@2
     displayName: dotnet test
     inputs:
