@@ -1,6 +1,6 @@
 # CSharpSeleniumWebdriverSample
 
-This sample demonstrates how you might set up a CI build for a simple, static html page to perform end to end accessibility tests in a browser.
+This sample demonstrates how you might set up a C# Project with an Azure Pipelines build that runs end to end accessibility tests in a browser.
 
 ## Getting Started
 
@@ -8,19 +8,27 @@ The individual files in the sample contain comments that explain the important p
 
 Some good places to start reading are:
 
-* [SampleTest.cs](./SampleTest.cs): C# test file that opens [SamplePage.html](./SamplePage.html) in a browser with Selenium and runs accessibility scans against it with Selenium.WebDriver.ChromeDriver and Selenium.WebDriver.GeckoDriver
+* [SamplePageTests.cs](./SamplePageTests.cs): C# test file that opens [SamplePage.html](./SamplePage.html) in a browser with Selenium and runs accessibility scans against it
 * [azure-pipelines.yml](./azure-pipelines.yml): Azure Pipelines config file that sets up our Continuous Integration and Pull Request builds
 
 ## Tools and libraries used
 
-* [Microsoft.NET.Test.Sdk](https://github.com/microsoft/vstest/) to enable running tests, collect diagnostics data and report results.
-* [Microsoft.NETCore.App](https://dotnet.microsoft.com) a set of .NET API's that are included in the default .NET Core application model.
-* [MSTest.TestAdapter and MSTest.TestFramework](https://github.com/microsoft/testfx) MSTest V2 adapter to discover and execute MSTest Framework based tests.
-* [Selenium.Axe](https://github.com/TroyWalshProf/SeleniumAxeDotnet) to run an axe accessibility scan on the page from the Selenium browser.
-* [Selenium.WebDriver](https://www.seleniumhq.org) to supporting browser automation.
-* [Selenium.WebDriver.ChromeDriver](https://github.com/jsakamoto/nupkg-selenium-webdriver-chromedriver/) to enable Selenium to drive Chrome.
-* [Selenium.WebDriver.GeckoDriver](https://github.com/jsakamoto/nupkg-selenium-webdriver-geckodriver/) to enable Selenium to drive Firefox.
+The key tools and libraries this sample demonstrates are:
+
+* [Selenium.WebDriver](https://www.seleniumhq.org), the .NET library for Selenium, a tool for automating interactions with different web browsers.
+* [Selenium.Axe](https://github.com/TroyWalshProf/SeleniumAxeDotnet), a .NET library for running accessibility scans on web pages by using Selenium.WebDriver to run the [axe-core](https://github.com/dequelabs/axe-core) accessibility scanning engine.
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request.
+
+This sample also uses a few other tools and libraries which are less important; if you use a different test framework or a different version of .NET, you can still follow along with most of the sample.
+
+* [.NET Core](https://dotnet.microsoft.com) to build/run the code.
+  * None of the libraries or C# code in the sample are specific to .NET Core; if your project uses the full .NET Framework, you can still follow along with the sample!
+* [MSTest](https://github.com/microsoft/testfx) as our test framework.
+  * None of the other libraries we're using require this particular framework; you can still follow along with the sample using NUnit, xUnit, or any other test framework you like.
+* [Chrome](https://google.com/chrome) (with [Selenium.WebDriver.ChromeDriver](https://github.com/jsakamoto/nupkg-selenium-webdriver-chromedriver/)) and [Firefox](https://www.mozilla.org/firefox/) (with [Selenium.WebDriver.GeckoDriver](https://github.com/jsakamoto/nupkg-selenium-webdriver-geckodriver/)) as our test browsers
+  * Selenium supports many different browsers and operating systems; use whichever combination is most important for your product!
+* [FluentAssertions](https://fluentassertions.com/) to write test assertions
+  * We like FluentAssertions because it gives great error messages out-of-the-box with Selenium.Axe. But you can still follow the rest of the sample if you prefer a different assertion style!
 
 ## See it in action in Azure Pipelines
 
