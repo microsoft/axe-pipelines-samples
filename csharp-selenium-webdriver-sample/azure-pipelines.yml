@@ -25,15 +25,29 @@
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/customize-pipeline
 
+# The browser automation tool we're using, Selenium, works with many different browsers. Here, we show
+# an example of using the same test code with different combinations of browsers and OSes.
+#
+# For more information, see:
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-multiplatform
+strategy:
+  matrix:
+    win-chrome:
+      imageName: windows-2019
+      browser: chrome
+    linux-firefox:
+      imageName: ubuntu-16.04
+      browser: firefox
+
 pool:
-  # The 'windows-2019' and 'vs20xx-windows' vmImages come pre-installed with selenium drivers for common browsers.
-  # To use most other vmImages, you'll need to add a step to install these before running yarn test.
-  # See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium
-  # See https://github.com/Microsoft/azure-pipelines-image-generation/blob/master/images/win/Vs2019-Server2019-Readme.md
-  vmImage: windows-2019
+  vmImage: $(imageName)
 
 variables:
-  projectDirectory: '$(System.DefaultWorkingDirectory)/csharp-selenium-webdriver-sample'
+  # This will be sent to the build agent as an environment variable which our test code will be able to see.
+  # We'll use this environment variable in WebDriverFactory.cs to determine which browser the tests will use.
+  SELENIUM_BROWSER: $(browser)
+  # This skips unnecessary steps during dotnet restore and saves ~30-60s
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
 
 steps:
   # This task makes sure .NET Core SDK is installed on the build agent.
@@ -44,18 +58,19 @@ steps:
     displayName: install .NET Core SDK 2.2.401
     inputs:
       version: '2.2.401'
-  
-  # This task run the tests in the project in the current working directory and generate a test results file in the trx format
-  - script: dotnet test --logger:trx
-    displayName: dotnet test
-    workingDirectory: $(projectDirectory)
 
-  # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
-  - task: PublishTestResults@2
-    displayName: publish test results
+  - task: DotNetCoreCLI@2
+    displayName: dotnet restore
     inputs:
-      testResultsFiles: '**/TestResults/*.trx'
-      testResultsFormat: VSTest
-      searchFolder: $(projectDirectory)
-      testRunTitle: dotnet test
-    condition: succeededOrFailed()
+      command: restore
+      projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
+
+  # Using DotNetCoreCLI rather than a "script" step that runs "dotnet test" makes it easier to publish the test results
+  # to see along with the rest of the build details in the Azure Pipelines web UI.
+  - task: DotNetCoreCLI@2
+    displayName: dotnet test
+    inputs:
+      command: test
+      projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
+      publishTestResults: true
+      testRunTitle: "dotnet test ($(imageName) $(browser))"

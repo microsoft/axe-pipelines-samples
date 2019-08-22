@@ -67,7 +67,6 @@ steps:
   - script: yarn test --ci 2>&1 # or "npm run test -- --ci 2>&1", or "jest --ci 2>&1"
     displayName: yarn test
     workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
-    
 
   # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
   - task: PublishTestResults@2
@@ -76,7 +75,6 @@ steps:
       testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results/junit.xml
       testRunTitle: typescript-selenium-webdriver-sample
     condition: succeededOrFailed()
-
 
   # If you are adding tests to an existing project that already uses Azure Pipelines, this is probably the only
   # new task you'll need to add.
@@ -91,4 +89,3 @@ steps:
       # "test-results" is not a required convention; it just happens to be where our tests write .sarif files to.
       pathtoPublish: '$(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results'
     condition: succeededOrFailed()
-
