@@ -13,9 +13,9 @@ namespace CSharpSeleniumWebdriverSample
     public static class WebDriverFactory
     {
         public static IWebDriver CreateFromEnvironmentVariableSettings() {
-            // This environment variable is set by ./azure-pipelines.yml in the strategy matrix.
-            // The tests will be run twice, once with this variable set to "chrome" and again with it set to "firefox".
-            // This way, we can write the tests once but run them against many different OS/browser combinations.
+            // This environment variable gets set by our Azure Pipelines build definition in ./azure-pipelines.yml.
+            // That file uses a matrix strategy to run multiple different build jobs for different combinations of OS/browser.
+            // Each job sets this environment variable accordingly, and we use it to decide which browser the tests will use.
             const string BROWSER_ENVIRONMENT_VARIABLE = "SELENIUM_BROWSER";
             var browserEnvVar = Environment.GetEnvironmentVariable(BROWSER_ENVIRONMENT_VARIABLE);
 
