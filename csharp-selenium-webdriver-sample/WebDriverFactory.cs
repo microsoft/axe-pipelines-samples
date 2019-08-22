@@ -16,7 +16,7 @@ namespace CSharpSeleniumWebdriverSample
             // This environment variable is set by ./azure-pipelines.yml in the strategy matrix.
             // The tests will be run twice, once with this variable set to "chrome" and again with it set to "firefox".
             // This way, we can write the tests once but run them against many different OS/browser combinations.
-            const string BROWSER_ENVIRONMENT_VARIABLE = "browser";
+            const string BROWSER_ENVIRONMENT_VARIABLE = "SELENIUM_BROWSER";
             var browserEnvVar = Environment.GetEnvironmentVariable(BROWSER_ENVIRONMENT_VARIABLE);
 
             // It's convenient to have a default to make it easier for a developer to run a plain "dotnet test" command.

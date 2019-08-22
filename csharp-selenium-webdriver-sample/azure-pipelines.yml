@@ -27,14 +27,13 @@
 
 # The browser automation tool we're using, Selenium, works with many different browsers. Here, we show
 # an example of using the same test code with different combinations of browsers and OSes.
+#
+# For more information, see:
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-multiplatform
 strategy:
   matrix:
-    # "win-chrome" will become the name of the job on the build results page. 
     win-chrome:
-      # This "imageName" variable is used to set the "vmImage" property of the build jobs further down in this file.
       imageName: windows-2019
-      # This "browser" variable will be set as an environment variable that our test code will be able to see.
-      # We'll use this environment variable in WebDriverFactory.cs to determine which browser the tests will use.
       browser: chrome
     linux-firefox:
       imageName: ubuntu-16.04
@@ -44,6 +43,9 @@ pool:
   vmImage: $(imageName)
 
 variables:
+  # This will be sent to the build agent as an environment variable which our test code will be able to see.
+  # We'll use this environment variable in WebDriverFactory.cs to determine which browser the tests will use.
+  SELENIUM_BROWSER: $(browser)
   # This skips unnecessary steps during dotnet restore and saves ~30-60s
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
 
@@ -71,3 +73,4 @@ steps:
       command: test
       projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
       publishTestResults: true
+      testRunTitle: "dotnet test ($(imageName) $(browser))"
