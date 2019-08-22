@@ -8,19 +8,24 @@ using System;
 
 namespace CSharpSeleniumWebdriverSample
 {
-    public enum BrowserType
+    // This factory class is just one example of how you might initialize Selenium. If your project already has its own means
+    // of initializing Selenium, you can keep using that as-is and ignore this sample file; skip ahead to SamplePageTests.cs.
+    public static class WebDriverFactory
     {
-        Chrome,
-        Firefox,
-    }
+        public static IWebDriver CreateFromEnvironmentVariableSettings() {
+            // This environment variable is set by ./azure-pipelines.yml in the strategy matrix.
+            // The tests will be run twice, once with this variable set to "chrome" and again with it set to "firefox".
+            // This way, we can write the tests once but run them against many different OS/browser combinations.
+            const string BROWSER_ENVIRONMENT_VARIABLE = "browser";
+            var browserEnvVar = Environment.GetEnvironmentVariable(BROWSER_ENVIRONMENT_VARIABLE);
 
-    public class WebDriverFactory
-    {
-        public static IWebDriver GetWebDriver(BrowserType browser)
-        {   
-            switch (browser)
+            // It's convenient to have a default to make it easier for a developer to run a plain "dotnet test" command.
+            // In our CI builds in Azure Pipelines, we'll always specify the browser explicitly instead of using this.
+            const string DEFAULT_BROWSER = "chrome";
+
+            switch (browserEnvVar ?? DEFAULT_BROWSER)
             {
-                case BrowserType.Chrome:
+                case "chrome":
                     // The ChromeWebDriver environment variable comes pre-set in the Azure Pipelines VM Image we
                     // specify in azure-pipelines.yml. ChromeDriver requires that you use *matching* versions of Chrome and
                     // the Chrome WebDriver; in the build agent VMs, using this environment variable will make sure that we use
@@ -33,21 +38,26 @@ namespace CSharpSeleniumWebdriverSample
                     // the project hasn't separately installed ChromeDriver, the test will still be able to run on their machine.
                     var chromeDriverDirectory = Environment.GetEnvironmentVariable("ChromeWebDriver") ?? Environment.CurrentDirectory;
 
-                    // Initializes a new ChromeDriver using the specified path to the directory containing ChromeDriver.exe.
-                    return new ChromeDriver(chromeDriverDirectory);
+                    // The tests will work fine in non-headless mode; we recommend using --headless for performance and
+                    // because it makes it easier to run the tests in non-graphical environments (eg, most Docker containers)
+                    var chromeOptions = new ChromeOptions();
+                    chromeOptions.AddArgument("--headless");
 
-                case BrowserType.Firefox:
-                    // The same like above but for Firefox
-                    // the pre-set environment variable in the Azure Pipelines VM Image is GeckoWebDriver
-                    // the pre-installed version of FirefoxDriver matches the pre-installed version of Firefox
-                    // Selenium.WebDriver.GeckoDriver Nuget will place the Firefox WebDriver in the Environment.CurrentDirectory.
+                    return new ChromeDriver(chromeDriverDirectory, chromeOptions);
+
+                case "firefox":
+                    // This environment variable works just like ChromeWebDriver above.
                     var geckoDriverDirectory = Environment.GetEnvironmentVariable("GeckoWebDriver") ?? Environment.CurrentDirectory;
                     
-                    // Initializes a new FirefoxDriver using the specified path to the directory containing GeckoDriver.exe
-                    return new FirefoxDriver(geckoDriverDirectory);
+                    // Same as for Chrome above; the tests will work fine without --headless, but you'll get better test
+                    // performance and easier compatibility with non-graphical environments by using it.
+                    var firefoxOptions = new FirefoxOptions();
+                    firefoxOptions.AddArgument("--headless");
+
+                    return new FirefoxDriver(geckoDriverDirectory, firefoxOptions);
 
                 default:
-                    throw new ArgumentException($"Unknown browser type {browser}", nameof(browser));
+                    throw new ArgumentException($"Unknown browser type '{browserEnvVar}' specified in '{BROWSER_ENVIRONMENT_VARIABLE}' environment variable");
             }
         }
     }
