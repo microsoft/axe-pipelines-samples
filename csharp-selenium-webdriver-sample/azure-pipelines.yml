@@ -57,6 +57,7 @@ steps:
     displayName: dotnet restore
     inputs:
       command: restore
+      workingDirectory: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample
 
   # Using DotNetCoreCLI rather than a "script" step that runs "dotnet test" makes it easier to publish the test results
   # to see along with the rest of the build details in the Azure Pipelines web UI.
@@ -65,3 +66,4 @@ steps:
     inputs:
       command: test
       publishTestResults: true
+      workingDirectory: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample
