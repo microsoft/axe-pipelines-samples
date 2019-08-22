@@ -43,6 +43,10 @@ strategy:
 pool:
   vmImage: $(imageName)
 
+variables:
+  # This skips unnecessary steps during dotnet restore and saves ~30-60s
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
+
 steps:
   # This task makes sure .NET Core SDK is installed on the build agent.
   #
