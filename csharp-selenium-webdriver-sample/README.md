@@ -48,6 +48,7 @@ The test pass/fail results display in the Tests tab of the build logs:
 
 ## See it in action on your local machine
 
+1. Install the [.NET Core SDK](https://dotnet.microsoft.com/download)
 1. Install the stable version of [Chrome](https://www.google.com/chrome/)
 1. Install the stable version of [Firefox](https://www.mozilla.org/en-US/firefox/)
 1. Clone this sample repository
