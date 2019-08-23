@@ -98,4 +98,3 @@ steps:
       # "test-results" is not a required convention; it just happens to be where our tests write .sarif files to.
       pathtoPublish: '$(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results'
     condition: succeededOrFailed()
-
