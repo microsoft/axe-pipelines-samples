@@ -5,22 +5,6 @@ import * as chrome from 'selenium-webdriver/chrome';
 import * as firefox from 'selenium-webdriver/firefox';
 import * as path from 'path';
 
-/*
-// These declarations are only required because @types/selenium-webdriver is incomplete
-// See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/...
-declare module 'selenium-webdriver' {
-    interface Builder {
-        setChromeService(serviceBuilder: chrome.ServiceBuilder): Builder
-        setFirefoxService(serviceBuilder: firefox.ServiceBuilder): Builder
-    }
-}
-declare module 'selenium-webdriver/firefox' {
-    interface Options {
-        headless(): Options
-    }
-}
-*/
-
 export function createWebdriverFromEnvironmentVariableSettings(): webdriver.ThenableWebDriver {
     // Selenium WebDriver implementations generally require that you use a version of the webdriver
     // that exactly matches the version of the browser it is driving.
@@ -47,6 +31,9 @@ export function createWebdriverFromEnvironmentVariableSettings(): webdriver.Then
         // two npm run scripts ("test:firefox" and "test:chrome") that show examples of using this.
         .forBrowser('chrome')
         .setChromeService(new chrome.ServiceBuilder(chromeDriverPath))
+        // You can run accessibility scans on head-ful browsers, too; we recommend using headless
+        // browsers unless your project strictly requires head-ful testing, since it will generally
+        // be faster, more reliable, and easier to run in non-graphical environments (eg, Docker).
         .setChromeOptions(new chrome.Options().headless())
         .setFirefoxService(new firefox.ServiceBuilder(geckoDriverPath))
         .setFirefoxOptions(new firefox.Options().headless())

@@ -82,21 +82,18 @@ describe('index.html', () => {
 
         // Snapshotting the entire violations array like this will show the full available information in
         // your test output for any new violations that might occur.
-        expect(accessibilityScanResults.violations).toMatchSnapshot();
-
+        //
+        //     expect(accessibilityScanResults.violations).toMatchSnapshot();
+        //
         // However, since the "full available information" includes contextual information like "a snippet
-        // of the HTML containing the violation" and "the full xpath to the element containing the violation",
-        // snapshotting the whole violations array is prone to failing when unrelated changes are made to the
-        // element (or even to unrelated ancestors of the element in the DOM).
-
+        // of the HTML containing the violation", snapshotting the whole violations array is prone to failing
+        // when unrelated changes are made to the element (or even to unrelated ancestors of the element in
+        // the DOM).
+        //
         // To avoid that, you can create a helper function to capture a "fingerprint" of a given violation,
         // and snapshot that instead. The Jest Snapshot log output will only include the information from your
         // fingerprint, but you can still use the exported .sarif files to see complete failure information
         // in a SARIF viewer (https://sarifweb.azurewebsites.net/#Viewers) or a text editor.
-        const getViolationFingerprint = (violation: Axe.Result) => ({
-            rule: violation.id,
-            targets: violation.nodes.map(node => node.target),
-        });
         expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
 
@@ -109,8 +106,15 @@ describe('index.html', () => {
 
         await exportAxeAsSarifTestResult('index-with-specific-tags.sarif', accessibilityScanResults);
 
-        expect(accessibilityScanResults.violations).toMatchSnapshot();
+        expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
+
+    // You can make your "fingerprint" function as specific as you like. This one considers a violation to be
+    // "the same" if it corresponds the same Axe rule on the same set of elements.
+    const getViolationFingerprint = (violation: Axe.Result) => ({
+        rule: violation.id,
+        targets: violation.nodes.map(node => node.target),
+    });
 
     // SARIF is a general-purpose log format for code analysis tools.
     //
