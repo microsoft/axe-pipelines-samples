@@ -27,14 +27,27 @@
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/customize-pipeline
 
+# The browser automation tool we're using, Selenium, works with many different browsers. Here, we show
+# an example of using the same test code with different combinations of browsers and OSes.
+#
+# For more information, see:
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-multiplatform
+strategy:
+  matrix:
+    win-chrome:
+      imageName: windows-2019
+      browser: chrome
+    linux-firefox:
+      imageName: ubuntu-16.04
+      browser: firefox
+
 pool:
-  # The 'windows-2019' and 'vs20xx-windows' vmImages come pre-installed with common browsers and corresponding
-  # selenium webdrivers. See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium
-  #
-  # We use these pre-installed versions in ./tests/webdriver-factory.ts. If you'd prefer to use other vmImages,
-  # you would want to add steps to this file that separately install the browsers you want to test with. This might
-  # involve "apt-get" in an Ubuntu image or "choco install" in a Windows image.
-  vmImage: 'windows-2019'
+  vmImage: $(imageName)
+
+variables:
+  # This will be sent to the build agent as an environment variable which our test code will be able to see.
+  # We'll use this environment variable in webdriver-factory.ts to determine which browser the tests will use.
+  SELENIUM_BROWSER: $(browser)
 
 steps:
   # This task makes sure Node.js is installed on the build agent.
@@ -60,29 +73,16 @@ steps:
   # those are both fine.
   #
   # The 2>&1 is a workaround for facebook/jest#5064
-  - script: yarn test:chrome --ci 2>&1 # or "npm run test -- --ci 2>&1", or "jest --ci 2>&1"
-    displayName: yarn test:chrome
+  - script: yarn test --ci 2>&1 # or "npm run test -- --ci 2>&1"
+    displayName: yarn test
     workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
 
   # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
   - task: PublishTestResults@2
-    displayName: publish test results (chrome)
+    displayName: publish test results
     inputs:
       testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results/junit.xml
-      testRunTitle: typescript-selenium-webdriver-sample (chrome)
-    condition: succeededOrFailed()
-
-  # Same concept as the "yarn test:chrome" task above
-  - script: yarn test:firefox --ci 2>&1 # or "npm run test -- --ci 2>&1", or "jest --ci 2>&1"
-    displayName: yarn test:firefox
-    workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
-
-  # Same concept as the "publish test results (chrome)" task above
-  - task: PublishTestResults@2
-    displayName: publish test results (firefox)
-    inputs:
-      testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results/junit.xml
-      testRunTitle: typescript-selenium-webdriver-sample (firefox)
+      testRunTitle: typescript-selenium-webdriver-sample ($(imageName) $(browser))
     condition: succeededOrFailed()
 
   # If you are adding tests to an existing project that already uses Azure Pipelines, this is probably the only
