@@ -5,6 +5,7 @@ import * as chrome from 'selenium-webdriver/chrome';
 import * as firefox from 'selenium-webdriver/firefox';
 import * as path from 'path';
 
+/*
 // These declarations are only required because @types/selenium-webdriver is incomplete
 // See https://github.com/DefinitelyTyped/DefinitelyTyped/issues/...
 declare module 'selenium-webdriver' {
@@ -18,6 +19,7 @@ declare module 'selenium-webdriver/firefox' {
         headless(): Options
     }
 }
+*/
 
 export function createWebdriverFromEnvironmentVariableSettings(): webdriver.ThenableWebDriver {
     // Selenium WebDriver implementations generally require that you use a version of the webdriver
