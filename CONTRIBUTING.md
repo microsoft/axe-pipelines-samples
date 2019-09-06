@@ -13,7 +13,7 @@ Before sending a pull request, please double check that:
 * Any new sample content being added is documented with a sample-level README.md and verbosely commented inline.
 * The tests run and pass in each sample you're modifying.
 
-Pull requests will be reviewed by a member of the Accessibility Insights team.
+Pull requests will be reviewed and merged by a member of the Accessibility Insights team.
 
 ## Contributor License Agreement
 
