@@ -82,8 +82,8 @@ namespace CSharpSeleniumWebdriverSample
         // match a particular tag (axe-core uses tags to indicate whether a rule is a "best practice" vs a WCAG requirement).
         //
         // For complete documentation of which rule IDs and tags axe supports, see:
-        // * axe-core rules: https://dequeuniversity.com/rules/axe
-        // * axe-core tags: https://www.deque.com/axe/axe-for-web/documentation/api-documentation/#api-name-axegetrules
+        // * summary of rules with IDs and tags: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
+        // * full reference documentation for each rule: https://dequeuniversity.com/rules/axe
         [TestMethod]
         public void TestWithOnlyRulesRequiredByWCAG2AA()
         {
@@ -103,9 +103,9 @@ namespace CSharpSeleniumWebdriverSample
 
             // If you want to be even more granular, you can also use WithRules to scan just certain individual rules.
             //
-            // For a complete list of the available axe rules, see https://dequeuniversity.com/rules/axe. Each rule's
-            // documentation page will note the ID of that rule (like "audio-caption" or "image-alt") at the top of the page;
-            // that ID is the string you would want to pass to the WithRules() method.
+            // For a complete list of the rules, see:
+            // * https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
+            // * https://dequeuniversity.com/rules/axe
             AxeResult imageAltResults = new AxeBuilder(_webDriver)
                 .WithRules("image-alt")
                 // Nothing on our test page violates the image-alt rule, so this scan won't flag any Violations either.
