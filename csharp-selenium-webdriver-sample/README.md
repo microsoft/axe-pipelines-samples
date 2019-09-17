@@ -65,3 +65,5 @@ The test pass/fail results display in the Tests tab of the build logs:
    ```
 
    ![Screenshot of 'dotnet test' command showing all tests passing](./Resources/screenshot-dotnet-test-success.png)
+
+   ![Screenshot of 'dotnet test' command showing some accessibility violations](./Resources/screenshot-dotnet-test-failure.png)
