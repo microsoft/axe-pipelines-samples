@@ -25,6 +25,7 @@ namespace CSharpSeleniumWebdriverSample
 
         // This test case shows the most basic example: run an accessibility scan on a page and assert that there are no violations.
         [TestMethod]
+        [TestCategory("IntentionallyFailsAsAnExample")]
         public void TestAccessibilityOfPage()
         {
             AxeResult axeResult = new AxeBuilder(_webDriver).Analyze();

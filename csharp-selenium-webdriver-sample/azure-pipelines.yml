@@ -74,3 +74,7 @@ steps:
       projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
       publishTestResults: true
       testRunTitle: "dotnet test ($(imageName) $(browser))"
+      # We use this EXTRA_DOTNET_TEST_ARGUMENTS variable in the sample's CI/PR builds so the "success" examples can --filter
+      # out the tests that intentionally fail for example purposes. You probably don't need this in a real project.
+      arguments: $(EXTRA_DOTNET_TEST_ARGUMENTS)
+
