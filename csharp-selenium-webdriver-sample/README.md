@@ -50,6 +50,8 @@ This sample also uses a few other tools and libraries which are less important; 
 
    ![Screenshot of 'dotnet test' command showing all tests passing](./Resources/screenshot-dotnet-test-success.png)
 
+   ![Screenshot of 'dotnet test' command showing some accessibility violations](./Resources/screenshot-dotnet-test-failure.png)
+
 ## See it in action in Azure Pipelines
 
 * Example build with failures: [![Azure Pipelines Build Status for failing example build](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/%5Bfailing%20example%5D%20csharp-selenium-webdriver-sample?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=33&branchName=master)
