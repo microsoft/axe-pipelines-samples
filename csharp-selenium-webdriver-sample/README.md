@@ -30,22 +30,6 @@ This sample also uses a few other tools and libraries which are less important; 
 * [FluentAssertions](https://fluentassertions.com/) to write test assertions
   * We like FluentAssertions because it gives great error messages out-of-the-box with Selenium.Axe. But you can still follow the rest of the sample if you prefer a different assertion style!
 
-## See it in action in Azure Pipelines
-
-[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/csharp-selenium-webdriver-sample%20CI?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=30&branchName=master)
-
-<!--
-  Note to maintainers: The below example images/links come from a specific build instead of the most recent build so we can link to specific tabs.
-  If you update the links such that they point to a different build, make sure to mark that build as Retained so the links don't expire in a month.
--->
-The accessibility tests run as part of the `dotnet test` build step:
-
-[![Screenshot of "dotnet test" build logs in sample build](./Resources/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2338&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9)
-
-The test pass/fail results display in the Tests tab of the build logs:
-
-[![Screenshot of Tests tab in sample build](./Resources/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2338&view=ms.vss-test-web.build-test-results-tab&runId=6512&resultId=100000&paneView=debug)
-
 ## See it in action on your local machine
 
 1. Install the [.NET Core SDK](https://dotnet.microsoft.com/download)
@@ -65,3 +49,22 @@ The test pass/fail results display in the Tests tab of the build logs:
    ```
 
    ![Screenshot of 'dotnet test' command showing all tests passing](./Resources/screenshot-dotnet-test-success.png)
+
+   ![Screenshot of 'dotnet test' command showing some accessibility violations](./Resources/screenshot-dotnet-test-failure.png)
+
+## See it in action in Azure Pipelines
+
+* Example build with failures: [![Azure Pipelines Build Status for failing example build](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/%5Bfailing%20example%5D%20csharp-selenium-webdriver-sample?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=33&branchName=master)
+* Example build without failures: [![Azure Pipelines Build Status for passing example build](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/%5Bpassing%20example%5D%20csharp-selenium-webdriver-sample?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=32&branchName=master)
+
+<!--
+  Note to maintainers: The below example images/links come from a specific build instead of the most recent build so we can link to specific tabs.
+  If you update the links such that they point to a different build, make sure to mark that build as Retained so the links don't expire in a month.
+-->
+The accessibility tests run as part of the `dotnet test` build step:
+
+[![Screenshot of "dotnet test" build logs in sample build](./Resources/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2338&view=logs&j=12f1170f-54f2-53f3-20dd-22fc7dff55f9)
+
+The test pass/fail results display in the Tests tab of the build logs:
+
+[![Screenshot of Tests tab in sample build](./Resources/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2338&view=ms.vss-test-web.build-test-results-tab&runId=6512&resultId=100000&paneView=debug)
