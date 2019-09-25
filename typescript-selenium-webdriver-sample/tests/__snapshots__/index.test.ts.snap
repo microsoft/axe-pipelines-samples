@@ -3,302 +3,33 @@
 exports[`index.html has only accessibility issues stored in our snapshot corresponding to only wcag2a and wcag2aa rules 1`] = `
 Array [
   Object {
-    "description": "Ensures all elements with a role attribute use a valid value",
-    "help": "ARIA roles used must conform to valid values",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/aria-roles?application=webdriverjs",
-    "id": "aria-roles",
-    "impact": "critical",
-    "nodes": Array [
-      Object {
-        "all": Array [],
-        "any": Array [],
-        "failureSummary": "Fix all of the following:
-  Role must be one of the valid ARIA roles",
-        "html": "<span role=\\"invalid\\">span with invalid role</span>",
-        "impact": "critical",
-        "none": Array [
-          Object {
-            "data": null,
-            "id": "invalidrole",
-            "impact": "critical",
-            "message": "Role must be one of the valid ARIA roles",
-            "relatedNodes": Array [],
-          },
-        ],
-        "target": Array [
-          "span[role=\\"invalid\\"]",
-        ],
-      },
-    ],
-    "tags": Array [
-      "cat.aria",
-      "wcag2a",
-      "wcag412",
+    "rule": "aria-roles",
+    "targets": Array [
+      Array [
+        "span[role=\\"invalid\\"]",
+      ],
     ],
   },
   Object {
-    "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
-    "help": "Elements must have sufficient color contrast",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/color-contrast?application=webdriverjs",
-    "id": "color-contrast",
-    "impact": "serious",
-    "nodes": Array [
-      Object {
-        "all": Array [],
-        "any": Array [
-          Object {
-            "data": Object {
-              "bgColor": "#ffffff",
-              "contrastRatio": 2.55,
-              "expectedContrastRatio": "4.5:1",
-              "fgColor": "#a2a2a2",
-              "fontSize": "12.0pt (16px)",
-              "fontWeight": "normal",
-            },
-            "id": "color-contrast",
-            "impact": "serious",
-            "message": "Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
-            "relatedNodes": Array [],
-          },
-        ],
-        "failureSummary": "Fix any of the following:
-  Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
-        "html": "<span style=\\"color: #A2A2A2\\">low-contrast text</span>",
-        "impact": "serious",
-        "none": Array [],
-        "target": Array [
-          "li:nth-child(2) > span",
-        ],
-      },
-    ],
-    "tags": Array [
-      "cat.color",
-      "wcag2aa",
-      "wcag143",
+    "rule": "color-contrast",
+    "targets": Array [
+      Array [
+        "li:nth-child(2) > span",
+      ],
     ],
   },
   Object {
-    "description": "Ensures every form element has a label",
-    "help": "Form elements must have labels",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/label?application=webdriverjs",
-    "id": "label",
-    "impact": "critical",
-    "nodes": Array [
-      Object {
-        "all": Array [],
-        "any": Array [
-          Object {
-            "data": null,
-            "id": "aria-label",
-            "impact": "serious",
-            "message": "aria-label attribute does not exist or is empty",
-            "relatedNodes": Array [],
-          },
-          Object {
-            "data": null,
-            "id": "aria-labelledby",
-            "impact": "serious",
-            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
-            "relatedNodes": Array [],
-          },
-          Object {
-            "data": null,
-            "id": "implicit-label",
-            "impact": "critical",
-            "message": "Form element does not have an implicit (wrapped) <label>",
-            "relatedNodes": Array [],
-          },
-          Object {
-            "data": null,
-            "id": "explicit-label",
-            "impact": "critical",
-            "message": "Form element does not have an explicit <label>",
-            "relatedNodes": Array [],
-          },
-          Object {
-            "data": null,
-            "id": "non-empty-title",
-            "impact": "serious",
-            "message": "Element has no title attribute or the title attribute is empty",
-            "relatedNodes": Array [],
-          },
-        ],
-        "failureSummary": "Fix any of the following:
-  aria-label attribute does not exist or is empty
-  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
-  Form element does not have an implicit (wrapped) <label>
-  Form element does not have an explicit <label>
-  Element has no title attribute or the title attribute is empty",
-        "html": "<input type=\\"text\\">",
-        "impact": "critical",
-        "none": Array [],
-        "target": Array [
-          "input",
-        ],
-      },
-    ],
-    "tags": Array [
-      "cat.forms",
-      "wcag2a",
-      "wcag332",
-      "wcag131",
-      "section508",
-      "section508.22.n",
+    "rule": "label",
+    "targets": Array [
+      Array [
+        "input",
+      ],
     ],
   },
 ]
 `;
 
 exports[`index.html has only those accessibility violations present in snapshot 1`] = `
-Array [
-  Object {
-    "description": "Ensures all elements with a role attribute use a valid value",
-    "help": "ARIA roles used must conform to valid values",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/aria-roles?application=webdriverjs",
-    "id": "aria-roles",
-    "impact": "critical",
-    "nodes": Array [
-      Object {
-        "all": Array [],
-        "any": Array [],
-        "failureSummary": "Fix all of the following:
-  Role must be one of the valid ARIA roles",
-        "html": "<span role=\\"invalid\\">span with invalid role</span>",
-        "impact": "critical",
-        "none": Array [
-          Object {
-            "data": null,
-            "id": "invalidrole",
-            "impact": "critical",
-            "message": "Role must be one of the valid ARIA roles",
-            "relatedNodes": Array [],
-          },
-        ],
-        "target": Array [
-          "span[role=\\"invalid\\"]",
-        ],
-      },
-    ],
-    "tags": Array [
-      "cat.aria",
-      "wcag2a",
-      "wcag412",
-    ],
-  },
-  Object {
-    "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
-    "help": "Elements must have sufficient color contrast",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/color-contrast?application=webdriverjs",
-    "id": "color-contrast",
-    "impact": "serious",
-    "nodes": Array [
-      Object {
-        "all": Array [],
-        "any": Array [
-          Object {
-            "data": Object {
-              "bgColor": "#ffffff",
-              "contrastRatio": 2.55,
-              "expectedContrastRatio": "4.5:1",
-              "fgColor": "#a2a2a2",
-              "fontSize": "12.0pt (16px)",
-              "fontWeight": "normal",
-            },
-            "id": "color-contrast",
-            "impact": "serious",
-            "message": "Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
-            "relatedNodes": Array [],
-          },
-        ],
-        "failureSummary": "Fix any of the following:
-  Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
-        "html": "<span style=\\"color: #A2A2A2\\">low-contrast text</span>",
-        "impact": "serious",
-        "none": Array [],
-        "target": Array [
-          "li:nth-child(2) > span",
-        ],
-      },
-    ],
-    "tags": Array [
-      "cat.color",
-      "wcag2aa",
-      "wcag143",
-    ],
-  },
-  Object {
-    "description": "Ensures every form element has a label",
-    "help": "Form elements must have labels",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/label?application=webdriverjs",
-    "id": "label",
-    "impact": "critical",
-    "nodes": Array [
-      Object {
-        "all": Array [],
-        "any": Array [
-          Object {
-            "data": null,
-            "id": "aria-label",
-            "impact": "serious",
-            "message": "aria-label attribute does not exist or is empty",
-            "relatedNodes": Array [],
-          },
-          Object {
-            "data": null,
-            "id": "aria-labelledby",
-            "impact": "serious",
-            "message": "aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty",
-            "relatedNodes": Array [],
-          },
-          Object {
-            "data": null,
-            "id": "implicit-label",
-            "impact": "critical",
-            "message": "Form element does not have an implicit (wrapped) <label>",
-            "relatedNodes": Array [],
-          },
-          Object {
-            "data": null,
-            "id": "explicit-label",
-            "impact": "critical",
-            "message": "Form element does not have an explicit <label>",
-            "relatedNodes": Array [],
-          },
-          Object {
-            "data": null,
-            "id": "non-empty-title",
-            "impact": "serious",
-            "message": "Element has no title attribute or the title attribute is empty",
-            "relatedNodes": Array [],
-          },
-        ],
-        "failureSummary": "Fix any of the following:
-  aria-label attribute does not exist or is empty
-  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
-  Form element does not have an implicit (wrapped) <label>
-  Form element does not have an explicit <label>
-  Element has no title attribute or the title attribute is empty",
-        "html": "<input type=\\"text\\">",
-        "impact": "critical",
-        "none": Array [],
-        "target": Array [
-          "input",
-        ],
-      },
-    ],
-    "tags": Array [
-      "cat.forms",
-      "wcag2a",
-      "wcag332",
-      "wcag131",
-      "section508",
-      "section508.22.n",
-    ],
-  },
-]
-`;
-
-exports[`index.html has only those accessibility violations present in snapshot 2`] = `
 Array [
   Object {
     "rule": "aria-roles",
