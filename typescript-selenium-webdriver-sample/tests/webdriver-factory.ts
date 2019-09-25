@@ -9,16 +9,17 @@ export function createWebdriverFromEnvironmentVariableSettings(): webdriver.Then
     // Selenium WebDriver implementations generally require that you use a version of the webdriver
     // that exactly matches the version of the browser it is driving.
     //
-    // In our Azure Pipelines build agents, using the pre-installed versions of the webdrivers that
-    // match the pre-installed versions of the browsers. To achieve this, we check for whether the
-    // environment variables ChromeWebDriver/GeckoWebDriver are defined and use those paths if so;
-    // the vmImages we use in azure-pipelines.yml come with those environment variables pre-set.
+    // Some Azure Pipelines build agents come pre-installed with common browsers and their matching
+    // webdriver versions. To detect whether pre-installed webdrivers are available, we check for
+    // whether the environment variables ChromeWebDriver and GeckoWebDriver are defined; the
+    // vmImages we use in azure-pipelines.yml come with those environment variables pre-set.
     // See https://docs.microsoft.com/en-us/azure/devops/pipelines/test/continuous-test-selenium
     //
-    // During local development, using the chromedriver and geckodriver npm packages to pull down
-    // the web drivers, and keeping their versions up to date with the current stable versions of
-    // Chrome/Firefox. This strategy means individual developers on your team won't have to manually
-    // keep separate global webdriver installations up to date.
+    // For local development, where most developers won't have webdrivers pre-installed, we fall
+    // back to the chromedriver and geckodriver npm packages, which come bundled with one particular
+    // version of the corresponding webdrivers. These packages need to be kept up to date over time
+    // with the current stable versions of Chrome/Firefox. This strategy means individual developers
+    // on your team won't have to manually keep separate global webdriver installations up to date.
     const azurePipelinesAgentChromeDriverPath = webdriverPathFromEnvVar('ChromeWebDriver', 'chromedriver.exe');
     const chromeDriverPath = azurePipelinesAgentChromeDriverPath || require('chromedriver').path;
 
