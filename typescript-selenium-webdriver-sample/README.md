@@ -1,6 +1,13 @@
 # typescript-selenium-webdriver-sample
 
-This sample demonstrates how you might set up a CI build for a simple, static html page to perform end to end accessibility tests in a browser, including how to suppress pre-existing or third-party failures using [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing).
+This sample demonstrates how you might set up a CI build for a simple, static html page to perform end to end accessibility tests in a browser, including how to suppress pre-existing or third-party failures using [Jest Snapshot Testing](https://jestjs.io/docs/en/snapshot-testing). 
+
+This sample uses Selenium WebDriver for browser automation and uses the corresponding axe-webdriverjs library to integrate Axe and Selenium. But you don't have to use Selenium to use Axe! If you prefer a different browser automation tool, you can still follow the same concepts from this sample by using the integration library appropriate for your framework:
+
+* For **Puppeteer**, use [axe-puppeteer](https://www.npmjs.com/package/axe-puppeteer)
+* For **Cypress**, use [cypress-axe](https://www.npmjs.com/package/cypress-axe)
+* For **WebdriverIO**, use [axe-webdriverio](https://www.npmjs.com/package/axe-webdriverio)
+* For **Protractor**, keep using axe-webdriverjs like the sample shows, but instead of creating your own Webdriver object, pass [`browser.webdriver`](https://www.protractortest.org/#/api?view=ProtractorBrowser) to axe-webdriverjs.
 
 ## Getting Started
 
@@ -33,15 +40,15 @@ Some good places to start reading are:
 -->
 The accessibility tests run as part of the `yarn test` build step:
 
-[![Screenshot of "yarn test" build logs in sample build](./assets/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=1283)
+[![Screenshot of "yarn test" build logs in sample build](./assets/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2228)
 
 The test pass/fail results display in the Tests tab of the build logs:
 
-[![Screenshot of Tests tab in sample build](./assets/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=1283&view=ms.vss-test-web.build-test-results-tab)
+[![Screenshot of Tests tab in sample build](./assets/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2228&view=ms.vss-test-web.build-test-results-tab)
 
 Detailed accessibliity scan information also appears in the Scans tab, courtesy of the [Sarif Viewer Build Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab):
 
-[![Screenshot of Scans tab in sample build](./assets/screenshot-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=1283&view=sariftools.sarif-viewer-build-tab.sariftools.sarif-viewer-build-tab)
+[![Screenshot of Scans tab in sample build](./assets/screenshot-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2228&view=sariftools.sarif-viewer-build-tab.sariftools.sarif-viewer-build-tab)
 
 ## See it in action on your local machine
 
@@ -65,4 +72,4 @@ Detailed accessibliity scan information also appears in the Scans tab, courtesy 
    yarn test # or npm test
    ```
 
-   ![Screenshot of jest command showing all tests passing](./assets/screenshot-jest-success.png)
+   ![Screenshot of yarn test command showing all tests passing](./assets/screenshot-yarn-test-success.png)

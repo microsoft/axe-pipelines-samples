@@ -5,7 +5,7 @@ Array [
   Object {
     "description": "Ensures all elements with a role attribute use a valid value",
     "help": "ARIA roles used must conform to valid values",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.2/aria-roles?application=webdriverjs",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/aria-roles?application=webdriverjs",
     "id": "aria-roles",
     "impact": "critical",
     "nodes": Array [
@@ -39,7 +39,7 @@ Array [
   Object {
     "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
     "help": "Elements must have sufficient color contrast",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.2/color-contrast?application=webdriverjs",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/color-contrast?application=webdriverjs",
     "id": "color-contrast",
     "impact": "serious",
     "nodes": Array [
@@ -52,17 +52,17 @@ Array [
               "contrastRatio": 2.55,
               "expectedContrastRatio": "4.5:1",
               "fgColor": "#a2a2a2",
-              "fontSize": "12.0pt",
+              "fontSize": "12.0pt (16px)",
               "fontWeight": "normal",
             },
             "id": "color-contrast",
             "impact": "serious",
-            "message": "Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt, font weight: normal). Expected contrast ratio of 4.5:1",
+            "message": "Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
             "relatedNodes": Array [],
           },
         ],
         "failureSummary": "Fix any of the following:
-  Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt, font weight: normal). Expected contrast ratio of 4.5:1",
+  Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
         "html": "<span style=\\"color: #A2A2A2\\">low-contrast text</span>",
         "impact": "serious",
         "none": Array [],
@@ -80,7 +80,7 @@ Array [
   Object {
     "description": "Ensures every form element has a label",
     "help": "Form elements must have labels",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.2/label?application=webdriverjs",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/label?application=webdriverjs",
     "id": "label",
     "impact": "critical",
     "nodes": Array [
@@ -154,7 +154,7 @@ Array [
   Object {
     "description": "Ensures all elements with a role attribute use a valid value",
     "help": "ARIA roles used must conform to valid values",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.2/aria-roles?application=webdriverjs",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/aria-roles?application=webdriverjs",
     "id": "aria-roles",
     "impact": "critical",
     "nodes": Array [
@@ -188,7 +188,7 @@ Array [
   Object {
     "description": "Ensures the contrast between foreground and background colors meets WCAG 2 AA contrast ratio thresholds",
     "help": "Elements must have sufficient color contrast",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.2/color-contrast?application=webdriverjs",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/color-contrast?application=webdriverjs",
     "id": "color-contrast",
     "impact": "serious",
     "nodes": Array [
@@ -201,17 +201,17 @@ Array [
               "contrastRatio": 2.55,
               "expectedContrastRatio": "4.5:1",
               "fgColor": "#a2a2a2",
-              "fontSize": "12.0pt",
+              "fontSize": "12.0pt (16px)",
               "fontWeight": "normal",
             },
             "id": "color-contrast",
             "impact": "serious",
-            "message": "Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt, font weight: normal). Expected contrast ratio of 4.5:1",
+            "message": "Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
             "relatedNodes": Array [],
           },
         ],
         "failureSummary": "Fix any of the following:
-  Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt, font weight: normal). Expected contrast ratio of 4.5:1",
+  Element has insufficient color contrast of 2.55 (foreground color: #a2a2a2, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1",
         "html": "<span style=\\"color: #A2A2A2\\">low-contrast text</span>",
         "impact": "serious",
         "none": Array [],
@@ -229,7 +229,7 @@ Array [
   Object {
     "description": "Ensures every form element has a label",
     "help": "Form elements must have labels",
-    "helpUrl": "https://dequeuniversity.com/rules/axe/3.2/label?application=webdriverjs",
+    "helpUrl": "https://dequeuniversity.com/rules/axe/3.3/label?application=webdriverjs",
     "id": "label",
     "impact": "critical",
     "nodes": Array [

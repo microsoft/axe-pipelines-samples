@@ -1,0 +1,80 @@
+# Copyright (c) Microsoft Corporation. All rights reserved.
+# Licensed under the MIT License.
+
+# This file defines an Azure Pipelines build, which you can configure on https://dev.azure.com
+# to run automatically with each Pull Request update and/or each commit to your repository.
+# In this example, we do not change the default "trigger" behavior, so this build gets run
+# for all commits/PRs to all branches of the axe-pipelines-samples repository.
+#
+# If you already have an Azure Pipelines build for your project, we recommend integrating
+# your new accessibility tests into it, rather than creating a separate pipeline. Pipelines
+# builds are usually defined in files like this one named "azure-pipelines.yml" or "build.yaml",
+# but some projects use different file names.
+#
+# If you are using an Azure Pipelines build with tasks configured using the GUI on https://dev.azure.com,
+# instead of a checked in YAML file, you can add the same tasks listed below from the GUI. However, we
+# strongly recommend switching to using a checked in YAML file.
+#
+# Most C# projects with an Azure Pipelines build will already have most of the steps shown below
+#
+# If you *don't* already have an Azure Pipelines build, we recommend following Azure Pipelines'
+# documentation at https://docs.microsoft.com/en-us/azure/devops/pipelines/create-first-pipeline
+# (using this sample as your starter code).
+#
+# For more information, see:
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/customize-pipeline
+
+# The browser automation tool we're using, Selenium, works with many different browsers. Here, we show
+# an example of using the same test code with different combinations of browsers and OSes.
+#
+# For more information, see:
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-multiplatform
+strategy:
+  matrix:
+    win-chrome:
+      imageName: windows-2019
+      browser: chrome
+    linux-firefox:
+      imageName: ubuntu-16.04
+      browser: firefox
+
+pool:
+  vmImage: $(imageName)
+
+variables:
+  # This will be sent to the build agent as an environment variable which our test code will be able to see.
+  # We'll use this environment variable in WebDriverFactory.cs to determine which browser the tests will use.
+  SELENIUM_BROWSER: $(browser)
+  # This skips unnecessary steps during dotnet restore and saves ~30-60s
+  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
+
+steps:
+  # This task makes sure .NET Core SDK is installed on the build agent.
+  #
+  # It is a good idea to test against a specific, known version of .NET Core SDK; this makes it easier for other users
+  # to reproduce your build results.
+  - task: DotNetCoreInstaller@1
+    displayName: install .NET Core SDK 2.2.401
+    inputs:
+      version: '2.2.401'
+
+  - task: DotNetCoreCLI@2
+    displayName: dotnet restore
+    inputs:
+      command: restore
+      projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
+
+  # Using DotNetCoreCLI rather than a "script" step that runs "dotnet test" makes it easier to publish the test results
+  # to see along with the rest of the build details in the Azure Pipelines web UI.
+  - task: DotNetCoreCLI@2
+    displayName: dotnet test
+    inputs:
+      command: test
+      projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
+      publishTestResults: true
+      testRunTitle: "dotnet test ($(imageName) $(browser))"
+      # We use this EXTRA_DOTNET_TEST_ARGUMENTS variable in the sample's CI/PR builds so the "success" examples can --filter
+      # out the tests that intentionally fail for example purposes. You probably don't need this in a real project.
+      arguments: $(EXTRA_DOTNET_TEST_ARGUMENTS)
+

@@ -1,0 +1,22 @@
+﻿<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <title>Example page with some accessibility issues</title>
+</head>
+<body>
+    <main>
+        <h1>This is a static sample page with some accessibility issues</h1>
+        <h2>Here are some examples of content without axe-core violations</h2>
+        <p id="id-of-example-accessible-element">There's nothing wrong with this paragraph!</p>
+        <p class="class-of-example-accessible-element">There's also nothing wrong with this paragraph!</p>
+        <iframe id="id-of-iframe" title="example of an iframe" srcdoc="&lt;p id='id-of-element-inside-iframe'>Nothing wrong here either!&lt;/p>"></iframe>
+
+        <h2>Here are some examples of content with different types of axe-core violations</h2>
+        <ul id="id-of-example-accessibility-violation-list">
+            <li>This input box lacks an accessible label, which violates wcag2a rule "label": <input id="example-wcag2a-violation" type="text"></li>
+            <li>This text's color contrast is too low, which violates wcag2aa rule "color-contrast": <span id="example-wcag2aa-violation" style="color: #A2A2A2">low-contrast text</span></li>
+            <li>This button uses a tabindex greater than 0, which violates best-practice rule "tabindex": <button id="example-best-practice-violation" tabindex="1">button with high tabindex</button></li>
+        </ul>
+    </main>
+</body>
+</html>
