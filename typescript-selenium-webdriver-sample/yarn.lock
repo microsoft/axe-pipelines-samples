@@ -389,10 +389,10 @@
   resolved "https://registry.yarnpkg.com/@types/minimatch/-/minimatch-3.0.3.tgz#3dca0e3f33b200fc7d1139c0cd96c1268cadfd9d"
   integrity sha512-tHq6qdbT9U1IRSGf14CL0pUlULksvY9OZ+5eEgl1N7t+OA3tGvNpxJCzuKQlsNgCVwbAs670L1vcVQi8j9HjnA==
 
-"@types/node@*", "@types/node@^12.7.7":
-  version "12.7.7"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.7.tgz#f9bd8c00fa9e1a8129af910fc829f6139c397d6c"
-  integrity sha512-4jUncNe2tj1nmrO/34PsRpZqYVnRV1svbU78cKhuQKkMntKB/AmdLyGgswcZKjFHEHGpiY8pVD8CuVI55nP54w==
+"@types/node@*", "@types/node@^12.7.8":
+  version "12.7.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-12.7.8.tgz#cb1bf6800238898bc2ff6ffa5702c3cadd350708"
+  integrity sha512-FMdVn84tJJdV+xe+53sYiZS4R5yn1mAIxfj+DVoNiQjTYz1+OYmjwEZr1ev9nU0axXwda0QDbYl06QHanRVH3A==
 
 "@types/sarif@>=2.1.1 <=2.1.2":
   version "2.1.2"
@@ -613,10 +613,10 @@ axe-core@^3.2.2, axe-core@^3.3.1:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.3.1.tgz#3d1fa78cca8ead1b78c350581501e4e37b97b826"
   integrity sha512-gw1T0JptHPF4AdLLqE8yQq3Z7YvsYkpFmFWd84r6hnq/QoKRr8icYHFumhE7wYl5TVIHgVlchMyJsAYh0CfwCQ==
 
-axe-sarif-converter@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.1.0.tgz#e6029c2d991f9042cdd542942ad997d69c45b481"
-  integrity sha512-ufSEtjyt3Crnf9kuCqbR/CSjpaixQUTIZv/wBnbpPhPLIjzu2GwOodadUmJ2bwsFPv5hm85NIe3sNDkogKf0Tw==
+axe-sarif-converter@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.2.0.tgz#a975720b75ba918bdddd32e3b5e64a1e4b411353"
+  integrity sha512-vZTR85ZQeCfiZzqUHV3znLTRJXx1PG4XNbDHbx7A3P1rTvUbkp5+ntW+RXrggppkS4PDktN6THcSf8KXKtcUHw==
   dependencies:
     "@types/sarif" ">=2.1.1 <=2.1.2"
     axe-core "^3.2.2"
@@ -958,15 +958,14 @@ create-error-class@^3.0.1:
   dependencies:
     capture-stack-trace "^1.0.0"
 
-cross-env@^5.2.0:
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.2.0.tgz#6ecd4c015d5773e614039ee529076669b9d126f2"
-  integrity sha512-jtdNFfFW1hB7sMhr/H6rW1Z45LFqyI431m3qU6bFXcQ3Eh7LtBuG3h74o7ohHZ3crrRkkqHlo4jYHFPcjroANg==
+cross-env@^6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-6.0.0.tgz#3c8e71440ea20aa6faaf5aec541235efc565dac6"
+  integrity sha512-G/B6gtkjgthT8AP/xN1wdj5Xe18fVyk58JepK8GxpUbqcz3hyWxegocMbvnZK+KoTslwd0ACZ3woi/DVUdVjyQ==
   dependencies:
-    cross-spawn "^6.0.5"
-    is-windows "^1.0.0"
+    cross-spawn "^7.0.0"
 
-cross-spawn@^6.0.0, cross-spawn@^6.0.5:
+cross-spawn@^6.0.0:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
   integrity sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==
@@ -974,6 +973,15 @@ cross-spawn@^6.0.0, cross-spawn@^6.0.5:
     nice-try "^1.0.4"
     path-key "^2.0.1"
     semver "^5.5.0"
+    shebang-command "^1.2.0"
+    which "^1.2.9"
+
+cross-spawn@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-7.0.0.tgz#21ef9470443262f33dba80b2705a91db959b2e03"
+  integrity sha512-6U/8SMK2FBNnB21oQ4+6Nsodxanw1gTkntYA2zBdkFYFu3ZDx65P2ONEXGSvob/QS6REjVHQ9zxzdOafwFdstw==
+  dependencies:
+    path-key "^3.1.0"
     shebang-command "^1.2.0"
     which "^1.2.9"
 
@@ -1444,10 +1452,10 @@ gauge@~2.7.3:
     strip-ansi "^3.0.1"
     wide-align "^1.1.0"
 
-geckodriver@^1.16.2:
-  version "1.16.2"
-  resolved "https://registry.yarnpkg.com/geckodriver/-/geckodriver-1.16.2.tgz#4766e6eb6835e9ec8797f1dce1966df2b3fb5985"
-  integrity sha512-kXZP4QferAv57Ru4Fx2WYuu//ErKJP4hPEkJm4mSETo42jsdYFwdNxwQ4vCGhf14gsCdxU9YrwNupJ8gr1GxPg==
+geckodriver@^1.18.0:
+  version "1.18.0"
+  resolved "https://registry.yarnpkg.com/geckodriver/-/geckodriver-1.18.0.tgz#a4d9b0504be26ed933d7be208b06b15833e32415"
+  integrity sha512-PFBq5UsngfLrxmNqnynix4rQgOkOWCKl3I3PlXCROiTQKSE2znIK9MnEUNQznzxNOPMRt1RGGy2cinIARSRvKQ==
   dependencies:
     adm-zip "0.4.11"
     bluebird "3.4.6"
@@ -1886,7 +1894,7 @@ is-url@^1.2.2:
   resolved "https://registry.yarnpkg.com/is-url/-/is-url-1.2.4.tgz#04a4df46d28c4cff3d73d01ff06abeb318a1aa52"
   integrity sha512-ITvGim8FhRiYe4IQ5uHSkj7pVaPDrCTkNd3yq3cV7iZAcJdHTUMPMEHcqSOy9xZ9qFenQCvi+2wjH9a1nXqHww==
 
-is-windows@^1.0.0, is-windows@^1.0.2:
+is-windows@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/is-windows/-/is-windows-1.0.2.tgz#d1850eb9791ecd18e6182ce12a30f396634bb19d"
   integrity sha512-eXK1UInq2bPmjyX6e3VHIzMLobc4J94i4AWn+Hpq3OU5KkrRC96OAcR3PRJ/pGu6m8TRnBHP9dkXQVsT/COVIA==
@@ -3040,6 +3048,11 @@ path-key@^2.0.0, path-key@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/path-key/-/path-key-2.0.1.tgz#411cadb574c5a140d3a4b1910d40d80cc9f40b40"
   integrity sha1-QRyttXTFoUDTpLGRDUDYDMn0C0A=
+
+path-key@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/path-key/-/path-key-3.1.0.tgz#99a10d870a803bdd5ee6f0470e58dfcd2f9a54d3"
+  integrity sha512-8cChqz0RP6SHJkMt48FW0A7+qUOn+OsnOsVtzI59tZ8m+5bCSk7hzwET0pulwOM2YMn9J1efb07KB9l9f30SGg==
 
 path-parse@^1.0.6:
   version "1.0.6"
