@@ -10,7 +10,7 @@
         "axe-sarif-converter": "^2.2.0",
         "axe-webdriverjs": "^2.3.0",
         "chromedriver": "^77.0.0",
-        "cross-env": "^6.0.0",
+        "cross-env": "^6.0.3",
         "geckodriver": "^1.18.0",
         "jest": "^24.9.0",
         "jest-circus": "^24.9.0",
