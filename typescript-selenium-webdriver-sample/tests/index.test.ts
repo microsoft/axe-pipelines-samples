@@ -48,6 +48,17 @@ describe('index.html', () => {
         await driver.wait(until.elementLocated(By.css('h1')));
     }, TEST_TIMEOUT_MS);
 
+    // This test case shows the most basic example: run a scan, fail the test if there are any failures.
+    // This is the way to go if you have no known/pre-existing violations you need to temporarily baseline.
+    it('has no accessibility violations in the h1 element', async () => {
+        const accessibilityScanResults = await AxeWebdriverjs(driver)
+            .include('h1')
+            .analyze();
+
+        await exportAxeAsSarifTestResult('index-h1-element.sarif', accessibilityScanResults);
+
+        expect(accessibilityScanResults.violations).toStrictEqual([]);
+    }, TEST_TIMEOUT_MS);
 
     // If you want to run a scan of a page but need to exclude an element with known issues (eg, a third-party
     // component you don't control fixing yourself), you can exclude it specifically and still scan the rest
