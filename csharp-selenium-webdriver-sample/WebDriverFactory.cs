@@ -63,7 +63,13 @@ namespace CSharpSeleniumWebdriverSample
                     firefoxOptions.AddArgument("-headless");
                     firefoxOptions.AddArguments("-width", $"{windowWidth}", "-height", $"{windowHeight}");
 
-                    return new FirefoxDriver(geckoDriverDirectory, firefoxOptions);
+                    var firefoxDriverService = FirefoxDriverService.CreateDefaultService(geckoDriverDirectory);
+                    // This is a workaround for Windows-specific performance issues caused by https://github.com/mozilla/geckodriver/issues/1496
+                    if (Platform.CurrentPlatform.IsPlatformType(PlatformType.Windows)) {
+                        firefoxDriverService.Host = "::1";
+                    }
+
+                    return new FirefoxDriver(firefoxDriverService, firefoxOptions);
 
                 default:
                     throw new ArgumentException($"Unknown browser type '{browserEnvVar}' specified in '{BROWSER_ENVIRONMENT_VARIABLE}' environment variable");
