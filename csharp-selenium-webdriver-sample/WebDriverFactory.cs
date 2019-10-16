@@ -56,7 +56,10 @@ namespace CSharpSeleniumWebdriverSample
 
                     var firefoxDriverService = FirefoxDriverService.CreateDefaultService(geckoDriverDirectory);
                     // This is a workaround for Windows-specific performance issues caused by https://github.com/mozilla/geckodriver/issues/1496
-                    firefoxDriverService.Host = "::1";
+                    if (Platform.CurrentPlatform.IsPlatformType(PlatformType.Windows)) {
+                        firefoxDriverService.Host = "::1";
+                    }
+
                     return new FirefoxDriver(firefoxDriverService, firefoxOptions);
 
                 default:
