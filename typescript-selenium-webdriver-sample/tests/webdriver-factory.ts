@@ -26,6 +26,12 @@ export function createWebdriverFromEnvironmentVariableSettings(): webdriver.Then
     const azurePipelinesAgentGeckoDriverPath = webdriverPathFromEnvVar('GeckoWebDriver', 'geckodriver.exe');
     const geckoDriverPath = azurePipelinesAgentGeckoDriverPath || require('geckodriver').path;
 
+    // Headless browsers generally use small window sizes by default. Some of the axe checks require
+    // elements to be present in the viewport to be assessable, so using a viewport size based on your
+    // most common usage is a good idea to prevent axe from having to do extra work to scroll items into
+    // view and avoid issues with elements not fitting into the viewport.
+    const windowSize = {width: 1920, height: 1080};
+
     return new webdriver.Builder()
         // forBrowser sets the *default* browser the tests will use. You can override the defaults
         // by setting the SELENIUM_BROWSER environment variable. This project's package.json includes
@@ -35,9 +41,9 @@ export function createWebdriverFromEnvironmentVariableSettings(): webdriver.Then
         // You can run accessibility scans on head-ful browsers, too; we recommend using headless
         // browsers unless your project strictly requires head-ful testing, since it will generally
         // be faster, more reliable, and easier to run in non-graphical environments (eg, Docker).
-        .setChromeOptions(new chrome.Options().headless())
+        .setChromeOptions(new chrome.Options().headless().windowSize(windowSize))
         .setFirefoxService(new firefox.ServiceBuilder(geckoDriverPath))
-        .setFirefoxOptions(new firefox.Options().headless())
+        .setFirefoxOptions(new firefox.Options().headless().windowSize(windowSize))
         .build();
 }
 
