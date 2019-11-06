@@ -17,7 +17,7 @@
         "jest-junit": "^9.0.0",
         "selenium-webdriver": "^4.0.0-alpha.5",
         "ts-jest": "^24.1.0",
-        "typescript": "^3.6.4"
+        "typescript": "^3.7.2"
     },
     "scripts": {
         "test": "jest",
