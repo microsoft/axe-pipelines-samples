@@ -1,5 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
+import { reporterFactory } from 'accessibility-insights-report';
 import * as Axe from 'axe-core';
 import { convertAxeToSarif } from 'axe-sarif-converter';
 import * as AxeWebdriverjs from 'axe-webdriverjs';
@@ -13,6 +14,7 @@ import { createWebdriverFromEnvironmentVariableSettings } from './webdriver-fact
 const TEST_TIMEOUT_MS = 30000;
 
 describe('index.html', () => {
+    const reporter = reporterFactory();
     let driver: ThenableWebDriver;
 
     // Starting a browser instance is time-consuming, so we share one browser instance between
@@ -55,7 +57,7 @@ describe('index.html', () => {
             .include('h1')
             .analyze();
 
-        await exportAxeAsSarifTestResult('index-h1-element.sarif', accessibilityScanResults);
+        await exportResults('index-h1-element', accessibilityScanResults);
 
         expect(accessibilityScanResults.violations).toStrictEqual([]);
     }, TEST_TIMEOUT_MS);
@@ -68,7 +70,7 @@ describe('index.html', () => {
             .exclude('#example-accessibility-violations')
             .analyze();
 
-        await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults);
+        await exportResults('index-except-examples', accessibilityScanResults);
 
         expect(accessibilityScanResults.violations).toStrictEqual([]);
     }, TEST_TIMEOUT_MS);
@@ -78,7 +80,7 @@ describe('index.html', () => {
     it('has only those accessibility violations present in snapshot', async () => {
         const accessibilityScanResults = await AxeWebdriverjs(driver).analyze();
 
-        await exportAxeAsSarifTestResult('index-page.sarif', accessibilityScanResults);
+        await exportResults('index-page', accessibilityScanResults);
 
         // Snapshotting the entire violations array like this will show the full available information in
         // your test output for any new violations that might occur.
@@ -104,7 +106,7 @@ describe('index.html', () => {
             .withTags(['wcag2a', 'wcag2aa'])
             .analyze();
 
-        await exportAxeAsSarifTestResult('index-with-specific-tags.sarif', accessibilityScanResults);
+        await exportResults('index-with-specific-tags', accessibilityScanResults);
 
         expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
@@ -116,25 +118,54 @@ describe('index.html', () => {
         targets: violation.nodes.map(node => node.target),
     });
 
+    // Export both SARIF and HTML results files
+    async function exportResults(baseFileName: string, axeResults: Axe.AxeResults): Promise<void> {
+        // This directory should be .gitignore'd and should be published as a build artifact in azure-pipelines.yml
+        const testResultsDirectory = path.join(__dirname, '..', 'test-results');
+        await promisify(fs.mkdir)(testResultsDirectory, { recursive: true });
+
+        const baseResultsFile = path.join(testResultsDirectory, baseFileName);
+        await exportAxeAsSarifTestResult(baseResultsFile + '.sarif', axeResults);        
+        await exportAxeAsHtmlReport(baseResultsFile + '.html', axeResults);        
+    }
+
+    // accessibility-insights-report provides a friendly, human-readable, and accessibile report in a downloadable .html file.
+    async function exportAxeAsHtmlReport(htmlReportFile: string, axeResults: Axe.AxeResults): Promise<void> {
+
+        const pageTitle = await driver.getTitle();
+        const browserSpec = await driver.executeScript("return navigator.userAgent") as string;
+
+        const html = reporter.fromAxeResult({
+            results: axeResults,
+            description: '',
+            serviceName: 'typescript-selenium-webdriver-sample',
+            scanContext: {
+                pageTitle,
+                browserSpec,
+            }
+        }).asHTML();
+
+        await promisify(fs.writeFile)(
+            htmlReportFile,
+            html);
+
+        console.log(`Exported HTML report to ${htmlReportFile}`);
+    }
+
     // SARIF is a general-purpose log format for code analysis tools.
     //
     // Exporting axe results as .sarif files lets our Azure Pipelines build results page show a nice visualization
     // of any accessibility failures we find using the Sarif Results Viewer Tab extension
     // (https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab)
-    async function exportAxeAsSarifTestResult(sarifFileName: string, axeResults: Axe.AxeResults): Promise<void> {
+    async function exportAxeAsSarifTestResult(sarifResultFile: string, axeResults: Axe.AxeResults): Promise<void> {
         // We use the axe-sarif-converter package for the conversion step, then write the results
         // to a file that we'll be publishing from a CI build step in azure-pipelines.yml
         const sarifResults = convertAxeToSarif(axeResults);
 
-        // This directory should be .gitignore'd and should be published as a build artifact in azure-pipelines.yml
-        const testResultsDirectory = path.join(__dirname, '..', 'test-results');
-        await promisify(fs.mkdir)(testResultsDirectory, { recursive: true });
-
-        const sarifResultFile = path.join(testResultsDirectory, sarifFileName);
         await promisify(fs.writeFile)(
             sarifResultFile,
             JSON.stringify(sarifResults, null, 2));
 
-        console.log(`Exported axe results to ${sarifResultFile}`);
+        console.log(`Exported SARIF results to ${sarifResultFile}`);
     }
 });

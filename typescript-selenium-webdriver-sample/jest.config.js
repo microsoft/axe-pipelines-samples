@@ -13,6 +13,12 @@ module.exports = {
     // See https://github.com/facebook/jest/issues/2713 for details.
     testRunner: 'jest-circus/runner',
 
+    moduleNameMapper: {
+        'office-ui-fabric-react/lib/(.*)$': 'office-ui-fabric-react/lib-commonjs/$1',
+        '@uifabric/utilities': '@uifabric/utilities/lib-commonjs',
+        '@uifabric/styling': '@uifabric/styling/lib-commonjs',
+    },
+
     reporters: [
         // This enables console output for local development and build log output in Pipelines.
         'default',
