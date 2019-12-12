@@ -29,6 +29,7 @@ Some good places to start reading are:
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
 * [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) to convert axe results to SARIF format
 * [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the results in Azure Pipelines
+* [accessibility-insights-report](https://github.com/microsoft/accessibility-insights-web) to provide a downloadable HTML report similar to [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview).
 
 ## See it in action in Azure Pipelines
 
