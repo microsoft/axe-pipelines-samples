@@ -1,6 +1,11 @@
 
 # Axe + Azure Pipelines: Automate accessibility testing in your CI builds
 
+Watch a [short intro video](https://www.youtube.com/watch?v=SarmnCULt8M) to get started with automated accessibility tests in Azure pipelines. Please note that these samples are applicable to web projects that have UI automation tests. Benefits include,
+* Automated accessibility tests run during Continuous Integration and Pull Request builds, ensuring that all code changes are free of common easily-detected accessibility issues before they go to production
+* Builds can be configured to fail based on the results of the automated accessibility tests, preventing both new accessibility bugs and regressions
+* Failure details and _how to fix_ information can be viewed in Azure DevOps under Builds, making it quick and easy to investigate and resolve the accessibility issues
+
 This repository contains sample projects (see next section [Available samples](#available-samples)) demonstrating how to implement automated accessibility testing in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) builds using [axe-core](https://github.com/dequelabs/axe-core), the same accessibility scanning engine used in [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview).
 
 ## Available samples
