@@ -22,7 +22,7 @@ The following sample projects specify the main technologies used. A team that us
 
 ## Disclaimer
 
-Automated accessibility tests can detect some common accessibility problems such as missing or invalid properties. But most accessibility problems can only be discovered through manual testing. We recommend [Accessibility Insights](https://accessibilityinsights.io/docs/en/web/overview), a free and open source dev tool that walks you though assessing a website for 100% [WCAG 2.0 AA](https://www.w3.org/WAI/WCAG21/quickref/?currentsidebar=%23col_overview&versions=2.0&levels=aaa) coverage.
+Automated accessibility tests can detect some common accessibility problems such as missing or invalid properties. But most accessibility problems can only be discovered through manual testing. We recommend __both__ automated testing, to continuously protect against simple types of issues, and regular manual assessments with [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview), a free and open source dev tool that walks you through assessing a website for [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/quickref/?currentsidebar=%23col_customize&levels=aaa) coverage.
 
 ## Contributing
 
