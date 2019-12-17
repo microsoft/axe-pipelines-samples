@@ -5,7 +5,7 @@
     "private": true,
     "devDependencies": {
         "@types/jest": "^24.0.23",
-        "@types/node": "^12.12.18",
+        "@types/node": "^12.12.19",
         "@types/selenium-webdriver": "^4.0.6",
         "axe-sarif-converter": "^2.2.0",
         "axe-webdriverjs": "^2.3.0",
