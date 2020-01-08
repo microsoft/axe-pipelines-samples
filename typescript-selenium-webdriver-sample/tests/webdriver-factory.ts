@@ -4,8 +4,9 @@ import * as webdriver from 'selenium-webdriver';
 import * as chrome from 'selenium-webdriver/chrome';
 import * as firefox from 'selenium-webdriver/firefox';
 import * as path from 'path';
+const isElevated = require('is-elevated');
 
-export function createWebdriverFromEnvironmentVariableSettings(): webdriver.ThenableWebDriver {
+export async function createWebdriverFromEnvironmentVariableSettings(): Promise<webdriver.WebDriver> {
     // Selenium WebDriver implementations generally require that you use a version of the webdriver
     // that exactly matches the version of the browser it is driving.
     //
@@ -31,6 +32,23 @@ export function createWebdriverFromEnvironmentVariableSettings(): webdriver.Then
     // most common usage is a good idea to prevent axe from having to do extra work to scroll items into
     // view and avoid issues with elements not fitting into the viewport.
     const windowSize = {width: 1920, height: 1080};
+
+    // Chrome's sandboxing does not support communication with ChromeDriver in elevated contexts, so
+    // you will need to either avoid running your tests from root/admin command prompts or pass the
+    // "--no-sandbox" argument to Chrome in the setChromeOptions call further down in this file.
+    //
+    // We strongly recommend *not* using elevated command prompts for general development purposes,
+    // and we also recommend *not* using --no-sandbox, even for local testing purposes. However, if
+    // someone (for example, a new contributor to your project) does use an elevated prompt, the
+    // resulting error message can be confusing, so we also recommend using a check like this one to
+    // offer a more understandable error message to contributors that might make a mistake.
+    if (await isElevated()) {
+        throw new Error(`
+            You are running from an elevated (root/admin) context.
+            Chrome's sandboxing prevents communication with Selenium in this configuration.
+            Try again from an un-elevated context.
+        `);
+    }
 
     return new webdriver.Builder()
         // forBrowser sets the *default* browser the tests will use. You can override the defaults

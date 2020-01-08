@@ -5,7 +5,7 @@ import { convertAxeToSarif } from 'axe-sarif-converter';
 import * as AxeWebdriverjs from 'axe-webdriverjs';
 import * as fs from 'fs';
 import * as path from 'path';
-import { By, ThenableWebDriver, until } from 'selenium-webdriver';
+import { By, WebDriver, until } from 'selenium-webdriver';
 import { promisify } from 'util';
 import { createWebdriverFromEnvironmentVariableSettings } from './webdriver-factory';
 
@@ -13,7 +13,7 @@ import { createWebdriverFromEnvironmentVariableSettings } from './webdriver-fact
 const TEST_TIMEOUT_MS = 30000;
 
 describe('index.html', () => {
-    let driver: ThenableWebDriver;
+    let driver: WebDriver;
 
     // Starting a browser instance is time-consuming, so we share one browser instance between
     // all tests in the file (by initializing it in beforeAll rather than beforeEach)
@@ -24,7 +24,7 @@ describe('index.html', () => {
         // global "browser" variable, like this:
         //
         //     driver = browser.webdriver;
-        driver = createWebdriverFromEnvironmentVariableSettings();
+        driver = await createWebdriverFromEnvironmentVariableSettings();
     }, TEST_TIMEOUT_MS);
 
     afterAll(async () => {
