@@ -425,6 +425,11 @@
   dependencies:
     type-detect "4.0.8"
 
+"@testim/chrome-version@^1.0.3":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@testim/chrome-version/-/chrome-version-1.0.6.tgz#e56c1a7f463ee6ceab363b69b642681efcedb809"
+  integrity sha512-sudmtuzBC6MduzAZe3dzc8Ehhtr0Wk/nDjCDBOWsZ5noSLBsdUED+NLuq2eUHHDb5B0FqXwTitAzoLoVZNQUeg==
+
 "@types/babel__core@^7.1.0":
   version "7.1.2"
   resolved "https://registry.yarnpkg.com/@types/babel__core/-/babel__core-7.1.2.tgz#608c74f55928033fce18b99b213c16be4b3d114f"
@@ -965,11 +970,12 @@ chownr@^1.0.1:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.2.tgz#a18f1e0b269c8a6a5d3c86eb298beb14c3dd7bf6"
   integrity sha512-GkfeAQh+QNy3wquu9oIZr6SS5x7wGdSgNQvD10X3r+AZr1Oys22HW8kAmDMvNg2+Dm0TeGaEuO8gFwdBXxwO8A==
 
-chromedriver@^79.0.0:
-  version "79.0.0"
-  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-79.0.0.tgz#1660ac29924dfcd847911025593d6b6746aeea35"
-  integrity sha512-DO29C7ntJfzu6q1vuoWwCON8E9x5xzopt7Q41A7Dr7hBKcdNpGw1l9DTt9b+l1qviOWiJLGsD+jHw21ptEHubA==
+chromedriver@^79.0.2:
+  version "79.0.2"
+  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-79.0.2.tgz#abcd7f95203e70eef28bb26696281c6f0cc3c1ea"
+  integrity sha512-jwgmcTb4UI2cqDAyJBJlGJ/Y6kRVO1VQ3sBw73fFz0TEqKSZfl61ToM53g+G8m5AWVa4ESFkSXEUfQtFZZ6QTA==
   dependencies:
+    "@testim/chrome-version" "^1.0.3"
     del "^4.1.1"
     extract-zip "^1.6.7"
     mkdirp "^0.5.1"
