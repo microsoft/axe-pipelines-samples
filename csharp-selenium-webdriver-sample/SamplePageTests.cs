@@ -28,7 +28,16 @@ namespace CSharpSeleniumWebdriverSample
         [TestCategory("IntentionallyFailsAsAnExample")]
         public void TestAccessibilityOfPage()
         {
-            AxeResult axeResult = new AxeBuilder(_webDriver).Analyze();
+            AxeResult axeResult = new AxeBuilder(_webDriver)
+                // This WithTags directive restricts Axe to only run tests that detect known violations of WCAG 2.1 A and AA rules
+                // (similar to what Accessibility Insights reports). If you omit this, Axe will additionally run several "best practice"
+                // rules, which are good ideas to check for periodically but may report false positives in certain edge cases.
+                //
+                // For complete documentation of which rule IDs and tags axe supports, see:
+                // * summary of rules with IDs and tags: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
+                // * full reference documentation for each rule: https://dequeuniversity.com/rules/axe
+                .WithTags("wcag2a", "wcag2aa", "wcag21aa")
+                .Analyze();
 
             // axeResult.Violations is an array of all the accessibility violations the scan found; the easiest way to assert
             // that a scan came back clean is to assert that the Violations array is empty. You can do this with the built in
@@ -57,7 +66,9 @@ namespace CSharpSeleniumWebdriverSample
             // an element that is hard to identify using a CSS selector.
             IWebElement elementUnderTest = _webDriver.FindElement(By.Id("id-of-example-accessible-element"));
 
-            AxeResult axeResultWithAnalyzeWebElement = new AxeBuilder(_webDriver).Analyze(elementUnderTest);
+            AxeResult axeResultWithAnalyzeWebElement = new AxeBuilder(_webDriver)
+                .WithTags("wcag2a", "wcag2aa", "wcag21aa")
+                .Analyze(elementUnderTest);
 
             axeResultWithAnalyzeWebElement.Violations.Should().BeEmpty();
 
@@ -68,51 +79,10 @@ namespace CSharpSeleniumWebdriverSample
                 .Include("#id-of-example-accessible-element")
                 .Include(".class-of-example-accessible-element")
                 .Include("#id-of-iframe", "#id-of-element-inside-iframe")
+                .WithTags("wcag2a", "wcag2aa", "wcag21aa")
                 .Analyze();
 
             axeResultWithInclude.Violations.Should().BeEmpty();
-        }
-
-        // By default, an axe-core scan will check the page under test against a wide variety of different rules. Some of
-        // these rules correspond directly to the requirements of different accessibility standards documents (most notably
-        // the Web Content Accessibility Guidelines, WCAG); others are best practices, which are generally good ideas but
-        // might have allowable exceptions or might not map neatly to a WCAG requirement.
-        //
-        // This example shows how you would restrict an accessibility scan to only run against *some* of the rules axe-core
-        // provides. You can either specify specific rules to enable/disable, or you can use tags to run all of the rules that
-        // match a particular tag (axe-core uses tags to indicate whether a rule is a "best practice" vs a WCAG requirement).
-        //
-        // For complete documentation of which rule IDs and tags axe supports, see:
-        // * summary of rules with IDs and tags: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
-        // * full reference documentation for each rule: https://dequeuniversity.com/rules/axe
-        [TestMethod]
-        public void TestWithOnlyRulesRequiredByWCAG2AA()
-        {
-            // Axe uses tags to identify which rules are required by WCAG standards. The "wcag2a" tag covers all axe-core rules
-            // that correspond to WCAG 2.0 A success criteria, and the "wcag2aa" and "wcag21aa" tags cover those axe-core rules
-            // that correspond to WCAG 2.0 and 2.1 AA success criteria.
-            //
-            // If you wanted to run a scan against *only* those rules corresponding to WCAG 2.0/2.1 A and AA success criteria,
-            // omitting any best practice rules not directly applicable to a WCAG criteria, you could run a scan like this:
-            AxeResult wcagRequiredResults = new AxeBuilder(_webDriver)
-                .WithTags("wcag2a", "wcag2aa", "wcag21aa")
-                // The element we're analyzing only has a best-practice violation, not a WCAG violation, so this scan won't flag
-                // any Violations.
-                .Analyze(_webDriver.FindElement(By.Id("example-best-practice-violation")));
-
-            wcagRequiredResults.Violations.Should().BeEmpty();
-
-            // If you want to be even more granular, you can also use WithRules to scan just certain individual rules.
-            //
-            // For a complete list of the rules, see:
-            // * https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
-            // * https://dequeuniversity.com/rules/axe
-            AxeResult imageAltResults = new AxeBuilder(_webDriver)
-                .WithRules("image-alt")
-                // Nothing on our test page violates the image-alt rule, so this scan won't flag any Violations either.
-                .Analyze();
-                
-            imageAltResults.Violations.Should().BeEmpty();
         }
 
         // This test case shows how you might baseline some known/pre-existing accessibility violations from your tests.
