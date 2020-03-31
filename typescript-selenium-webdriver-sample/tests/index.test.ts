@@ -52,7 +52,13 @@ describe('index.html', () => {
     // This is the way to go if you have no known/pre-existing violations you need to temporarily baseline.
     it('has no accessibility violations in the h1 element', async () => {
         const accessibilityScanResults = await AxeWebdriverjs(driver)
+            // You can use any CSS selector in place of "h1" here
             .include('h1')
+            // This withTags directive restricts Axe to only run tests that detect known violations of
+            // WCAG 2.1 A and AA rules (similar to what Accessibility Insights reports). If you omit
+            // this, Axe will additionally run several "best practice" rules, which are good ideas to
+            // check for periodically but may report false positives in certain edge cases.
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
             .analyze();
 
         await exportAxeAsSarifTestResult('index-h1-element.sarif', accessibilityScanResults);
@@ -66,6 +72,7 @@ describe('index.html', () => {
     it('has no accessibility violations outside of the known example violations', async () => {
         const accessibilityScanResults = await AxeWebdriverjs(driver)
             .exclude('#example-accessibility-violations')
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
             .analyze();
 
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults);
@@ -76,7 +83,9 @@ describe('index.html', () => {
     // If you want to more precisely baseline a particular set of known issues, one option is to use Jest
     // Snapshot Testing (https://jestjs.io/docs/snapshot-testing) with the scan results object.
     it('has only those accessibility violations present in snapshot', async () => {
-        const accessibilityScanResults = await AxeWebdriverjs(driver).analyze();
+        const accessibilityScanResults = await AxeWebdriverjs(driver)
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+            .analyze();
 
         await exportAxeAsSarifTestResult('index-page.sarif', accessibilityScanResults);
 
@@ -94,18 +103,6 @@ describe('index.html', () => {
         // and snapshot that instead. The Jest Snapshot log output will only include the information from your
         // fingerprint, but you can still use the exported .sarif files to see complete failure information
         // in a SARIF viewer (https://sarifweb.azurewebsites.net/#Viewers) or a text editor.
-        expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
-    }, TEST_TIMEOUT_MS);
-
-    // If you want to run a scan of a page but need your axe scans to include only failures corresponding to WCAG 2.0 A and AA rules,
-    // you can include those tags specifically and axe will only use those tags as rules specifications.
-    it('has only accessibility issues stored in our snapshot corresponding to only wcag2a and wcag2aa rules', async () => {
-        const accessibilityScanResults = await AxeWebdriverjs(driver)
-            .withTags(['wcag2a', 'wcag2aa'])
-            .analyze();
-
-        await exportAxeAsSarifTestResult('index-with-specific-tags.sarif', accessibilityScanResults);
-
         expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
 
