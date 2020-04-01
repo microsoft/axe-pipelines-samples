@@ -5,16 +5,9 @@ import { convertAxeToSarif } from 'axe-sarif-converter';
 import * as AxeWebdriverjs from 'axe-webdriverjs';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Builder, By, ThenableWebDriver, until } from 'selenium-webdriver';
-import * as chrome from 'selenium-webdriver/chrome';
+import { By, ThenableWebDriver, until } from 'selenium-webdriver';
 import { promisify } from 'util';
-
-// This "require" statement performs some global configuration of selenium-webdriver to tell it to use
-// the version of chromedriver that the npm "chromedriver" package downloaded during "yarn install".
-//
-// If you are applying this sample to a project that already uses some other mechanism for installing
-// webdrivers, (eg, Protractor's "webdriver-manager update" command), you can omit this.
-require('chromedriver');
+import { createWebdriverFromEnvironmentVariableSettings } from './webdriver-factory';
 
 // The default timeout for tests/fixtures (5 seconds) is not always enough to start/quit/navigate a browser instance.
 const TEST_TIMEOUT_MS = 30000;
@@ -25,12 +18,13 @@ describe('index.html', () => {
     // Starting a browser instance is time-consuming, so we share one browser instance between
     // all tests in the file (by initializing it in beforeAll rather than beforeEach)
     beforeAll(async () => {
-        // Selenium supports many browsers, not just Chrome.
-        // See https://www.npmjs.com/package/selenium-webdriver for examples.
-        driver = new Builder()
-            .forBrowser('chrome')
-            .setChromeOptions(new chrome.Options().headless())
-            .build();
+        // The helper method we're using here is just an example; if you already have a test suite with
+        // logic for initializing a Selenium WebDriver, you can keep using that. For example, if you are
+        // using Protractor, you would want to use the webdriver instance that Protractor maintains in its
+        // global "browser" variable, like this:
+        //
+        //     driver = browser.webdriver;
+        driver = createWebdriverFromEnvironmentVariableSettings();
     }, TEST_TIMEOUT_MS);
 
     afterAll(async () => {
@@ -88,21 +82,18 @@ describe('index.html', () => {
 
         // Snapshotting the entire violations array like this will show the full available information in
         // your test output for any new violations that might occur.
-        expect(accessibilityScanResults.violations).toMatchSnapshot();
-
+        //
+        //     expect(accessibilityScanResults.violations).toMatchSnapshot();
+        //
         // However, since the "full available information" includes contextual information like "a snippet
-        // of the HTML containing the violation" and "the full xpath to the element containing the violation",
-        // snapshotting the whole violations array is prone to failing when unrelated changes are made to the
-        // element (or even to unrelated ancestors of the element in the DOM).
-
+        // of the HTML containing the violation", snapshotting the whole violations array is prone to failing
+        // when unrelated changes are made to the element (or even to unrelated ancestors of the element in
+        // the DOM).
+        //
         // To avoid that, you can create a helper function to capture a "fingerprint" of a given violation,
         // and snapshot that instead. The Jest Snapshot log output will only include the information from your
         // fingerprint, but you can still use the exported .sarif files to see complete failure information
         // in a SARIF viewer (https://sarifweb.azurewebsites.net/#Viewers) or a text editor.
-        const getViolationFingerprint = (violation: Axe.Result) => ({
-            rule: violation.id,
-            targets: violation.nodes.map(node => node.target),
-        });
         expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
 
@@ -115,8 +106,15 @@ describe('index.html', () => {
 
         await exportAxeAsSarifTestResult('index-with-specific-tags.sarif', accessibilityScanResults);
 
-        expect(accessibilityScanResults.violations).toMatchSnapshot();
+        expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
+
+    // You can make your "fingerprint" function as specific as you like. This one considers a violation to be
+    // "the same" if it corresponds the same Axe rule on the same set of elements.
+    const getViolationFingerprint = (violation: Axe.Result) => ({
+        rule: violation.id,
+        targets: violation.nodes.map(node => node.target),
+    });
 
     // SARIF is a general-purpose log format for code analysis tools.
     //

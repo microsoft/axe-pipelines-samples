@@ -4,20 +4,24 @@
     "description": "Sample project that demonstrates accessibility testing with TypeScript, Jest, Selenium, axe-webdriver, SARIF, and Azure Pipelines.",
     "private": true,
     "devDependencies": {
-        "@types/jest": "^24.0.12",
-        "@types/node": "^12.0.2",
-        "@types/selenium-webdriver": "^4.0.0",
-        "axe-sarif-converter": "^2.0.0",
-        "axe-webdriverjs": "^2.2.0",
-        "chromedriver": "^75.0.1",
-        "jest": "^24.8.0",
-        "jest-circus": "^24.8.0",
-        "jest-junit": "^6.4.0",
-        "selenium-webdriver": "^4.0.0-alpha.1",
-        "ts-jest": "^24.0.2",
-        "typescript": "^3.4.5"
+        "@types/jest": "^25.1.4",
+        "@types/node": "^13.9.8",
+        "@types/selenium-webdriver": "^4.0.9",
+        "axe-sarif-converter": "^2.3.0",
+        "axe-webdriverjs": "^2.3.0",
+        "chromedriver": "^80.0.1",
+        "cross-env": "^7.0.2",
+        "geckodriver": "^1.19.1",
+        "jest": "^25.2.4",
+        "jest-circus": "^25.2.4",
+        "jest-junit": "^10.0.0",
+        "selenium-webdriver": "^4.0.0-alpha.7",
+        "ts-jest": "^25.3.0",
+        "typescript": "^3.8.3"
     },
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "test:firefox": "cross-env SELENIUM_BROWSER=firefox jest",
+        "test:chrome": "cross-env SELENIUM_BROWSER=chrome jest"
     }
 }
