@@ -38,7 +38,7 @@ strategy:
       imageName: windows-2019
       browser: chrome
     linux-firefox:
-      imageName: ubuntu-16.04
+      imageName: ubuntu-18.04
       browser: firefox
 
 pool:
@@ -55,9 +55,9 @@ steps:
   # It is a good idea to test against a specific, known version of Node; this makes it easier for other users
   # to reproduce your build results.
   - task: NodeTool@0
-    displayName: install node 10.16.3
+    displayName: install node 12.16.3
     inputs:
-      versionSpec: '10.16.3'
+      versionSpec: '12.16.3'
 
   # This task installs dependencies specified in your package.json file.
   #
