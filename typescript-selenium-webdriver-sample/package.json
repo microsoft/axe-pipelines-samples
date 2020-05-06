@@ -5,7 +5,7 @@
     "private": true,
     "devDependencies": {
         "@types/jest": "^25.2.1",
-        "@types/node": "^13.13.4",
+        "@types/node": "^13.13.5",
         "@types/selenium-webdriver": "^4.0.9",
         "axe-sarif-converter": "^2.3.1",
         "axe-webdriverjs": "^2.3.0",
@@ -13,10 +13,10 @@
         "cross-env": "^7.0.2",
         "geckodriver": "^1.19.1",
         "jest": "^25.5.4",
-        "jest-circus": "^26.0.0",
+        "jest-circus": "^26.0.1",
         "jest-junit": "^10.0.0",
         "selenium-webdriver": "^4.0.0-alpha.7",
-        "ts-jest": "^25.4.0",
+        "ts-jest": "^25.5.0",
         "typescript": "^3.8.3"
     },
     "scripts": {
