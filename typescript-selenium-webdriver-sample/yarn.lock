@@ -1021,18 +1021,23 @@ aws4@^1.8.0:
   resolved "https://registry.yarnpkg.com/aws4/-/aws4-1.8.0.tgz#f0e003d9ca9e7f59c7a508945d7b2ef9a04a542f"
   integrity sha512-ReZxvNHIOv88FlT7rxcXIIC0fPt4KZqZbOlivyWtXLt8ESx84zd3kMC6iK5jVeS2qt+g7ftS7ye4fi06X5rtRQ==
 
-axe-core@^3.2.2, axe-core@^3.3.1:
+"axe-core@^3.2.2 || ^4.0.0":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.0.1.tgz#e337c2ed1e6fe73920166d8b0b0b352e1b50d8ae"
+  integrity sha512-OSCABHvSNDleKqJP7DUwEBvMVbr/gtOj2vCDoKKz967fxe9WqtCZLo3IRNOO2fJcu+eSFsu8aAToHfIY7sPLaw==
+
+axe-core@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-3.3.1.tgz#3d1fa78cca8ead1b78c350581501e4e37b97b826"
   integrity sha512-gw1T0JptHPF4AdLLqE8yQq3Z7YvsYkpFmFWd84r6hnq/QoKRr8icYHFumhE7wYl5TVIHgVlchMyJsAYh0CfwCQ==
 
-axe-sarif-converter@^2.3.1:
-  version "2.3.1"
-  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.3.1.tgz#689b94c0df7a092ffc7eda976d6e1333782a7c09"
-  integrity sha512-X6cK+DJyVUCIRbqvKGBlqrtkc2RnM5NACEzsIf2ixqT3eFENaouvcgwSYpSVPzXqITN81xixqz0ywCzyqKimKQ==
+axe-sarif-converter@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.4.0.tgz#580e1d06e6a521f3941308487ab5b7d5a0b5adcd"
+  integrity sha512-Ih40FAhUblb8uQxU8rdNA/RVd/8LeSjIQ9fEIl595FsKmNjUnuo3EKEXUVY5wJJ47nxP6xXBuF04dzlvojVIXQ==
   dependencies:
     "@types/sarif" ">=2.1.1 <=2.1.2"
-    axe-core "^3.2.2"
+    axe-core "^3.2.2 || ^4.0.0"
     yargs "^15.0.2"
 
 axe-webdriverjs@^2.3.0:
