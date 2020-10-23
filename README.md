@@ -14,8 +14,10 @@ The following sample projects specify the main technologies used. A team that us
 
 - **[Sample 1: typescript-selenium-webdriver-sample](./typescript-selenium-webdriver-sample)**:
   - Useful for teams using Selenium and TypeScript/JavaScript.
+  
 - **[Sample 2: CSharpSeleniumWebdriverSample](./csharp-selenium-webdriver-sample)**:
   - Useful for teams using Selenium and C#.
+  
 - **[Sample 3: CSharpWindowsAppSample](./csharp-windows-app-sample)**:
   - Useful for teams developing non-browser-based apps for Windows. These apps could use any language or framework.
 
