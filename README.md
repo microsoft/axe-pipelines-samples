@@ -6,7 +6,7 @@ Watch a [short intro video](https://www.youtube.com/watch?v=SarmnCULt8M) to get 
 - Builds can be configured to fail based on the results of the automated accessibility tests, preventing both new accessibility bugs and regressions
 - Failure details and _how to fix_ information can be viewed in Azure DevOps under Builds, making it quick and easy to investigate and resolve the accessibility issues
 
-This repository contains sample projects (see next section [Available samples](#available-samples)) demonstrating how to implement automated accessibility testing in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) builds using [axe-core](https://github.com/dequelabs/axe-core), the same accessibility scanning engine used in [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview).
+This repository contains sample projects (see next section [Available samples](#available-samples)) demonstrating how to implement automated accessibility testing in [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) builds using [axe-core](https://github.com/dequelabs/axe-core), the same accessibility scanning engine used in [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview), and [Axe.Windows](https://github.com/microsoft/axe-windows), the same accessibility scanning engine used in [Accessibility Insights for Windows](https://accessibilityinsights.io/docs/en/windows/overview/).
 
 ## Available samples
 
