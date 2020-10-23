@@ -13,13 +13,16 @@ This repository contains sample projects (see next section [Available samples](#
 The following sample projects specify the main technologies used. A team that uses comparable tools and frameworks should be able to refer to the sample and update their existing tests to incorporate automated accessibility checks.
 
 - **[Sample 1: typescript-selenium-webdriver-sample](./typescript-selenium-webdriver-sample)**:
+
   - Useful for teams using Selenium and TypeScript/JavaScript.
-  
+
 - **[Sample 2: CSharpSeleniumWebdriverSample](./csharp-selenium-webdriver-sample)**:
+
   - Useful for teams using Selenium and C#.
-  
-- **[Sample 3: CSharpWindowsAppSample](./csharp-windows-app-sample)**:
-  - Useful for teams developing non-browser-based apps for Windows. These apps could use any language or framework.
+
+- **[Sample 3: WindowsAppSamples](./windows-app-samples)**:
+
+  - Useful for teams developing non-browser-based Windows apps. These apps can use any language or framework.
 
 _Are we missing a sample you'd like to see? [File a sample request](https://github.com/microsoft/axe-pipelines-samples/issues/new?assignees=&labels=sample_request&template=feature_request.md&title=Sample+Request%3A+%3Csample+name+here%3E) or [submit a pull request](./CONTRIBUTING.md)!_
 
