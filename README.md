@@ -28,7 +28,9 @@ The following may be helpful as an example of how our accessibility scanning too
 
   - Useful for teams developing non-browser-based Windows apps. These apps can use any language or framework.
 
-_Are we missing a sample you'd like to see? [File a sample request](https://github.com/microsoft/axe-pipelines-samples/issues/new?assignees=&labels=sample_request&template=feature_request.md&title=Sample+Request%3A+%3Csample+name+here%3E) or [submit a pull request](./CONTRIBUTING.md)!_
+## Requests
+
+_Are we missing a sample or resource you'd like to see? [File a sample request](https://github.com/microsoft/axe-pipelines-samples/issues/new?assignees=&labels=sample_request&template=feature_request.md&title=Sample+Request%3A+%3Csample+name+here%3E) or [submit a pull request](./CONTRIBUTING.md)!_
 
 ## Disclaimer
 
