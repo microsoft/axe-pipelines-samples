@@ -1,4 +1,4 @@
-# WindowsAppSamples
+# WindowsAppResources
 
 Windows applications can be scanned for accessibility issues using the tools in the [Axe.Windows](https://github.com/microsoft/axe-windows) repo. These tools do not currently produce Sarif files. The general pattern is as follows:
 
