@@ -26,7 +26,7 @@ The following may be helpful as an example of how our accessibility scanning too
 
 - **[WindowsAppResources](./windows-app-resources)**:
 
-  - Useful for teams developing non-browser-based Windows apps. These apps can use any language or framework.
+  - Useful for teams developing non-browser-based Windows applications. These applications can use any language or framework.
 
 ## Requests
 
