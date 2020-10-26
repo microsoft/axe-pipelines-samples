@@ -20,7 +20,11 @@ The following sample projects specify the main technologies used. A team that us
 
   - Useful for teams using Selenium and C#.
 
-- **[Sample 3: WindowsAppSamples](./windows-app-samples)**:
+## Other Documentation
+
+The following may be helpful as an example of how our accessibility scanning tools have been used where the product is not based on HTML:
+
+- **[WindowsAppSamples](./windows-app-samples)**:
 
   - Useful for teams developing non-browser-based Windows apps. These apps can use any language or framework.
 
