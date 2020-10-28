@@ -55,9 +55,9 @@ steps:
   # It is a good idea to test against a specific, known version of Node; this makes it easier for other users
   # to reproduce your build results.
   - task: NodeTool@0
-    displayName: install node 12.16.3
+    displayName: install node 14.15.0
     inputs:
-      versionSpec: '12.16.3'
+      versionSpec: "14.15.0"
 
   # This task installs dependencies specified in your package.json file.
   #
@@ -94,7 +94,7 @@ steps:
     inputs:
       # The exact name "CodeAnalysisLogs" is required for the Sarif Results Viewer Extension for Azure Pipelines
       # to find the .sarif files our accessibility test produces.
-      artifactName: 'CodeAnalysisLogs'
+      artifactName: "CodeAnalysisLogs"
       # "test-results" is not a required convention; it just happens to be where our tests write .sarif files to.
-      pathtoPublish: '$(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results'
+      pathtoPublish: "$(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results"
     condition: succeededOrFailed()
