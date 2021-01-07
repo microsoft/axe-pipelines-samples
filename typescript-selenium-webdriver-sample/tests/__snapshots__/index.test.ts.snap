@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`index.html has only those accessibility violations present in snapshot 1`] = `
+Array [
+  Object {
+    "rule": "aria-roles",
+    "targets": Array [
+      Array [
+        "span[role=\\"invalid\\"]",
+      ],
+    ],
+  },
+  Object {
+    "rule": "color-contrast",
+    "targets": Array [
+      Array [
+        "li:nth-child(2) > span",
+      ],
+    ],
+  },
+  Object {
+    "rule": "label",
+    "targets": Array [
+      Array [
+        "input",
+      ],
+    ],
+  },
+]
+`;

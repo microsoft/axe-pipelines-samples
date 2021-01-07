@@ -4,6 +4,7 @@
 
 #### Pull request checklist
 
-- [ ] Addresses an existing issue: Fixes #0000
-- [ ] Added relevant unit test for your changes. (`yarn test`)
-- [ ] Verified code coverage for the changes made.
+- [ ] If this PR addresses an existing issue, it is linked: Fixes #0000
+- [ ] New sample content is commented at a similar verbosity as existing content
+- [ ] All updated/modified sample code builds and runs in at least one PR/CI build
+- [ ] PR checks for builds named `[failing example] ...` fail as expected
