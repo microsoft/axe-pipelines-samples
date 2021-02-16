@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft. All rights reserved.
+// Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 using OpenQA.Selenium;
@@ -23,6 +23,13 @@ namespace CSharpSeleniumWebdriverSample
             // In our CI builds in Azure Pipelines, we'll always specify the browser explicitly instead of using this.
             const string DEFAULT_BROWSER = "chrome";
 
+            // Headless browsers generally use small window sizes by default. Some of the axe checks require
+            // elements to be present in the viewport to be assessable, so using a viewport size based on your
+            // most common usage is a good idea to prevent axe from having to do extra work to scroll items into
+            // view and avoid issues with elements not fitting into the viewport.
+            const int windowWidth = 1920;
+            const int windowHeight = 1080;
+
             switch (browserEnvVar ?? DEFAULT_BROWSER)
             {
                 case "chrome":
@@ -42,6 +49,7 @@ namespace CSharpSeleniumWebdriverSample
                     // because it makes it easier to run the tests in non-graphical environments (eg, most Docker containers)
                     var chromeOptions = new ChromeOptions();
                     chromeOptions.AddArgument("--headless");
+                    chromeOptions.AddArgument($"--window-size={windowWidth},{windowHeight}");
 
                     return new ChromeDriver(chromeDriverDirectory, chromeOptions);
 
@@ -52,9 +60,16 @@ namespace CSharpSeleniumWebdriverSample
                     // Same as for Chrome above; the tests will work fine without --headless, but you'll get better test
                     // performance and easier compatibility with non-graphical environments by using it.
                     var firefoxOptions = new FirefoxOptions();
-                    firefoxOptions.AddArgument("--headless");
+                    firefoxOptions.AddArgument("-headless");
+                    firefoxOptions.AddArguments("-width", $"{windowWidth}", "-height", $"{windowHeight}");
 
-                    return new FirefoxDriver(geckoDriverDirectory, firefoxOptions);
+                    var firefoxDriverService = FirefoxDriverService.CreateDefaultService(geckoDriverDirectory);
+                    // This is a workaround for Windows-specific performance issues caused by https://github.com/mozilla/geckodriver/issues/1496
+                    if (Platform.CurrentPlatform.IsPlatformType(PlatformType.Windows)) {
+                        firefoxDriverService.Host = "::1";
+                    }
+
+                    return new FirefoxDriver(firefoxDriverService, firefoxOptions);
 
                 default:
                     throw new ArgumentException($"Unknown browser type '{browserEnvVar}' specified in '{BROWSER_ENVIRONMENT_VARIABLE}' environment variable");

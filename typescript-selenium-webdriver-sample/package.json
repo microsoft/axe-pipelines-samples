@@ -1,26 +1,35 @@
 {
     "name": "typescript-selenium-webdriver-sample",
     "version": "0.0.0",
-    "description": "Sample project that demonstrates accessibility testing with TypeScript, Jest, Selenium, axe-webdriver, SARIF, and Azure Pipelines.",
+    "description": "Sample project that demonstrates accessibility testing with TypeScript, Jest, Selenium, @axe-core/webdriverjs, SARIF, and Azure Pipelines.",
     "private": true,
     "devDependencies": {
-        "@types/jest": "^24.0.18",
-        "@types/node": "^12.7.4",
-        "@types/selenium-webdriver": "^4.0.2",
-        "axe-sarif-converter": "^2.0.3",
-        "axe-webdriverjs": "^2.3.0",
-        "chromedriver": "^75.0.1",
-        "jest": "^24.9.0",
-        "jest-circus": "^24.9.0",
-        "jest-junit": "^8.0.0",
-        "selenium-webdriver": "^4.0.0-alpha.1",
-        "ts-jest": "^24.0.2",
-        "typescript": "^3.6.2"
+        "@axe-core/webdriverjs": "^4.1.1",
+        "@types/jest": "^26.0.20",
+        "@types/node": "^14.14.28",
+        "@types/selenium-webdriver": "^4.0.11",
+        "axe-sarif-converter": "^2.6.1",
+        "chromedriver": "^88.0.0",
+        "cross-env": "^7.0.3",
+        "geckodriver": "^1.22.1",
+        "jest": "^25.5.4",
+        "jest-circus": "^26.6.3",
+        "jest-junit": "^12.0.0",
+        "selenium-webdriver": "^4.0.0-beta.1",
+        "ts-jest": "^25.5.1",
+        "typescript": "^3.9.9"
     },
     "resolutions": {
         "node-notifier": ">=8.0.1"
     },
     "scripts": {
-        "test": "jest"
+        "test": "jest",
+        "test:firefox": "cross-env SELENIUM_BROWSER=firefox jest",
+        "test:chrome": "cross-env SELENIUM_BROWSER=chrome jest"
+    },
+    "resolutions": {
+        "minimist": "^1.2.2",
+        "acorn": "^7.1.1",
+        "kind-of": "^6.0.3"
     }
 }

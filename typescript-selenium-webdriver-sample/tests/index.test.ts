@@ -2,19 +2,12 @@
 // Licensed under the MIT License.
 import * as Axe from 'axe-core';
 import { convertAxeToSarif } from 'axe-sarif-converter';
-import * as AxeWebdriverjs from 'axe-webdriverjs';
+import AxeWebdriverjs from '@axe-core/webdriverjs';
 import * as fs from 'fs';
 import * as path from 'path';
-import { Builder, By, ThenableWebDriver, until } from 'selenium-webdriver';
-import * as chrome from 'selenium-webdriver/chrome';
+import { By, ThenableWebDriver, until } from 'selenium-webdriver';
 import { promisify } from 'util';
-
-// This "require" statement performs some global configuration of selenium-webdriver to tell it to use
-// the version of chromedriver that the npm "chromedriver" package downloaded during "yarn install".
-//
-// If you are applying this sample to a project that already uses some other mechanism for installing
-// webdrivers, (eg, Protractor's "webdriver-manager update" command), you can omit this.
-require('chromedriver');
+import { createWebdriverFromEnvironmentVariableSettings } from './webdriver-factory';
 
 // The default timeout for tests/fixtures (5 seconds) is not always enough to start/quit/navigate a browser instance.
 const TEST_TIMEOUT_MS = 30000;
@@ -25,12 +18,13 @@ describe('index.html', () => {
     // Starting a browser instance is time-consuming, so we share one browser instance between
     // all tests in the file (by initializing it in beforeAll rather than beforeEach)
     beforeAll(async () => {
-        // Selenium supports many browsers, not just Chrome.
-        // See https://www.npmjs.com/package/selenium-webdriver for examples.
-        driver = new Builder()
-            .forBrowser('chrome')
-            .setChromeOptions(new chrome.Options().headless())
-            .build();
+        // The helper method we're using here is just an example; if you already have a test suite with
+        // logic for initializing a Selenium WebDriver, you can keep using that. For example, if you are
+        // using Protractor, you would want to use the webdriver instance that Protractor maintains in its
+        // global "browser" variable, like this:
+        //
+        //     driver = browser.webdriver;
+        driver = createWebdriverFromEnvironmentVariableSettings();
     }, TEST_TIMEOUT_MS);
 
     afterAll(async () => {
@@ -57,8 +51,14 @@ describe('index.html', () => {
     // This test case shows the most basic example: run a scan, fail the test if there are any failures.
     // This is the way to go if you have no known/pre-existing violations you need to temporarily baseline.
     it('has no accessibility violations in the h1 element', async () => {
-        const accessibilityScanResults = await AxeWebdriverjs(driver)
+        const accessibilityScanResults = await new AxeWebdriverjs(driver)
+            // You can use any CSS selector in place of "h1" here
             .include('h1')
+            // This withTags directive restricts Axe to only run tests that detect known violations of
+            // WCAG 2.1 A and AA rules (similar to what Accessibility Insights reports). If you omit
+            // this, Axe will additionally run several "best practice" rules, which are good ideas to
+            // check for periodically but may report false positives in certain edge cases.
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
             .analyze();
 
         await exportAxeAsSarifTestResult('index-h1-element.sarif', accessibilityScanResults);
@@ -70,8 +70,9 @@ describe('index.html', () => {
     // component you don't control fixing yourself), you can exclude it specifically and still scan the rest
     // of the page.
     it('has no accessibility violations outside of the known example violations', async () => {
-        const accessibilityScanResults = await AxeWebdriverjs(driver)
+        const accessibilityScanResults = await new AxeWebdriverjs(driver)
             .exclude('#example-accessibility-violations')
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
             .analyze();
 
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults);
@@ -82,41 +83,35 @@ describe('index.html', () => {
     // If you want to more precisely baseline a particular set of known issues, one option is to use Jest
     // Snapshot Testing (https://jestjs.io/docs/snapshot-testing) with the scan results object.
     it('has only those accessibility violations present in snapshot', async () => {
-        const accessibilityScanResults = await AxeWebdriverjs(driver).analyze();
+        const accessibilityScanResults = await new AxeWebdriverjs(driver)
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+            .analyze();
 
         await exportAxeAsSarifTestResult('index-page.sarif', accessibilityScanResults);
 
         // Snapshotting the entire violations array like this will show the full available information in
         // your test output for any new violations that might occur.
-        expect(accessibilityScanResults.violations).toMatchSnapshot();
-
+        //
+        //     expect(accessibilityScanResults.violations).toMatchSnapshot();
+        //
         // However, since the "full available information" includes contextual information like "a snippet
-        // of the HTML containing the violation" and "the full xpath to the element containing the violation",
-        // snapshotting the whole violations array is prone to failing when unrelated changes are made to the
-        // element (or even to unrelated ancestors of the element in the DOM).
-
+        // of the HTML containing the violation", snapshotting the whole violations array is prone to failing
+        // when unrelated changes are made to the element (or even to unrelated ancestors of the element in
+        // the DOM).
+        //
         // To avoid that, you can create a helper function to capture a "fingerprint" of a given violation,
         // and snapshot that instead. The Jest Snapshot log output will only include the information from your
         // fingerprint, but you can still use the exported .sarif files to see complete failure information
         // in a SARIF viewer (https://sarifweb.azurewebsites.net/#Viewers) or a text editor.
-        const getViolationFingerprint = (violation: Axe.Result) => ({
-            rule: violation.id,
-            targets: violation.nodes.map(node => node.target),
-        });
         expect(accessibilityScanResults.violations.map(getViolationFingerprint)).toMatchSnapshot();
     }, TEST_TIMEOUT_MS);
 
-    // If you want to run a scan of a page but need your axe scans to include only failures corresponding to WCAG 2.0 A and AA rules,
-    // you can include those tags specifically and axe will only use those tags as rules specifications.
-    it('has only accessibility issues stored in our snapshot corresponding to only wcag2a and wcag2aa rules', async () => {
-        const accessibilityScanResults = await AxeWebdriverjs(driver)
-            .withTags(['wcag2a', 'wcag2aa'])
-            .analyze();
-
-        await exportAxeAsSarifTestResult('index-with-specific-tags.sarif', accessibilityScanResults);
-
-        expect(accessibilityScanResults.violations).toMatchSnapshot();
-    }, TEST_TIMEOUT_MS);
+    // You can make your "fingerprint" function as specific as you like. This one considers a violation to be
+    // "the same" if it corresponds the same Axe rule on the same set of elements.
+    const getViolationFingerprint = (violation: Axe.Result) => ({
+        rule: violation.id,
+        targets: violation.nodes.map(node => node.target),
+    });
 
     // SARIF is a general-purpose log format for code analysis tools.
     //
