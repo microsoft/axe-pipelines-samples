@@ -19,9 +19,6 @@
         "ts-jest": "^25.5.1",
         "typescript": "^3.9.9"
     },
-    "resolutions": {
-        "node-notifier": ">=8.0.1"
-    },
     "scripts": {
         "test": "jest",
         "test:firefox": "cross-env SELENIUM_BROWSER=firefox jest",
@@ -30,6 +27,7 @@
     "resolutions": {
         "minimist": "^1.2.2",
         "acorn": "^7.1.1",
-        "kind-of": "^6.0.3"
+        "kind-of": "^6.0.3",
+        "node-notifier": ">=8.0.1"
     }
 }
