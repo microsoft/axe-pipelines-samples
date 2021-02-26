@@ -33,7 +33,7 @@ Some good places to start reading are:
 
 ## See it in action in Azure Pipelines
 
-[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/25?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=25&branchName=master)
+[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/25?branchName=main)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=25&branchName=main)
 
 <!--
   Note to maintainers: The below example images/links come from a specific build instead of the most recent build so we can link to specific tabs.
