@@ -54,8 +54,8 @@ This sample also uses a few other tools and libraries which are less important; 
 
 ## See it in action in Azure Pipelines
 
-* Example build with failures: [![Azure Pipelines Build Status for failing example build](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/%5Bfailing%20example%5D%20csharp-selenium-webdriver-sample?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=33&branchName=master)
-* Example build without failures: [![Azure Pipelines Build Status for passing example build](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/%5Bpassing%20example%5D%20csharp-selenium-webdriver-sample?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=32&branchName=master)
+* Example build with failures: [![Azure Pipelines Build Status for failing example build](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/%5Bfailing%20example%5D%20csharp-selenium-webdriver-sample?branchName=main)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=33&branchName=main)
+* Example build without failures: [![Azure Pipelines Build Status for passing example build](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/%5Bpassing%20example%5D%20csharp-selenium-webdriver-sample?branchName=main)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=32&branchName=main)
 
 <!--
   Note to maintainers: The below example images/links come from a specific build instead of the most recent build so we can link to specific tabs.
