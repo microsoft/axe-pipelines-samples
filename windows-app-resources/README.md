@@ -8,7 +8,7 @@ Windows applications can be scanned for accessibility issues using the tools in 
 
 ## Testing from .NET code
 
-If your tests are written in .NET Core or .NET Framework, you can trigger a scan by using the [axe-windows automation layer](https://github.com/microsoft/axe-windows/blob/main/docs/AutomationReference.md). Results will be returned as a .NET object, which you can then consume as you wish. You also have the option to automatically create an A11yTest file (openable in [Accessibility Insights for Windows](https://accessibilityinsights.io/docs/en/windows/overview)) if any errors are found. An example of this usage can be found [here](https://github.com/microsoft/accessibility-insights-windows/tree/master/src/UITests). Your project can directly reference the Axe.Windows package from [NuGet](https://www.nuget.org/packages/Axe.Windows/).
+If your tests are written in .NET Core or .NET Framework, you can trigger a scan by using the [axe-windows automation layer](https://github.com/microsoft/axe-windows/blob/main/docs/AutomationReference.md). Results will be returned as a .NET object, which you can then consume as you wish. You also have the option to automatically create an A11yTest file (openable in [Accessibility Insights for Windows](https://accessibilityinsights.io/docs/en/windows/overview)) if any errors are found. An example of this usage can be found [here](https://github.com/microsoft/accessibility-insights-windows/tree/main/src/UITests). Your project can directly reference the Axe.Windows package from [NuGet](https://www.nuget.org/packages/Axe.Windows/).
 
 ## Other testing options
 
