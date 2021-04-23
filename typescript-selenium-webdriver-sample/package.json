@@ -16,7 +16,7 @@
         "jest-circus": "^26.6.3",
         "jest-junit": "^12.0.0",
         "selenium-webdriver": "^4.0.0-beta.3",
-        "ts-jest": "^25.5.1",
+        "ts-jest": "^26.5.5",
         "typescript": "^4.2.4"
     },
     "scripts": {
