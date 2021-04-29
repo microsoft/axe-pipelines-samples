@@ -1,0 +1,29 @@
+version: 2
+updates:
+- package-ecosystem: nuget
+  directory: "/csharp-selenium-webdriver-sample"
+  schedule:
+    interval: daily
+    time: "13:00"
+  ignore:
+  - dependency-name: MSTest.TestFramework
+    versions:
+    - 2.2.2
+  - dependency-name: MSTest.TestAdapter
+    versions:
+    - 2.2.2
+- package-ecosystem: npm
+  directory: "/typescript-selenium-webdriver-sample"
+  schedule:
+    interval: daily
+    time: "13:00"
+  versioning-strategy: increase
+  ignore:
+  - dependency-name: "@types/node"
+    versions:
+    - 14.14.23
+    - 14.14.24
+    - 14.14.29
+    - 14.14.30
+    - 15.0.0
+    - 15.0.1
