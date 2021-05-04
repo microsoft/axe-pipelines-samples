@@ -4,26 +4,18 @@ updates:
   directory: "/csharp-selenium-webdriver-sample"
   schedule:
     interval: daily
-    time: "13:00"
-  ignore:
-  - dependency-name: MSTest.TestFramework
-    versions:
-    - 2.2.2
-  - dependency-name: MSTest.TestAdapter
-    versions:
-    - 2.2.2
+    time: "11:00"
+    timezone: "America/Los_Angeles" # Pacific Time
 - package-ecosystem: npm
   directory: "/typescript-selenium-webdriver-sample"
   schedule:
     interval: daily
-    time: "13:00"
+    time: "11:00"
+    timezone: "America/Los_Angeles" # Pacific Time
   versioning-strategy: increase
   ignore:
+    # Major version of @types/node is pinned to match the version of node we
+    # use for builds (ideally, latest LTS)
   - dependency-name: "@types/node"
     versions:
-    - 14.14.23
-    - 14.14.24
-    - 14.14.29
-    - 14.14.30
-    - 15.0.0
-    - 15.0.1
+    - ">=15.0.0"
