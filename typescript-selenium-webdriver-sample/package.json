@@ -13,7 +13,7 @@
         "cross-env": "^7.0.3",
         "geckodriver": "^2.0.0",
         "jest": "^26.6.3",
-        "jest-circus": "^26.6.3",
+        "jest-circus": "^27.0.3",
         "jest-junit": "^12.1.0",
         "selenium-webdriver": "^4.0.0-beta.3",
         "ts-jest": "^26.5.6",
