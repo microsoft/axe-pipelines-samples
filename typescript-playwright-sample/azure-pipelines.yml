@@ -35,9 +35,9 @@
 # * https://playwright.dev/docs/test-intro
 strategy:
   matrix:
-    win-chrome:
+    win-chromium:
       imageName: windows-2019
-      browser: chrome
+      browser: chromium
     linux-firefox:
       imageName: ubuntu-20.04
       browser: firefox
