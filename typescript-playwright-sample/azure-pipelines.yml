@@ -41,8 +41,8 @@ strategy:
     linux-firefox:
       imageName: ubuntu-20.04
       browser: firefox
-    linux-webkit:
-      imageName: ubuntu-20.04
+    mac-webkit:
+      imageName: macOS-10.15
       browser: webkit
 
 pool:
