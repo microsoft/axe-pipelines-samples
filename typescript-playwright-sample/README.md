@@ -31,7 +31,7 @@ Some good places to start reading are:
 
 ## See it in action in Azure Pipelines
 
-[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/25?branchName=main)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=25&branchName=main)
+[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/42?branchName=main)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=42&branchName=main)
 
 <!--
   Note to maintainers: The below example images/links come from a specific build instead of the most recent build so we can link to specific tabs.
@@ -39,15 +39,15 @@ Some good places to start reading are:
 -->
 The accessibility tests run as part of the `yarn test` build step:
 
-[![Screenshot of "yarn test" build logs in sample build](./assets/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2228)
+[![Screenshot of "yarn test" build logs in sample build](./assets/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=22505)
 
 The test pass/fail results display in the Tests tab of the build logs:
 
-[![Screenshot of Tests tab in sample build](./assets/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2228&view=ms.vss-test-web.build-test-results-tab)
+[![Screenshot of Tests tab in sample build](./assets/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=22505&view=ms.vss-test-web.build-test-results-tab)
 
 Detailed accessibliity scan information also appears in the Scans tab, courtesy of the [Sarif Viewer Build Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab):
 
-[![Screenshot of Scans tab in sample build](./assets/screenshot-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2228&view=sariftools.sarif-viewer-build-tab.sariftools.sarif-viewer-build-tab)
+[![Screenshot of Scans tab in sample build](./assets/screenshot-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=22505&view=sariftools.sarif-viewer-build-tab.sariftools.sarif-viewer-build-tab)
 
 ## See it in action on your local machine
 
