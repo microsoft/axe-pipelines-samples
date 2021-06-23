@@ -39,8 +39,11 @@ strategy:
       imageName: windows-2019
       browser: chrome
     linux-firefox:
-      imageName: ubuntu-18.04
+      imageName: ubuntu-20.04
       browser: firefox
+    linux-webkit:
+      imageName: ubuntu-20.04
+      browser: webkit
 
 pool:
   vmImage: $(imageName)
@@ -67,7 +70,7 @@ steps:
   #
   # If your project already uses npm instead of yarn, or if your project already runs "playwright test" directly here,
   # those are both fine.
-  - script: yarn test --browser=$(browser) --ci # or "npm run test -- --ci 2>&1"
+  - script: yarn test --browser=$(browser) # or "npm run test -- --browser=$(browser)"
     displayName: yarn test
     workingDirectory: $(Build.SourcesDirectory)/typescript-playwright-sample
 
