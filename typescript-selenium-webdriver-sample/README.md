@@ -29,7 +29,7 @@ Some good places to start reading are:
 * [@axe-core/webdriverjs](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/webdriverjs) to run an axe accessibility scan on the page from the Selenium browser
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
 * [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) to convert axe results to SARIF format
-* [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the results in Azure Pipelines
+* [SARIF SAST Scans Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.scans) to visualize the results in Azure Pipelines
 
 ## See it in action in Azure Pipelines
 
@@ -47,7 +47,7 @@ The test pass/fail results display in the Tests tab of the build logs:
 
 [![Screenshot of Tests tab in sample build](./assets/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2228&view=ms.vss-test-web.build-test-results-tab)
 
-Detailed accessibliity scan information also appears in the Scans tab, courtesy of the [Sarif Viewer Build Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab):
+Detailed accessibliity scan information also appears in the Scans tab, courtesy of the [SARIF SAST Scans Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.scans):
 
 [![Screenshot of Scans tab in sample build](./assets/screenshot-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2228&view=sariftools.sarif-viewer-build-tab.sariftools.sarif-viewer-build-tab)
 
