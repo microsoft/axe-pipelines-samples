@@ -4,8 +4,8 @@ This sample demonstrates how you might set up a CI build for a simple, static ht
 
 This sample uses Selenium WebDriver for browser automation and uses the corresponding `@axe-core/webdriverjs` library to integrate Axe and Selenium. But you don't have to use Selenium to use Axe! If you prefer a different browser automation tool, you can still follow the same concepts from this sample by using the integration library appropriate for your framework:
 
-* For **Puppeteer**, use [@axe-core/puppeteer](https://www.npmjs.com/package/@axe-core/puppeteer)
-* For **Playwright**, use [axe-playwright](https://www.npmjs.com/package/axe-playwright)
+* For **Playwright**, see our [typescript-playwright-sample](../typescript-playwright-sample/README.md)
+* For **Puppeteer**, see our [typescript-playwright-sample](../typescript-playwright-sample/README.md) and use [@axe-core/puppeteer](https://www.npmjs.com/package/@axe-core/puppeteer)
 * For **Cypress**, use [cypress-axe](https://www.npmjs.com/package/cypress-axe)
 * For **WebdriverIO**, use [@axe-core/webdriverio](https://www.npmjs.com/package/@axe-core/webdriverio)
 * For **Protractor**, keep using `@axe-core/webdriverjs` like the sample shows, but instead of creating your own Webdriver object, pass [`browser.webdriver`](https://www.protractortest.org/#/api?view=ProtractorBrowser) to `@axe-core/webdriverjs`.

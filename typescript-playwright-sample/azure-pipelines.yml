@@ -27,28 +27,26 @@
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/customize-pipeline
 
-# The browser automation tool we're using, Selenium, works with many different browsers. Here, we show
-# an example of using the same test code with different combinations of browsers and OSes.
+# The browser automation tool we're using, Playwright, works with many different browsers. Here,
+# we show an example of using the same test code with different combinations of browsers and OSes.
 #
 # For more information, see:
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-multiplatform
+# * https://playwright.dev/docs/test-intro
 strategy:
   matrix:
-    win-chrome:
+    win-chromium:
       imageName: windows-2019
-      browser: chrome
-
+      browser: chromium
     linux-firefox:
-      imageName: ubuntu-18.04
+      imageName: ubuntu-20.04
       browser: firefox
+    mac-webkit:
+      imageName: macOS-10.15
+      browser: webkit
 
 pool:
   vmImage: $(imageName)
-
-variables:
-  # This will be sent to the build agent as an environment variable which our test code will be able to see.
-  # We'll use this environment variable in webdriver-factory.ts to determine which browser the tests will use.
-  SELENIUM_BROWSER: $(browser)
 
 steps:
   # This task makes sure Node.js is installed on the build agent.
@@ -56,9 +54,9 @@ steps:
   # It is a good idea to test against a specific, known version of Node; this makes it easier for other users
   # to reproduce your build results.
   - task: NodeTool@0
-    displayName: install node 14.15.0
+    displayName: install node 14.17.0
     inputs:
-      versionSpec: "14.15.0"
+      versionSpec: "14.17.0"
 
   # This task installs dependencies specified in your package.json file.
   #
@@ -66,24 +64,22 @@ steps:
   - script: yarn install --frozen-lockfile # or "npm install --ci"
     displayName: yarn install
     # workingDirectory should match where your package.json file is located. It defaults to the root of the repository.
-    workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
+    workingDirectory: $(Build.SourcesDirectory)/typescript-playwright-sample
 
-  # This task runs the tests specified by jest.config.js, including our example accessibility tests.
+  # This task runs the tests specified by playwright.config.js, including our example accessibility tests.
   #
-  # If your project already uses npm instead of yarn, or if your project already runs "jest" directly here,
+  # If your project already uses npm instead of yarn, or if your project already runs "playwright test" directly here,
   # those are both fine.
-  #
-  # The 2>&1 is a workaround for facebook/jest#5064
-  - script: yarn test --ci 2>&1 # or "npm run test -- --ci 2>&1"
+  - script: yarn test --browser=$(browser) # or "npm run test -- --browser=$(browser)"
     displayName: yarn test
-    workingDirectory: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample
+    workingDirectory: $(Build.SourcesDirectory)/typescript-playwright-sample
 
   # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
   - task: PublishTestResults@2
     displayName: publish test results
     inputs:
-      testResultsFiles: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results/junit.xml
-      testRunTitle: typescript-selenium-webdriver-sample ($(imageName) $(browser))
+      testResultsFiles: $(Build.SourcesDirectory)/typescript-playwright-sample/test-results/junit.xml
+      testRunTitle: typescript-playwright-sample ($(imageName) $(browser))
     condition: succeededOrFailed()
 
   # If you are adding tests to an existing project that already uses Azure Pipelines, this is probably the only
@@ -98,5 +94,5 @@ steps:
       # to find the .sarif files our accessibility test produces.
       artifactName: "CodeAnalysisLogs"
       # "test-results" is not a required convention; it just happens to be where our tests write .sarif files to.
-      pathtoPublish: "$(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/test-results"
+      pathtoPublish: "$(Build.SourcesDirectory)/typescript-playwright-sample/test-results"
     condition: succeededOrFailed()

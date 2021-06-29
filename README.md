@@ -12,11 +12,15 @@ This repository contains sample projects (see next section [Available samples](#
 
 The following sample projects specify the main technologies used. A team that uses comparable tools and frameworks should be able to refer to the sample and update their existing tests to incorporate automated accessibility checks.
 
-- **[Sample 1: typescript-selenium-webdriver-sample](./typescript-selenium-webdriver-sample)**:
+- **[Sample 1: typescript-playwright-sample](./typescript-playwright-sample)**:
+
+  - Useful for teams using Playwright and TypeScript/JavaScript.
+
+- **[Sample 2: typescript-selenium-webdriver-sample](./typescript-selenium-webdriver-sample)**:
 
   - Useful for teams using Selenium and TypeScript/JavaScript.
 
-- **[Sample 2: CSharpSeleniumWebdriverSample](./csharp-selenium-webdriver-sample)**:
+- **[Sample 3: CSharpSeleniumWebdriverSample](./csharp-selenium-webdriver-sample)**:
 
   - Useful for teams using Selenium and C#.
 
