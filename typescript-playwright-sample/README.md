@@ -4,11 +4,11 @@ This sample demonstrates how you might set up a CI build for a simple, static ht
 
 This sample uses [Playwright](https://playwright.dev) for browser automation and uses the corresponding `@axe-core/playwright` library to integrate Axe and Playwright. But you don't have to use Playwright to use Axe! If you prefer a different browser automation tool, you can still follow the same concepts from this sample by using the integration library appropriate for your framework:
 
-* For **Selenium**, see our [typescript-selenium-webdriverjs-sample](../typescript-selenium-webdriverjs-sample/README.md)
+* For **Selenium**, see our [typescript-selenium-webdriver-sample](../typescript-selenium-webdriver-sample/README.md)
 * For **Puppeteer**, use [@axe-core/puppeteer](https://www.npmjs.com/package/@axe-core/puppeteer)
 * For **Cypress**, use [cypress-axe](https://www.npmjs.com/package/cypress-axe)
-* For **WebdriverIO**, see our [typescript-selenium-webdriverjs-sample](../typescript-selenium-webdriverjs-sample/README.md) and use [@axe-core/webdriverio](https://www.npmjs.com/package/@axe-core/webdriverio)
-* For **Protractor**, see our [typescript-selenium-webdriverjs-sample](../typescript-selenium-webdriverjs-sample/README.md); keep using `@axe-core/webdriverjs` like that sample shows, but instead of creating your own Webdriver object, pass [`browser.webdriver`](https://www.protractortest.org/#/api?view=ProtractorBrowser) to `@axe-core/webdriverjs`.
+* For **WebdriverIO**, see our [typescript-selenium-webdriver-sample](../typescript-selenium-webdriver-sample/README.md) and use [@axe-core/webdriverio](https://www.npmjs.com/package/@axe-core/webdriverio)
+* For **Protractor**, see our [typescript-selenium-webdriver-sample](../typescript-selenium-webdriver-sample/README.md); keep using `@axe-core/webdriverjs` like that sample shows, but instead of creating your own Webdriver object, pass [`browser.webdriver`](https://www.protractortest.org/#/api?view=ProtractorBrowser) to `@axe-core/webdriverjs`.
 
 ## Getting Started
 
