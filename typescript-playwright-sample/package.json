@@ -1,7 +1,7 @@
 {
   "name": "typescript-playwright-sample",
   "version": "0.0.0",
-  "description": "Sample project that demonstrates accessibility testing with TypeScript, Playwright @axe-core/playwright, SARIF, and Azure Pipelines.",
+  "description": "Sample project that demonstrates accessibility testing with TypeScript, Playwright, @axe-core/playwright, SARIF, and Azure Pipelines.",
   "private": true,
   "devDependencies": {
     "@axe-core/playwright": "^4.2.2",
