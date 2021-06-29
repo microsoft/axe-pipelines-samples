@@ -37,6 +37,7 @@ strategy:
     win-chrome:
       imageName: windows-2019
       browser: chrome
+
     linux-firefox:
       imageName: ubuntu-18.04
       browser: firefox
@@ -88,7 +89,8 @@ steps:
   # If you are adding tests to an existing project that already uses Azure Pipelines, this is probably the only
   # new task you'll need to add.
   #
-  # This task is how the "Scans" tab in our Azure Pipelines build results page gets its data
+  # This task is how the "Scans" tab in our Azure Pipelines build results page gets its data. It requires using
+  # PublishBuildArtifacts rather than the newer PublishPipelineArtifacts.
   - task: PublishBuildArtifacts@1
     displayName: publish sarif results
     inputs:
