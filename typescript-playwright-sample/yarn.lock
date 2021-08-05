@@ -1070,10 +1070,10 @@ pixelmatch@^5.2.1:
   dependencies:
     pngjs "^4.0.1"
 
-playwright@^1.12.2, playwright@^1.8.0:
-  version "1.12.2"
-  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.12.2.tgz#a484447177b061dd76247734fe65d77e3fb139fa"
-  integrity sha512-tSZGeILY70T4imhCMCsvzhoaDm9baosIG5fQncSWprpjVc/X4yYdBQCLBMvOi98H50hvu9fhgy2hpsgFKCsUaw==
+playwright@^1.13.1, playwright@^1.8.0:
+  version "1.13.1"
+  resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.13.1.tgz#53c49244ffa7fc2d5d8bf7ce87739393206eda5e"
+  integrity sha512-pGbILcUV1+Yx0fcRJZBEIsqTDjQSwGYkJ4tVUQUtuAyMuHg5B++Nasl+pIeIJRMqKSWTyvZfPxJuPIGsLJgiFg==
   dependencies:
     commander "^6.1.0"
     debug "^4.1.1"
