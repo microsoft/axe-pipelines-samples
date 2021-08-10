@@ -1,6 +1,6 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT License.
-import { test, expect, Browser } from '@playwright/test';
+import { test, expect } from '@playwright/test';
 import * as Axe from 'axe-core';
 import { convertAxeToSarif } from 'axe-sarif-converter';
 import AxeBuilder from '@axe-core/playwright';
