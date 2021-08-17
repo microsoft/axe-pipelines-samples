@@ -815,14 +815,14 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.2.3.tgz#2a3afc332f0031b42f602f4a3de03c211ca98f72"
   integrity sha512-pXnVMfJKSIWU2Ml4JHP7pZEPIrgBO1Fd3WGx+fPBsS+KRGhE4vxooD8XBGWbQOIVSZsVK7pUDBBkCicNu80yzQ==
 
-axe-sarif-converter@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.7.0.tgz#7fc7f19aaee3d524e960371eab00a968ca5b0e71"
-  integrity sha512-QM7wUasHk8+5/oVm3nt7l7w4Usr/od2JbdYdcZCf0porlfqlIId+MeJXT1nLfFjrJ08Jr15xmfW5LfpasMIOUw==
+axe-sarif-converter@^2.8.0:
+  version "2.8.0"
+  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.8.0.tgz#4d1a808ad5c14abe49d7b4e276cef03c1c0b173c"
+  integrity sha512-UuhV9Q8MBm8ucrz+Lq7xT6DrZeHzl5R8dV5HeLs6v5PQozGhGAJyZVXOqSxFJHtPwNK5yOpRgaqOmqXNWNDjsw==
   dependencies:
     "@types/sarif" ">=2.1.1 <=2.1.4"
     axe-core "^3.2.2 || ^4.0.0"
-    yargs "^16.0.3"
+    yargs "^17.0.0"
 
 axios@^0.21.1:
   version "0.21.1"
@@ -3280,6 +3280,19 @@ yargs@^16.0.3:
   version "16.2.0"
   resolved "https://registry.yarnpkg.com/yargs/-/yargs-16.2.0.tgz#1c82bf0f6b6a66eafce7ef30e376f49a12477f66"
   integrity sha512-D1mvvtDG0L5ft/jGWkLpG1+m0eQxOfaBvTNELraWj22wSVUMWxZUvYgJYcKh6jGGIkJFhH4IZPQhR4TKpc8mBw==
+  dependencies:
+    cliui "^7.0.2"
+    escalade "^3.1.1"
+    get-caller-file "^2.0.5"
+    require-directory "^2.1.1"
+    string-width "^4.2.0"
+    y18n "^5.0.5"
+    yargs-parser "^20.2.2"
+
+yargs@^17.0.0:
+  version "17.1.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.1.1.tgz#c2a8091564bdb196f7c0a67c1d12e5b85b8067ba"
+  integrity sha512-c2k48R0PwKIqKhPMWjeiF6y2xY/gPMUlro0sgxqXpbOIohWiLNXWslsootttv7E1e73QPAMQSg5FeySbVcpsPQ==
   dependencies:
     cliui "^7.0.2"
     escalade "^3.1.1"
