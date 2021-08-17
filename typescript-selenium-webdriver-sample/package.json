@@ -1,32 +1,32 @@
 {
-  "name": "typescript-selenium-webdriver-sample",
-  "version": "0.0.0",
-  "description": "Sample project that demonstrates accessibility testing with TypeScript, Jest, Selenium, @axe-core/webdriverjs, SARIF, and Azure Pipelines.",
-  "private": true,
-  "devDependencies": {
-    "@axe-core/webdriverjs": "^4.2.2",
-    "@types/jest": "^26.0.24",
-    "@types/node": "^14.17.9",
-    "@types/selenium-webdriver": "^4.0.15",
-    "axe-sarif-converter": "^2.8.0",
-    "chromedriver": "^92.0.1",
-    "cross-env": "^7.0.3",
-    "geckodriver": "^2.0.2",
-    "jest": "^27.0.6",
-    "jest-junit": "^12.2.0",
-    "selenium-webdriver": "^4.0.0-beta.4",
-    "ts-jest": "^27.0.4",
-    "typescript": "^4.3.5"
-  },
-  "scripts": {
-    "test": "jest",
-    "test:firefox": "cross-env SELENIUM_BROWSER=firefox jest",
-    "test:chrome": "cross-env SELENIUM_BROWSER=chrome jest"
-  },
-  "resolutions": {
-    "minimist": "^1.2.2",
-    "acorn": "^7.1.1",
-    "kind-of": "^6.0.3",
-    "node-notifier": ">=8.0.1"
-  }
+    "name": "typescript-selenium-webdriver-sample",
+    "version": "0.0.0",
+    "description": "Sample project that demonstrates accessibility testing with TypeScript, Jest, Selenium, @axe-core/webdriverjs, SARIF, and Azure Pipelines.",
+    "private": true,
+    "devDependencies": {
+        "@axe-core/webdriverjs": "^4.2.2",
+        "@types/jest": "^26.0.24",
+        "@types/node": "^14.17.9",
+        "@types/selenium-webdriver": "^4.0.15",
+        "axe-sarif-converter": "^2.8.0",
+        "chromedriver": "^92.0.1",
+        "cross-env": "^7.0.3",
+        "geckodriver": "^2.0.2",
+        "jest": "^27.0.6",
+        "jest-junit": "^12.2.0",
+        "selenium-webdriver": "^4.0.0-beta.4",
+        "ts-jest": "^27.0.4",
+        "typescript": "^4.3.5"
+    },
+    "scripts": {
+        "test": "jest",
+        "test:firefox": "cross-env SELENIUM_BROWSER=firefox jest",
+        "test:chrome": "cross-env SELENIUM_BROWSER=chrome jest"
+    },
+    "resolutions": {
+        "minimist": "^1.2.2",
+        "acorn": "^7.1.1",
+        "kind-of": "^6.0.3",
+        "node-notifier": ">=8.0.1"
+    }
 }
