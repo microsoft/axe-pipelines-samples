@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@axe-core/playwright@^4.2.2":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@axe-core/playwright/-/playwright-4.2.2.tgz#3cc885bceb9ec90efa154c91f20e51a71e3f45b1"
-  integrity sha512-KR3wXC1zNMPxPsK2bo9mgGFic7eewvhco3Y8mPtj4HsACy9Z2jsx+oYjsEbgNH6XsUP5NP9ZfWHtngcyPgwEQw==
+"@axe-core/playwright@^4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@axe-core/playwright/-/playwright-4.3.0.tgz#3a9b71521632f297c4fb1b22db53ff312d77b5de"
+  integrity sha512-prkC9IyH19nOpZxnehnzFWBl+3e+gqg9/I11xOD1yPazMx89jLfDYFVANVZBdXoncQPYIDc/Avi/3PgU/mlyYw==
   dependencies:
-    axe-core "^4.2.3"
-    playwright "^1.8.0"
+    axe-core "^4.3.3"
+    playwright "^1.13.1"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.14.5":
   version "7.14.5"
@@ -566,10 +566,10 @@ ansi-styles@^4.0.0, ansi-styles@^4.1.0:
   dependencies:
     color-convert "^2.0.1"
 
-"axe-core@^3.2.2 || ^4.0.0", axe-core@^4.2.3:
-  version "4.2.3"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.2.3.tgz#2a3afc332f0031b42f602f4a3de03c211ca98f72"
-  integrity sha512-pXnVMfJKSIWU2Ml4JHP7pZEPIrgBO1Fd3WGx+fPBsS+KRGhE4vxooD8XBGWbQOIVSZsVK7pUDBBkCicNu80yzQ==
+"axe-core@^3.2.2 || ^4.0.0", axe-core@^4.3.3:
+  version "4.3.3"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.3.tgz#b55cd8e8ddf659fe89b064680e1c6a4dceab0325"
+  integrity sha512-/lqqLAmuIPi79WYfRpy2i8z+x+vxU3zX2uAm0gs1q52qTuKwolOj1P8XbufpXcsydrpKx2yGn2wzAnxCMV86QA==
 
 axe-sarif-converter@^2.8.0:
   version "2.8.0"
@@ -1075,7 +1075,7 @@ pixelmatch@^5.2.1:
   dependencies:
     pngjs "^4.0.1"
 
-playwright@^1.14.1, playwright@^1.8.0:
+playwright@^1.13.1, playwright@^1.14.1:
   version "1.14.1"
   resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.14.1.tgz#73913d3044a85a58edf13148245279231072532e"
   integrity sha512-JYNjhwWcfsBkg0FMGLbFO9e58FVdmICE4k97/glIQV7cBULL7oxNjRQC7Ffe+Y70XVNnP0HSJLaA0W5SukyftQ==
