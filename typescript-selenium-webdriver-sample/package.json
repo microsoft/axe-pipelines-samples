@@ -4,7 +4,7 @@
     "description": "Sample project that demonstrates accessibility testing with TypeScript, Jest, Selenium, @axe-core/webdriverjs, SARIF, and Azure Pipelines.",
     "private": true,
     "devDependencies": {
-        "@axe-core/webdriverjs": "^4.2.2",
+        "@axe-core/webdriverjs": "^4.3.1",
         "@types/jest": "^27.0.2",
         "@types/node": "^14.17.18",
         "@types/selenium-webdriver": "^4.0.15",
