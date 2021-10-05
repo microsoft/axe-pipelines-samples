@@ -27,6 +27,7 @@
         "minimist": "^1.2.2",
         "acorn": "^7.1.1",
         "kind-of": "^6.0.3",
-        "node-notifier": ">=8.0.1"
+        "node-notifier": ">=8.0.1",
+        "ansi-regex": "^5.0.1"
     }
 }
