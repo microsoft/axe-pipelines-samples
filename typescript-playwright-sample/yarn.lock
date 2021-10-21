@@ -438,10 +438,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@playwright/test@^1.15.0":
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.15.0.tgz#fd9b5748ad9fb61d96a98d09135f412e800e5343"
-  integrity sha512-iDTD2Y3SwyFD6xHNbipyH6O/e0OQ/dJsrsiI8uz4YsRN1aeH1EJs+2qBveVtKW1nR/r0Ml/r3/VPCEi91JWPsw==
+"@playwright/test@^1.15.2":
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.15.2.tgz#5c8b378336ad34ea492b303c2d23f832d6df58d2"
+  integrity sha512-pDEydzpVdABAySMCUXD4h81nqAN0UjpNZeeheuZaG1AH6ElV9g5vOaj1pfFlRi5Io6gjbVbcdNOrAE4mCb/EZw==
   dependencies:
     "@babel/code-frame" "^7.14.5"
     "@babel/core" "^7.14.8"
