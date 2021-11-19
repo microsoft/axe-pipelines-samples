@@ -45,7 +45,7 @@ The test pass/fail results display in the Tests tab of the build logs:
 
 [![Screenshot of Tests tab in sample build](./assets/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=22505&view=ms.vss-test-web.build-test-results-tab)
 
-Detailed accessibliity scan information also appears in the Scans tab, courtesy of the [SARIF SAST Scans Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.scans):
+Detailed accessibility scan information also appears in the Scans tab, courtesy of the [SARIF SAST Scans Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.scans):
 
 [![Screenshot of Scans tab in sample build](./assets/screenshot-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=22505&view=sariftools.sarif-viewer-build-tab.sariftools.sarif-viewer-build-tab)
 
