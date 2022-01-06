@@ -5,10 +5,10 @@
   "private": true,
   "devDependencies": {
     "@axe-core/playwright": "^4.3.1",
-    "@playwright/test": "^1.16.3",
+    "@playwright/test": "^1.17.1",
     "@types/node": "^15.12.4",
     "axe-sarif-converter": "^2.8.0",
-    "playwright": "^1.16.3",
+    "playwright": "^1.17.1",
     "typescript": "^4.5.4"
   },
   "scripts": {
