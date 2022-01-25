@@ -716,10 +716,10 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
-"@testim/chrome-version@^1.0.7":
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/@testim/chrome-version/-/chrome-version-1.0.7.tgz#0cd915785ec4190f08a3a6acc9b61fc38fb5f1a9"
-  integrity sha512-8UT/J+xqCYfn3fKtOznAibsHpiuDshCb0fwgWxRazTT19Igp9ovoXMPhXyLD6m3CKQGTMHgqoxaFfMWaL40Rnw==
+"@testim/chrome-version@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@testim/chrome-version/-/chrome-version-1.1.2.tgz#092005c5b77bd3bb6576a4677110a11485e11864"
+  integrity sha512-1c4ZOETSRpI0iBfIFUqU4KqwBAB2lHUAlBjZz/YqOHqwM9dTTzjV6Km0ZkiEiSCx/tLr1BtESIKyWWMww+RUqw==
 
 "@tootallnate/once@1":
   version "1.1.2"
@@ -984,12 +984,12 @@ axe-sarif-converter@^2.8.0:
     axe-core "^3.2.2 || ^4.0.0"
     yargs "^17.0.0"
 
-axios@^0.21.2:
-  version "0.21.4"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.21.4.tgz#c67b90dc0568e5c1cf2b0b858c43ba28e2eda575"
-  integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
+axios@^0.24.0:
+  version "0.24.0"
+  resolved "https://registry.yarnpkg.com/axios/-/axios-0.24.0.tgz#804e6fa1e4b9c5288501dd9dff56a7a0940d20d6"
+  integrity sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==
   dependencies:
-    follow-redirects "^1.14.0"
+    follow-redirects "^1.14.4"
 
 babel-jest@^27.4.6:
   version "27.4.6"
@@ -1198,13 +1198,13 @@ chownr@^2.0.0:
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-2.0.0.tgz#15bfbe53d2eab4cf70f18a8cd68ebe5b3cb1dece"
   integrity sha512-bIomtDF5KGpdogkLd9VspvFzk9KfpyyGlS8YFVZl7TGPBHL5snIOnxeshwVgPteQ9b4Eydl+pVbIyE1DcvCWgQ==
 
-chromedriver@^97.0.0:
-  version "97.0.0"
-  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-97.0.0.tgz#7005b1a15a6456558d0fc4d5b72c98c12d1b033d"
-  integrity sha512-SZ9MW+/6/Ypz20CNdRKocsmRM2AJ/YwHaWpA1Np2QVPFUbhjhus6vBtqFD+l8M5qrktLWPQSjTwIsDckNfXIRg==
+chromedriver@^97.0.2:
+  version "97.0.2"
+  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-97.0.2.tgz#b6c26f6667ad40dc8cf08818878cc064787116fc"
+  integrity sha512-sOAfKCR3WsHvmKedZoWa+3tBVGdPtxq4zKxgKZCoJ2c924olBTW4Bnha6SHl93Yo7+QqsNn6ZpAC0ojhutacAg==
   dependencies:
-    "@testim/chrome-version" "^1.0.7"
-    axios "^0.21.2"
+    "@testim/chrome-version" "^1.1.2"
+    axios "^0.24.0"
     del "^6.0.0"
     extract-zip "^2.0.1"
     https-proxy-agent "^5.0.0"
@@ -1597,7 +1597,7 @@ find-up@^4.0.0, find-up@^4.1.0:
     locate-path "^5.0.0"
     path-exists "^4.0.0"
 
-follow-redirects@^1.14.0:
+follow-redirects@^1.14.4:
   version "1.14.7"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.7.tgz#2004c02eb9436eee9a21446a6477debf17e81685"
   integrity sha512-+hbxoLbFMbRKDwohX8GkTataGqO6Jb7jGwpAlwgy2bIz25XtRm7KEzJM76R1WiNT5SwZkX4Y75SwBolkpmE7iQ==
