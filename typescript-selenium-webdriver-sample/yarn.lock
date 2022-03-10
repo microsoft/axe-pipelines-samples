@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@axe-core/webdriverjs@^4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@axe-core/webdriverjs/-/webdriverjs-4.4.0.tgz#5a36916af60760f57e8c5739c190d12ce61b432c"
-  integrity sha512-bds2rUNl3mkUBvX+WoLQl7Vm7ctGAS/8Mz/2ADYAUD7Kf7go5ZijyqUynBvAQTtDld1DVQ3HIlo2VTPrNp8pRw==
+"@axe-core/webdriverjs@^4.4.1":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@axe-core/webdriverjs/-/webdriverjs-4.4.1.tgz#878f1c86e12aa2ae20148a6a852bd0258aaeb062"
+  integrity sha512-FuAndrx4dpEj6OoEoRSopmoeGcJqMejGH2debyqbMawNC1NOASMXoG+ZU3yWencWHHZQDje26V79KD2qujU+GA==
   dependencies:
     axe-core "^4.4.1"
 
