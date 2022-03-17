@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@axe-core/playwright@^4.3.2":
-  version "4.3.2"
-  resolved "https://registry.yarnpkg.com/@axe-core/playwright/-/playwright-4.3.2.tgz#53f6a15fedd7c44cf9a96b9cfd3fb505806494c8"
-  integrity sha512-OoSHWOUP/ah13BrzFx01BNPgAU1bVw9BY3ezIDv5M4VvGCqjduyte+FgeJfUZi7MTtroa83NyKsdCXUKTBKdQg==
+"@axe-core/playwright@^4.4.2":
+  version "4.4.2"
+  resolved "https://registry.yarnpkg.com/@axe-core/playwright/-/playwright-4.4.2.tgz#85811cc0e9fc2953e7be356043e1a368913c8106"
+  integrity sha512-PzdGAG4ybVfu/hgMRiMdirSGhwZf/hHlfEDmr/WFdcYv60XhQKSgb5h9B2H+6WN17hTmbacbQigq/4r5b7Ok4g==
   dependencies:
-    axe-core "^4.3.3"
-    playwright "^1.13.1"
+    axe-core "^4.4.1"
+    playwright "^1.16.2"
 
 "@babel/code-frame@7.16.7", "@babel/code-frame@^7.16.7":
   version "7.16.7"
@@ -611,10 +611,10 @@ ansi-styles@^5.0.0:
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-5.2.0.tgz#07449690ad45777d1924ac2abb2fc8895dba836b"
   integrity sha512-Cxwpt2SfTzTtXcfOlzGEee8O+c+MmUgGrNiBcXnuWxuFJHe6a5Hz7qwhwe5OgaSYI0IJvkLqWX1ASG+cJOkEiA==
 
-"axe-core@^3.2.2 || ^4.0.0", axe-core@^4.3.3:
-  version "4.3.3"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.3.3.tgz#b55cd8e8ddf659fe89b064680e1c6a4dceab0325"
-  integrity sha512-/lqqLAmuIPi79WYfRpy2i8z+x+vxU3zX2uAm0gs1q52qTuKwolOj1P8XbufpXcsydrpKx2yGn2wzAnxCMV86QA==
+"axe-core@^3.2.2 || ^4.0.0", axe-core@^4.4.1:
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.4.1.tgz#7dbdc25989298f9ad006645cd396782443757413"
+  integrity sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw==
 
 axe-sarif-converter@^2.8.0:
   version "2.8.0"
@@ -1185,7 +1185,7 @@ playwright-core@1.20.0:
     yauzl "2.10.0"
     yazl "2.5.1"
 
-playwright@^1.13.1, playwright@^1.20.0:
+playwright@^1.16.2, playwright@^1.20.0:
   version "1.20.0"
   resolved "https://registry.yarnpkg.com/playwright/-/playwright-1.20.0.tgz#f80b131c0146afc4645fcd5cfcc2ca11895ba58a"
   integrity sha512-YcFXhXttk9yvpc8PMbfvts6KEopXjxdBh47BdOiA7xhjF/gkXeSM0Hs9CSdbL9mp2xtlB5xqE7+D+F2soQOjbA==
