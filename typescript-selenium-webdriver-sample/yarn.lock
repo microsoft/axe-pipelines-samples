@@ -975,10 +975,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.4.1.tgz#7dbdc25989298f9ad006645cd396782443757413"
   integrity sha512-gd1kmb21kwNuWr6BQz8fv6GNECPBnUasepcoLbekws23NVBLODdsClRZ+bQ8+9Uomf3Sm3+Vwn0oYG9NvwnJCw==
 
-axe-sarif-converter@^2.8.0:
-  version "2.8.0"
-  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.8.0.tgz#4d1a808ad5c14abe49d7b4e276cef03c1c0b173c"
-  integrity sha512-UuhV9Q8MBm8ucrz+Lq7xT6DrZeHzl5R8dV5HeLs6v5PQozGhGAJyZVXOqSxFJHtPwNK5yOpRgaqOmqXNWNDjsw==
+axe-sarif-converter@^2.9.0:
+  version "2.9.0"
+  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.9.0.tgz#d1e88c034b1571b3b574d8f3e05044b74e36e65c"
+  integrity sha512-Fl/DM5GGrLBwxJLPOGubvqrre4uh/ePqEABxSPwvyFHVavvkSnpmE+621WCFRNTvUdylp2F0v9Ih3AonPJtiOQ==
   dependencies:
     "@types/sarif" ">=2.1.1 <=2.1.4"
     axe-core "^3.2.2 || ^4.0.0"
