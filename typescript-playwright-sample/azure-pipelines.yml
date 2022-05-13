@@ -70,7 +70,11 @@ steps:
   #
   # If your project already uses npm instead of yarn, or if your project already runs "playwright test" directly here,
   # those are both fine.
-  - script: yarn test --browser=$(browser) # or "npm run test -- --browser=$(browser)"
+  #
+  # We use the EXTRA_PLAYWRIGHT_TEST_ARGUMENTS variable in the sample's CI/PR builds to separate our passing and failing
+  # example builds using Playwright Test's --project argument. You probably don't need EXTRA_PLAYWRIGHT_TEST_ARGUMENTS in
+  # a real project.
+  - script: yarn test --browser=$(browser) $(EXTRA_PLAYWRIGHT_TEST_ARGUMENTS) # or "npm run test -- --browser=$(browser)"
     displayName: yarn test
     workingDirectory: $(Build.SourcesDirectory)/typescript-playwright-sample
 

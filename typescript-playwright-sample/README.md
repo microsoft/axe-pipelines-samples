@@ -16,7 +16,7 @@ The individual files in the sample contain comments that explain the important p
 
 Some good places to start reading are:
 
-* [tests/index.spec.ts](./tests/index.spec.ts): Playwright test file that opens [src/index.html](./src/index.html) in a browser with Playwright and runs accessibility scans against it with `@axe-core/playwright`
+* [tests/passing-examples.spec.ts](./tests/passing-examples.spec.ts): Playwright test file that opens [src/index.html](./src/index.html) in a browser with Playwright and runs accessibility scans against it with `@axe-core/playwright`
 * [azure-pipelines.yml](./azure-pipelines.yml): Azure Pipelines config file that sets up our Continuous Integration and Pull Request builds
 * [playwright.config.ts](./playwright.config.ts): Playwright configuration file that enables test result reporting in Azure Pipelines (using the `junit` reporter)
 
