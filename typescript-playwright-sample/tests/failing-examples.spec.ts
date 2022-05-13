@@ -3,7 +3,7 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import * as path from 'path';
-import { exportAxeAsSarifTestResult } from './passing-examples.spec';
+import { exportAxeAsSarifTestResult } from './export-to-sarif';
 
 // This file contains test cases that intentionally fail; you can refer to this project's
 // "[failing example] typescript-playwright-sample" Pipeline to see what an accessibility
