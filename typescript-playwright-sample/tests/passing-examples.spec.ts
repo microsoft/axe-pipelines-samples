@@ -40,7 +40,7 @@ test.describe('[passing examples] index.html', () => {
 
         await exportAxeAsSarifTestResult('index-h1-element.sarif', accessibilityScanResults, browserName);
 
-        expect(accessibilityScanResults.violations).toStrictEqual([]);
+        expect(accessibilityScanResults.violations).toEqual([]);
     });
 
     // If you want to run a scan of a page but need to exclude an element with known issues (eg, a third-party
@@ -54,7 +54,7 @@ test.describe('[passing examples] index.html', () => {
             
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults, browserName);
 
-        expect(accessibilityScanResults.violations).toStrictEqual([]);
+        expect(accessibilityScanResults.violations).toEqual([]);
     });
 
     // If you want to more precisely baseline a particular set of known issues, you can extract a "fingerprint"

@@ -63,7 +63,7 @@ describe('index.html', () => {
 
         await exportAxeAsSarifTestResult('index-h1-element.sarif', accessibilityScanResults);
 
-        expect(accessibilityScanResults.violations).toStrictEqual([]);
+        expect(accessibilityScanResults.violations).toEqual([]);
     }, TEST_TIMEOUT_MS);
 
     // If you want to run a scan of a page but need to exclude an element with known issues (eg, a third-party
@@ -77,7 +77,7 @@ describe('index.html', () => {
 
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults);
 
-        expect(accessibilityScanResults.violations).toStrictEqual([]);
+        expect(accessibilityScanResults.violations).toEqual([]);
     }, TEST_TIMEOUT_MS);
 
     // If you want to more precisely baseline a particular set of known issues, one option is to use Jest

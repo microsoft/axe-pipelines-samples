@@ -26,6 +26,6 @@ test.describe('[failing example] index.html', () => {
             
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults, browserName);
 
-        expect(accessibilityScanResults.violations).toStrictEqual([]);
+        expect(accessibilityScanResults.violations).toEqual([]);
     });
 });
