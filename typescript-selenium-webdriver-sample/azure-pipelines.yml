@@ -56,9 +56,9 @@ steps:
   # It is a good idea to test against a specific, known version of Node; this makes it easier for other users
   # to reproduce your build results.
   - task: NodeTool@0
-    displayName: install node 14.15.0
+    displayName: install node 16.15.0
     inputs:
-      versionSpec: "14.15.0"
+      versionSpec: "16.15.0"
 
   # This task installs dependencies specified in your package.json file.
   #

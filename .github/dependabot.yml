@@ -18,7 +18,7 @@ updates:
     # use for builds (ideally, latest LTS)
   - dependency-name: "@types/node"
     versions:
-    - ">=15.0.0"
+    - ">=17.0.0"
 - package-ecosystem: npm
   directory: "/typescript-playwright-sample"
   schedule:
@@ -31,4 +31,4 @@ updates:
     # use for builds (ideally, latest LTS)
   - dependency-name: "@types/node"
     versions:
-    - ">=15.0.0"
+    - ">=17.0.0"
