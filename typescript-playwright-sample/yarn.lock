@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@axe-core/playwright@^4.4.2":
-  version "4.4.2"
-  resolved "https://registry.yarnpkg.com/@axe-core/playwright/-/playwright-4.4.2.tgz#85811cc0e9fc2953e7be356043e1a368913c8106"
-  integrity sha512-PzdGAG4ybVfu/hgMRiMdirSGhwZf/hHlfEDmr/WFdcYv60XhQKSgb5h9B2H+6WN17hTmbacbQigq/4r5b7Ok4g==
+"@axe-core/playwright@^4.4.3":
+  version "4.4.3"
+  resolved "https://registry.yarnpkg.com/@axe-core/playwright/-/playwright-4.4.3.tgz#cd92dc059a30566ab5153f632154b2ce7dc63d55"
+  integrity sha512-5H1uebutjeS8zV0klAifAsFxIOdAAF8AAGzfnC1twFY1h74TVISTDOtb+qyDzjjW3YAFd3FEbbasqS6ULcdkcQ==
   dependencies:
     axe-core "^4.4.1"
     playwright "^1.16.2"
