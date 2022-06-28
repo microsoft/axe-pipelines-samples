@@ -4,20 +4,19 @@
     "description": "Sample project that demonstrates accessibility testing with TypeScript, Jest, Selenium, @axe-core/webdriverjs, SARIF, and Azure Pipelines.",
     "private": true,
     "devDependencies": {
-        "@axe-core/webdriverjs": "^4.1.1",
-        "@types/jest": "^26.0.20",
-        "@types/node": "^14.14.25",
-        "@types/selenium-webdriver": "^4.0.11",
-        "axe-sarif-converter": "^2.6.1",
-        "chromedriver": "^88.0.0",
+        "@axe-core/webdriverjs": "^4.4.3",
+        "@types/jest": "^27.5.0",
+        "@types/node": "^16.11.41",
+        "@types/selenium-webdriver": "^4.1.1",
+        "axe-sarif-converter": "^2.9.0",
+        "chromedriver": "^102.0.0",
         "cross-env": "^7.0.3",
-        "geckodriver": "^1.22.1",
-        "jest": "^25.5.4",
-        "jest-circus": "^26.6.3",
-        "jest-junit": "^12.0.0",
-        "selenium-webdriver": "^4.0.0-alpha.8",
-        "ts-jest": "^25.5.1",
-        "typescript": "^3.9.7"
+        "geckodriver": "^3.0.1",
+        "jest": "^27.5.1",
+        "jest-junit": "^13.2.0",
+        "selenium-webdriver": "^4.2.0",
+        "ts-jest": "^27.1.4",
+        "typescript": "^4.7.4"
     },
     "scripts": {
         "test": "jest",
@@ -28,6 +27,8 @@
         "minimist": "^1.2.2",
         "acorn": "^7.1.1",
         "kind-of": "^6.0.3",
+        "node-notifier": ">=8.0.1",
+        "ansi-regex": "^5.0.1",
         "got": "^11.8.5"
     }
 }

@@ -51,6 +51,7 @@ namespace CSharpSeleniumWebdriverSample
             // We recommend using FluentAssertions instead; its default behavior gives much better error messages that include
             // full descriptions of accessibility issues, including links to detailed guidance at https://dequeuniversity.com
             // and CSS selector paths that exactly identify the element on the page with the issue.
+            axeResult.Error.Should().BeNull();
             axeResult.Violations.Should().BeEmpty();
         }
 
@@ -70,6 +71,7 @@ namespace CSharpSeleniumWebdriverSample
                 .WithTags("wcag2a", "wcag2aa", "wcag21aa")
                 .Analyze(elementUnderTest);
 
+            axeResultWithAnalyzeWebElement.Error.Should().BeNull();
             axeResultWithAnalyzeWebElement.Violations.Should().BeEmpty();
 
             // Option 2: using AxeBuilder.Include
@@ -82,6 +84,7 @@ namespace CSharpSeleniumWebdriverSample
                 .WithTags("wcag2a", "wcag2aa", "wcag21aa")
                 .Analyze();
 
+            axeResultWithInclude.Error.Should().BeNull();
             axeResultWithInclude.Violations.Should().BeEmpty();
         }
 
@@ -98,6 +101,7 @@ namespace CSharpSeleniumWebdriverSample
                 .Exclude("#id-of-example-accessibility-violation-list")
                 .Analyze();
             
+            axeResultExcludingExampleViolationsElement.Error.Should().BeNull();
             axeResultExcludingExampleViolationsElement.Violations.Should().BeEmpty();
 
             // You can also use AxeBuilder.DisableRules to exclude certain individual rules from a scan. This is particularly
@@ -107,12 +111,14 @@ namespace CSharpSeleniumWebdriverSample
                 .DisableRules("color-contrast", "label", "tabindex")
                 .Analyze();
 
+            axeResultDisablingRulesViolatedByExamples.Error.Should().BeNull();
             axeResultDisablingRulesViolatedByExamples.Violations.Should().BeEmpty();
 
             // Another option is to assert on the size of the Violations array. This works just fine, but we recommend the
             // other options above as your first choice instead because when they do find new issues, they will produce error
             // messages that more clearly identify exactly what the new/unexpected issues are.
             AxeResult axeResult = new AxeBuilder(_webDriver).Analyze();
+            axeResult.Error.Should().BeNull();
             axeResult.Violations.Should().HaveCount(3);
         }
 

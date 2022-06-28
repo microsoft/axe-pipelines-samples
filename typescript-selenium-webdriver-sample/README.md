@@ -4,8 +4,8 @@ This sample demonstrates how you might set up a CI build for a simple, static ht
 
 This sample uses Selenium WebDriver for browser automation and uses the corresponding `@axe-core/webdriverjs` library to integrate Axe and Selenium. But you don't have to use Selenium to use Axe! If you prefer a different browser automation tool, you can still follow the same concepts from this sample by using the integration library appropriate for your framework:
 
-* For **Puppeteer**, use [@axe-core/puppeteer](https://www.npmjs.com/package/@axe-core/puppeteer)
-* For **Playwright**, use [axe-playwright](https://www.npmjs.com/package/axe-playwright)
+* For **Playwright**, see our [typescript-playwright-sample](../typescript-playwright-sample/README.md)
+* For **Puppeteer**, see our [typescript-playwright-sample](../typescript-playwright-sample/README.md) and use [@axe-core/puppeteer](https://www.npmjs.com/package/@axe-core/puppeteer)
 * For **Cypress**, use [cypress-axe](https://www.npmjs.com/package/cypress-axe)
 * For **WebdriverIO**, use [@axe-core/webdriverio](https://www.npmjs.com/package/@axe-core/webdriverio)
 * For **Protractor**, keep using `@axe-core/webdriverjs` like the sample shows, but instead of creating your own Webdriver object, pass [`browser.webdriver`](https://www.protractortest.org/#/api?view=ProtractorBrowser) to `@axe-core/webdriverjs`.
@@ -29,11 +29,11 @@ Some good places to start reading are:
 * [@axe-core/webdriverjs](https://github.com/dequelabs/axe-core-npm/tree/develop/packages/webdriverjs) to run an axe accessibility scan on the page from the Selenium browser
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request
 * [axe-sarif-converter](https://github.com/microsoft/axe-sarif-converter) to convert axe results to SARIF format
-* [Sarif Viewer Build Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab) to visualize the results in Azure Pipelines
+* [SARIF SAST Scans Tab](https://marketplace.visualstudio.com/items?itemName=sariftools.scans) to visualize the results in Azure Pipelines
 
 ## See it in action in Azure Pipelines
 
-[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/25?branchName=master)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=25&branchName=master)
+[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/25?branchName=main)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=25&branchName=main)
 
 <!--
   Note to maintainers: The below example images/links come from a specific build instead of the most recent build so we can link to specific tabs.
@@ -47,7 +47,7 @@ The test pass/fail results display in the Tests tab of the build logs:
 
 [![Screenshot of Tests tab in sample build](./assets/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2228&view=ms.vss-test-web.build-test-results-tab)
 
-Detailed accessibliity scan information also appears in the Scans tab, courtesy of the [Sarif Viewer Build Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.sarif-viewer-build-tab):
+Detailed accessibility scan information also appears in the Scans tab, courtesy of the [SARIF SAST Scans Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.scans):
 
 [![Screenshot of Scans tab in sample build](./assets/screenshot-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=2228&view=sariftools.sarif-viewer-build-tab.sariftools.sarif-viewer-build-tab)
 

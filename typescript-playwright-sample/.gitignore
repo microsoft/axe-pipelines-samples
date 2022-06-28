@@ -1,0 +1,17 @@
+# Logs
+logs
+*.log
+yarn-debug.log*
+yarn-error.log*
+
+# Dependency directories
+node_modules/
+
+# Yarn Integrity file
+.yarn-integrity
+
+# build output
+/dist/
+/test-results/
+
+**/.DS_Store
