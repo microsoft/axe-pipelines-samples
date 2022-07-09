@@ -1654,14 +1654,14 @@ function-bind@^1.1.1:
   resolved "https://registry.yarnpkg.com/function-bind/-/function-bind-1.1.1.tgz#a56899d3ea3c9bab874bb9773b7c5ede92f4895d"
   integrity sha512-yIovAzMX49sF8Yl58fSCWJ5svSLuaibPxXQJFLmBObTuCr0Mf1KiPopGM9NiFjiYBCbfaa2Fh6breQ6ANVTI0A==
 
-geckodriver@^3.0.1:
-  version "3.0.1"
-  resolved "https://registry.yarnpkg.com/geckodriver/-/geckodriver-3.0.1.tgz#ded3512f3c6ddc490139b9d5e8fd6925d41c5631"
-  integrity sha512-cHmbNFqt4eelymsuVt7B5nh+qYGpPCltM7rd+k+CBaTvxGGr4j6STeOYahXMNdSeUbCVhqP345OuqWnvHYAz4Q==
+geckodriver@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/geckodriver/-/geckodriver-3.0.2.tgz#6bd69166a24859c5edbc6ece9868339378b6c97b"
+  integrity sha512-GHOQzQnTeZOJdcdEXLuzmcRwkbHuei1VivXkn2BLyleKiT6lTvl0T7vm+d0wvr/EZC7jr0m1u1pBHSfqtuFuNQ==
   dependencies:
     adm-zip "0.5.9"
     bluebird "3.7.2"
-    got "11.8.2"
+    got "11.8.5"
     https-proxy-agent "5.0.0"
     tar "6.1.11"
 
@@ -1728,7 +1728,7 @@ globby@^11.0.1:
     merge2 "^1.3.0"
     slash "^3.0.0"
 
-got@11.8.2, got@^11.8.5:
+got@11.8.5, got@^11.8.5:
   version "11.8.5"
   resolved "https://registry.yarnpkg.com/got/-/got-11.8.5.tgz#ce77d045136de56e8f024bebb82ea349bc730046"
   integrity sha512-o0Je4NvQObAuZPHLFoRSkdG2lTgtcynqymzg2Vupdx6PorhaT5MCbIyXG6d4D94kk8ZG57QeosgdiqfJWhEhlQ==
