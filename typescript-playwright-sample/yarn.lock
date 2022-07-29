@@ -10,13 +10,13 @@
     axe-core "^4.4.1"
     playwright "^1.16.2"
 
-"@playwright/test@^1.24.0":
-  version "1.24.0"
-  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.24.0.tgz#bef07eddeebba21358ab15e9b0b7a79df0479b76"
-  integrity sha512-sZLH2N6aWN9TtG+vMjNSomSfX0dSVHwWE+GhHQPV+ZeGcuZ/6CgMCGFuGjobgq/hNF9ZkuVOjeyoceZ0owKnHQ==
+"@playwright/test@^1.24.1":
+  version "1.24.1"
+  resolved "https://registry.yarnpkg.com/@playwright/test/-/test-1.24.1.tgz#b70f5cd0909530e17c7610918b45f4af156f16c4"
+  integrity sha512-VJ9qekMis7Oze2Q/Vb+w1g2aPaJFRdl5vhTS6h82kG89Jb8trlU2WHY7oYzNRjvFPoVUMcWXiblH2bWcbEax/A==
   dependencies:
     "@types/node" "*"
-    playwright-core "1.24.0"
+    playwright-core "1.24.1"
 
 "@types/node@*":
   version "17.0.38"
