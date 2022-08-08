@@ -42,7 +42,7 @@ strategy:
       imageName: ubuntu-20.04
       browser: firefox
     mac-webkit:
-      imageName: macOS-10.15
+      imageName: macOS-11
       browser: webkit
 
 pool:
