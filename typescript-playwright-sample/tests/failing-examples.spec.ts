@@ -21,7 +21,7 @@ test.describe('[failing example] index.html', () => {
     test('accessibility of elements with issues', async ({ browserName, page }) => {
         const accessibilityScanResults = await new AxeBuilder({ page })
             .include('#example-accessibility-violations')
-            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
             .analyze();
             
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults, browserName);

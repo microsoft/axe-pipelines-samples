@@ -36,7 +36,7 @@ namespace CSharpSeleniumWebdriverSample
                 // For complete documentation of which rule IDs and tags axe supports, see:
                 // * summary of rules with IDs and tags: https://github.com/dequelabs/axe-core/blob/develop/doc/rule-descriptions.md
                 // * full reference documentation for each rule: https://dequeuniversity.com/rules/axe
-                .WithTags("wcag2a", "wcag2aa", "wcag21aa")
+                .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze();
 
             // axeResult.Violations is an array of all the accessibility violations the scan found; the easiest way to assert
@@ -68,7 +68,7 @@ namespace CSharpSeleniumWebdriverSample
             IWebElement elementUnderTest = _webDriver.FindElement(By.Id("id-of-example-accessible-element"));
 
             AxeResult axeResultWithAnalyzeWebElement = new AxeBuilder(_webDriver)
-                .WithTags("wcag2a", "wcag2aa", "wcag21aa")
+                .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze(elementUnderTest);
 
             axeResultWithAnalyzeWebElement.Error.Should().BeNull();
@@ -81,7 +81,7 @@ namespace CSharpSeleniumWebdriverSample
                 .Include("#id-of-example-accessible-element")
                 .Include(".class-of-example-accessible-element")
                 .Include("#id-of-iframe", "#id-of-element-inside-iframe")
-                .WithTags("wcag2a", "wcag2aa", "wcag21aa")
+                .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze();
 
             axeResultWithInclude.Error.Should().BeNull();

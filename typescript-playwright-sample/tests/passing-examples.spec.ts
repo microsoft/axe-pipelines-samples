@@ -35,7 +35,7 @@ test.describe('[passing examples] index.html', () => {
             // WCAG 2.1 A and AA rules (similar to what Accessibility Insights reports). If you omit
             // this, Axe will additionally run several "best practice" rules, which are good ideas to
             // check for periodically but may report false positives in certain edge cases.
-            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
             .analyze();
 
         await exportAxeAsSarifTestResult('index-h1-element.sarif', accessibilityScanResults, browserName);
@@ -49,7 +49,7 @@ test.describe('[passing examples] index.html', () => {
     test('accessibility of page (excluding element with known issues)', async ({ browserName, page }) => {
         const accessibilityScanResults = await new AxeBuilder({ page })
             .exclude('#example-accessibility-violations')
-            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
             .analyze();
             
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults, browserName);
@@ -61,7 +61,7 @@ test.describe('[passing examples] index.html', () => {
     // for each issue and test whether the set of fingerprints found matches the set you already know about.
     test('accessibility of page should match snapshot', async ({ browserName, page }) => {
         const accessibilityScanResults = await new AxeBuilder({ page })
-            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
             .analyze();
 
         await exportAxeAsSarifTestResult('index-page.sarif', accessibilityScanResults, browserName);
