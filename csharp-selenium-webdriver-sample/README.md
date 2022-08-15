@@ -43,12 +43,21 @@ This sample also uses a few other tools and libraries which are less important; 
 
 1. Run the tests
 
+    Filter to only run passing tests:
+
+   ```sh
+   cd ./axe-pipelines-samples/csharp-selenium-webdriver-sample
+   dotnet test --filter TestCategory!=IntentionallyFailsAsAnExample
+   ```
+
+   ![Screenshot of 'dotnet test' command showing all tests passing](./Resources/screenshot-dotnet-test-success.png)
+
+   Run all tests (both passing and failing):
+
    ```sh
    cd ./axe-pipelines-samples/csharp-selenium-webdriver-sample
    dotnet test
    ```
-
-   ![Screenshot of 'dotnet test' command showing all tests passing](./Resources/screenshot-dotnet-test-success.png)
 
    ![Screenshot of 'dotnet test' command showing some accessibility violations](./Resources/screenshot-dotnet-test-failure.png)
 
