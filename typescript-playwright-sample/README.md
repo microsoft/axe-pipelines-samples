@@ -36,7 +36,7 @@ Some good places to start reading are:
   If you update the links such that they point to a different build, make sure to mark that build as Retained so the links don't expire in a month.
 -->
 
-These two azure pipelines demonstrate what it looks like to incorporate passing or failing accessibility tests into your CI.
+These two Azure Pipelines demonstrate what it looks like to incorporate passing or failing accessibility tests into your CI.
 
 ### Passing examples
 
@@ -52,7 +52,7 @@ The test pass results display in the Tests tab of the build logs:
 
 Detailed accessibility scan information also appears in the Scans tab, courtesy of the [SARIF SAST Scans Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.scans):
 
-[![Screenshot of Scans tab in passing sample build](./assets/screenshot-passing-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=39169&view=sariftools.sarif-viewer-build-tab.sariftools.sarif-viewer-build-tab)
+[![Screenshot of Scans tab in passing sample build](./assets/screenshot-passing-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=39169&view=sariftools.scans.build-tab)
 
 ### Failing examples
 
@@ -68,7 +68,7 @@ The test pass/fail results display in the Tests tab of the build logs:
 
 Detailed accessibility scan information also appears in the Scans tab, courtesy of the [SARIF SAST Scans Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.scans):
 
-[![Screenshot of Scans tab in failing sample build](./assets/screenshot-failing-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=39170&view=sariftools.sarif-viewer-build-tab.sariftools.sarif-viewer-build-tab)
+[![Screenshot of Scans tab in failing sample build](./assets/screenshot-failing-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=39170&view=sariftools.scans.build-tab)
 
 ## See it in action on your local machine
 
