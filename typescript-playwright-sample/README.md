@@ -31,23 +31,44 @@ Some good places to start reading are:
 
 ## See it in action in Azure Pipelines
 
-[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/42?branchName=main)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=42&branchName=main)
-
 <!--
   Note to maintainers: The below example images/links come from a specific build instead of the most recent build so we can link to specific tabs.
   If you update the links such that they point to a different build, make sure to mark that build as Retained so the links don't expire in a month.
 -->
-The accessibility tests run as part of the `yarn test` build step:
 
-[![Screenshot of "yarn test" build logs in sample build](./assets/screenshot-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=22505)
+These two Azure Pipelines demonstrate what it looks like to incorporate passing or failing accessibility tests into your CI.
 
-The test pass/fail results display in the Tests tab of the build logs:
+### Passing examples
 
-[![Screenshot of Tests tab in sample build](./assets/screenshot-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=22505&view=ms.vss-test-web.build-test-results-tab)
+[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/42?branchName=main)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=42&branchName=main)
+
+The passing accessibility tests included in passing-examples.spec.ts run as part of the `yarn test` build step:
+
+[![Screenshot of "yarn test" build logs in passing sample build](./assets/screenshot-passing-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=39169)
+
+The test pass results display in the Tests tab of the build logs:
+
+[![Screenshot of Tests tab in passing sample build](./assets/screenshot-passing-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=39169&view=ms.vss-test-web.build-test-results-tab)
 
 Detailed accessibility scan information also appears in the Scans tab, courtesy of the [SARIF SAST Scans Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.scans):
 
-[![Screenshot of Scans tab in sample build](./assets/screenshot-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=22505&view=sariftools.sarif-viewer-build-tab.sariftools.sarif-viewer-build-tab)
+[![Screenshot of Scans tab in passing sample build](./assets/screenshot-passing-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=39169&view=sariftools.scans.build-tab)
+
+### Failing examples
+
+[![Build Status](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_apis/build/status/43?branchName=main)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/latest?definitionId=43&branchName=main)
+
+The failing accessibility tests included in failing-examples.spec.ts run as part of the `yarn test` build step:
+
+[![Screenshot of "yarn test" build logs in failing sample build](./assets/screenshot-failing-logs-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=39170)
+
+The test pass/fail results display in the Tests tab of the build logs:
+
+[![Screenshot of Tests tab in failing sample build](./assets/screenshot-failing-tests-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=39170&view=ms.vss-test-web.build-test-results-tab)
+
+Detailed accessibility scan information also appears in the Scans tab, courtesy of the [SARIF SAST Scans Tab extension](https://marketplace.visualstudio.com/items?itemName=sariftools.scans):
+
+[![Screenshot of Scans tab in failing sample build](./assets/screenshot-failing-scans-tab.png)](https://dev.azure.com/accessibility-insights/axe-pipelines-samples/_build/results?buildId=39170&view=sariftools.scans.build-tab)
 
 ## See it in action on your local machine
 
@@ -67,7 +88,7 @@ Detailed accessibility scan information also appears in the Scans tab, courtesy 
 1. Run the tests!
 
    ```sh
-   yarn test # or npm test
+   yarn test # or `npm test`. You can also append a file name to only run passing or failing tests (ex: `yarn test passing-examples.spec.ts`)
    ```
 
-   ![Screenshot of yarn test command showing all tests passing](./assets/screenshot-yarn-test-success.png)
+   ![Screenshot of yarn test command showing 3 tests passing and 1 test failed](./assets/screenshot-local-yarn-test.png)
