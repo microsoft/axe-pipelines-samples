@@ -58,7 +58,7 @@ describe('index.html', () => {
             // WCAG 2.1 A and AA rules (similar to what Accessibility Insights reports). If you omit
             // this, Axe will additionally run several "best practice" rules, which are good ideas to
             // check for periodically but may report false positives in certain edge cases.
-            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
             .analyze();
 
         await exportAxeAsSarifTestResult('index-h1-element.sarif', accessibilityScanResults);
@@ -72,7 +72,7 @@ describe('index.html', () => {
     it('has no accessibility violations outside of the known example violations', async () => {
         const accessibilityScanResults = await new AxeWebdriverjs(driver)
             .exclude('#example-accessibility-violations')
-            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
             .analyze();
 
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults);
@@ -84,7 +84,7 @@ describe('index.html', () => {
     // Snapshot Testing (https://jestjs.io/docs/snapshot-testing) with the scan results object.
     it('has only those accessibility violations present in snapshot', async () => {
         const accessibilityScanResults = await new AxeWebdriverjs(driver)
-            .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
+            .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
             .analyze();
 
         await exportAxeAsSarifTestResult('index-page.sarif', accessibilityScanResults);
