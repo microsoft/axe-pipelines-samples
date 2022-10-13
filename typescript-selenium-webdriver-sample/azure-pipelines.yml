@@ -39,7 +39,7 @@ strategy:
       browser: chrome
 
     linux-firefox:
-      imageName: ubuntu-18.04
+      imageName: ubuntu-20.04
       browser: firefox
 
 pool:
