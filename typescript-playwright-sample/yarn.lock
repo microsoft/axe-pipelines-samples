@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@axe-core/playwright@^4.4.5":
-  version "4.4.5"
-  resolved "https://registry.yarnpkg.com/@axe-core/playwright/-/playwright-4.4.5.tgz#196513ceb78ae42fa047de6bc757bec670eb13a0"
-  integrity sha512-oyh8TuAjPc6GIut3E+BiJU19jAEuzhf1ZMB7nrJqfGWsU6kWP0ymRwuj6TX3JJTT5mL3m+yFhph5RhCr/MkQ1g==
+"@axe-core/playwright@^4.5.0":
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/@axe-core/playwright/-/playwright-4.5.0.tgz#935708d0a740debf564fc0388cecfd2219a4a834"
+  integrity sha512-YBkSBuxeSXb9FRUZU7NsZZFU/sTluZt71YqTRLrS/1eycZqIYMIALo9D/s17zPoBsFwJRKPkKvQy+dmDHHy4yQ==
   dependencies:
-    axe-core "^4.4.3"
+    axe-core "^4.5.0"
 
 "@playwright/test@^1.26.1":
   version "1.26.1"
@@ -44,10 +44,10 @@ ansi-styles@^4.0.0:
   dependencies:
     color-convert "^2.0.1"
 
-"axe-core@^3.2.2 || ^4.0.0", axe-core@^4.4.3:
-  version "4.4.3"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.4.3.tgz#11c74d23d5013c0fa5d183796729bc3482bd2f6f"
-  integrity sha512-32+ub6kkdhhWick/UjvEwRchgoetXqTK14INLqbGm5U2TzBkBNF3nQtLYm8ovxSkQWArjEQvftCKryjZaATu3w==
+"axe-core@^3.2.2 || ^4.0.0", axe-core@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.5.0.tgz#6efe2ecdba205fcc9d7ddb3d48c2cf630f70eb5e"
+  integrity sha512-4+rr8eQ7+XXS5nZrKcMO/AikHL0hVqy+lHWAnE3xdHl+aguag8SOQ6eEqLexwLNWgXIMfunGuD3ON1/6Kyet0A==
 
 axe-sarif-converter@^2.9.0:
   version "2.9.0"
