@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@axe-core/webdriverjs@^4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@axe-core/webdriverjs/-/webdriverjs-4.5.0.tgz#692dc75a61990e2ec56d99499d90a9c29437a335"
-  integrity sha512-PvHdg/ogQ1WOcZStj5GylC9fwPlzaRUJQ/4vggC9OxE6/sDITXURP7vi32TqfSTQ+Er6dd+LgLJOZXx78jwbcQ==
+"@axe-core/webdriverjs@^4.5.1":
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/@axe-core/webdriverjs/-/webdriverjs-4.5.1.tgz#55121fdbc1e67039357a63ee13075caea2fbcb37"
+  integrity sha512-YLMtBd6SmlKOaPQ45wG6rVn4mABKJm8mum93MpxVNdt24/7NJhQ5RCM6qOvDCNxSZ3mC3divplmQaI43YFTqMA==
   dependencies:
-    axe-core "^4.5.0"
+    axe-core "^4.5.1"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.7":
   version "7.16.7"
@@ -974,10 +974,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
-"axe-core@^3.2.2 || ^4.0.0", axe-core@^4.5.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.5.0.tgz#6efe2ecdba205fcc9d7ddb3d48c2cf630f70eb5e"
-  integrity sha512-4+rr8eQ7+XXS5nZrKcMO/AikHL0hVqy+lHWAnE3xdHl+aguag8SOQ6eEqLexwLNWgXIMfunGuD3ON1/6Kyet0A==
+"axe-core@^3.2.2 || ^4.0.0", axe-core@^4.5.1:
+  version "4.5.1"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.5.1.tgz#04d561c11b6d76d096d34e9d14ba2c294fb20cdc"
+  integrity sha512-1exVbW0X1O/HSr/WMwnaweyqcWOgZgLiVxdLG34pvSQk4NlYQr9OUy0JLwuhFfuVNQzzqgH57eYzkFBCb3bIsQ==
 
 axe-sarif-converter@^2.9.0:
   version "2.9.0"
