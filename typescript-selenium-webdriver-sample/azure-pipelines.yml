@@ -42,6 +42,10 @@ strategy:
       imageName: ubuntu-20.04
       browser: firefox
 
+pr:
+  branches:
+    include: ['*']
+     
 pool:
   vmImage: $(imageName)
 
