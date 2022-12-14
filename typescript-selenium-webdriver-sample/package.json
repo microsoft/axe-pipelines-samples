@@ -6,7 +6,7 @@
     "devDependencies": {
         "@axe-core/webdriverjs": "^4.5.2",
         "@types/jest": "^27.5.0",
-        "@types/node": "^16.18.8",
+        "@types/node": "^16.18.9",
         "@types/selenium-webdriver": "^4.1.9",
         "axe-sarif-converter": "^2.9.0",
         "chromedriver": "^108.0.0",
