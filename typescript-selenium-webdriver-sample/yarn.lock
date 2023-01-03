@@ -794,10 +794,15 @@
   dependencies:
     "@types/node" "*"
 
-"@types/node@*", "@types/node@^16.18.10":
+"@types/node@*":
   version "16.18.10"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.10.tgz#d7415ef18c94f8d4e4a82ebcc8b8999f965d8920"
   integrity sha512-XU1+v7h81p7145ddPfjv7jtWvkSilpcnON3mQ+bDi9Yuf7OI56efOglXRyXWgQ57xH3fEQgh7WOJMncRHVew5w==
+
+"@types/node@^16.18.11":
+  version "16.18.11"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.11.tgz#cbb15c12ca7c16c85a72b6bdc4d4b01151bb3cae"
+  integrity sha512-3oJbGBUWuS6ahSnEq1eN2XrCyf4YsWI8OyCvo7c64zQJNplk3mO84t53o8lfTk+2ji59g5ycfc6qQ3fdHliHuA==
 
 "@types/prettier@^2.1.5":
   version "2.2.3"
@@ -816,10 +821,10 @@
   resolved "https://registry.yarnpkg.com/@types/sarif/-/sarif-2.1.3.tgz#1f9c16033f1461536ac014284920350109614c02"
   integrity sha512-zf+EoIplTkQW2TV2mwtJtlI0g540Z3Rs9tX9JqRAtyjnDCqkP+eMTgWCj3PGNbQpi+WXAjvC3Ou/dvvX2sLK4w==
 
-"@types/selenium-webdriver@^4.1.9":
-  version "4.1.9"
-  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-4.1.9.tgz#90b24668bf1ec0a049fbc7aeebd4f7ab672440fa"
-  integrity sha512-QNCYI3Rgjf3bZ2GZwXnUpOJUPR8p7+c9Um9MEKggLaUaF8UfjitH5aPCV1PF0DHVEiPYsXayGVS6+67DO3VILw==
+"@types/selenium-webdriver@^4.1.10":
+  version "4.1.10"
+  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-4.1.10.tgz#a33299c40afa8dfbd948c8dd338608b163f7c062"
+  integrity sha512-o6ARpkBI8J0b+jhLjXF46rYc8Vsb5CLrRetyA3V3qUPVDwNjPDyHZsZOCFSXH0KPZ6lIn2BfP1xVEPnO+AQy5w==
   dependencies:
     "@types/ws" "*"
 
