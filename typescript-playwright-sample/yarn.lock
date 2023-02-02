@@ -49,10 +49,10 @@ ansi-styles@^4.0.0:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.6.3.tgz#fc0db6fdb65cc7a80ccf85286d91d64ababa3ece"
   integrity sha512-/BQzOX780JhsxDnPpH4ZiyrJAzcd8AfzFPkv+89veFSr1rcMjuq2JDCwypKaPeB6ljHp9KjXhPpjgCvQlWYuqg==
 
-axe-sarif-converter@^2.9.0:
-  version "2.9.0"
-  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.9.0.tgz#d1e88c034b1571b3b574d8f3e05044b74e36e65c"
-  integrity sha512-Fl/DM5GGrLBwxJLPOGubvqrre4uh/ePqEABxSPwvyFHVavvkSnpmE+621WCFRNTvUdylp2F0v9Ih3AonPJtiOQ==
+axe-sarif-converter@^2.9.1:
+  version "2.9.1"
+  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.9.1.tgz#7ce32c52c3f0ade1ee46cee509f123deebfc189a"
+  integrity sha512-Gtg+oSnZF384OR9Z9k0gMbdCx5Egkm/6ysunv//UQ4woUpYIhkBpZUdpDWBVdxmFAcHv4DUkT2avj4zZEAcTbg==
   dependencies:
     "@types/sarif" ">=2.1.1 <=2.1.4"
     axe-core "^3.2.2 || ^4.0.0"
