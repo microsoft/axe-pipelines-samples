@@ -4,6 +4,7 @@
     <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
     <AssemblyTitle>CSharpSeleniumWebdriverSample</AssemblyTitle>
     <Product>CSharpSeleniumWebdriverSample</Product>
+    <IsTestProject>false</IsTestProject>
   </PropertyGroup>
   <ItemGroup>
     <Content Include="SamplePage.html">
