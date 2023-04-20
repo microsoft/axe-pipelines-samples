@@ -24,10 +24,10 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-17.0.38.tgz#f8bb07c371ccb1903f3752872c89f44006132947"
   integrity sha512-5jY9RhV7c0Z4Jy09G+NIDTsCZ5G0L5n+Z+p+Y7t5VJHM30bgwzSjVtlcBxqAj+6L/swIlvtOSzr8rBk/aNyV2g==
 
-"@types/node@^16.18.23":
-  version "16.18.23"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.23.tgz#b6e934fe427eb7081d0015aad070acb3373c3c90"
-  integrity sha512-XAMpaw1s1+6zM+jn2tmw8MyaRDIJfXxqmIQIS0HfoGYPuf7dUWeiUKopwq13KFX9lEp1+THGtlaaYx39Nxr58g==
+"@types/node@^16.18.24":
+  version "16.18.24"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.24.tgz#f21925dd56cd3467b4e1e0c5071d0f2af5e9a316"
+  integrity sha512-zvSN2Esek1aeLdKDYuntKAYjti9Z2oT4I8bfkLLhIxHlv3dwZ5vvATxOc31820iYm4hQRCwjUgDpwSMFjfTUnw==
 
 "@types/sarif@>=2.1.1 <=2.1.4":
   version "2.1.3"
