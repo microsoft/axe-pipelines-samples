@@ -7,7 +7,7 @@
         "@axe-core/webdriverjs": "^4.6.1",
         "@types/jest": "^27.5.0",
         "@types/node": "^16.18.33",
-        "@types/selenium-webdriver": "^4.1.14",
+        "@types/selenium-webdriver": "^4.1.15",
         "axe-sarif-converter": "^2.10.0",
         "chromedriver": "^113.0.0",
         "cross-env": "^7.0.3",
