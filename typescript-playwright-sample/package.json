@@ -11,6 +11,6 @@
     "typescript": "^5.0.4"
   },
   "scripts": {
-    "test": "playwright test"
+    "test": "npx playwright install && playwright test"
   }
 }
