@@ -9,7 +9,7 @@
     "@types/node": "^16.18.34",
     "axe-sarif-converter": "^2.10.0",
     "playwright": "^1.33.0",
-    "typescript": "^5.0.4"
+    "typescript": "^5.1.3"
   },
   "scripts": {
     "test": "playwright test"
