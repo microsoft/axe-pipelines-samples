@@ -26,6 +26,16 @@ test.describe('[failing example] index.html', () => {
             
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults, browserName);
 
-        expect(accessibilityScanResults.violations).toEqual([]);
+            // We special case dependabot PR's to break the build only if the expected violations are *not* found.
+        // You can remove this if you don't want or need this behavior.
+        if (isDependabotTheSourceVersionAuthor()) {
+            expect(accessibilityScanResults.violations).not.toEqual([]);
+        } else {
+            expect(accessibilityScanResults.violations).toEqual([]);
+        }
     });
+
+    function isDependabotTheSourceVersionAuthor(): boolean {
+        return process.env['BUILD_SOURCEVERSIONAUTHOR'] === 'dependabot[bot]';
+    }
 });
