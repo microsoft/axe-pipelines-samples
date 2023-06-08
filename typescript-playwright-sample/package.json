@@ -7,8 +7,8 @@
     "@axe-core/playwright": "^4.7.1",
     "@playwright/test": "^1.34.3",
     "@types/node": "^16.18.34",
-    "axe-sarif-converter": "^2.10.0",
-    "typescript": "^5.0.4"
+    "axe-sarif-converter": "^2.10.1",
+    "typescript": "^5.1.3"
   },
   "scripts": {
     "test": "npx playwright install && playwright test"
