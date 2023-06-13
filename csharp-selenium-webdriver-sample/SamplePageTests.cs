@@ -52,7 +52,17 @@ namespace CSharpSeleniumWebdriverSample
             // full descriptions of accessibility issues, including links to detailed guidance at https://dequeuniversity.com
             // and CSS selector paths that exactly identify the element on the page with the issue.
             axeResult.Error.Should().BeNull();
-            axeResult.Violations.Should().BeEmpty();
+
+            // We special case dependabot PR's to break the build only if the expected violations are *not* found.
+            // You can remove this if you don't want or need this behavior.
+            if (IsDependabotTheSourceVersionAuthor()) 
+            {
+                axeResult.Violations.Should().NotBeEmpty();
+            }
+            else
+            {
+                axeResult.Violations.Should().BeEmpty();
+            }
         }
 
         // This test case shows 2 options for scanning specific elements within a page, rather than an entire page.
@@ -177,6 +187,14 @@ namespace CSharpSeleniumWebdriverSample
         }
 
         private static IWebDriver _webDriver;
+
+        #endregion
+
+        #region Helper methods
+
+        private bool IsDependabotTheSourceVersionAuthor() {
+            return Environment.GetEnvironmentVariable("BUILD_SOURCEVERSIONAUTHOR") == "dependabot[bot]";
+        }
 
         #endregion
     }
