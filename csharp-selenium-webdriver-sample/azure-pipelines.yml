@@ -78,6 +78,7 @@ steps:
       # out the tests that intentionally fail for example purposes. You probably don't need this in a real project.
       arguments: $(EXTRA_DOTNET_TEST_ARGUMENTS)
   - task: CmdLine@2
+    condition: always()
     displayName: 'Show directory'
     inputs:
       script: dir /s /b
