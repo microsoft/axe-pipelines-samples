@@ -8,7 +8,7 @@
     "@playwright/test": "^1.33.0",
     "@types/node": "^16.18.38",
     "axe-sarif-converter": "^2.10.1",
-    "playwright": "^1.33.0",
+    "playwright": "^1.35.1",
     "typescript": "^5.1.6"
   },
   "scripts": {
