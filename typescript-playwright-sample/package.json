@@ -11,6 +11,6 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "test": "yarn playwright test"
+    "test": "yarn playwright install && yarn playwright install-deps && yarn playwright test"
   }
 }
