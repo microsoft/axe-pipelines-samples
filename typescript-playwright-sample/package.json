@@ -11,6 +11,6 @@
     "typescript": "^5.1.6"
   },
   "scripts": {
-    "test": "playwright test"
+    "test": "yarn playwright test"
   }
 }
