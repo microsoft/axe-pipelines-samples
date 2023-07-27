@@ -26,16 +26,19 @@ test.describe('[failing example] index.html', () => {
             
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults, browserName);
 
-            // We special case dependabot PR's to break the build only if the expected violations are *not* found.
-        // You can remove this if you don't want or need this behavior.
-        if (isDependabotTheSourceVersionAuthor()) {
+        // Our PR builds do not change the presence or absence of accessibility issues, so we special case
+        // our PR build tests to expect the errors. This is not recommended for most projects, but since the
+        // check takes effect only if the ACCESSIBILITY_ERRORS_ARE_EXPECTED_IN_PR_BUILD variable is set to
+        // true within the pipeline, you may safely copy this code and the special case will be ignored.
+        if (AccessibilityErrorsAreExpectedInThisBuild()) {
             expect(accessibilityScanResults.violations).not.toEqual([]);
         } else {
             expect(accessibilityScanResults.violations).toEqual([]);
         }
     });
 
-    function isDependabotTheSourceVersionAuthor(): boolean {
-        return process.env['BUILD_SOURCEVERSIONAUTHOR'] === 'dependabot[bot]';
+    function AccessibilityErrorsAreExpectedInThisBuild(): boolean {
+        return process.env["ACCESSIBILITY_ERRORS_ARE_EXPECTED_IN_PR_BUILD"] === "true" &&
+            process.env["BUILD_SOURCEBRANCH"] !== "refs/heads/main";
     }
 });
