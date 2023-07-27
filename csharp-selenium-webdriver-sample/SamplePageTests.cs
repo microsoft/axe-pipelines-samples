@@ -53,9 +53,10 @@ namespace CSharpSeleniumWebdriverSample
             // and CSS selector paths that exactly identify the element on the page with the issue.
             axeResult.Error.Should().BeNull();
 
-            // We special case dependabot PR's to break the build only if the expected violations are *not* found.
-            // You can remove this if you don't want or need this behavior.
-            if (IsDependabotTheSourceVersionAuthor()) 
+            // We special case PR builds to break the build only if the expected violations are *not* found.
+            // This special case is ignored unless the SPECIAL_CASE_PULL_REQUEST_BUILDS environment variable is set to "true".
+            // You should **not** set this variable in your pipelines.
+            if (IsPullRequestBuild()) 
             {
                 axeResult.Violations.Should().NotBeEmpty();
             }
@@ -192,8 +193,10 @@ namespace CSharpSeleniumWebdriverSample
 
         #region Helper methods
 
-        private bool IsDependabotTheSourceVersionAuthor() {
-            return Environment.GetEnvironmentVariable("BUILD_SOURCEVERSIONAUTHOR") == "dependabot[bot]";
+        private bool IsPullRequestBuild() {
+            return
+                Environment.GetEnvironmentVariable("SPECIAL_CASE_PULL_REQUEST_BUILDS") == "true" &&
+                Environment.GetEnvironmentVariable("BUILD_SOURCEBRANCH") != "refs/heads/main";
         }
 
         #endregion

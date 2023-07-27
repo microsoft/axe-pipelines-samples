@@ -26,16 +26,18 @@ test.describe('[failing example] index.html', () => {
             
         await exportAxeAsSarifTestResult('index-except-examples.sarif', accessibilityScanResults, browserName);
 
-            // We special case dependabot PR's to break the build only if the expected violations are *not* found.
-        // You can remove this if you don't want or need this behavior.
-        if (isDependabotTheSourceVersionAuthor()) {
+        // We special case PR builds to break the build only if the expected violations are *not* found.
+        // This special case is ignored unless the SPECIAL_CASE_PULL_REQUEST_BUILDS environment variable is set to "true".
+        // You should **not** set this variable in your pipelines.
+        if (IsPullRequestBuild()) {
             expect(accessibilityScanResults.violations).not.toEqual([]);
         } else {
             expect(accessibilityScanResults.violations).toEqual([]);
         }
     });
 
-    function isDependabotTheSourceVersionAuthor(): boolean {
-        return process.env['BUILD_SOURCEVERSIONAUTHOR'] === 'dependabot[bot]';
+    function IsPullRequestBuild(): boolean {
+        return process.env["SPECIAL_CASE_PULL_REQUEST_BUILDS"] === "true" &&
+            process.env["BUILD_SOURCEBRANCH"] !== "refs/heads/main";
     }
 });
