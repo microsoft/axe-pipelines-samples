@@ -50,14 +50,6 @@ variables:
   DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
 
 steps:
-  #
-  # This is just for debugging
-  #
-  - task: CmdLine@2
-    displayName: 'Show environment variables'
-    inputs:
-      script: set  # This task makes sure .NET Core SDK is installed on the build agent.
-
   # This task makes sure .NET Core SDK is installed on the build agent.
   #
   # It is a good idea to test against a specific, known version of .NET Core SDK; this makes it easier for other users

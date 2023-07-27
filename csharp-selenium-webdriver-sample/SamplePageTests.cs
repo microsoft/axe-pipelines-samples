@@ -53,10 +53,11 @@ namespace CSharpSeleniumWebdriverSample
             // and CSS selector paths that exactly identify the element on the page with the issue.
             axeResult.Error.Should().BeNull();
 
-            // We special case PR builds to break the build only if the expected violations are *not* found.
-            // This special case is ignored unless the SPECIAL_CASE_PULL_REQUEST_BUILDS environment variable is set to "true".
-            // You should **not** set this variable in your pipelines.
-            if (IsPullRequestBuild()) 
+            // Our PR builds do not change the presence or absence of accessibility issues, so we special case
+            // our PR build tests to expect the errors. This is not recommended for most projects, but since the
+            // check takes effect only if the ACCESSIBILITY_ERRORS_ARE_EXPECTED_IN_PR_BUILD variable is set to
+            // true within the pipeline, you may safely copy this code and the special case will be ignored.
+            if (AccessibilityErrorsAreExpectedInThisBuild()) 
             {
                 axeResult.Violations.Should().NotBeEmpty();
             }
@@ -193,9 +194,9 @@ namespace CSharpSeleniumWebdriverSample
 
         #region Helper methods
 
-        private bool IsPullRequestBuild() {
+        private bool AccessibilityErrorsAreExpectedInThisBuild() {
             return
-                Environment.GetEnvironmentVariable("SPECIAL_CASE_PULL_REQUEST_BUILDS") == "true" &&
+                Environment.GetEnvironmentVariable("ACCESSIBILITY_ERRORS_ARE_EXPECTED_IN_PR_BUILD") == "true" &&
                 Environment.GetEnvironmentVariable("BUILD_SOURCEBRANCH") != "refs/heads/main";
         }
 
