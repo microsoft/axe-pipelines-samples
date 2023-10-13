@@ -4,14 +4,13 @@ updates:
   directory: "/csharp-selenium-webdriver-sample"
   schedule:
     interval: daily
-    time: "11:00"
-    timezone: "America/Los_Angeles" # Pacific Time
+    time: "08:30"  # UTC
+  open-pull-requests-limit: 10  # Default value of 5 has been problematic
 - package-ecosystem: npm
   directory: "/typescript-selenium-webdriver-sample"
   schedule:
     interval: daily
-    time: "11:00"
-    timezone: "America/Los_Angeles" # Pacific Time
+    time: "08:30"  # UTC
   versioning-strategy: increase
   ignore:
     # Major version of @types/node is pinned to match the version of node we
@@ -19,12 +18,12 @@ updates:
   - dependency-name: "@types/node"
     versions:
     - ">=17.0.0"
+  open-pull-requests-limit: 10  # Default value of 5 has been problematic
 - package-ecosystem: npm
   directory: "/typescript-playwright-sample"
   schedule:
     interval: daily
-    time: "11:00"
-    timezone: "America/Los_Angeles" # Pacific Time
+    time: "08:30"  # UTC
   versioning-strategy: increase
   ignore:
     # Major version of @types/node is pinned to match the version of node we
@@ -32,3 +31,4 @@ updates:
   - dependency-name: "@types/node"
     versions:
     - ">=17.0.0"
+  open-pull-requests-limit: 10  # Default value of 5 has been problematic
