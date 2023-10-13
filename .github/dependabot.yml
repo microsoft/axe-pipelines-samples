@@ -5,6 +5,7 @@ updates:
   schedule:
     interval: daily
     time: "08:30"  # UTC
+  open-pull-requests-limit: 10  # Default value of 5 has been problematic
 - package-ecosystem: npm
   directory: "/typescript-selenium-webdriver-sample"
   schedule:
@@ -17,6 +18,7 @@ updates:
   - dependency-name: "@types/node"
     versions:
     - ">=17.0.0"
+  open-pull-requests-limit: 10  # Default value of 5 has been problematic
 - package-ecosystem: npm
   directory: "/typescript-playwright-sample"
   schedule:
@@ -29,3 +31,4 @@ updates:
   - dependency-name: "@types/node"
     versions:
     - ">=17.0.0"
+  open-pull-requests-limit: 10  # Default value of 5 has been problematic
