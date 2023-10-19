@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <ProjectGuid>{E6205F43-94B0-462C-AA5B-AE816794E95A}</ProjectGuid>
-    <TargetFrameworks>netcoreapp3.1</TargetFrameworks>
+    <TargetFrameworks>net6.0</TargetFrameworks>
     <AssemblyTitle>CSharpSeleniumWebdriverSample</AssemblyTitle>
     <Product>CSharpSeleniumWebdriverSample</Product>
   </PropertyGroup>
