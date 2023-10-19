@@ -36,13 +36,13 @@
 strategy:
   matrix:
     win-chromium:
-      imageName: windows-2019
+      imageName: windows-2022
       browser: chromium
     linux-firefox:
-      imageName: ubuntu-20.04
+      imageName: ubuntu-22.04
       browser: firefox
     mac-webkit:
-      imageName: macOS-11
+      imageName: macOS-13
       browser: webkit
 
 pool:
