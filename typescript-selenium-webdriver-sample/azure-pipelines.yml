@@ -35,11 +35,11 @@
 strategy:
   matrix:
     win-chrome:
-      imageName: windows-2019
+      imageName: windows-2022
       browser: chrome
 
     linux-firefox:
-      imageName: ubuntu-20.04
+      imageName: ubuntu-22.04
       browser: firefox
 
 pool:
