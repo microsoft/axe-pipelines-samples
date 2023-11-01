@@ -30,5 +30,5 @@ updates:
     # use for builds (ideally, latest LTS)
   - dependency-name: "@types/node"
     versions:
-    - ">=17.0.0"
+    - ">=21.0.0"
   open-pull-requests-limit: 10  # Default value of 5 has been problematic
