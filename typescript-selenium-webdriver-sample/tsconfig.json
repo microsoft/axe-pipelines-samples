@@ -1,0 +1,8 @@
+{
+    "compilerOptions": {
+        "outDir": "./test-results/"
+    },
+    "exclude": [
+        "node_modules"
+    ]
+}
