@@ -8,6 +8,7 @@ import * as path from 'path';
 import { By, ThenableWebDriver, until } from 'selenium-webdriver';
 import { promisify } from 'util';
 import { createWebdriverFromEnvironmentVariableSettings } from './webdriver-factory';
+import { afterAll, beforeAll, beforeEach, describe, expect, it } from '@jest/globals';
 
 // The default timeout for tests/fixtures (5 seconds) is not always enough to start/quit/navigate a browser instance.
 const TEST_TIMEOUT_MS = 30000;
