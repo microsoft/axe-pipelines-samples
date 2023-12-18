@@ -41,17 +41,14 @@ parameters:
     imageName: windows-2022-secure
     browser: chromium
     os: windows
-    poolName: a11y-insights-pool-dev
   - name: linux_firefox
     imageName: ubuntu-22.04-secure
     browser: firefox
     os: linux  
-    poolName: a11y-insights-pool-dev
   - name: mac_webkit
     imageName: macOS-13
     browser: webkit
     os: macOS
-    poolName: Azure Pipelines
 # The `resources` specify the location and version of the 1ES PT.
 resources:
   repositories:
@@ -65,7 +62,7 @@ extends:
   parameters:
     # Update the pool with your team's 1ES hosted pool.
     pool:
-      name: a11y-insights-pool-dev # Name of your hosted pool
+      name: $(a11yInsightsPool) # Name of your hosted pool
       image: windows-2022-secure # Name of the image in your pool. If not specified, first image of the pool is used
       os: windows # OS of the image. Allowed values: windows, linux, macOS
 
@@ -75,9 +72,12 @@ extends:
       - ${{ each item in parameters.strategy }}:
         - job: Job_${{ item.name }}
           pool:
-            name: ${{item.poolName}}
             image: ${{ item.imageName }}
             os: ${{ item.os }}
+            ${{ if or(eq(item.os,'linux'),eq(item.os, 'windows'))}} :
+              name: $(a11yInsightsPool)
+            ${{ else }} :
+              name: Azure Pipelines
           
           templateContext:
           # If you are adding tests to an existing project that already uses Azure Pipelines, this is probably the only

@@ -29,52 +29,78 @@
 # an example of using the same test code with different combinations of browsers and OSes.
 #
 # For more information, see:
-# * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-multiplatform
-strategy:
-  matrix:
-    win-chrome:
-      imageName: windows-2022
-      browser: chrome
-    linux-firefox:
-      imageName: ubuntu-22.04
-      browser: firefox
+# * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-multiplatform# Copyright (c) Microsoft Corporation. All rights reserved.
+parameters:
+- name: strategy
+  type: object
+  default:
+  - name: win_chrome
+    imageName: windows-2022-secure
+    browser: chrome
+    os: windows
+  - name: linux_firefox
+    imageName: ubuntu-20.04
+    browser: firefox
+    os: linux
 
-pool:
-  vmImage: $(imageName)
+# The `resources` specify the location and version of the 1ES PT.
+resources:
+  repositories:
+  - repository: 1esPipelines
+    type: git
+    name: 1ESPipelineTemplates/1ESPipelineTemplates
+    ref: refs/tags/release
 
-variables:
-  # This will be sent to the build agent as an environment variable which our test code will be able to see.
-  # We'll use this environment variable in WebDriverFactory.cs to determine which browser the tests will use.
-  SELENIUM_BROWSER: $(browser)
-  # This skips unnecessary steps during dotnet restore and saves ~30-60s
-  DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
+extends:
+  template: v1/1ES.Unofficial.PipelineTemplate.yml@1esPipelines
+  parameters:
+    pool:
+      name: $(a11yInsightsPool)  # Name of your hosted pool
+      image: windows-2022-secure  # Name of the image in your pool. If not specified, first image of the pool is used
+      os: windows  
 
-steps:
-  # This task makes sure .NET Core SDK is installed on the build agent.
-  #
-  # It is a good idea to test against a specific, known version of .NET SDK; this makes it easier for other users
-  # to reproduce your build results.
-  - task: UseDotNet@2
-    displayName: install .NET 6.0.415
-    inputs:
-      version: '6.0.415'
+    stages:
+    - stage: Stage
+      jobs:
+      - ${{ each item in parameters.strategy }}:
+        - job: Job_${{ item.name }}
+          pool:
+            name: $(a11yInsightsPool)
+            image: ${{ item.imageName }}
+            os: ${{ item.os }}
+          variables:
+            # This will be sent to the build agent as an environment variable which our test code will be able to see.
+            # We'll use this environment variable in WebDriverFactory.cs to determine which browser the tests will use.
+            SELENIUM_BROWSER: ${{ item.browser }}
+            # This skips unnecessary steps during dotnet restore and saves ~30-60s
+            DOTNET_SKIP_FIRST_TIME_EXPERIENCE: '1'
 
-  - task: DotNetCoreCLI@2
-    displayName: dotnet restore
-    inputs:
-      command: restore
-      projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
+          steps:
+            # This task makes sure .NET Core SDK is installed on the build agent.
+            #
+            # It is a good idea to test against a specific, known version of .NET SDK; this makes it easier for other users
+            # to reproduce your build results.
+          - task: UseDotNet@2
+            displayName: install .NET 6.0.415
+            inputs:
+              version: '6.0.415'
 
-  # Using DotNetCoreCLI rather than a "script" step that runs "dotnet test" makes it easier to publish the test results
+          - task: DotNetCoreCLI@2
+            displayName: dotnet restore
+            inputs:
+              command: restore
+              projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
+
+              # Using DotNetCoreCLI rather than a "script" step that runs "dotnet test" makes it easier to publish the test results
   # to see along with the rest of the build details in the Azure Pipelines web UI.
-  - task: DotNetCoreCLI@2
-    displayName: dotnet test
-    inputs:
-      command: test
-      projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
-      publishTestResults: true
-      testRunTitle: "dotnet test ($(imageName) $(browser))"
-      # We use this EXTRA_DOTNET_TEST_ARGUMENTS variable in the sample's CI/PR builds so the "success" examples can --filter
+          - task: DotNetCoreCLI@2
+            displayName: dotnet test
+            inputs:
+              command: test
+              projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
+              publishTestResults: true
+              testRunTitle: "dotnet test (${{ item.imageName }} ${{ item.browser }})"
+               # We use this EXTRA_DOTNET_TEST_ARGUMENTS variable in the sample's CI/PR builds so the "success" examples can --filter
       # out the tests that intentionally fail for example purposes. You probably don't need this in a real project.
-      arguments: $(EXTRA_DOTNET_TEST_ARGUMENTS)
+              arguments: $(EXTRA_DOTNET_TEST_ARGUMENTS)
 
