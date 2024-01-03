@@ -92,7 +92,7 @@ extends:
               projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
 
               # Using DotNetCoreCLI rather than a "script" step that runs "dotnet test" makes it easier to publish the test results
-  # to see along with the rest of the build details in the Azure Pipelines web UI.
+              # to see along with the rest of the build details in the Azure Pipelines web UI.
           - task: DotNetCoreCLI@2
             displayName: dotnet test
             inputs:
@@ -101,6 +101,6 @@ extends:
               publishTestResults: true
               testRunTitle: "dotnet test (${{ item.imageName }} ${{ item.browser }})"
                # We use this EXTRA_DOTNET_TEST_ARGUMENTS variable in the sample's CI/PR builds so the "success" examples can --filter
-      # out the tests that intentionally fail for example purposes. You probably don't need this in a real project.
+               # out the tests that intentionally fail for example purposes. You probably don't need this in a real project.
               arguments: $(EXTRA_DOTNET_TEST_ARGUMENTS)
 
