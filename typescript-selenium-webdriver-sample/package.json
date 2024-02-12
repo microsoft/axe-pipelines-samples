@@ -11,7 +11,7 @@
         "axe-sarif-converter": "^2.11.0",
         "chromedriver": "^121.0.0",
         "cross-env": "^7.0.3",
-        "geckodriver": "^4.3.0",
+        "geckodriver": "^4.3.2",
         "jest": "^27.5.1",
         "jest-junit": "^16.0.0",
         "selenium-webdriver": "^4.16.0",
