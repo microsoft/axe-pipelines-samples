@@ -41,9 +41,9 @@ export function createWebdriverFromEnvironmentVariableSettings(): webdriver.Then
         // You can run accessibility scans on head-ful browsers, too; we recommend using headless
         // browsers unless your project strictly requires head-ful testing, since it will generally
         // be faster, more reliable, and easier to run in non-graphical environments (eg, Docker).
-        .setChromeOptions(new chrome.Options().headless().windowSize(windowSize))
+        .setChromeOptions(new chrome.Options().addArguments('-headless').windowSize(windowSize))
         .setFirefoxService(new firefox.ServiceBuilder(geckoDriverPath))
-        .setFirefoxOptions(new firefox.Options().headless().windowSize(windowSize))
+        .setFirefoxOptions(new firefox.Options().addArguments('-headless').windowSize(windowSize))
         .build();
 }
 
