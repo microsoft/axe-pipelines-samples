@@ -5,7 +5,7 @@
   "private": true,
   "devDependencies": {
     "@axe-core/playwright": "^4.8.5",
-    "@playwright/test": "^1.42.0",
+    "@playwright/test": "^1.42.1",
     "@types/node": "^20.11.24",
     "axe-sarif-converter": "^2.11.0",
     "typescript": "^5.3.3"
