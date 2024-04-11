@@ -4,7 +4,7 @@
   "description": "Sample project that demonstrates accessibility testing with TypeScript, Playwright, @axe-core/playwright, SARIF, and Azure Pipelines.",
   "private": true,
   "devDependencies": {
-    "@axe-core/playwright": "^4.8.5",
+    "@axe-core/playwright": "^4.9.0",
     "@playwright/test": "^1.43.0",
     "@types/node": "^20.11.30",
     "axe-sarif-converter": "^2.11.1",
