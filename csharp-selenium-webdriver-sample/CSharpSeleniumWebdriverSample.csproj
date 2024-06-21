@@ -16,7 +16,7 @@
     <PackageReference Include="MSTest.TestAdapter" Version="3.4.3" />
     <PackageReference Include="MSTest.TestFramework" Version="3.4.3" />
     <PackageReference Include="Selenium.Axe" Version="4.0.17" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="126.0.6478.6100" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="126.0.6478.6300" />
     <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.34.0" />
   </ItemGroup>
 </Project>
