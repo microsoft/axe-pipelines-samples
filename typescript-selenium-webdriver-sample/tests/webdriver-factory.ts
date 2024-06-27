@@ -31,7 +31,7 @@ export function createWebdriverFromEnvironmentVariableSettings(): webdriver.Then
     // most common usage is a good idea to prevent axe from having to do extra work to scroll items into
     // view and avoid issues with elements not fitting into the viewport.
     const windowSize = {width: 1920, height: 1080};
-
+ 
     return new webdriver.Builder()
         // forBrowser sets the *default* browser the tests will use. You can override the defaults
         // by setting the SELENIUM_BROWSER environment variable. This project's package.json includes
@@ -41,7 +41,7 @@ export function createWebdriverFromEnvironmentVariableSettings(): webdriver.Then
         // You can run accessibility scans on head-ful browsers, too; we recommend using headless
         // browsers unless your project strictly requires head-ful testing, since it will generally
         // be faster, more reliable, and easier to run in non-graphical environments (eg, Docker).
-        .setChromeOptions(new chrome.Options().addArguments('-headless').windowSize(windowSize))
+        .setChromeOptions(new chrome.Options().addArguments('-headless').windowSize(windowSize) as chrome.Options)
         .setFirefoxService(new firefox.ServiceBuilder(geckoDriverPath))
         .setFirefoxOptions(new firefox.Options().addArguments('-headless').windowSize(windowSize))
         .build();
