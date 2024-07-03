@@ -8,7 +8,7 @@
     "@playwright/test": "^1.44.1",
     "@types/node": "^20.14.2",
     "axe-sarif-converter": "^2.12.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.5.3"
   },
   "scripts": {
     "test": "yarn playwright install && yarn playwright install-deps && yarn playwright test"
