@@ -862,10 +862,10 @@
   resolved "https://registry.yarnpkg.com/@types/sarif/-/sarif-2.1.7.tgz#dab4d16ba7568e9846c454a8764f33c5d98e5524"
   integrity sha512-kRz0VEkJqWLf1LLVN4pT1cg1Z9wAuvI6L97V3m2f5B76Tg8d413ddvLBPTEHAZJlnn4XSvu0FkZtViCQGVyrXQ==
 
-"@types/selenium-webdriver@^4.1.23":
-  version "4.1.23"
-  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-4.1.23.tgz#05a2794927db661f075ab443d5504b679b32f7f7"
-  integrity sha512-PgreEfCfafYLyTwvJTZvOspCq3JABnS51e+NSFFL5yoiMO7h04lWgLfr10NA7nl/yZbz4m76rBfOOdDfleb7pQ==
+"@types/selenium-webdriver@^4.1.24":
+  version "4.1.24"
+  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-4.1.24.tgz#f19f4c73fa176ef6076805cf433a0c991bab9cd7"
+  integrity sha512-oR5MVATv+P2dmhceZJPDm99MmOC9yAK8YpIgJbHEFQ/MbSPC1lA6Ohw441WNUcQ6B1fMAOMu0u59fRKKj9AGGg==
   dependencies:
     "@types/node" "*"
     "@types/ws" "*"
@@ -3047,10 +3047,10 @@ saxes@^5.0.1:
   dependencies:
     xmlchars "^2.2.0"
 
-selenium-webdriver@^4.21.0:
-  version "4.21.0"
-  resolved "https://registry.yarnpkg.com/selenium-webdriver/-/selenium-webdriver-4.21.0.tgz#d38aebfc34770421a880afcfdb7bd8fe85ce9174"
-  integrity sha512-WaEJHZjOWNth1QG5FEpxpREER0qptZBMonFU6GtAqdCNLJVxbtC3E7oS/I/+Q1sf1W032Wg0Ebk+m46lANOXyQ==
+selenium-webdriver@^4.22.0:
+  version "4.22.0"
+  resolved "https://registry.yarnpkg.com/selenium-webdriver/-/selenium-webdriver-4.22.0.tgz#da9426aed5004ef16532010224b41a3a8b8dd132"
+  integrity sha512-GNbrkCHmy249ai885wgXqTfqL2lZnclUH/P8pwTDIqzyFxU3YhDiN7p/c9tMFA4NhgRdEBO2QCG+CWmG7xr/Mw==
   dependencies:
     jszip "^3.10.1"
     tmp "^0.2.3"
