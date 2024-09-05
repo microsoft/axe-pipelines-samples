@@ -1048,7 +1048,7 @@ axe-sarif-converter@^2.12.0:
     axe-core "^3.2.2 || ^4.0.0"
     yargs "^17.0.0"
 
-axios@^1.6.7:
+axios@^1.7.4:
   version "1.7.7"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.7.7.tgz#2f554296f9892a72ac8d8e4c5b79c14a91d0a47f"
   integrity sha512-S4kL7XrjgBmvdGut0sN3yJxqYzrDOnivkBiN0OFs6hLiUam3UPvswUo0kqGyhqUZGEOytHyumEdXsAkgCOUf3Q==
@@ -1291,13 +1291,13 @@ char-regex@^1.0.2:
   resolved "https://registry.yarnpkg.com/char-regex/-/char-regex-1.0.2.tgz#d744358226217f981ed58f479b1d6bcc29545dcf"
   integrity sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==
 
-chromedriver@^127.0.2:
-  version "127.0.2"
-  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-127.0.2.tgz#12c607b8d9b3fbe81d663161d28ded17e989bbf3"
-  integrity sha512-mYfJ/8FqzsdFOs2rPiAI4y0suFnv78cRnzZK0MHdSfSIDeRPbqZz0rNX4lrXt14hXc9vqXa+a8cMxlrhWtXKSQ==
+chromedriver@^128.0.1:
+  version "128.0.1"
+  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-128.0.1.tgz#971fb267cc6893a712808cea6c977473ba167145"
+  integrity sha512-UmWqZXXAyuRa37pE+lnU46vJcCM/y0ddF015LHxycEOYfuqsK7k9ZxJuXCQNWbws9e7FAMQj/GJZT92WPgis0g==
   dependencies:
     "@testim/chrome-version" "^1.1.4"
-    axios "^1.6.7"
+    axios "^1.7.4"
     compare-versions "^6.1.0"
     extract-zip "^2.0.1"
     proxy-agent "^6.4.0"
