@@ -1,6 +1,7 @@
 {
     "compilerOptions": {
-        "outDir": "./test-results/"
+        "outDir": "./test-results/",
+        "esModuleInterop": true,
     },
     "exclude": [
         "node_modules"
