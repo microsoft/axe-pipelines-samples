@@ -10,12 +10,12 @@
     "@jridgewell/gen-mapping" "^0.3.5"
     "@jridgewell/trace-mapping" "^0.3.24"
 
-"@axe-core/webdriverjs@^4.10.0":
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/@axe-core/webdriverjs/-/webdriverjs-4.10.0.tgz#23a1f37d6d82e218e90f07d56f577cc181553ce4"
-  integrity sha512-GMdfI43y5S0LHWf9pIShpaPJbSgGlnJL7q0V6Cdxabbmf2R/oVDkHV60tmocdcKjM38qna8i85fsK0wu7BSrJA==
+"@axe-core/webdriverjs@^4.10.1":
+  version "4.10.1"
+  resolved "https://registry.yarnpkg.com/@axe-core/webdriverjs/-/webdriverjs-4.10.1.tgz#327dd35ea6a4e9ef5ee50405f7fb865c1ba166b1"
+  integrity sha512-XGNB5WGqLU87t9xSeB0tZyYWzYksn/wCHeDAsOkdEarsYzkY7834OpBSiUqXOE6GByILsnX1uyR7UFfIAtHdjg==
   dependencies:
-    axe-core "~4.10.0"
+    axe-core "~4.10.2"
 
 "@babel/code-frame@^7.0.0", "@babel/code-frame@^7.16.7":
   version "7.16.7"
@@ -1106,10 +1106,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha1-x57Zf380y48robyXkLzDZkdLS3k=
 
-"axe-core@^3.2.2 || ^4.0.0", axe-core@~4.10.0:
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.10.0.tgz#d9e56ab0147278272739a000880196cdfe113b59"
-  integrity sha512-Mr2ZakwQ7XUAjp7pAwQWRhhK8mQQ6JAaNWSjmjxil0R8BPioMtQsTLOolGYkji1rcL++3dCqZA3zWqpT+9Ew6g==
+"axe-core@^3.2.2 || ^4.0.0", axe-core@~4.10.2:
+  version "4.10.2"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.10.2.tgz#85228e3e1d8b8532a27659b332e39b7fa0e022df"
+  integrity sha512-RE3mdQ7P3FRSe7eqCWoeQ/Z9QXrtniSjp1wUjt5nRC3WIpz5rSCve6o3fsZ2aCpJtrZjSZgjwXAoTO5k4tEI0w==
 
 axe-sarif-converter@^2.12.0:
   version "2.12.0"
