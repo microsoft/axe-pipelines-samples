@@ -102,9 +102,9 @@ extends:
           # to reproduce your build results.
           steps:
           - task: NodeTool@0
-            displayName: install node 20.8.1
+            displayName: install node 20.17.0
             inputs:
-              versionSpec: "20.8.1"
+              versionSpec: "20.17.0"
               
           # This task installs dependencies specified in your package.json file.
           #
