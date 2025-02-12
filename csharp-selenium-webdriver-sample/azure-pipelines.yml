@@ -89,11 +89,14 @@ extends:
               
            #Install Firefox & Geckodriver only for Linux jobs
           - ${{ if eq(item.os, 'linux') }}:
-              - script: sudo apt-get update && sudo apt-get install -y firefox
-                displayName: 'Install Firefox (Linux)'
+              - script: |
+                sudo apt-get update
+                sudo apt-get install -y firefox
+               displayName: 'Install Firefox (Linux)'
                 
-              - script: sudo apt-get install -y firefox-geckodriver
-                displayName: 'Install Geckodriver (Linux)'
+              - script: |
+                sudo apt-get install -y firefox-geckodriver
+               displayName: 'Install Geckodriver (Linux)'
 
           - task: DotNetCoreCLI@2
             displayName: dotnet restore
