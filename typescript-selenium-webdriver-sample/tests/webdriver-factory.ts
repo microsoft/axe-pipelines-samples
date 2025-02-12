@@ -43,7 +43,7 @@ export function createWebdriverFromEnvironmentVariableSettings(): webdriver.Then
         // be faster, more reliable, and easier to run in non-graphical environments (eg, Docker).
         .setChromeOptions(new chrome.Options().addArguments('-headless').windowSize(windowSize) as chrome.Options)
         .setFirefoxService(new firefox.ServiceBuilder(geckoDriverPath))
-        .setFirefoxOptions(new firefox.Options().addArguments('-headless').windowSize(windowSize).setBinary('/usr/bin/firefox'))
+        .setFirefoxOptions(new firefox.Options().addArguments('-headless').windowSize(windowSize))
         .build();
 }
 
