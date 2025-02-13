@@ -1111,10 +1111,10 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.10.2.tgz#85228e3e1d8b8532a27659b332e39b7fa0e022df"
   integrity sha512-RE3mdQ7P3FRSe7eqCWoeQ/Z9QXrtniSjp1wUjt5nRC3WIpz5rSCve6o3fsZ2aCpJtrZjSZgjwXAoTO5k4tEI0w==
 
-axe-sarif-converter@^2.13.0:
-  version "2.13.0"
-  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-2.13.0.tgz#e86038db2470b0c7b00ab989b920bae9e6d43e59"
-  integrity sha512-9eekggftFqTheoq2LNzNCoRWMxDFHHIlHXN/ahad4GcaxHwmrnC1+0qdBRaECc2M7aeai4R2QXev6ohaAZQZ6w==
+axe-sarif-converter@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-3.0.0.tgz#c1da89f752af3c7fb50f7a5d0d408176ad62b246"
+  integrity sha512-oYAgxSccgFLc8n/aYyjS1xWYxb8k4VHYqII6/YsJsk1jnttfiRUkR631LyN+5T7UCJVzD2hILA0c3q3kTHpypg==
   dependencies:
     "@puppeteer/browsers" "^2.1.0"
     "@types/sarif" ">=2.1.1 <=2.1.8"
