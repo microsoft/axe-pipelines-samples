@@ -49,3 +49,18 @@ pipelines:
           lastModifiedDate: 2024-12-05
         armory:
           lastModifiedDate: 2024-12-05
+  43:
+    usedNonDefaultBranch: true
+    retail:
+      source:
+        credscan:
+          lastModifiedDate: 2025-02-14
+        eslint:
+          lastModifiedDate: 2025-02-14
+        armory:
+          lastModifiedDate: 2025-02-14
+      binary:
+        credscan:
+          lastModifiedDate: 2025-02-14
+        binskim:
+          lastModifiedDate: 2025-02-14
