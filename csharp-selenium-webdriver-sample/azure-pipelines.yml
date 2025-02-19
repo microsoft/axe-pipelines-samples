@@ -86,7 +86,7 @@ extends:
             displayName: install .NET 6.0.415
             inputs:
               version: '6.0.415'
-
+              
           - task: DotNetCoreCLI@2
             displayName: dotnet restore
             inputs:
