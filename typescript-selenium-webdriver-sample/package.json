@@ -9,7 +9,7 @@
         "@types/node": "^20.8.10",
         "@types/selenium-webdriver": "^4.1.28",
         "axe-sarif-converter": "^3.0.0",
-        "chromedriver": "^135.0.2",
+        "chromedriver": "^135.0.4",
         "cross-env": "^7.0.3",
         "geckodriver": "^5.0.0",
         "jest": "^29.7.0",
