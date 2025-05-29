@@ -35,10 +35,10 @@
   resolved "https://registry.yarnpkg.com/@tootallnate/quickjs-emscripten/-/quickjs-emscripten-0.23.0.tgz#db4ecfd499a9765ab24002c3b696d02e6d32a12c"
   integrity sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==
 
-"@types/node@*", "@types/node@^20.17.45":
-  version "20.17.45"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.17.45.tgz#a50a51a7da7b7bddecd90851bc0173b51db00724"
-  integrity sha512-vO9+E1smq+149wsmmLdM8SKVW7gRzLjfo0mU7kiykhV6rL+GEUhUmW7VywJNSxJHQzt9QBIHEo+3SG4MrFTqbA==
+"@types/node@*", "@types/node@^20.17.52":
+  version "20.17.52"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.17.52.tgz#0cf582371f88529c61f384fcd57a21b797c56c6e"
+  integrity sha512-2aj++KfxubvW/Lc0YyXE3OEW7Es8TWn1MsRzYgcOGyTNQxi0L8rxQUCZ7ZbyOBWZQD5I63PV9egZWMsapVaklg==
   dependencies:
     undici-types "~6.19.2"
 
