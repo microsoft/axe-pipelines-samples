@@ -1372,10 +1372,10 @@ char-regex@^1.0.2:
   resolved "https://registry.yarnpkg.com/char-regex/-/char-regex-1.0.2.tgz#d744358226217f981ed58f479b1d6bcc29545dcf"
   integrity sha512-kWWXztvZ5SBQV+eRgKFeh8q5sLuZY2+8WUIzlxWVTg+oGwY14qylx1KbKzHd8P6ZYkAg0xyIDU9JMHhyJMZ1jw==
 
-chromedriver@^138.0.0:
-  version "138.0.0"
-  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-138.0.0.tgz#316f296ba440cddf138cd6ed2b6b62ffe29a1579"
-  integrity sha512-bJ/DNm5Y0TbqM71ARaAohTWVwcQ2SsWciYC5Q9Ul7DC/oTxm6B1vI2h6WscFCOOi49ul4tXZVjA/LOruljjmjA==
+chromedriver@^138.0.1:
+  version "138.0.1"
+  resolved "https://registry.yarnpkg.com/chromedriver/-/chromedriver-138.0.1.tgz#a760e11f8c89b343be3ca1d8868d8f3cb89ebf66"
+  integrity sha512-QS/Z1qB2OpKsPUlJjkfKmpf9lGw6ObB0dX5+dP3M0gdtbu80TUnS+EjXbtu6YkbMfr2/Qt8IfOONrawNW1GwhA==
   dependencies:
     "@testim/chrome-version" "^1.1.4"
     axios "^1.7.4"
