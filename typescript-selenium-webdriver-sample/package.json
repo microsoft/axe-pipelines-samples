@@ -12,7 +12,7 @@
         "chromedriver": "^138.0.2",
         "cross-env": "^7.0.3",
         "geckodriver": "^5.0.0",
-        "jest": "^30.0.4",
+        "jest": "^30.0.5",
         "jest-junit": "^16.0.0",
         "selenium-webdriver": "^4.34.0",
         "ts-jest": "^29.4.0",
