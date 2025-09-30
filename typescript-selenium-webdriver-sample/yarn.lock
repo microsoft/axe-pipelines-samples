@@ -992,10 +992,10 @@
   resolved "https://registry.yarnpkg.com/@types/sarif/-/sarif-2.1.7.tgz#dab4d16ba7568e9846c454a8764f33c5d98e5524"
   integrity sha512-kRz0VEkJqWLf1LLVN4pT1cg1Z9wAuvI6L97V3m2f5B76Tg8d413ddvLBPTEHAZJlnn4XSvu0FkZtViCQGVyrXQ==
 
-"@types/selenium-webdriver@^4.1.28":
-  version "4.1.28"
-  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-4.1.28.tgz#7b4f3c50a67494f8fd6d396a2eaab7d9df1f9f34"
-  integrity sha512-Au7CXegiS7oapbB16zxPToY4Cjzi9UQQMf3W2ZZM8PigMLTGR3iUAHjPUTddyE5g1SBjT/qpmvlsAQLBfNAdKg==
+"@types/selenium-webdriver@^4.35.0":
+  version "4.35.0"
+  resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-4.35.0.tgz#1d83626a871c8ea9b2b6d0088e349fdcaacc31e0"
+  integrity sha512-LvGXF8O4Bxmapu6X0oUwmGr2vwYIxuqsrfLBlhkEGxfOQ/kfG8O3KhRd+JMdH7gmuz+9+0m0Z7zaVv/IUAQMkQ==
   dependencies:
     "@types/node" "*"
     "@types/ws" "*"
