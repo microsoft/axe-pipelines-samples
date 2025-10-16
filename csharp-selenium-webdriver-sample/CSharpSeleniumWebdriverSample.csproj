@@ -14,7 +14,7 @@
     <PackageReference Include="FluentAssertions" Version="8.7.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="3.10.4" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.10.4" />
+    <PackageReference Include="MSTest.TestFramework" Version="4.0.1" />
     <PackageReference Include="Selenium.Axe" Version="4.0.21" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="141.0.7390.7800" />
     <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.36.0" />
