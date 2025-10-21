@@ -38,7 +38,7 @@ _Are we missing a sample or resource you'd like to see? [File a sample request](
 
 ## Disclaimer
 
-Automated accessibility tests can detect some common accessibility problems, such as missing or invalid properties, but most accessibility problems can only be discovered through manual testing. We recommend **both** automated testing, to continuously protect against simple types of issues, and regular manual assessments with [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview), a free and open source dev tool that walks you through assessing a website for [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/quickref/?currentsidebar=%23col_customize&levels=aaa) coverage.
+Automated accessibility tests can detect some common accessibility problems such as missing or invalid properties. But most accessibility problems can only be discovered through manual testing. We recommend **both** automated testing, to continuously protect against simple types of issues, and regular manual assessments with [Accessibility Insights for Web](https://accessibilityinsights.io/docs/en/web/overview), a free and open source dev tool that walks you through assessing a website for [WCAG 2.1 AA](https://www.w3.org/WAI/WCAG21/quickref/?currentsidebar=%23col_customize&levels=aaa) coverage.
 
 ## Contributing
 
@@ -53,4 +53,3 @@ provided by the bot. You will only need to do this once across all repos using o
 This project has adopted the [Microsoft Open Source Code of Conduct](https://opensource.microsoft.com/codeofconduct/).
 For more information see the [Code of Conduct FAQ](https://opensource.microsoft.com/codeofconduct/faq/) or
 contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additional questions or comments.
-
