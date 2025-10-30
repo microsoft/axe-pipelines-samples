@@ -83,9 +83,9 @@ extends:
             # It is a good idea to test against a specific, known version of .NET SDK; this makes it easier for other users
             # to reproduce your build results.
           - task: UseDotNet@2
-            displayName: install .NET 6.0.415
+            displayName: install .NET 8.0.x
             inputs:
-              version: '6.0.415'
+              version: '8.0.x'
 
           - task: DotNetCoreCLI@2
             displayName: dotnet restore
