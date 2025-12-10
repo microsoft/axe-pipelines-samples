@@ -34,28 +34,28 @@
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-multiplatform
 # * https://playwright.dev/docs/test-intro
 parameters:
-  - name: strategy
-    type: object
-    default:
-      - name: win_chromium
-        imageName: windows-2022-secure
-        browser: chromium
-        os: windows
-      - name: linux_firefox
-        imageName: ubuntu-22.04-secure
-        browser: firefox
-        os: linux
-      - name: mac_webkit
-        imageName: macos-latest
-        browser: webkit
-        os: macOS
+- name: strategy
+  type: object
+  default:
+  - name: win_chromium
+    imageName: windows-2022-secure
+    browser: chromium
+    os: windows
+  - name: linux_firefox
+    imageName: ubuntu-22.04-secure
+    browser: firefox
+    os: linux  
+  - name: mac_webkit
+    imageName: macos-latest
+    browser: webkit
+    os: macOS
 # The `resources` specify the location and version of the 1ES PT.
 resources:
   repositories:
-    - repository: 1esPipelines
-      type: git
-      name: 1ESPipelineTemplates/1ESPipelineTemplates
-      ref: refs/tags/release
+  - repository: 1esPipelines
+    type: git
+    name: 1ESPipelineTemplates/1ESPipelineTemplates
+    ref: refs/tags/release
 
 extends:
   template: v1/1ES.Unofficial.PipelineTemplate.yml@1esPipelines
@@ -69,67 +69,67 @@ extends:
       os: windows # OS of the image. Allowed values: windows, linux, macOS
 
     stages:
-      - stage: Stage
-        jobs:
-          - ${{ each item in parameters.strategy }}:
-              - job: Job_${{ item.name }}
-                pool:
-                  image: ${{ item.imageName }}
-                  os: ${{ item.os }}
-                  ${{ if or(eq(item.os,'linux'),eq(item.os, 'windows'))}}:
-                    name: $(a11yInsightsPool)
-                  ${{ else }}:
-                    name: Azure Pipelines
+    - stage: Stage
+      jobs:
+      - ${{ each item in parameters.strategy }}:
+        - job: Job_${{ item.name }}
+          pool:
+            image: ${{ item.imageName }}
+            os: ${{ item.os }}
+            ${{ if or(eq(item.os,'linux'),eq(item.os, 'windows'))}} :
+              name: $(a11yInsightsPool)
+            ${{ else }} :
+              name: Azure Pipelines
+          
+          templateContext:
+          # If you are adding tests to an existing project that already uses Azure Pipelines, this is probably the only
+          # new task you'll need to add.
+          #
+          # This task is how the "Scans" tab in our Azure Pipelines build results page gets its data. It requires using
+          # PublishBuildArtifacts rather than the newer PublishPipelineArtifacts.
+            outputs:
+            - output: buildArtifacts
+              # The exact name "CodeAnalysisLogs" is required for the Sarif Results Viewer Extension for Azure Pipelines
+              # to find the .sarif files our accessibility test produces.
+              displayName: publish sarif results
+              # "test-results" is not a required convention; it just happens to be where our tests write .sarif files to.
+              PathtoPublish: $(Build.SourcesDirectory)/typescript-playwright-sample/test-results
+              ArtifactName: CodeAnalysisLogs
+              condition: succeededOrFailed()
+          # This task makes sure Node.js is installed on the build agent.
+          #
+          # It is a good idea to test against a specific, known version of Node; this makes it easier for other users
+          # to reproduce your build results.
+          steps:
+          - task: NodeTool@0
+            displayName: install node 20.17.0
+            inputs:
+              versionSpec: "20.17.0"
+              
+          # This task installs dependencies specified in your package.json file.
+          #
+          # Our sample uses Yarn for this, but if your project uses NPM instead, that's also fine.
+          - script: yarn install --frozen-lockfile # or "npm install --ci"
+            displayName: yarn install
+          # workingDirectory should match where your package.json file is located. It defaults to the root of the repository.
+            workingDirectory: $(Build.SourcesDirectory)/typescript-playwright-sample
 
-                templateContext:
-                  # If you are adding tests to an existing project that already uses Azure Pipelines, this is probably the only
-                  # new task you'll need to add.
-                  #
-                  # This task is how the "Scans" tab in our Azure Pipelines build results page gets its data. It requires using
-                  # PublishBuildArtifacts rather than the newer PublishPipelineArtifacts.
-                  outputs:
-                    - output: buildArtifacts
-                      # The exact name "CodeAnalysisLogs" is required for the Sarif Results Viewer Extension for Azure Pipelines
-                      # to find the .sarif files our accessibility test produces.
-                      displayName: publish sarif results
-                      # "test-results" is not a required convention; it just happens to be where our tests write .sarif files to.
-                      PathtoPublish: $(Build.SourcesDirectory)/typescript-playwright-sample/test-results
-                      ArtifactName: CodeAnalysisLogs
-                      condition: succeededOrFailed()
-                # This task makes sure Node.js is installed on the build agent.
-                #
-                # It is a good idea to test against a specific, known version of Node; this makes it easier for other users
-                # to reproduce your build results.
-                steps:
-                  - task: NodeTool@0
-                    displayName: install node 20.17.0
-                    inputs:
-                      versionSpec: "20.17.0"
+          # This task runs the tests specified by playwright.config.js, including our example accessibility tests.
+          #
+          # If your project already uses npm instead of yarn, or if your project already runs "playwright test" directly here,
+          # those are both fine.
+          #
+          # We use the EXTRA_PLAYWRIGHT_TEST_ARGUMENTS variable in the sample's CI/PR builds to separate our passing and failing
+          # example builds using Playwright Test's --project argument. You probably don't need EXTRA_PLAYWRIGHT_TEST_ARGUMENTS in
+          # a real project.
+          - script: yarn test --browser=${{ item.browser }} $(EXTRA_PLAYWRIGHT_TEST_ARGUMENTS) # or "npm run test -- --browser=$(browser)"
+            displayName: yarn test
+            workingDirectory: $(Build.SourcesDirectory)/typescript-playwright-sample
 
-                  # This task installs dependencies specified in your package.json file.
-                  #
-                  # Our sample uses Yarn for this, but if your project uses NPM instead, that's also fine.
-                  - script: yarn install --frozen-lockfile # or "npm install --ci"
-                    displayName: yarn install
-                    # workingDirectory should match where your package.json file is located. It defaults to the root of the repository.
-                    workingDirectory: $(Build.SourcesDirectory)/typescript-playwright-sample
-
-                  # This task runs the tests specified by playwright.config.js, including our example accessibility tests.
-                  #
-                  # If your project already uses npm instead of yarn, or if your project already runs "playwright test" directly here,
-                  # those are both fine.
-                  #
-                  # We use the EXTRA_PLAYWRIGHT_TEST_ARGUMENTS variable in the sample's CI/PR builds to separate our passing and failing
-                  # example builds using Playwright Test's --project argument. You probably don't need EXTRA_PLAYWRIGHT_TEST_ARGUMENTS in
-                  # a real project.
-                  - script: yarn test --browser=${{ item.browser }} $(EXTRA_PLAYWRIGHT_TEST_ARGUMENTS) # or "npm run test -- --browser=$(browser)"
-                    displayName: yarn test
-                    workingDirectory: $(Build.SourcesDirectory)/typescript-playwright-sample
-
-                  # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
-                  - task: PublishTestResults@2
-                    displayName: publish test results
-                    inputs:
-                      testResultsFiles: $(Build.SourcesDirectory)/typescript-playwright-sample/test-results/junit.xml
-                      testRunTitle: typescript-playwright-sample (${{ item.imageName }} ${{ item.browser }})
-                    condition: succeededOrFailed()
+          # This task is how the "Tests" tab in our Azure Pipelines build results page gets its data
+          - task: PublishTestResults@2
+            displayName: publish test results
+            inputs:
+              testResultsFiles: $(Build.SourcesDirectory)/typescript-playwright-sample/test-results/junit.xml
+              testRunTitle: typescript-playwright-sample (${{ item.imageName }} ${{ item.browser }})
+            condition: succeededOrFailed()
