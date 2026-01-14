@@ -6,7 +6,7 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.11.0",
     "@playwright/test": "^1.57.0",
-    "@types/node": "^20.19.27",
+    "@types/node": "^20.19.29",
     "axe-sarif-converter": "^3.0.0",
     "typescript": "^5.9.3"
   },
