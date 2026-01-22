@@ -46,7 +46,7 @@ parameters:
     browser: firefox
     os: linux  
   - name: mac_webkit
-    imageName: macOS-13
+    imageName: macos-15
     browser: webkit
     os: macOS
 # The `resources` specify the location and version of the 1ES PT.
