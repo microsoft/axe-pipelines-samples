@@ -54,10 +54,8 @@ namespace CSharpSeleniumWebdriverSample
             // full descriptions of accessibility issues, including links to detailed guidance at https://dequeuniversity.com
             // and CSS selector paths that exactly identify the element on the page with the issue.
             //
-            // Note: In Deque.AxeCore, the old Selenium.Axe "Error" property no longer exists.
-            // Instead, "Incomplete" contains rules that could not be fully evaluated (e.g., due to errors
-            // or needing manual review). We check that here as the closest equivalent.
-            axeResult.Incomplete.Should().BeEmpty();
+            // Note: In Deque.AxeCore, the old Selenium.Axe "Error" property was removed;
+            // any errors that would have appeared there are now reported as exceptions.
 
             // Our PR builds do not change the presence or absence of accessibility issues, so we special case
             // our PR build tests to expect the errors. This is not recommended for most projects, but since the
@@ -89,7 +87,6 @@ namespace CSharpSeleniumWebdriverSample
                 .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze(elementUnderTest);
 
-            axeResultWithAnalyzeWebElement.Incomplete.Should().BeEmpty();
             axeResultWithAnalyzeWebElement.Violations.Should().BeEmpty();
 
             // Option 2: using AxeBuilder.Include
@@ -102,7 +99,6 @@ namespace CSharpSeleniumWebdriverSample
                 .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze();
 
-            axeResultWithInclude.Incomplete.Should().BeEmpty();
             axeResultWithInclude.Violations.Should().BeEmpty();
         }
 
@@ -119,7 +115,6 @@ namespace CSharpSeleniumWebdriverSample
                 .Exclude("#id-of-example-accessibility-violation-list")
                 .Analyze();
             
-            axeResultExcludingExampleViolationsElement.Incomplete.Should().BeEmpty();
             axeResultExcludingExampleViolationsElement.Violations.Should().BeEmpty();
 
             // You can also use AxeBuilder.DisableRules to exclude certain individual rules from a scan. This is particularly
@@ -129,14 +124,12 @@ namespace CSharpSeleniumWebdriverSample
                 .DisableRules("color-contrast", "label", "tabindex")
                 .Analyze();
 
-            axeResultDisablingRulesViolatedByExamples.Incomplete.Should().BeEmpty();
             axeResultDisablingRulesViolatedByExamples.Violations.Should().BeEmpty();
 
             // Another option is to assert on the size of the Violations array. This works just fine, but we recommend the
             // other options above as your first choice instead because when they do find new issues, they will produce error
             // messages that more clearly identify exactly what the new/unexpected issues are.
             AxeResult axeResult = new AxeBuilder(_webDriver).Analyze();
-            axeResult.Incomplete.Should().BeEmpty();
             axeResult.Violations.Should().HaveCount(3);
         }
 
