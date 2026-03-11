@@ -2,7 +2,7 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 // This sample happens to use .NET Core, but you can use whichever .NET version makes sense for your project.
-// Everything we're demonstrating would also work in .NET Framework 4.5+ with no modifications.
+// Everything we're demonstrating would also work in .NET Framework 4.7.1+ with no modifications.
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -146,7 +146,7 @@ namespace CSharpSeleniumWebdriverSample
         // navigate to a test page.
         //
         // If you're incorporating accessibility testing into an existing body of end to end tests, you can stick with
-        // however your existing tests are already solving this; you don't need to do anything special to use Selenium.Axe.
+        // however your existing tests are already solving this; you don't need to do anything special to use Deque.AxeCore.Selenium.
 
         // Starting a new browser process is good for keeping tests isolated from one another, but can be slow. Here, we're
         // using a [ClassInitialize] method so the same browser will be shared between different [TestMethod]s.
@@ -155,12 +155,12 @@ namespace CSharpSeleniumWebdriverSample
             // WebDriverFactory uses environment variables set by azure-pipelines.yml to determine which browser to use;
             // the test cases we'll write in this file will work regardless of which browser they're running against.
             //
-            // This WebDriverFactory is just one example of how you might initialize Selenium; if you're adding Selenium.Axe
+            // This WebDriverFactory is just one example of how you might initialize Selenium; if you're adding Deque.AxeCore.Selenium
             // to an existing set of end to end tests that already have their own way of initializing a webdriver, you can
             // keep using that instead.
             _webDriver = WebDriverFactory.CreateFromEnvironmentVariableSettings();
 
-            // You *must* set this timeout to use Selenium.Axe. It defaults to "0 seconds", which isn't enough time for
+            // You *must* set this timeout to use Deque.AxeCore.Selenium. It defaults to "0 seconds", which isn't enough time for
             // Axe to scan the page. The exact amount of time will depend on the complexity of the page you're testing.
             _webDriver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(20);
         }
