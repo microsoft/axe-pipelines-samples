@@ -30,8 +30,6 @@ namespace CSharpSeleniumWebdriverSample
         [TestCategory("IntentionallyFailsAsAnExample")]
         public void TestAccessibilityOfPage()
         {
-            // In Deque.AxeCore, the old Selenium.Axe "Error" property was removed;
-            // any errors that would have appeared there are now reported as exceptions.
             AxeResult axeResult = new AxeBuilder(_webDriver)
                 // This WithTags directive restricts Axe to only run tests that detect known violations of WCAG 2.1 A and AA rules
                 // (similar to what Accessibility Insights reports). If you omit this, Axe will additionally run several "best practice"
@@ -42,7 +40,6 @@ namespace CSharpSeleniumWebdriverSample
                 // * full reference documentation for each rule: https://dequeuniversity.com/rules/axe
                 .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze();
-            axeResult.Should().NotBeNull("axe-core analysis should not produce errors");
 
             // axeResult.Violations is an array of all the accessibility violations the scan found; the easiest way to assert
             // that a scan came back clean is to assert that the Violations array is empty. You can do this with the built in
@@ -86,7 +83,6 @@ namespace CSharpSeleniumWebdriverSample
             AxeResult axeResultWithAnalyzeWebElement = new AxeBuilder(_webDriver)
                 .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze(elementUnderTest);
-            axeResultWithAnalyzeWebElement.Should().NotBeNull("axe-core analysis should not produce errors");
 
             axeResultWithAnalyzeWebElement.Violations.Should().BeEmpty();
 
@@ -99,7 +95,6 @@ namespace CSharpSeleniumWebdriverSample
                 .Include(new AxeSelector("#id-of-element-inside-iframe", new List<string> { "#id-of-iframe" }))
                 .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze();
-            axeResultWithInclude.Should().NotBeNull("axe-core analysis should not produce errors");
 
             axeResultWithInclude.Violations.Should().BeEmpty();
         }
@@ -116,8 +111,7 @@ namespace CSharpSeleniumWebdriverSample
             AxeResult axeResultExcludingExampleViolationsElement = new AxeBuilder(_webDriver)
                 .Exclude("#id-of-example-accessibility-violation-list")
                 .Analyze();
-            axeResultExcludingExampleViolationsElement.Should().NotBeNull("axe-core analysis should not produce errors");
-            
+
             axeResultExcludingExampleViolationsElement.Violations.Should().BeEmpty();
 
             // You can also use AxeBuilder.DisableRules to exclude certain individual rules from a scan. This is particularly
@@ -126,7 +120,6 @@ namespace CSharpSeleniumWebdriverSample
                 .Include("#id-of-example-accessibility-violation-list") // Like Exclude(), accepts any CSS selector
                 .DisableRules("color-contrast", "label", "tabindex")
                 .Analyze();
-            axeResultDisablingRulesViolatedByExamples.Should().NotBeNull("axe-core analysis should not produce errors");
 
             axeResultDisablingRulesViolatedByExamples.Violations.Should().BeEmpty();
 
@@ -134,7 +127,6 @@ namespace CSharpSeleniumWebdriverSample
             // other options above as your first choice instead because when they do find new issues, they will produce error
             // messages that more clearly identify exactly what the new/unexpected issues are.
             AxeResult axeResult = new AxeBuilder(_webDriver).Analyze();
-            axeResult.Should().NotBeNull("axe-core analysis should not produce errors");
             axeResult.Violations.Should().HaveCount(3);
         }
 
