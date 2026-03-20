@@ -11,13 +11,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentAssertions" Version="8.8.0" />
+    <PackageReference Include="FluentAssertions" Version="8.9.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="4.1.0" />
     <PackageReference Include="MSTest.TestFramework" Version="4.1.0" />
     <PackageReference Include="Deque.AxeCore.Commons" Version="4.11.1" />
     <PackageReference Include="Deque.AxeCore.Selenium" Version="4.11.1" />
-    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="145.0.7632.11700" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="146.0.7680.15300" />
     <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.36.0" />
   </ItemGroup>
 </Project>
