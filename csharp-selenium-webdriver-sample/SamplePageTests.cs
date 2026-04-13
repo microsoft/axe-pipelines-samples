@@ -2,8 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 // This sample happens to use .NET Core, but you can use whichever .NET version makes sense for your project.
-// Everything we're demonstrating would also work in .NET Framework 4.5+ with no modifications.
+// Everything we're demonstrating would also work in .NET Framework 4.7.1+ with no modifications.
 using System;
+using System.Collections.Generic;
 using System.IO;
 // This sample happens to use MSTest, but you can use whichever test framework you like.
 // Everything we're demonstrating would also work with xUnit, NUnit, or any other test framework.
@@ -13,7 +14,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 // These are the important new libraries we're demonstrating.
 // You'll probably need to add new NuGet package references for these.
-using Selenium.Axe;
+using Deque.AxeCore.Commons;
+using Deque.AxeCore.Selenium;
 using FluentAssertions;
 
 namespace CSharpSeleniumWebdriverSample
@@ -51,7 +53,6 @@ namespace CSharpSeleniumWebdriverSample
             // We recommend using FluentAssertions instead; its default behavior gives much better error messages that include
             // full descriptions of accessibility issues, including links to detailed guidance at https://dequeuniversity.com
             // and CSS selector paths that exactly identify the element on the page with the issue.
-            axeResult.Error.Should().BeNull();
 
             // Our PR builds do not change the presence or absence of accessibility issues, so we special case
             // our PR build tests to expect the errors. This is not recommended for most projects, but since the
@@ -83,7 +84,6 @@ namespace CSharpSeleniumWebdriverSample
                 .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze(elementUnderTest);
 
-            axeResultWithAnalyzeWebElement.Error.Should().BeNull();
             axeResultWithAnalyzeWebElement.Violations.Should().BeEmpty();
 
             // Option 2: using AxeBuilder.Include
@@ -92,11 +92,10 @@ namespace CSharpSeleniumWebdriverSample
             AxeResult axeResultWithInclude = new AxeBuilder(_webDriver)
                 .Include("#id-of-example-accessible-element")
                 .Include(".class-of-example-accessible-element")
-                .Include("#id-of-iframe", "#id-of-element-inside-iframe")
+                .Include(new AxeSelector("#id-of-element-inside-iframe", new List<string> { "#id-of-iframe" }))
                 .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze();
 
-            axeResultWithInclude.Error.Should().BeNull();
             axeResultWithInclude.Violations.Should().BeEmpty();
         }
 
@@ -112,8 +111,7 @@ namespace CSharpSeleniumWebdriverSample
             AxeResult axeResultExcludingExampleViolationsElement = new AxeBuilder(_webDriver)
                 .Exclude("#id-of-example-accessibility-violation-list")
                 .Analyze();
-            
-            axeResultExcludingExampleViolationsElement.Error.Should().BeNull();
+
             axeResultExcludingExampleViolationsElement.Violations.Should().BeEmpty();
 
             // You can also use AxeBuilder.DisableRules to exclude certain individual rules from a scan. This is particularly
@@ -123,14 +121,12 @@ namespace CSharpSeleniumWebdriverSample
                 .DisableRules("color-contrast", "label", "tabindex")
                 .Analyze();
 
-            axeResultDisablingRulesViolatedByExamples.Error.Should().BeNull();
             axeResultDisablingRulesViolatedByExamples.Violations.Should().BeEmpty();
 
             // Another option is to assert on the size of the Violations array. This works just fine, but we recommend the
             // other options above as your first choice instead because when they do find new issues, they will produce error
             // messages that more clearly identify exactly what the new/unexpected issues are.
             AxeResult axeResult = new AxeBuilder(_webDriver).Analyze();
-            axeResult.Error.Should().BeNull();
             axeResult.Violations.Should().HaveCount(3);
         }
 
@@ -142,7 +138,7 @@ namespace CSharpSeleniumWebdriverSample
         // navigate to a test page.
         //
         // If you're incorporating accessibility testing into an existing body of end to end tests, you can stick with
-        // however your existing tests are already solving this; you don't need to do anything special to use Selenium.Axe.
+        // however your existing tests are already solving this; you don't need to do anything special to use Deque.AxeCore.Selenium.
 
         // Starting a new browser process is good for keeping tests isolated from one another, but can be slow. Here, we're
         // using a [ClassInitialize] method so the same browser will be shared between different [TestMethod]s.
@@ -151,12 +147,12 @@ namespace CSharpSeleniumWebdriverSample
             // WebDriverFactory uses environment variables set by azure-pipelines.yml to determine which browser to use;
             // the test cases we'll write in this file will work regardless of which browser they're running against.
             //
-            // This WebDriverFactory is just one example of how you might initialize Selenium; if you're adding Selenium.Axe
+            // This WebDriverFactory is just one example of how you might initialize Selenium; if you're adding Deque.AxeCore.Selenium
             // to an existing set of end to end tests that already have their own way of initializing a webdriver, you can
             // keep using that instead.
             _webDriver = WebDriverFactory.CreateFromEnvironmentVariableSettings();
 
-            // You *must* set this timeout to use Selenium.Axe. It defaults to "0 seconds", which isn't enough time for
+            // You *must* set this timeout to use Deque.AxeCore.Selenium. It defaults to "0 seconds", which isn't enough time for
             // Axe to scan the page. The exact amount of time will depend on the complexity of the page you're testing.
             _webDriver.Manage().Timeouts().AsynchronousJavaScript = TimeSpan.FromSeconds(20);
         }
