@@ -2,12 +2,12 @@
 # yarn lockfile v1
 
 
-"@axe-core/playwright@^4.11.1":
-  version "4.11.1"
-  resolved "https://registry.yarnpkg.com/@axe-core/playwright/-/playwright-4.11.1.tgz#d6e2b06ddb1b8ff460ca0f6f0bc96f2f03f6d91b"
-  integrity sha512-mKEfoUIB1MkVTht0BGZFXtSAEKXMJoDkyV5YZ9jbBmZCcWDz71tegNsdTkIN8zc/yMi5Gm2kx7Z5YQ9PfWNAWw==
+"@axe-core/playwright@^4.11.2":
+  version "4.11.2"
+  resolved "https://registry.yarnpkg.com/@axe-core/playwright/-/playwright-4.11.2.tgz#d2d8f7ac056ecd50b56040d3651dc508f609bd7c"
+  integrity sha512-iP6hfNl9G0j/SEUSo8M7D80RbcDo9KRAAfDP4IT5OHB+Wm6zUHIrm8Y51BKI+Oyqduvipf9u1hcRy57zCBKzWQ==
   dependencies:
-    axe-core "~4.11.1"
+    axe-core "~4.11.3"
 
 "@playwright/test@^1.59.1":
   version "1.59.1"
@@ -80,10 +80,10 @@ ast-types@^0.13.4:
   dependencies:
     tslib "^2.0.1"
 
-"axe-core@^3.2.2 || ^4.0.0", axe-core@~4.11.1:
-  version "4.11.1"
-  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.11.1.tgz#052ff9b2cbf543f5595028b583e4763b40c78ea7"
-  integrity sha512-BASOg+YwO2C+346x3LZOeoovTIoTrRqEsqMa6fmfAV0P+U9mFr9NsyOEpiYvFjbc64NMrSswhV50WdXzdb/Z5A==
+"axe-core@^3.2.2 || ^4.0.0", axe-core@~4.11.3:
+  version "4.11.3"
+  resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.11.3.tgz#d23cf404edaa5f97bdfd9afed6eea8405e5326e7"
+  integrity sha512-zBQouZixDTbo3jMGqHKyePxYxr1e5W8UdTmBQ7sNtaA9M2bE32daxxPLS/jojhKOHxQ7LWwPjfiwf/fhaJWzlg==
 
 axe-sarif-converter@^3.0.0:
   version "3.0.0"
