@@ -85,10 +85,10 @@ ast-types@^0.13.4:
   resolved "https://registry.yarnpkg.com/axe-core/-/axe-core-4.11.4.tgz#5b535e381ff1e61ffdd615e5483d16186d3b46a5"
   integrity sha512-KunSNx+TVpkAw/6ULfhnx+HWRecjqZGTOyquAoWHYLRSdK1tB5Ihce1ZW+UY3fj33bYAFWPu7W/GRSmmrCGuxA==
 
-axe-sarif-converter@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-3.0.0.tgz#c1da89f752af3c7fb50f7a5d0d408176ad62b246"
-  integrity sha512-oYAgxSccgFLc8n/aYyjS1xWYxb8k4VHYqII6/YsJsk1jnttfiRUkR631LyN+5T7UCJVzD2hILA0c3q3kTHpypg==
+axe-sarif-converter@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/axe-sarif-converter/-/axe-sarif-converter-3.1.0.tgz#1c0e3337704ee1cb8f361cab707da6cbbbfb569c"
+  integrity sha512-fw0tzMZZlpFgpy3cnaLG6mccdjvtziHR1SqSbBUrHv+HPd/S+mXnpVo3B53txMxGgWL4vgy+KY6IgQK6QgRF0w==
   dependencies:
     "@puppeteer/browsers" "^2.1.0"
     "@types/sarif" ">=2.1.1 <=2.1.8"

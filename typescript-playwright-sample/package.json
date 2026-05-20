@@ -7,7 +7,7 @@
     "@axe-core/playwright": "^4.11.3",
     "@playwright/test": "^1.60.0",
     "@types/node": "^20.19.41",
-    "axe-sarif-converter": "^3.0.0",
+    "axe-sarif-converter": "^3.1.0",
     "typescript": "^6.0.3"
   },
   "scripts": {
