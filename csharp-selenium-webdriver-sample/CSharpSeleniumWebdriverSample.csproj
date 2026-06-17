@@ -15,8 +15,8 @@
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.6.0" />
     <PackageReference Include="MSTest.TestAdapter" Version="4.2.3" />
     <PackageReference Include="MSTest.TestFramework" Version="4.2.3" />    
-    <PackageReference Include="Deque.AxeCore.Commons" Version="4.11.1" />
-    <PackageReference Include="Deque.AxeCore.Selenium" Version="4.11.1" />
+    <PackageReference Include="Deque.AxeCore.Commons" Version="4.11.3" />
+    <PackageReference Include="Deque.AxeCore.Selenium" Version="4.11.3" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="149.0.7827.5400" />
     <PackageReference Include="Selenium.WebDriver.GeckoDriver" Version="0.37.0" />
   </ItemGroup>
