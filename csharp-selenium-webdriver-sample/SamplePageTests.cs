@@ -41,6 +41,11 @@ namespace CSharpSeleniumWebdriverSample
                 .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze();
 
+            // Note: In Deque.AxeCore.Selenium 4.x, scan errors are thrown as exceptions rather than being returned in an
+            // AxeResult.Error property (as they were in earlier versions). This means you don't need to write explicit
+            // assertions like "axeResult.Error.Should().BeNull()" - if the scan encounters an error, it will throw and
+            // fail the test automatically.
+
             // axeResult.Violations is an array of all the accessibility violations the scan found; the easiest way to assert
             // that a scan came back clean is to assert that the Violations array is empty. You can do this with the built in
             // MSTest assertions like this:
@@ -83,6 +88,7 @@ namespace CSharpSeleniumWebdriverSample
             AxeResult axeResultWithAnalyzeWebElement = new AxeBuilder(_webDriver)
                 .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze(elementUnderTest);
+            // In 4.x, scan errors throw exceptions, so no explicit error assertion is needed
 
             axeResultWithAnalyzeWebElement.Violations.Should().BeEmpty();
 
@@ -95,6 +101,7 @@ namespace CSharpSeleniumWebdriverSample
                 .Include(new AxeSelector("#id-of-element-inside-iframe", new List<string> { "#id-of-iframe" }))
                 .WithTags("wcag2a", "wcag2aa", "wcag21a", "wcag21aa")
                 .Analyze();
+            // In 4.x, scan errors throw exceptions, so no explicit error assertion is needed
 
             axeResultWithInclude.Violations.Should().BeEmpty();
         }
@@ -111,6 +118,7 @@ namespace CSharpSeleniumWebdriverSample
             AxeResult axeResultExcludingExampleViolationsElement = new AxeBuilder(_webDriver)
                 .Exclude("#id-of-example-accessibility-violation-list")
                 .Analyze();
+            // In 4.x, scan errors throw exceptions, so no explicit error assertion is needed
 
             axeResultExcludingExampleViolationsElement.Violations.Should().BeEmpty();
 
@@ -120,6 +128,7 @@ namespace CSharpSeleniumWebdriverSample
                 .Include("#id-of-example-accessibility-violation-list") // Like Exclude(), accepts any CSS selector
                 .DisableRules("color-contrast", "label", "tabindex")
                 .Analyze();
+            // In 4.x, scan errors throw exceptions, so no explicit error assertion is needed
 
             axeResultDisablingRulesViolatedByExamples.Violations.Should().BeEmpty();
 
@@ -127,6 +136,7 @@ namespace CSharpSeleniumWebdriverSample
             // other options above as your first choice instead because when they do find new issues, they will produce error
             // messages that more clearly identify exactly what the new/unexpected issues are.
             AxeResult axeResult = new AxeBuilder(_webDriver).Analyze();
+            // In 4.x, scan errors throw exceptions, so no explicit error assertion is needed
             axeResult.Violations.Should().HaveCount(3);
         }
 
