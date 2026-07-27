@@ -62,6 +62,8 @@ extends:
   parameters:
     settings:
       skipBuildTagsForGitHubPullRequests: true
+      # Block involuntary public package-feed calls during build (Central Feed Services).
+      networkIsolationPolicy: Permissive,CFSClean
     # Update the pool with your team's 1ES hosted pool.
     pool:
       name: $(a11yInsightsPool) # Name of your hosted pool
