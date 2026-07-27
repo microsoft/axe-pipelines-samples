@@ -94,6 +94,9 @@ extends:
             inputs:
               command: restore
               projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
+              # Consume the repo nuget.config so restore uses the sanctioned feed, not a task-generated nuget.org config.
+              feedsToUse: config
+              nugetConfigPath: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/nuget.config
 
               # Using DotNetCoreCLI rather than a "script" step that runs "dotnet test" makes it easier to publish the test results
               # to see along with the rest of the build details in the Azure Pipelines web UI.
