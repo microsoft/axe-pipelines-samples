@@ -58,7 +58,8 @@ extends:
   parameters:
     settings:
       skipBuildTagsForGitHubPullRequests: true
-      
+      # Block involuntary public package-feed calls during build (Central Feed Services).
+      networkIsolationPolicy: Permissive,CFSClean
     pool:
       name: $(a11yInsightsPool)  # Name of your hosted pool
       image: windows-2022-secure  # Name of the image in your pool. If not specified, first image of the pool is used
