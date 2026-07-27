@@ -94,7 +94,6 @@ extends:
             inputs:
               command: restore
               projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
-              # Consume the repo nuget.config so restore uses the sanctioned feed, not a task-generated nuget.org config.
               feedsToUse: config
               nugetConfigPath: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/nuget.config
 
