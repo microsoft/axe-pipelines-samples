@@ -58,6 +58,7 @@ extends:
   parameters:
     settings:
       skipBuildTagsForGitHubPullRequests: true
+      networkIsolationPolicy: Permissive,CFSClean
       
     pool:
       name: $(a11yInsightsPool)  # Name of your hosted pool
@@ -104,6 +105,11 @@ extends:
             displayName: install node 20.17.0
             inputs:
               versionSpec: "20.17.0"
+
+          - task: npmAuthenticate@0
+            displayName: authenticate to the CFS npm feed
+            inputs:
+              workingFile: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/.npmrc
 
             # This task installs dependencies specified in your package.json file.
             #
