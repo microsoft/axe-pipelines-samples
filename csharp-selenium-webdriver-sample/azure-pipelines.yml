@@ -56,6 +56,7 @@ extends:
   parameters:
     settings:
       skipBuildTagsForGitHubPullRequests: true
+      networkIsolationPolicy: Permissive,CFSClean
     pool:
       name: $(a11yInsightsPool)  # Name of your hosted pool
       image: windows-2022-secure  # Name of the image in your pool. If not specified, first image of the pool is used
@@ -87,11 +88,15 @@ extends:
             inputs:
               version: '8.0.x'
 
+          - task: NuGetAuthenticate@1
+
           - task: DotNetCoreCLI@2
             displayName: dotnet restore
             inputs:
               command: restore
               projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
+              feedsToUse: config
+              nugetConfigPath: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/nuget.config
 
               # Using DotNetCoreCLI rather than a "script" step that runs "dotnet test" makes it easier to publish the test results
               # to see along with the rest of the build details in the Azure Pipelines web UI.
@@ -105,4 +110,3 @@ extends:
                # We use this EXTRA_DOTNET_TEST_ARGUMENTS variable in the sample's CI/PR builds so the "success" examples can --filter
                # out the tests that intentionally fail for example purposes. You probably don't need this in a real project.
               arguments: $(EXTRA_DOTNET_TEST_ARGUMENTS)
-
