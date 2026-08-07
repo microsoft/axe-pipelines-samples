@@ -111,7 +111,6 @@ extends:
             displayName: authenticate to the CFS npm feed
             inputs:
               workingFile: $(Build.SourcesDirectory)/typescript-playwright-sample/.npmrc
-              customEndpoint: A11yInsights-PublicPackage
               
           # This task installs dependencies specified in your package.json file.
           #
