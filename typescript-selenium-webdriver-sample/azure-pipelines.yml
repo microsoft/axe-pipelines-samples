@@ -45,6 +45,40 @@ parameters:
     browser: firefox
     os: linux
 
+# Cross-org Azure Artifacts feed access (SFI ES-4.2.4 / CFSClean).
+#
+# The npm registry this sample installs from lives in a DIFFERENT Azure DevOps
+# organization than the one these pipelines run in. Build identities do not cross
+# org boundaries, so a service connection is required. Leave feedServiceConnection
+# EMPTY when the pipeline and the feed are in the SAME org - the build identity can
+# read the feed directly and no service connection is needed.
+#
+# These must be LITERAL strings, not $(variables). Azure DevOps resolves and
+# authorizes service connection references during pipeline validation, before
+# runtime variables exist; a $(variable) fails with "service connection ... could
+# not be found".
+- name: feedServiceConnection
+  type: string
+  default: 'a11y-insights-public-npm-feed'
+
+# Resource GUID of the SAME connection named above. Both identify one connection
+# and must be changed together. Read it from the connection's browser URL
+# (...?resourceId=<GUID>) after it is created.
+#
+# TODO: populate once the npm service connection exists. Until then the guard in
+# the steps below fails the build immediately with an actionable message, rather
+# than letting a malformed setendpoint directive fail quietly and surface later as
+# an E401 from yarn install.
+- name: feedServiceConnectionId
+  type: string
+  default: ''
+
+# ARM service connection used only to mint a short-lived Azure DevOps token.
+# Required whenever feedServiceConnection is set.
+- name: azureSubscription
+  type: string
+  default: 'a11y-insights-public-feed-identity'
+
 # The `resources` specify the location and version of the 1ES PT.
 resources:
   repositories:
@@ -106,10 +140,50 @@ extends:
             inputs:
               versionSpec: "20.17.0"
 
-          - task: npmAuthenticate@0
-            displayName: authenticate to the CFS npm feed
-            inputs:
-              workingFile: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/.npmrc
+          # Catch a half-configured cross-org caller at the start of the job. Without
+          # this, a missing GUID produces a malformed setendpoint directive that fails
+          # silently, and the only symptom is an E401 from yarn install further down.
+          - ${{ if and(ne(parameters.feedServiceConnection, ''), eq(parameters.feedServiceConnectionId, '')) }}:
+            - pwsh: |
+                Write-Host "##vso[task.logissue type=error]feedServiceConnection was set without feedServiceConnectionId. Both identify the same npm service connection and must be supplied together."
+                exit 1
+              displayName: 'Fail fast: incomplete cross-org feed configuration'
+
+          # SAME-ORG: the build identity can read the feed directly.
+          - ${{ if eq(parameters.feedServiceConnection, '') }}:
+            - task: npmAuthenticate@0
+              displayName: authenticate to the CFS npm feed (build identity)
+              inputs:
+                workingFile: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/.npmrc
+
+          - ${{ if ne(parameters.feedServiceConnection, '') }}:
+            # CROSS-ORG: the build identity is scoped to its own organization, so mint
+            # an Azure DevOps token from the ARM service connection identity and inject it
+            # into the npm service connection before npmAuthenticate consumes it. This
+            # avoids a PAT that would silently expire.
+            - task: AzureCLI@2
+              displayName: mint feed access token from managed identity
+              inputs:
+                azureSubscription: ${{ parameters.azureSubscription }}
+                scriptType: pscore
+                scriptLocation: 'inlineScript'
+                # The GUID in --resource is the Azure DevOps Services resource ID. The
+                # token authenticates the IDENTITY, not the organization, which is what
+                # makes it work across org boundaries.
+                #
+                # setendpoint targets the service connection by resource GUID. It must be
+                # the same connection npmAuthenticate below consumes by name, which is why
+                # both come from parameters rather than being hardcoded.
+                inlineScript: |
+                  $accessToken = az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query "accessToken" --output tsv
+                  Write-Host "##vso[task.setsecret]$accessToken"
+                  Write-Host "##vso[task.setendpoint id=${{ parameters.feedServiceConnectionId }};field=authParameter;key=apitoken]$accessToken"
+
+            - task: npmAuthenticate@0
+              displayName: authenticate to the CFS npm feed (service connection)
+              inputs:
+                workingFile: $(Build.SourcesDirectory)/typescript-selenium-webdriver-sample/.npmrc
+                customEndpoint: ${{ parameters.feedServiceConnection }}
 
             # This task installs dependencies specified in your package.json file.
             #
