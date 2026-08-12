@@ -140,7 +140,7 @@ extends:
                   inlineScript: |
                       $accessToken = az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query "accessToken" --output tsv
                       write-host "##vso[task.setsecret]$accessToken"
-                      write-host "##vso[task.setendpoint id=${{ parameters.feedServiceConnection }};field=authParameter;key=apitoken]$accessToken"
+                      write-host "##vso[task.setendpoint id=${{ parameters.feedServiceConnectionId }};field=authParameter;key=apitoken]$accessToken"
             - task: npmAuthenticate@0
               displayName: Authenticate the CFS npm feed
               inputs:
