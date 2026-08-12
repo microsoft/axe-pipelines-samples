@@ -42,15 +42,15 @@ parameters:
     imageName: ubuntu-20.04
     browser: firefox
     os: linux
-  - name: feedServiceConnection
-    type: string
-    default: 'a11y-insights-public-nuget-feed'
-  - name: feedServiceConnectionId
-    type: string
-    default: 'f016b222-2214-44ab-b350-63ed0ed00e21'
-  - name: azureSubscription
-    type: string
-    default: 'a11y-insights-public-feed-identity'
+- name: feedServiceConnection
+  type: string
+  default: 'a11y-insights-public-nuget-feed'
+- name: feedServiceConnectionId
+  type: string
+  default: 'f016b222-2214-44ab-b350-63ed0ed00e21'
+- name: azureSubscription
+  type: string
+  default: 'a11y-insights-public-feed-identity'
 
 # The `resources` specify the location and version of the 1ES PT.
 resources:
