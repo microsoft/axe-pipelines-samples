@@ -42,6 +42,15 @@ parameters:
     imageName: ubuntu-20.04
     browser: firefox
     os: linux
+  - name: feedServiceConnection
+    type: string
+    default: 'a11y-insights-public-nuget-feed'
+  - name: feedServiceConnectionId
+    type: string
+    default: 'f016b222-2214-44ab-b350-63ed0ed00e21'
+  - name: azureSubscription
+    type: string
+    default: 'a11y-insights-public-feed-identity'
 
 # The `resources` specify the location and version of the 1ES PT.
 resources:
@@ -87,8 +96,27 @@ extends:
             displayName: install .NET 8.0.x
             inputs:
               version: '8.0.x'
+          # Same-org pipelines: the build identity works, no service connection needed.
+          - ${{ if eq(parameters.feedServiceConnection, '') }}:
+            - task: NuGetAuthenticate@1
+              
+          # Cross-org pipelines mint an Azure DevOps token from the managed
+          # identity and inject it into the NuGet service connection.
+          - ${{ if ne(parameters.feedServiceConnection, '') }}:
+            - task: AzureCLI@2
+              displayName: Mint feed access token from managed identity
+              inputs:
+                azureSubscription: ${{ parameters.azureSubscription }}
+                scriptType: pscore
+                scriptLocation: 'inlineScript'
+                inlineScript: |
+                  $accessToken = az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query "accessToken" --output tsv
+                  Write-Host "##vso[task.setsecret]$accessToken"
+                  Write-Host "##vso[task.setendpoint id=${{ parameters.feedServiceConnectionId }};field=authParameter;key=apitoken]$accessToken"
 
-          - task: NuGetAuthenticate@1
+            - task: NuGetAuthenticate@1
+              inputs:
+                nuGetServiceConnections: ${{ parameters.feedServiceConnection }}
 
           - task: DotNetCoreCLI@2
             displayName: dotnet restore
