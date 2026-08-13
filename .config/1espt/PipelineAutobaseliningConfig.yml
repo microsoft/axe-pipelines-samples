@@ -7,16 +7,16 @@ pipelines:
         credscan:
           lastModifiedDate: 2024-11-06
         eslint:
-          lastModifiedDate: 2026-08-13
+          lastModifiedDate: 2024-11-06
         armory:
-          lastModifiedDate: 2026-08-13
+          lastModifiedDate: 2024-11-06
         accessibilityinsights:
           lastModifiedDate: 2025-05-08
       binary:
         credscan:
           lastModifiedDate: 2025-02-14
         binskim:
-          lastModifiedDate: 2026-08-13
+          lastModifiedDate: 2025-04-28
     usedNonDefaultBranch: true
   42:
     retail:
@@ -24,25 +24,25 @@ pipelines:
         credscan:
           lastModifiedDate: 2024-11-06
         eslint:
-          lastModifiedDate: 2024-11-06
+          lastModifiedDate: 2026-08-13
         armory:
-          lastModifiedDate: 2024-11-06
+          lastModifiedDate: 2026-08-13
         accessibilityinsights:
           lastModifiedDate: 2025-05-08
       binary:
         credscan:
           lastModifiedDate: 2025-02-13
         binskim:
-          lastModifiedDate: 2025-04-28
+          lastModifiedDate: 2026-08-13
   32:
     retail:
       source:
         credscan:
           lastModifiedDate: 2024-11-06
         eslint:
-          lastModifiedDate: 2026-08-13
+          lastModifiedDate: 2024-11-06
         armory:
-          lastModifiedDate: 2026-08-13
+          lastModifiedDate: 2024-11-06
         accessibilityinsights:
           lastModifiedDate: 2025-05-08
   33:
