@@ -33,6 +33,12 @@
 # For more information, see:
 # * https://docs.microsoft.com/en-us/azure/devops/pipelines/get-started-multiplatform
 # * https://playwright.dev/docs/test-intro
+
+# parameters required for private feed and Azure subscription:
+  # feedServiceConnection and azureSubscription are used in the npmAuthenticate task to authenticate to the private feed and to run tests that require Azure subscription access.
+  # Both MUST be literal strings. Azure DevOps resolves and authorizes service
+  # connections during pipeline validation, before variables exist. Passing a
+  # $(variable) fails with "service connection ... could not be found".
 parameters:
 - name: strategy
   type: object
@@ -46,9 +52,19 @@ parameters:
     browser: firefox
     os: linux  
   - name: mac_webkit
-    imageName: macOS-13
+    imageName: macos-15
     browser: webkit
     os: macOS
+- name: feedServiceConnection
+  type: string
+  default: 'a11y-insights-public-npm-feed'
+- name: feedServiceConnectionId
+  type: string
+  default: '8eedced9-8dc3-4a52-8f54-d9cce38bce81'
+- name: azureSubscription
+  type: string
+  default: 'a11y-insights-public-feed-identity'
+
 # The `resources` specify the location and version of the 1ES PT.
 resources:
   repositories:
@@ -62,6 +78,7 @@ extends:
   parameters:
     settings:
       skipBuildTagsForGitHubPullRequests: true
+      networkIsolationPolicy: Permissive,CFSClean
     # Update the pool with your team's 1ES hosted pool.
     pool:
       name: $(a11yInsightsPool) # Name of your hosted pool
@@ -102,9 +119,34 @@ extends:
           # to reproduce your build results.
           steps:
           - task: NodeTool@0
-            displayName: install node 20.8.1
+            displayName: install node 20.17.0
             inputs:
-              versionSpec: "20.8.1"
+              versionSpec: "20.17.0"
+          # Same-org pipelines: the build identity works, no service connection needed.
+          - ${{ if eq(parameters.feedServiceConnection, '') }}:
+            - task: npmAuthenticate@0
+              inputs:
+                  workingFile: '$(Build.SourcesDirectory)/typescript-playwright-sample/.npmrc'
+          # Cross-org pipelines: mint a token and inject it into the connection.
+          - ${{ if ne(parameters.feedServiceConnection, '') }}:
+            - task: AzureCLI@2
+              displayName: Mint feed access token from managed identity
+              inputs:
+                  azureSubscription: ${{ parameters.azureSubscription }}
+                  scriptType: pscore
+                  scriptLocation: 'inlineScript'
+                  # 499b84ac-... is the Azure DevOps Services resource ID. The token
+                  # authenticates the IDENTITY, not the org, which is what makes it
+                  # work across org boundaries.
+                  inlineScript: |
+                      $accessToken = az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query "accessToken" --output tsv
+                      write-host "##vso[task.setsecret]$accessToken"
+                      write-host "##vso[task.setendpoint id=${{ parameters.feedServiceConnectionId }};field=authParameter;key=apitoken]$accessToken"
+            - task: npmAuthenticate@0
+              displayName: Authenticate the CFS npm feed
+              inputs:
+                  workingFile: '$(Build.SourcesDirectory)/typescript-playwright-sample/.npmrc'
+                  customEndpoint: ${{ parameters.feedServiceConnection }}          
               
           # This task installs dependencies specified in your package.json file.
           #

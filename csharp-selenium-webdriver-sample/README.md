@@ -16,7 +16,7 @@ Some good places to start reading are:
 The key tools and libraries this sample demonstrates are:
 
 * [Selenium.WebDriver](https://www.seleniumhq.org), the .NET library for Selenium, a tool for automating interactions with different web browsers.
-* [Selenium.Axe](https://github.com/TroyWalshProf/SeleniumAxeDotnet), a .NET library for running accessibility scans on web pages by using Selenium.WebDriver to run the [axe-core](https://github.com/dequelabs/axe-core) accessibility scanning engine.
+* [Deque.AxeCore.Selenium](https://github.com/dequelabs/axe-core-nuget), a .NET library for running accessibility scans on web pages by using Selenium.WebDriver to run the [axe-core](https://github.com/dequelabs/axe-core) accessibility scanning engine.
 * [Azure Pipelines](https://azure.microsoft.com/en-us/services/devops/pipelines/) to run the tests in a CI build with every Pull Request.
 
 This sample also uses a few other tools and libraries which are less important; if you use a different test framework or a different version of .NET, you can still follow along with most of the sample.
@@ -28,7 +28,7 @@ This sample also uses a few other tools and libraries which are less important; 
 * [Chrome](https://google.com/chrome) (with [Selenium.WebDriver.ChromeDriver](https://github.com/jsakamoto/nupkg-selenium-webdriver-chromedriver/)) and [Firefox](https://www.mozilla.org/firefox/) (with [Selenium.WebDriver.GeckoDriver](https://github.com/jsakamoto/nupkg-selenium-webdriver-geckodriver/)) as our test browsers
   * Selenium supports many different browsers and operating systems; use whichever combination is most important for your product!
 * [FluentAssertions](https://fluentassertions.com/) to write test assertions
-  * We like FluentAssertions because it gives great error messages out-of-the-box with Selenium.Axe. But you can still follow the rest of the sample if you prefer a different assertion style!
+  * We like FluentAssertions because it gives great error messages out-of-the-box with Deque.AxeCore.Selenium. But you can still follow the rest of the sample if you prefer a different assertion style!
 
 ## See it in action on your local machine
 

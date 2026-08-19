@@ -42,6 +42,15 @@ parameters:
     imageName: ubuntu-20.04
     browser: firefox
     os: linux
+- name: feedServiceConnection
+  type: string
+  default: 'a11y-insights-public-nuget-feed'
+- name: feedServiceConnectionId
+  type: string
+  default: 'f016b222-2214-44ab-b350-63ed0ed00e21'
+- name: azureSubscription
+  type: string
+  default: 'a11y-insights-public-feed-identity'
 
 # The `resources` specify the location and version of the 1ES PT.
 resources:
@@ -56,6 +65,7 @@ extends:
   parameters:
     settings:
       skipBuildTagsForGitHubPullRequests: true
+      networkIsolationPolicy: Permissive,CFSClean
     pool:
       name: $(a11yInsightsPool)  # Name of your hosted pool
       image: windows-2022-secure  # Name of the image in your pool. If not specified, first image of the pool is used
@@ -83,15 +93,38 @@ extends:
             # It is a good idea to test against a specific, known version of .NET SDK; this makes it easier for other users
             # to reproduce your build results.
           - task: UseDotNet@2
-            displayName: install .NET 6.0.415
+            displayName: install .NET 8.0.x
             inputs:
-              version: '6.0.415'
+              version: '8.0.x'
+          # Same-org pipelines: the build identity works, no service connection needed.
+          - ${{ if eq(parameters.feedServiceConnection, '') }}:
+            - task: NuGetAuthenticate@1
+              
+          # Cross-org pipelines mint an Azure DevOps token from the managed
+          # identity and inject it into the NuGet service connection.
+          - ${{ if ne(parameters.feedServiceConnection, '') }}:
+            - task: AzureCLI@2
+              displayName: Mint feed access token from managed identity
+              inputs:
+                azureSubscription: ${{ parameters.azureSubscription }}
+                scriptType: pscore
+                scriptLocation: 'inlineScript'
+                inlineScript: |
+                  $accessToken = az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query "accessToken" --output tsv
+                  Write-Host "##vso[task.setsecret]$accessToken"
+                  Write-Host "##vso[task.setendpoint id=${{ parameters.feedServiceConnectionId }};field=authParameter;key=apitoken]$accessToken"
+
+            - task: NuGetAuthenticate@1
+              inputs:
+                nuGetServiceConnections: ${{ parameters.feedServiceConnection }}
 
           - task: DotNetCoreCLI@2
             displayName: dotnet restore
             inputs:
               command: restore
               projects: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/**/*.csproj
+              feedsToUse: config
+              nugetConfigPath: $(Build.SourcesDirectory)/csharp-selenium-webdriver-sample/nuget.config
 
               # Using DotNetCoreCLI rather than a "script" step that runs "dotnet test" makes it easier to publish the test results
               # to see along with the rest of the build details in the Azure Pipelines web UI.
@@ -105,4 +138,3 @@ extends:
                # We use this EXTRA_DOTNET_TEST_ARGUMENTS variable in the sample's CI/PR builds so the "success" examples can --filter
                # out the tests that intentionally fail for example purposes. You probably don't need this in a real project.
               arguments: $(EXTRA_DOTNET_TEST_ARGUMENTS)
-
